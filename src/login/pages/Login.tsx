@@ -63,7 +63,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             className={clsx(kcClsx(
                                                 "kcFormSocialAccountListButtonClass",
                                                 providers.length > 3 && "kcFormSocialAccountGridItem"
-                                            ), `border border-secondary-200 flex justify-center py-2 rounded-lg hover:border-transparent`)}
+                                            ), `border border-secondary-200 flex justify-center py-2 rounded-lg hover:border-opacity-30 hover:bg-provider-${p.alias}/10`)}
                                             type="button"
                                             href={p.loginUrl}
                                         >
