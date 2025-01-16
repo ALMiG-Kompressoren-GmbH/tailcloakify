@@ -13,7 +13,7 @@ import openshiftLogo from "./assets/providers/openshift.svg";
 import paypalLogo from "./assets/providers/paypal.svg";
 import slackLogo from "./assets/providers/slack.svg";
 import stackoverflowLogo from "./assets/providers/stackoverflow.svg";
-import twitterLogo from "./assets/providers/twitter.svg";
+import xLogo from "./assets/providers/x.svg";
 
 const useProviderLogos: () => Record<string, string> = () => ({
     apple: appleLogo,
@@ -32,7 +32,8 @@ const useProviderLogos: () => Record<string, string> = () => ({
     paypal: paypalLogo,
     slack: slackLogo,
     stackoverflow: stackoverflowLogo,
-    twitter: twitterLogo,
+    twitter: xLogo,
+    x: xLogo,
 });
 
 export default useProviderLogos;
