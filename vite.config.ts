@@ -15,7 +15,8 @@ export default defineConfig({
                 { name: "TAILCLOAKIFY_BACKGROUND_VIDEO_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_IMPRINT_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL", default: "" },
-                { name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT", default: "" },
+                { name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT", default: "true" },
+                { name: "TAILCLOAKIFY_FAVICON_URL", default: "" },
             ]
         })
     ]
