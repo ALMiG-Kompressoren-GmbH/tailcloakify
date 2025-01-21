@@ -73,7 +73,7 @@ Note that by default Keycloakify generates multiple `.jar` files for different v
 FROM quay.io/keycloak/keycloak:26.0.7 as builder
 
 # Install custom theme
-ADD --chown=keycloak:keycloak https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/download/v1.0.0/keycloak-theme-for-kc-22-to-25.jar /opt/keycloak/providers/keycloak-theme-for-kc-22-to-25.jar
+ADD --chown=keycloak:keycloak https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/download/v1.1.0/keycloak-theme-for-kc-22-to-25.jar /opt/keycloak/providers/keycloak-theme-for-kc-22-to-25.jar
 
 FROM quay.io/keycloak/keycloak:26.0.7
 
@@ -107,7 +107,7 @@ If you would like to introduce additional changes, please read the [Contributing
 # GitHub Actions
 
 Tailcloakify comes with a generic GitHub Actions workflow that builds the theme and publishes
-the jars [as GitHub releases artifacts](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.0.0).  
+the jars [as GitHub releases artifacts](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.1.0).  
 To release a new version **just update the `package.json` version and push**.
 
 To enable the workflow go to your fork of this repository on GitHub then navigate to:
