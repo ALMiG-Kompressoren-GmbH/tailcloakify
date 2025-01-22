@@ -28,10 +28,11 @@ createRoot(document.getElementById("root")!).render(
     </StrictMode>
 );
 
-const faviconEnvUrl: string = kcEnvDefaults.TAILCLOAKIFY_FAVICON_URL;
-document.addEventListener("DOMContentLoaded", () => {
-    const faviconLink = document.getElementById("faviconEnv") as HTMLLinkElement | null;
-    if (faviconLink && faviconEnvUrl) {
-        faviconLink.href = faviconEnvUrl;
-    }
-});
+const url: string = kcEnvDefaults.TAILCLOAKIFY_FAVICON_URL;
+let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement | null;
+if (!link) {
+    link = document.createElement("link");
+    link.rel = "icon";
+    document.head.appendChild(link);
+}
+link.href = url;
