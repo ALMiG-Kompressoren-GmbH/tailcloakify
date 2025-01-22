@@ -30,10 +30,10 @@ Tailcloakify provides ways of customizing your theme without the need to rebuild
 | TAILCLOAKIFY_ADDITIONAL_SCRIPTS             | Use it to add other external scripts                                         |
 | TAILCLOAKIFY_BACKGROUND_LOGO_URL            | Use it to add an image of your logo                                          |
 | TAILCLOAKIFY_BACKGROUND_VIDEO_URL           | Use it to add a MP4 format background video on your register and login pages |
+| TAILCLOAKIFY_FAVICON_URL                    | Use it to add a url to your Favicon                                          |
 | TAILCLOAKIFY_FOOTER_IMPRINT_URL             | Use it to add an Impressum                                                   |
 | TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL      | Use it to add url to your data protection document                           |
 | TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT  | Use it to integrate Orestbida cookie consent plugin                          |
-| TAILCLOAKIFY_FAVICON_URL                    | Use it to add a url to your Favicon                                          |
 
 ## Keycloak localization feature
 
