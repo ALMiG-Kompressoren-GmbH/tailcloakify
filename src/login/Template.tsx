@@ -37,6 +37,20 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     }, []);
 
     useEffect(() => {
+        const url: string | undefined = kcContext.properties.TAILCLOAKIFY_FAVICON_URL;
+
+        if (url) {
+            let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement | null;
+            if (!link) {
+                link = document.createElement("link");
+                link.rel = "icon";
+                document.head.appendChild(link);
+            }
+            link.href = url;
+        }
+    });
+
+    useEffect(() => {
         const promisses: Promise<null>[] = [];
         const scripts = kcContext.properties["TAILCLOAKIFY_ADDITIONAL_SCRIPTS"];
 
