@@ -50,23 +50,27 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         }
     });
 
-    useEffect(() => {
-        const promisses: Promise<null>[] = [];
-        const scripts = kcContext.properties["TAILCLOAKIFY_ADDITIONAL_SCRIPTS"];
+    function loadScript(src: string) {
+        return new Promise<void>((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.async = true;
+            script.onload = () => resolve();
+            script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+            document.head.appendChild(script);
+        });
+    }
 
-        if (scripts) {
-            const scriptUrls = scripts.split(";"); // Split the URLs by semicolon
-            scriptUrls.forEach(url => {
-                const scriptElement = document.createElement("script");
-                promisses.push(new Promise(res => (scriptElement.onload = () => res(null))));
-                scriptElement.src = url.trim(); // Trim any extra whitespace
-                scriptElement.async = true;
-                document.head.appendChild(scriptElement); // Append to the head
-            });
+    useEffect(() => {
+        const promisses: Promise<void>[] = [];
+
+        if (kcContext.properties["TAILCLOAKIFY_ADDITIONAL_SCRIPTS"]) {
+            const scriptUrls = kcContext.properties["TAILCLOAKIFY_ADDITIONAL_SCRIPTS"].split(";"); // Split the URLs by semicolon
+            scriptUrls.forEach(url => promisses.push(loadScript(url)));
         }
 
         Promise.all(promisses).then(() => {
-            if (!window.CookieConsent && kcContext.properties["TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT"]) useSetCookieConsent();
+            if (window.CookieConsent === undefined && kcContext.properties["TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT"]) useSetCookieConsent();
         });
     }, []);
 
@@ -80,8 +84,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         className: bodyClassName ?? kcClsx("kcBodyClass")
     });
 
-    const footerImprintUrl = advancedMsgStr('footerImprintUrl') !== 'footerImprintUrl' ? advancedMsgStr('footerImprintUrl') : null;
-    const footerDataprotectionUrl = advancedMsgStr('footerDataprotectionUrl') !== 'footerDataprotectionUrl' ? advancedMsgStr('footerDataprotectionUrl') : null;
+    const footerImprintUrl = advancedMsgStr("footerImprintUrl") !== "footerImprintUrl" ? advancedMsgStr("footerImprintUrl") : null;
+    const footerDataprotectionUrl =
+        advancedMsgStr("footerDataprotectionUrl") !== "footerDataprotectionUrl" ? advancedMsgStr("footerDataprotectionUrl") : null;
 
     const { isReadyToRender } = useInitialize({ kcContext, doUseDefaultCss });
 
@@ -113,9 +118,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                 )}
             </div>
 
-            <div className={clsx(kcClsx("kcFormCardClass"), "relative z-10 max-w-md space-y-6 w-full rounded-lg")}>
+            <div className={clsx(kcClsx("kcFormCardClass"), "relative z-10 max-w-md w-full rounded-lg")}>
                 <div className={"font-bold text-center text-2xl"}>{msg("loginTitleHtml", realm.displayNameHtml)}</div>
-                <header className={clsx(kcClsx("kcFormHeaderClass"), "space-y-4")}>
+                <header className={clsx(kcClsx("kcFormHeaderClass"))}>
                     {(() => {
                         const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
                             <h1 id="kc-page-title" className={"text-center text-xl"}>
@@ -232,14 +237,14 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                             target={"_blank"}
                             rel={"noopener noreferrer"}
                             type={"button"}
-                            data-cc={"show-preferencesModal"}
+                            onClick={() => window?.CookieConsent?.showPreferences()}
                         >
                             {msg("footerCookiePreferencesTitle")}
                         </a>
                     )}
                 </section>
 
-                <section className={"mr-4"}>
+                <section>
                     {enabledLanguages.length > 1 && (
                         <div className={kcClsx("kcLocaleMainClass")} id="kc-locale">
                             <div id="kc-locale-wrapper" className={kcClsx("kcLocaleWrapperClass")}>
