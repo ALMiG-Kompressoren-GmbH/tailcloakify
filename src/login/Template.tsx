@@ -88,6 +88,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     const footerDataprotectionUrl =
         advancedMsgStr("footerDataprotectionUrl") !== "footerDataprotectionUrl" ? advancedMsgStr("footerDataprotectionUrl") : null;
 
+    const backgroundLogoUrl =  advancedMsgStr("backgroundLogoUrl") !== "backgroundLogoUrl" ? advancedMsgStr("backgroundLogoUrl") : null;
+    const backgroundVideoUrl =  advancedMsgStr("backgroundVideoUrl") !== "backgroundVideoUrl" ? advancedMsgStr("backgroundVideoUrl") : null;
+
     const { isReadyToRender } = useInitialize({ kcContext, doUseDefaultCss });
 
     if (!isReadyToRender) {
@@ -102,14 +105,14 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
             )}
         >
             <div id="kc-header">
-                {(advancedMsgStr("backgroundLogoUrl") || kcContext.properties["TAILCLOAKIFY_BACKGROUND_LOGO_URL"]) && (
+                {(backgroundLogoUrl || kcContext.properties["TAILCLOAKIFY_BACKGROUND_LOGO_URL"]) && (
                     <img
                         alt={"Logo"}
-                        src={advancedMsgStr("backgroundLogoUrl") || kcContext.properties["TAILCLOAKIFY_BACKGROUND_LOGO_URL"]}
+                        src={backgroundLogoUrl || kcContext.properties["TAILCLOAKIFY_BACKGROUND_LOGO_URL"]}
                         className={"fixed z-10 top-4 left-8"}
                     />
                 )}
-                {(advancedMsgStr("backgroundVideoUrl") || kcContext.properties["TAILCLOAKIFY_BACKGROUND_VIDEO_URL"]) && (
+                {(backgroundVideoUrl || kcContext.properties["TAILCLOAKIFY_BACKGROUND_VIDEO_URL"]) && (
                     <video
                         autoPlay={true}
                         loop={true}
@@ -118,7 +121,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         className={"fixed top-0 left-0 right-0 bottom-0 min-h-full min-w-full opacity-20 max-w-none"}
                     >
                         <source
-                            src={advancedMsgStr("backgroundLogoUrl") || kcContext.properties["TAILCLOAKIFY_BACKGROUND_VIDEO_URL"]}
+                            src={backgroundVideoUrl || kcContext.properties["TAILCLOAKIFY_BACKGROUND_VIDEO_URL"]}
                             type="video/mp4"
                         />
                     </video>
