@@ -220,7 +220,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     tabIndex={7}
                                     disabled={isLoginButtonDisabled}
                                     className={
-                                        "rounded-md bg-primary-600 text-white focus:ring-primary-600 hover:bg-primary-700 px-4 py-2 text-sm flex justify-center relative w-full focus:outline-none focus:ring-2 focus:ring-offset-2"
+                                        "rounded-md bg-primary-800 text-white focus:ring-primary-600 hover:bg-primary-700 px-4 py-2 text-sm flex justify-center relative w-full focus:outline-none focus:ring-2 focus:ring-offset-2"
                                     }
                                     name="login"
                                     id="kc-login"

@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: colors.blue,
-        secondary: colors.gray,
+        primary: colors.green,
+        secondary: colors.slate,
 
         provider: {
           apple: '#000000',
