@@ -3,7 +3,6 @@ import * as CookieConsent from "vanilla-cookieconsent";
 import { KcContext } from "../kc.gen";
 import { I18n } from "./i18n";
 
-// Referenced from >>>>> https://playground.cookieconsent.orestbida.com/
 const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
     const showGoogleCaptcha =
         kcContext.properties[
@@ -385,6 +384,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                                           description:
                                               "Для регистрации и подтверждения вашей личности мы используем Recaptcha от Google. Это, среди прочего, загружает скрипты с серверов Google Inc., расположенных в Америке, сохраняет cookies и передает пользовательские данные на серверы компании.<br>Регистрация невозможна без принятия этой категории. Подробнее см. в нашей Политике Конфиденциальности. Для ручной регистрации свяжитесь с нами напрямую через общие каналы связи.",
                                           linkedCategory: "google_recaptcha"
+
                                       }
                                   ]
                                 : [])
