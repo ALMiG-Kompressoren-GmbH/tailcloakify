@@ -22,8 +22,12 @@ export default defineConfig({
                 { name: "TAILCLOAKIFY_FOOTER_IMPRINT_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT", default: "" },
+                { name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA", default: "TRUE" },
             ],
             kcContextExclusionsFtl: [
+                '<@addToXKeycloakifyMessagesIfMessageKey str="backgroundLogoUrl" />',
+                '<@addToXKeycloakifyMessagesIfMessageKey str="backgroundVideoUrl" />',
+                '<@addToXKeycloakifyMessagesIfMessageKey str="faviconUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="footerImprintUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="footerDataprotectionUrl" />',
             ].join(".\n")

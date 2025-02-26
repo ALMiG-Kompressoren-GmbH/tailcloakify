@@ -64,14 +64,13 @@ html {
 }
 
 .otp-input {
-    width: 50px;
+    width: 45px;
     border: 3px solid gray;
-    border-radius: 10px;
+    border-radius: 8px;
     margin: 0 10px;
     text-align: center;
     font-size: 36px;
-    cursor: not-allowed;
-    pointer-events: none;
+    cursor: pointer;
 }
 
 .otp-input:focus {
@@ -79,7 +78,10 @@ html {
     outline: none;
 }
 
-.otp-input:nth-child(1) {
-    cursor: pointer;
-    pointer-events: all;
+.kcLocaleListClass {
+    max-height: 150px;
+    overflow-y: scroll;
+    border-radius: 0.5rem;
+    scrollbar-width: auto;
+    scrollbar-color: gray transparent;
 }
