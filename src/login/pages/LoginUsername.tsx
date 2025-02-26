@@ -31,7 +31,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("username")}
-            headerNode={msg("loginAccountTitle")}
+            headerNode={msg("doLogIn")}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             infoNode={
                 <div id="kc-registration-container" className={"space-y-4"}>
@@ -113,16 +113,16 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                         {!realm.loginWithEmailAllowed
                                             ? msg("username")
                                             : !realm.registrationEmailAsUsername
-                                              ? msg("usernameOrEmail")
-                                              : msg("email")}
+                                                ? msg("usernameOrEmail")
+                                                : msg("email")}
                                     </label>
                                     <input
                                         placeholder={
                                             !realm.loginWithEmailAllowed
                                                 ? msgStr("username")
                                                 : !realm.registrationEmailAsUsername
-                                                  ? msgStr("usernameOrEmail")
-                                                  : msgStr("email")
+                                                    ? msgStr("usernameOrEmail")
+                                                    : msgStr("email")
                                         }
                                         tabIndex={2}
                                         id="username"
