@@ -23,7 +23,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         i18n,
         doUseDefaultCss,
         classes,
-        children
+        children,
     } = props;
 
     const { kcClsx } = getKcClsx({ doUseDefaultCss, classes });
@@ -37,28 +37,75 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     }, []);
 
     // Load Scripts & Cookie Consent
-    function loadScript(src: string) {
-        return new Promise<void>((resolve, reject) => {
-            const script = document.createElement("script");
-            script.src = src;
-            script.async = true;
-            script.onload = () => resolve();
-            script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-            document.head.appendChild(script);
-        });
-    }
-
     useEffect(() => {
         const promisses: Promise<void>[] = [];
+
+        function loadScript(src: string) {
+            return new Promise<void>((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = src;
+                script.async = true;
+                script.onload = () => resolve();
+                script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+                document.head.appendChild(script);
+            });
+        }
 
         if (kcContext.properties["TAILCLOAKIFY_ADDITIONAL_SCRIPTS"]) {
             const scriptUrls = kcContext.properties["TAILCLOAKIFY_ADDITIONAL_SCRIPTS"].split(";"); // Split the URLs by semicolon
             scriptUrls.forEach(url => promisses.push(loadScript(url)));
         }
 
+        if (kcContext.properties["scripts"]) {
+            const scriptUrls = kcContext.properties["scripts"].split(" "); // Split the URLs by space
+            scriptUrls.forEach(url => promisses.push(loadScript(url)));
+        }
+
         Promise.all(promisses).then(() => {
             if (window.CookieConsent === undefined && kcContext.properties["TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT"]) useSetCookieConsent();
         });
+    }, []);
+
+    // Load CSS
+    useEffect(() => {
+        function loadStyle(href: string) {
+            const elem = document.createElement("link");
+            elem.href = href;
+            elem.rel = 'stylesheet';
+            document.head.appendChild(elem);
+        }
+
+        if (kcContext.properties["TAILCLOAKIFY_ADDITIONAL_STYLES"]) {
+            const styleUrls = kcContext.properties["TAILCLOAKIFY_ADDITIONAL_STYLES"].split(";"); // Split the URLs by semicolon
+            styleUrls.forEach(loadStyle);
+        }
+
+        if (kcContext.properties["styles"]) {
+            const styleUrls = kcContext.properties["styles"].split(" "); // Split the URLs by space
+            styleUrls.forEach(loadStyle);
+        }
+    }, []);
+
+    // Load Meta
+    useEffect(() => {
+        function loadMeta(input: { name: string, content: string }) {
+            const elem = document.createElement("meta");
+            elem.name = input.name;
+            elem.content = input.content;
+            document.head.appendChild(elem);
+        }
+
+        if (kcContext.properties["TAILCLOAKIFY_ADDITIONAL_META"]) {
+            const metaStrings = kcContext.properties["TAILCLOAKIFY_ADDITIONAL_META"].split(";"); // Split the semicolon by space & ==
+            const metaRows = metaStrings.map(e => ({ name: e.split("==")[0], content: e.split("==")[1] }))
+            metaRows.forEach(loadMeta);
+        }
+
+        if (kcContext.properties["meta"]) {
+            const metaStrings = kcContext.properties["meta"].split(" "); // Split the entries by space & ==
+            const metaRows = metaStrings.map(e => ({ name: e.split("==")[0], content: e.split("==")[1] }))
+            metaRows.forEach(loadMeta);
+        }
     }, []);
 
     useSetClassName({
