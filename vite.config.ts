@@ -10,7 +10,12 @@ export default defineConfig({
             accountThemeImplementation: "none",
             themeName: "Tailcloakify",
             environmentVariables: [
+                { name: "styles", default: "" },
+                { name: "scripts", default: "" },
+                { name: "meta", default: "" },
                 { name: "TAILCLOAKIFY_ADDITIONAL_SCRIPTS", default: "" },
+                { name: "TAILCLOAKIFY_ADDITIONAL_STYLES", default: "" },
+                { name: "TAILCLOAKIFY_ADDITIONAL_META", default: "" },
                 { name: "TAILCLOAKIFY_BACKGROUND_LOGO_URL", default: "" },
                 { name: "TAILCLOAKIFY_BACKGROUND_VIDEO_URL", default: "" },
                 { name: "TAILCLOAKIFY_FAVICON_URL", default: "" },

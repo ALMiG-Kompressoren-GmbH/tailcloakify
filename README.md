@@ -21,13 +21,15 @@ Save your settings.
 
 ## Customizing the Theme
 
-Tailcloakify provides ways of customizing your theme without the need to rebuild the theme while using a prebundled JAR file. This could include adding a background video/logo or customizing the footer behavior.
+Tailcloakify provides several ways of customizing your theme without the need to rebuild the theme while using the prebundled JAR file. You can eigher use environment variables, the keycloak localization system or deploy your custom theme extending Tailcloakify.
 
 ## Environment variables
 
 | Name                                        | Description                                                                  |
 | ------------------------------------------- |------------------------------------------------------------------------------|
 | TAILCLOAKIFY_ADDITIONAL_SCRIPTS             | Use it to add other external scripts                                         |
+| TAILCLOAKIFY_ADDITIONAL_STYLES              | Use it to add other external styles                                          |
+| TAILCLOAKIFY_ADDITIONAL_META                | Use it to add other meta tags                                                |
 | TAILCLOAKIFY_BACKGROUND_LOGO_URL            | Use it to add an image of your logo                                          |
 | TAILCLOAKIFY_BACKGROUND_VIDEO_URL           | Use it to add a MP4 format background video on your register and login pages |
 | TAILCLOAKIFY_FAVICON_URL                    | Use it to add a url to your Favicon                                          |
@@ -47,6 +49,21 @@ Some customizations are possible through Keycloak's Localization System, allowin
 | faviconUrl               | The localized enabled alternative to env: TAILCLOAKIFY_FAVICON_URL                 |
 | footerImprintUrl         | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_IMPRINT_URL          |
 | footerDataprotectionUrl  | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL   |
+
+## Using a child Theme
+
+If you want to customize this theme, by extending it with your own files to be loaded as scripts or styles you can follow the following steps.
+
+1. [Deploy Keywind Login Theme](https://www.keycloak.org/docs/latest/server_development/#deploying-themes)
+2. [Create your own Login Theme](https://www.keycloak.org/docs/latest/server_development/#creating-a-theme)
+3. Specify parent theme in [theme properties](https://www.keycloak.org/docs/latest/server_development/#theme-properties) and add additional files to be loaded in the header
+
+```
+parent=keywind
+scripts=first-script.js second-script.js
+styles=custom-styles.css
+meta=name==content name2=content2
+```
 
 # Developer Quick Start
 

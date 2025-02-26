@@ -6,7 +6,7 @@ import { I18n } from "./i18n";
 const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
     const showGoogleCaptcha =
         kcContext.properties[
-            "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA"
+        "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA"
         ] === "TRUE";
 
     window.CookieConsent = CookieConsent;
@@ -58,10 +58,10 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
         language: {
             default:
                 navigator &&
-                navigator.language &&
-                ["de", "en", "fr", "it", "es", "cs", "nl", "pl", "ru"].includes(
-                    navigator.language
-                )
+                    navigator.language &&
+                    ["de", "en", "fr", "it", "es", "cs", "nl", "pl", "ru"].includes(
+                        navigator.language
+                    )
                     ? navigator.language
                     : "en",
             autoDetect: "document",
@@ -91,13 +91,13 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                             },
                             ...(showGoogleCaptcha
                                 ? [
-                                      {
-                                          title: "Recaptcha von Google",
-                                          description:
-                                              "Für die Registrierung und zur Bestätigung Ihrer Identität setzen wir das Recaptcha von Google ein. Dieses lädt unter anderem Skripte von Servern des Unternehmens Google Inc. mit Sitz in Amerika, speichert Cookies und überträgt Nutzerdaten an Server des Unternehmens.<br>Ohne ein Akzeptieren dieser Kategorie ist eine Registrierung nicht möglich. <br><br>Weitere Informationen erhalten Sie in unserer Datenschutzerklärung. <br>Für eine manuelle Regestrierung sprechen Sie uns über die allg. Kontaktwege direkt an.",
-                                          linkedCategory: "google_recaptcha"
-                                      }
-                                  ]
+                                    {
+                                        title: "Recaptcha von Google",
+                                        description:
+                                            "Für die Registrierung und zur Bestätigung Ihrer Identität setzen wir das Recaptcha von Google ein. Dieses lädt unter anderem Skripte von Servern des Unternehmens Google Inc. mit Sitz in Amerika, speichert Cookies und überträgt Nutzerdaten an Server des Unternehmens.<br>Ohne ein Akzeptieren dieser Kategorie ist eine Registrierung nicht möglich. <br><br>Weitere Informationen erhalten Sie in unserer Datenschutzerklärung. <br>Für eine manuelle Regestrierung sprechen Sie uns über die allg. Kontaktwege direkt an.",
+                                        linkedCategory: "google_recaptcha"
+                                    }
+                                ]
                                 : [])
                         ]
                     }
@@ -127,13 +127,13 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                             },
                             ...(showGoogleCaptcha
                                 ? [
-                                      {
-                                          title: "Recaptcha from Google",
-                                          description:
-                                              "We use Google's Recaptcha to register and confirm your identity. Among other things, this loads scripts from servers of Google Inc. based in America, stores cookies and transfers user data to the company's servers.<br>Registering is not possible without accepting this category. Further information is available in our Privacy Policy. For further information or manual registration, please contact us directly via the general contact channels.",
-                                          linkedCategory: "google-recaptcha"
-                                      }
-                                  ]
+                                    {
+                                        title: "Recaptcha from Google",
+                                        description:
+                                            "We use Google's Recaptcha to register and confirm your identity. Among other things, this loads scripts from servers of Google Inc. based in America, stores cookies and transfers user data to the company's servers.<br>Registering is not possible without accepting this category. Further information is available in our Privacy Policy. For further information or manual registration, please contact us directly via the general contact channels.",
+                                        linkedCategory: "google-recaptcha"
+                                    }
+                                ]
                                 : [])
                         ]
                     }
@@ -163,13 +163,13 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                             },
                             ...(showGoogleCaptcha
                                 ? [
-                                      {
-                                          title: "Recaptcha - Google",
-                                          description:
-                                              "Nous utilisons le Recaptcha de Google pour enregistrer et confirmer votre identitÃ©. Entre autres choses, cela charge des scripts Ã  partir des serveurs de Google Inc. basÃ©s en AmÃ©rique, stocke des cookies et transfÃ¨re les donnÃ©es des utilisateurs vers les serveurs de l'entreprise.<br>L'inscription n'est pas possible sans accepter cette catÃ©gorie. De plus amples informations sont disponibles dans notre Politique de confidentialitÃ©. Pour plus dâ€™informations ou pour une inscription manuelle, veuillez nous contacter directement via les canaux de contact gÃ©nÃ©raux.",
-                                          linkedCategory: "google-recaptcha"
-                                      }
-                                  ]
+                                    {
+                                        title: "Recaptcha - Google",
+                                        description:
+                                            "Nous utilisons le Recaptcha de Google pour enregistrer et confirmer votre identitÃ©. Entre autres choses, cela charge des scripts Ã  partir des serveurs de Google Inc. basÃ©s en AmÃ©rique, stocke des cookies et transfÃ¨re les donnÃ©es des utilisateurs vers les serveurs de l'entreprise.<br>L'inscription n'est pas possible sans accepter cette catÃ©gorie. De plus amples informations sont disponibles dans notre Politique de confidentialitÃ©. Pour plus dâ€™informations ou pour une inscription manuelle, veuillez nous contacter directement via les canaux de contact gÃ©nÃ©raux.",
+                                        linkedCategory: "google-recaptcha"
+                                    }
+                                ]
                                 : [])
                         ]
                     }
@@ -199,13 +199,13 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                             },
                             ...(showGoogleCaptcha
                                 ? [
-                                      {
-                                          title: "Recaptcha - Google",
-                                          description:
-                                              "Utilizziamo Recaptcha di Google per registrare e confermare la tua identitÃ . Tra le altre cose, carica script dai server di Google Inc. con sede in America, memorizza cookie e trasferisce i dati dell'utente ai server della societÃ .<br>Non Ã¨ possibile registrarsi senza accettare questa categoria. Ulteriori informazioni sono disponibili nella nostra Informativa sulla privacy. Per ulteriori informazioni o per la registrazione manuale vi invitiamo a contattarci direttamente tramite i canali di contatto generali.",
-                                          linkedCategory: "google-recaptcha"
-                                      }
-                                  ]
+                                    {
+                                        title: "Recaptcha - Google",
+                                        description:
+                                            "Utilizziamo Recaptcha di Google per registrare e confermare la tua identitÃ . Tra le altre cose, carica script dai server di Google Inc. con sede in America, memorizza cookie e trasferisce i dati dell'utente ai server della societÃ .<br>Non Ã¨ possibile registrarsi senza accettare questa categoria. Ulteriori informazioni sono disponibili nella nostra Informativa sulla privacy. Per ulteriori informazioni o per la registrazione manuale vi invitiamo a contattarci direttamente tramite i canali di contatto generali.",
+                                        linkedCategory: "google-recaptcha"
+                                    }
+                                ]
                                 : [])
                         ]
                     }
@@ -235,13 +235,13 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                             },
                             ...(showGoogleCaptcha
                                 ? [
-                                      {
-                                          title: "Recaptcha de Google",
-                                          description:
-                                              "Para el registro y la confirmación de su identidad, utilizamos Recaptcha de Google. Esto, entre otras cosas, carga scripts desde servidores de Google Inc. con sede en Estados Unidos, almacena cookies y transfiere datos de usuarios a los servidores de la empresa.<br>No es posible registrarse sin aceptar esta categoría. Para más información, consulte nuestra Política de Privacidad. Para un registro manual, contáctenos directamente a través de los canales de contacto generales.",
-                                          linkedCategory: "google_recaptcha"
-                                      }
-                                  ]
+                                    {
+                                        title: "Recaptcha de Google",
+                                        description:
+                                            "Para el registro y la confirmación de su identidad, utilizamos Recaptcha de Google. Esto, entre otras cosas, carga scripts desde servidores de Google Inc. con sede en Estados Unidos, almacena cookies y transfiere datos de usuarios a los servidores de la empresa.<br>No es posible registrarse sin aceptar esta categoría. Para más información, consulte nuestra Política de Privacidad. Para un registro manual, contáctenos directamente a través de los canales de contacto generales.",
+                                        linkedCategory: "google_recaptcha"
+                                    }
+                                ]
                                 : [])
                         ]
                     }
@@ -271,13 +271,13 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                             },
                             ...(showGoogleCaptcha
                                 ? [
-                                      {
-                                          title: "Recaptcha od Google",
-                                          description:
-                                              "Pro registraci a potvrzení vaší identity používáme Recaptcha od Google. To mimo jiné načítá skripty ze serverů společnosti Google Inc. se sídlem v Americe, ukládá cookies a přenáší uživatelská data na servery společnosti.<br>Bez přijetí této kategorie není registrace možná. Více informací naleznete v našich Zásadách ochrany osobních údajů. Pro manuální registraci nás prosím kontaktujte prostřednictvím obecných kontaktních kanálů.",
-                                          linkedCategory: "google_recaptcha"
-                                      }
-                                  ]
+                                    {
+                                        title: "Recaptcha od Google",
+                                        description:
+                                            "Pro registraci a potvrzení vaší identity používáme Recaptcha od Google. To mimo jiné načítá skripty ze serverů společnosti Google Inc. se sídlem v Americe, ukládá cookies a přenáší uživatelská data na servery společnosti.<br>Bez přijetí této kategorie není registrace možná. Více informací naleznete v našich Zásadách ochrany osobních údajů. Pro manuální registraci nás prosím kontaktujte prostřednictvím obecných kontaktních kanálů.",
+                                        linkedCategory: "google_recaptcha"
+                                    }
+                                ]
                                 : [])
                         ]
                     }
@@ -307,13 +307,13 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                             },
                             ...(showGoogleCaptcha
                                 ? [
-                                      {
-                                          title: "Recaptcha van Google",
-                                          description:
-                                              "Voor registratie en bevestiging van uw identiteit gebruiken we Recaptcha van Google. Dit laadt onder andere scripts van servers van Google Inc. in Amerika, slaat cookies op en stuurt gebruikersgegevens naar de servers van het bedrijf.<br>Registratie is niet mogelijk zonder deze categorie te accepteren. Voor meer informatie, zie onze Privacyverklaring. Neem voor een handmatige registratie contact met ons op via de algemene contactkanalen.",
-                                          linkedCategory: "google_recaptcha"
-                                      }
-                                  ]
+                                    {
+                                        title: "Recaptcha van Google",
+                                        description:
+                                            "Voor registratie en bevestiging van uw identiteit gebruiken we Recaptcha van Google. Dit laadt onder andere scripts van servers van Google Inc. in Amerika, slaat cookies op en stuurt gebruikersgegevens naar de servers van het bedrijf.<br>Registratie is niet mogelijk zonder deze categorie te accepteren. Voor meer informatie, zie onze Privacyverklaring. Neem voor een handmatige registratie contact met ons op via de algemene contactkanalen.",
+                                        linkedCategory: "google_recaptcha"
+                                    }
+                                ]
                                 : [])
                         ]
                     }
@@ -343,13 +343,13 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                             },
                             ...(showGoogleCaptcha
                                 ? [
-                                      {
-                                          title: "Recaptcha od Google",
-                                          description:
-                                              "Do rejestracji i potwierdzenia tożsamości używamy Recaptcha od Google. Wśród innych rzeczy, ładuje to skrypty z serwerów Google Inc. z siedzibą w Ameryce, przechowuje pliki cookie i przekazuje dane użytkowników na serwery firmy.<br>Rejestracja nie jest możliwa bez zaakceptowania tej kategorii. Więcej informacji można znaleźć w naszej Polityce Prywatności. W przypadku rejestracji ręcznej skontaktuj się z nami bezpośrednio poprzez ogólne kanały kontaktowe.",
-                                          linkedCategory: "google_recaptcha"
-                                      }
-                                  ]
+                                    {
+                                        title: "Recaptcha od Google",
+                                        description:
+                                            "Do rejestracji i potwierdzenia tożsamości używamy Recaptcha od Google. Wśród innych rzeczy, ładuje to skrypty z serwerów Google Inc. z siedzibą w Ameryce, przechowuje pliki cookie i przekazuje dane użytkowników na serwery firmy.<br>Rejestracja nie jest możliwa bez zaakceptowania tej kategorii. Więcej informacji można znaleźć w naszej Polityce Prywatności. W przypadku rejestracji ręcznej skontaktuj się z nami bezpośrednio poprzez ogólne kanały kontaktowe.",
+                                        linkedCategory: "google_recaptcha"
+                                    }
+                                ]
                                 : [])
                         ]
                     }
@@ -379,14 +379,14 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                             },
                             ...(showGoogleCaptcha
                                 ? [
-                                      {
-                                          title: "Recaptcha от Google",
-                                          description:
-                                              "Для регистрации и подтверждения вашей личности мы используем Recaptcha от Google. Это, среди прочего, загружает скрипты с серверов Google Inc., расположенных в Америке, сохраняет cookies и передает пользовательские данные на серверы компании.<br>Регистрация невозможна без принятия этой категории. Подробнее см. в нашей Политике Конфиденциальности. Для ручной регистрации свяжитесь с нами напрямую через общие каналы связи.",
-                                          linkedCategory: "google_recaptcha"
+                                    {
+                                        title: "Recaptcha от Google",
+                                        description:
+                                            "Для регистрации и подтверждения вашей личности мы используем Recaptcha от Google. Это, среди прочего, загружает скрипты с серверов Google Inc., расположенных в Америке, сохраняет cookies и передает пользовательские данные на серверы компании.<br>Регистрация невозможна без принятия этой категории. Подробнее см. в нашей Политике Конфиденциальности. Для ручной регистрации свяжитесь с нами напрямую через общие каналы связи.",
+                                        linkedCategory: "google_recaptcha"
 
-                                      }
-                                  ]
+                                    }
+                                ]
                                 : [])
                         ]
                     }
