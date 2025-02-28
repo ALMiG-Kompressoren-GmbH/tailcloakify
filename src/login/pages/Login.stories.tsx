@@ -444,3 +444,17 @@ export const WithBackgroundLogoAndBackgroundVideoAndFavicon: Story = {
         />
     )
 };
+export const WithScriptsStylesAndMeta: Story = {
+    render: args => (
+        <KcPageStory
+            {...args}
+            kcContext={{
+                properties: {
+                    scripts: "/invalid-script.js /another-invalid-script.js",
+                    styles: "/invalid-styles.css /another-invalid-styles.css",
+                    meta: "test==content test2==content2",
+                }
+            }}
+        />
+    )
+};
