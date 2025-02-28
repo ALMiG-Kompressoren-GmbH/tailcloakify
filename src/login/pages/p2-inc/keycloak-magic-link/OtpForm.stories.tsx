@@ -31,7 +31,7 @@ export const WithOtpError: Story = {
                 },
                 messagesPerField: {
                     existsError: (field: string) => field === "totp",
-                    get: () => "Invalid OTP code"
+                    get: () => "Invalid access code"
                 }
             }}
         />
