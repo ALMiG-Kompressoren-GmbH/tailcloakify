@@ -13,13 +13,13 @@ export type KcContextExtensionPerPage = {
     // 👉 P2-INC => Magic Link Extension
     "otp-form.ftl": {
         auth: {
-            attemptedUsername: "user@user.com"
-        },
+            attemptedUsername: string;
+        };
         url: {
-            loginRestartFlowUrl: "#",
-            loginAction: "#"
-        }
-    }
+            loginRestartFlowUrl: string;
+            loginAction: string;
+        };
+    };
 };
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>;
