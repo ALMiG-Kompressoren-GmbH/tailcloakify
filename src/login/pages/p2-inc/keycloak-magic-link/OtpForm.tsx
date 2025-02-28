@@ -17,7 +17,7 @@ export default function P2MagicLinkOtpForm(
 
     const { msg, msgStr } = i18n;
 
-    const { auth, url, messagesPerField } = kcContext;
+    const { url, messagesPerField } = kcContext;
     const otpLength = 6;
     const inputRef = useRef<HTMLInputElement[]>(Array(otpLength).fill(null));
 
@@ -105,27 +105,7 @@ export default function P2MagicLinkOtpForm(
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayInfo={false}
-            headerNode={
-                <div
-                    id="kc-username"
-                    className={kcClsx("kcFormGroupClass")}
-                    style={{ fontSize: "16px" }}
-                >
-                    <label id="kc-attempted-username">{auth.attemptedUsername}</label>
-                    <a
-                        id="reset-login"
-                        href={url.loginRestartFlowUrl}
-                        aria-label={msgStr("restartLoginTooltip")}
-                    >
-                        <div className="kc-login-tooltip">
-                            <i className={kcClsx("kcResetFlowIcon")}></i>
-                            <span className="kc-tooltip-text">
-                                {msg("restartLoginTooltip")}
-                            </span>
-                        </div>
-                    </a>
-                </div>
-            }
+            headerNode={msg("p2incMagiceLinkOtpFormTitle")}
         >
             <form
                 id="kc-otp-login-form"
@@ -136,7 +116,7 @@ export default function P2MagicLinkOtpForm(
                 <div className={kcClsx("kcFormGroupClass")}>
                     <div className={clsx(kcClsx("kcLabelWrapperClass"), "text-center font-bold text-lg p-4")}>
                         <label htmlFor="otp" className={kcClsx("kcLabelClass")}>
-                            Please Input your {msg("loginOtpOneTime")}
+                            {msg("loginOtpOneTimeLabel")}
                         </label>
                     </div>
 

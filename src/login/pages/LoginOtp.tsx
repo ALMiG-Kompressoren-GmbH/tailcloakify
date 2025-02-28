@@ -112,7 +112,7 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
                 <div className={kcClsx("kcFormGroupClass")}>
                     <div className={clsx(kcClsx("kcLabelWrapperClass"), "text-center font-bold text-lg p-4")}>
                         <label htmlFor="otp" className={kcClsx("kcLabelClass")}>
-                            Please Input your {msg("loginOtpOneTime")}
+                            {msg("loginOtpOneTimeLabel")}
                         </label>
                     </div>
                     <div className={kcClsx("kcInputWrapperClass")} id={"inputs"}>
