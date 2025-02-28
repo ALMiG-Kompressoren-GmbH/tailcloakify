@@ -182,7 +182,7 @@ export default function P2MagicLinkOtpForm(
                                 className={
                                     "rounded-md bg-primary-600 text-white focus:ring-primary-600 hover:bg-primary-700 px-4 py-2 text-sm max-w-md focus:outline-none focus:ring-2 focus:ring-offset-2"
                                 }
-                                name="submit"
+                                name="login"
                                 id="kc-submit"
                                 type="submit"
                                 value={msgStr("doSubmit")}
