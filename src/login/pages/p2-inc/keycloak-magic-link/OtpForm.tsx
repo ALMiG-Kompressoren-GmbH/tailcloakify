@@ -105,7 +105,7 @@ export default function P2MagicLinkOtpForm(
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayInfo={false}
-            headerNode={msg("p2incMagiceLinkOtpFormTitle")}
+            headerNode={msg("p2incMagicLinkOtpFormTitle")}
         >
             <form
                 id="kc-otp-login-form"
