@@ -11,7 +11,19 @@ const kcContextExtension: KcContextExtension = {
         ...kcEnvDefaults
     }
 };
-const kcContextExtensionPerPage: KcContextExtensionPerPage = {};
+
+const kcContextExtensionPerPage: KcContextExtensionPerPage = {
+    // 👉 P2-INC => Magic Link Extension
+    "otp-form.ftl": {
+        auth: {
+            attemptedUsername: "user@user.com"
+        },
+        url: {
+            loginRestartFlowUrl: "#",
+            loginAction: "#"
+        }
+    }
+};
 
 export const { getKcContextMock } = createGetKcContextMock({
     kcContextExtension,
