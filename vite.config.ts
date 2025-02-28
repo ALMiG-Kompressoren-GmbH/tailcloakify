@@ -30,7 +30,12 @@ export default defineConfig({
                 '<@addToXKeycloakifyMessagesIfMessageKey str="faviconUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="footerImprintUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="footerDataprotectionUrl" />',
-            ].join(".\n")
+            ].join(".\n"),
+            startKeycloakOptions: {
+                extensionJars: [
+                    "https://repo1.maven.org/maven2/io/phasetwo/keycloak/keycloak-magic-link/0.34/keycloak-magic-link-0.34.jar"
+                   ],
+            }
         })
     ]
 });
