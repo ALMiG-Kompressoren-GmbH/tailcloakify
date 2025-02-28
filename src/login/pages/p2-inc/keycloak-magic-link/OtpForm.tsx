@@ -1,3 +1,4 @@
+import React, { useEffect, useRef, useState } from "react";
 import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../../../KcContext";
@@ -17,6 +18,85 @@ export default function P2MagicLinkOtpForm(
     const { msg, msgStr } = i18n;
 
     const { auth, url, messagesPerField } = kcContext;
+    const otpLength = 6;
+    const inputRef = useRef<HTMLInputElement[]>(Array(otpLength).fill(null));
+
+    const [otpValues, setOtpValues] = useState<string[]>(Array(otpLength).fill(""));
+
+    useEffect(() => {
+        if (otpValues.every(Boolean)) {
+            (document.getElementById("kc-otp-login-form") as HTMLFormElement)?.submit();
+        }
+    }, [otpValues]);
+
+    const handleInput = (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+        const target = e.target as HTMLInputElement;
+
+        // Only accept single digit input
+        if (target.value.length > 1) {
+            target.value = target.value.slice(-1);
+        }
+
+        if (isNaN(Number(target.value))) {
+            target.value = "";
+            return;
+        }
+
+        const newOtpValues = [...otpValues];
+        newOtpValues[index] = target.value;
+        setOtpValues(newOtpValues);
+
+        // Move focus to the next input field if the current one is filled
+        if (target.value !== "" && index < otpLength - 1) {
+            const next = inputRef.current[index + 1];
+            if (next) {
+                next.focus();
+            }
+        }
+    };
+
+    const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+        const pasteData = e.clipboardData.getData("text").trim();
+
+        if (!/^\d+$/.test(pasteData)) return; // Ensure only numbers are pasted
+
+        const values = pasteData.split("").slice(0, otpLength);
+        const newOtpValues = [...otpValues];
+
+        values.forEach((value, i) => {
+            newOtpValues[i] = value;
+            if (inputRef.current[i]) {
+                inputRef.current[i].value = value;
+            }
+        });
+
+        setOtpValues(newOtpValues);
+
+        // Focus the last filled input after pasting
+        const lastIndex = Math.min(values.length, otpLength);
+        if (inputRef.current[lastIndex]) {
+            inputRef.current[lastIndex].focus();
+        } else inputRef.current[otpLength - 1].focus();
+
+        e.preventDefault(); // Prevent default paste action
+    };
+
+    const handleKeyUp = (index: number) => (e: React.KeyboardEvent<HTMLInputElement>) => {
+        const target = e.target as HTMLInputElement;
+        const key = e.key.toLowerCase();
+
+        if (key === "backspace" || key === "delete") {
+            target.value = "";
+            const prev = inputRef.current[index - 1];
+            if (prev) {
+                prev.focus();
+            }
+
+            const newOtpValues = [...otpValues];
+            newOtpValues[index] = "";
+            setOtpValues(newOtpValues);
+        }
+    };
 
     return (
         <Template
@@ -47,7 +127,6 @@ export default function P2MagicLinkOtpForm(
                 </div>
             }
         >
-            <p>Enter access code</p>
             <form
                 id="kc-otp-login-form"
                 className={kcClsx("kcFormClass")}
@@ -55,26 +134,44 @@ export default function P2MagicLinkOtpForm(
                 method="post"
             >
                 <div className={kcClsx("kcFormGroupClass")}>
-                    <div className={kcClsx("kcLabelWrapperClass")}>
+                    <div className={clsx(kcClsx("kcLabelWrapperClass"), "text-center font-bold text-lg p-4")}>
                         <label htmlFor="otp" className={kcClsx("kcLabelClass")}>
-                            {msg("loginOtpOneTime")}
+                            Please Input your {msg("loginOtpOneTime")}
                         </label>
                     </div>
 
                     <div className={kcClsx("kcInputWrapperClass")}>
+                        <div className={"flex justify-center items-center"}>
+                            {Array.from({ length: otpLength }).map((_, index) => (
+                                <input
+                                    key={index}
+                                    className={"otp-input"}
+                                    type="text"
+                                    autoFocus={index === 0}
+                                    autoComplete="off"
+                                    name={`otp-${index}`}
+                                    id={`otp-${index}`}
+                                    inputMode="numeric"
+                                    value={otpValues[index]}
+                                    onChange={handleInput(index)}
+                                    ref={el => (inputRef.current[index] = el as HTMLInputElement)}
+                                    onKeyDown={handleKeyUp(index)}
+                                    onPaste={handlePaste}
+                                />
+                            ))}
+                        </div>
                         <input
-                            id="otp"
-                            name="otp"
+                            id={"otp"}
+                            name={"otp"}
                             autoComplete="off"
-                            type="text"
+                            type={"hidden"}
+                            value={otpValues.join("")}
                             className={clsx(
                                 kcClsx("kcInputClass"),
                                 "block focus:outline-none border-secondary-200 mt-1 rounded-md w-full focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 sm:text-sm"
                             )}
-                            autoFocus
-                            aria-invalid={
-                                messagesPerField.existsError("totp") ? "true" : undefined
-                            }
+                            autoFocus={true}
+                            aria-invalid={messagesPerField.existsError("totp")}
                         />
                         {messagesPerField.existsError("totp") && (
                             <span
