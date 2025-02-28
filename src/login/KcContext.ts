@@ -9,6 +9,17 @@ export type KcContextExtension = {
     // See: https://docs.keycloakify.dev/faq-and-help/some-values-you-need-are-missing-from-in-kccontext
 };
 
-export type KcContextExtensionPerPage = {};
+export type KcContextExtensionPerPage = {
+    // 👉 P2-INC => Magic Link Extension
+    "otp-form.ftl": {
+        auth: {
+            attemptedUsername: "user@user.com"
+        },
+        url: {
+            loginRestartFlowUrl: "#",
+            loginAction: "#"
+        }
+    }
+};
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>;

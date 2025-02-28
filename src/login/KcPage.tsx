@@ -45,6 +45,9 @@ const WebauthnError = lazy(() => import("./pages/WebauthnError"));
 const SelectAuthenticator = lazy(() => import("./pages/SelectAuthenticator"));
 const Error = lazy(() => import("./pages/Error"));
 const Terms = lazy(() => import("./pages/Terms"));
+const P2MagicLinkOtpForm = lazy(
+    () => import("./pages/p2-inc/keycloak-magic-link/OtpForm")
+);
 
 export default function KcPage(props: { kcContext: KcContext }) {
     const { kcContext } = props;
@@ -271,6 +274,16 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "terms.ftl":
                         return (
                             <Terms
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+
+                    // 👉 P2-INC => Magic Link Extension
+                    case "otp-form.ftl":
+                        return (
+                            <P2MagicLinkOtpForm
                                 {...{ kcContext, i18n, classes }}
                                 Template={Template}
                                 doUseDefaultCss={true}

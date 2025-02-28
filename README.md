@@ -19,6 +19,14 @@ Go to Realm Settings > Themes.
 Select the Tailcloakify login theme from the dropdown.  
 Save your settings.
 
+# Supported Pages
+
+Tailcloakify aims to provide support for all default login pages, which are currently available. If you think, there is something missing let us know.
+
+We also support using the following plugins:
+
+- [ ] [keycloak-magic-link](https://github.com/p2-inc/keycloak-magic-link) ([#46](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/issues/46))
+
 ## Customizing the Theme
 
 Tailcloakify provides ways of customizing your theme without the need to rebuild the theme while using a prebundled JAR file. This could include adding a background video/logo or customizing the footer behavior.
