@@ -41,6 +41,7 @@ const LoginIdpLinkConfirmOverride = lazy(
     () => import("./pages/LoginIdpLinkConfirmOverride")
 );
 const DeleteAccountConfirm = lazy(() => import("./pages/DeleteAccountConfirm"));
+const DeleteCredential = lazy(() => import("./pages/DeleteCredential"));
 const WebauthnError = lazy(() => import("./pages/WebauthnError"));
 const SelectAuthenticator = lazy(() => import("./pages/SelectAuthenticator"));
 const Error = lazy(() => import("./pages/Error"));
@@ -219,6 +220,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "delete-account-confirm.ftl":
                         return (
                             <DeleteAccountConfirm
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "delete-credential.ftl":
+                        return (
+                            <DeleteCredential
                                 {...{ kcContext, i18n, classes }}
                                 Template={Template}
                                 doUseDefaultCss={true}
