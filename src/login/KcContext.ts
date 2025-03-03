@@ -20,6 +20,23 @@ export type KcContextExtensionPerPage = {
             loginAction: string;
         };
     };
+    "email-confirmation.ftl": {
+        magicLinkContinuation: {
+            sameBrowser: boolean;
+            url: string;
+        };
+    };
+    "email-confirmation-error.ftl": {};
+    "view-email.ftl": {
+        auth: {
+            attemptedUsername: string;
+        };
+    };
+    "view-email-continuation.ftl": {
+        auth: {
+            attemptedUsername: string;
+        };
+    };
 };
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>;

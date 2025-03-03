@@ -45,8 +45,20 @@ const WebauthnError = lazy(() => import("./pages/WebauthnError"));
 const SelectAuthenticator = lazy(() => import("./pages/SelectAuthenticator"));
 const Error = lazy(() => import("./pages/Error"));
 const Terms = lazy(() => import("./pages/Terms"));
-const P2MagicLinkOtpForm = lazy(
+const OtpForm = lazy(
     () => import("./pages/p2-inc/keycloak-magic-link/OtpForm")
+);
+const EmailConfirmation = lazy(
+    () => import("./pages/p2-inc/keycloak-magic-link/EmailConfirmation")
+);
+const EmailConfirmationError = lazy(
+    () => import("./pages/p2-inc/keycloak-magic-link/EmailConfirmationError")
+);
+const ViewEmail = lazy(
+    () => import("./pages/p2-inc/keycloak-magic-link/ViewEmail")
+);
+const ViewEmailContinuation = lazy(
+    () => import("./pages/p2-inc/keycloak-magic-link/ViewEmailContinuation")
 );
 
 export default function KcPage(props: { kcContext: KcContext }) {
@@ -283,7 +295,39 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     // 👉 P2-INC => Magic Link Extension
                     case "otp-form.ftl":
                         return (
-                            <P2MagicLinkOtpForm
+                            <OtpForm
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "email-confirmation.ftl":
+                        return (
+                            <EmailConfirmation
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "email-confirmation-error.ftl":
+                        return (
+                            <EmailConfirmationError
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "view-email.ftl":
+                        return (
+                            <ViewEmail
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "view-email-continuation.ftl":
+                        return (
+                            <ViewEmailContinuation
                                 {...{ kcContext, i18n, classes }}
                                 Template={Template}
                                 doUseDefaultCss={true}
