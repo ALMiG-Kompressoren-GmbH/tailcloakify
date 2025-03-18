@@ -68,6 +68,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                                 kcClsx("kcFormSocialAccountListButtonClass", providers.length > 3 && "kcFormSocialAccountGridItem"),
                                                 `border border-secondary-200 flex justify-center py-2 rounded-lg hover:border-opacity-30 hover:bg-provider-${p.alias}/10`
                                             )}
+                                            style={{ textDecoration: "none" }}
                                             type="button"
                                             href={p.loginUrl}
                                         >
@@ -84,7 +85,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                                             aria-hidden="true"
                                                         ></i>
                                                     </div>
-                                                ) : (<div className="py-1 mx-1 font-bold">{(p.displayName || p.alias)}</div>)
+                                                ) : (<div className="h-6 mx-1 pt-1 font-bold">{(p.displayName || p.alias)}</div>)
                                             }
                                         </a>
                                     </li>
