@@ -337,7 +337,7 @@ export const WithMoreThanTwoSocialProviders: Story = {
         />
     )
 };
-export const WithSocialProvidersAndWithoutRememberMe: Story = {
+export const WithUnknownSocialProvidersAndWithoutRememberMe: Story = {
     render: args => (
         <KcPageStory
             {...args}
@@ -351,6 +351,13 @@ export const WithSocialProvidersAndWithoutRememberMe: Story = {
                             providerId: "google",
                             displayName: "Google",
                             iconClasses: "fa fa-google"
+                        },
+                        {
+                            loginUrl: "unknown",
+                            alias: "unknown",
+                            providerId: "unknown",
+                            displayName: "Unknown",
+                            iconClasses: ""
                         }
                     ]
                 },

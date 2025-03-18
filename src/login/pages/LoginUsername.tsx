@@ -71,19 +71,21 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                             type="button"
                                             href={p.loginUrl}
                                         >
-                                            <div className={"h-6 w-6"}>
-                                                {providerLogos[p.alias] ? (
+                                            {providerLogos[p.alias] ? (
+                                                <div className={"h-6 w-6"}>
                                                     <img src={providerLogos[p.alias]} alt={`${p.displayName} logo`} className={"h-full w-auto"} />
-                                                ) : (
-                                                    // Fallback to the original iconClasses if the logo is not defined
-                                                    p.iconClasses && (
+                                                </div>
+                                            ) :
+                                                // Fallback to the original iconClasses if the logo is not defined
+                                                p.iconClasses ? (
+                                                    <div className={"h-6 w-6"}>
                                                         <i
                                                             className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses, `text-provider-${p.alias}`)}
                                                             aria-hidden="true"
                                                         ></i>
-                                                    )
-                                                )}
-                                            </div>
+                                                    </div>
+                                                ) : (<div className="py-1 mx-1 font-bold">{(p.displayName || p.alias)}</div>)
+                                            }
                                         </a>
                                     </li>
                                 ))}

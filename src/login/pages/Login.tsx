@@ -72,19 +72,21 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             type="button"
                                             href={p.loginUrl}
                                         >
-                                            <div className={"h-6 w-6"}>
-                                                {providerLogos[p.alias] ? (
+                                            {providerLogos[p.alias] ? (
+                                                <div className={"h-6 w-6"}>
                                                     <img src={providerLogos[p.alias]} alt={`${p.displayName} logo`} className={"h-full w-auto"} />
-                                                ) : (
-                                                    // Fallback to the original iconClasses if the logo is not defined
-                                                    p.iconClasses && (
+                                                </div>
+                                            ) :
+                                                // Fallback to the original iconClasses if the logo is not defined
+                                                p.iconClasses ? (
+                                                    <div className={"h-6 w-6"}>
                                                         <i
                                                             className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses, `text-provider-${p.alias}`)}
                                                             aria-hidden="true"
                                                         ></i>
-                                                    )
-                                                )}
-                                            </div>
+                                                    </div>
+                                                ) : (<div className="py-1 mx-1 font-bold">{(p.displayName || p.alias)}</div>)
+                                            }
                                         </a>
                                     </li>
                                 ))}
@@ -113,16 +115,16 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         {!realm.loginWithEmailAllowed
                                             ? msg("username")
                                             : !realm.registrationEmailAsUsername
-                                              ? msg("usernameOrEmail")
-                                              : msg("email")}
+                                                ? msg("usernameOrEmail")
+                                                : msg("email")}
                                     </label>
                                     <input
                                         placeholder={
                                             !realm.loginWithEmailAllowed
                                                 ? msgStr("username")
                                                 : !realm.registrationEmailAsUsername
-                                                  ? msgStr("usernameOrEmail")
-                                                  : msgStr("email")
+                                                    ? msgStr("usernameOrEmail")
+                                                    : msgStr("email")
                                         }
                                         tabIndex={2}
                                         id="username"
