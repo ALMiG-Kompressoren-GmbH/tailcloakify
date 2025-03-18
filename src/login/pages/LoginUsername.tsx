@@ -68,22 +68,25 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                                 kcClsx("kcFormSocialAccountListButtonClass", providers.length > 3 && "kcFormSocialAccountGridItem"),
                                                 `border border-secondary-200 flex justify-center py-2 rounded-lg hover:border-opacity-30 hover:bg-provider-${p.alias}/10`
                                             )}
+                                            style={{ textDecoration: "none" }}
                                             type="button"
                                             href={p.loginUrl}
                                         >
-                                            <div className={"h-6 w-6"}>
-                                                {providerLogos[p.alias] ? (
+                                            {providerLogos[p.alias] ? (
+                                                <div className={"h-6 w-6"}>
                                                     <img src={providerLogos[p.alias]} alt={`${p.displayName} logo`} className={"h-full w-auto"} />
-                                                ) : (
-                                                    // Fallback to the original iconClasses if the logo is not defined
-                                                    p.iconClasses && (
+                                                </div>
+                                            ) :
+                                                // Fallback to the original iconClasses if the logo is not defined
+                                                p.iconClasses ? (
+                                                    <div className={"h-6 w-6"}>
                                                         <i
                                                             className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses, `text-provider-${p.alias}`)}
                                                             aria-hidden="true"
                                                         ></i>
-                                                    )
-                                                )}
-                                            </div>
+                                                    </div>
+                                                ) : (<div className="h-6 mx-1 pt-1 font-bold">{(p.displayName || p.alias)}</div>)
+                                            }
                                         </a>
                                     </li>
                                 ))}
