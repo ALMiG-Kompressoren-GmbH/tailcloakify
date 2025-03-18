@@ -246,7 +246,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         )}
                         {children}
                         {auth !== undefined && auth.showTryAnotherWayLink && (
-                            <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
+                            <form id="kc-select-try-another-way-form" action={url.loginAction} method="post" className="mt-3">
                                 <div className={kcClsx("kcFormGroupClass")}>
                                     <input type="hidden" name="tryAnotherWay" value="on" />
                                     <button

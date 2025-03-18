@@ -458,3 +458,23 @@ export const WithScriptsStylesAndMeta: Story = {
         />
     )
 };
+
+/**
+ * WithDoTryAnotherWayOption:
+ * - Purpose: Test usage of doTryAnotherWay integration
+ * - Scenario: Simulates a scenario where the `showTryAnotherWayLink` is set to `trze`, and the "Try Another Way" link is not rendered.
+ * - Key Aspect: Ensure that it is displayed correctly.
+ */
+export const WithDoTryAnotherWayOption: Story = {
+    render: args => (
+        <KcPageStory
+            {...args}
+            kcContext={{
+                auth: {
+                    showTryAnotherWayLink: true,
+                },
+            }}
+        />
+    )
+};
+

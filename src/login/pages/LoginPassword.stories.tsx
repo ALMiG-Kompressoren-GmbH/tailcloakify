@@ -66,3 +66,28 @@ export const WithoutResetPasswordOption: Story = {
         />
     )
 };
+
+/**
+ * WithDoTryAnotherWayOption:
+ * - Purpose: Test usage of doTryAnotherWay integration
+ * - Scenario: Simulates a scenario where the `showTryAnotherWayLink` is set to `trze`, and the "Try Another Way" link is not rendered.
+ * - Key Aspect: Ensure that it is displayed correctly.
+ */
+export const WithDoTryAnotherWayOption: Story = {
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                auth: {
+                    showTryAnotherWayLink: true,
+                },
+                url: {
+                    loginAction: "/mock-login",
+                    loginResetCredentialsUrl: "/mock-reset-password"
+                },
+                messagesPerField: {
+                    existsError: () => false
+                }
+            }}
+        />
+    )
+};
