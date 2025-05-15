@@ -469,7 +469,7 @@ export const WithScriptsStylesAndMeta: Story = {
 /**
  * WithDoTryAnotherWayOption:
  * - Purpose: Test usage of doTryAnotherWay integration
- * - Scenario: Simulates a scenario where the `showTryAnotherWayLink` is set to `trze`, and the "Try Another Way" link is not rendered.
+ * - Scenario: Simulates a scenario where the `showTryAnotherWayLink` is set to `true`, and the "Try Another Way" link is not rendered.
  * - Key Aspect: Ensure that it is displayed correctly.
  */
 export const WithDoTryAnotherWayOption: Story = {
@@ -479,6 +479,38 @@ export const WithDoTryAnotherWayOption: Story = {
             kcContext={{
                 auth: {
                     showTryAnotherWayLink: true,
+                },
+            }}
+        />
+    )
+};
+
+/**
+ * realm: { registrationAllowed: false }:
+ * - Purpose: Hide Login Form & Allow only to sign-in with social idp
+ * - Scenario: Simulates a scenario where the `TAILCLOAKIFY_HIDE_LOGIN_FORM` is set to `true`, and the social providers are rendered.
+ * - Key Aspect: Ensure that it is displayed correctly.
+ */
+export const OnlySocialIdps: Story = {
+    render: args => (
+        <KcPageStory
+            {...args}
+            kcContext={{
+                realm: { registrationAllowed: false },
+                properties: {
+                    TAILCLOAKIFY_HIDE_LOGIN_FORM: 'TRUE'
+                },
+                social: {
+                    displayInfo: true,
+                    providers: Object.keys(useProviderLogos())
+                        .filter(providerId => providerId !== "twitter")
+                        .map(providerId => ({
+                            loginUrl: providerId,
+                            alias: providerId,
+                            providerId: providerId,
+                            displayName: providerId.charAt(0).toUpperCase() + providerId.slice(1),
+                            iconClasses: `fa fa-${providerId}`
+                        }))
                 },
             }}
         />
