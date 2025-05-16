@@ -57,7 +57,8 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                             <ul
                                 className={clsx(
                                     kcClsx("kcFormSocialAccountListClass", social.providers.length > 3 && "kcFormSocialAccountListGridClass"),
-                                    "gap-4 grid grid-cols-3 pt-4"
+                                    "gap-4 grid pt-4",
+                                    social.providers.length === 1 ? 'grid-cols-1' : social.providers.length % 3 === 0 && social.providers.length <= 6 ? 'grid-cols-3' : social.providers.length % 2 === 0 && social.providers.length <= 6 ? 'grid-cols-2' : 'grid-cols-4'
                                 )}
                             >
                                 {social.providers.map((...[p, , providers]) => (
