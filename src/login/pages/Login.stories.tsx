@@ -528,3 +528,4 @@ export const OnlySocialIdps: Story = {
         />
     )
 };
+
