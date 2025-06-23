@@ -185,7 +185,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
             <div className={clsx(kcClsx("kcFormCardClass"), "relative z-10 max-w-md w-full rounded-lg")}>
                 {headerLogoUrl || kcContext.properties["TAILCLOAKIFY_HEADER_LOGO_URL"] ? (
-                    <img alt={"Logo"} src={headerLogoUrl || tailcloakifyLogoUrl} className={"mx-auto h-16 w-auto"} />
+                    <img alt={"Logo"} src={headerLogoUrl || kcContext.properties["TAILCLOAKIFY_HEADER_LOGO_URL"]} className={"mx-auto h-16 w-auto"} />
                 ) : (
                     <div className={"font-bold text-center text-2xl"}>{msg("loginTitleHtml", realm.displayNameHtml)}</div>
                 )}
