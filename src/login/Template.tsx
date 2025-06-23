@@ -147,6 +147,8 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     const backgroundLogoUrl = advancedMsgStr("backgroundLogoUrl") !== "backgroundLogoUrl" ? advancedMsgStr("backgroundLogoUrl") : null;
     const backgroundVideoUrl = advancedMsgStr("backgroundVideoUrl") !== "backgroundVideoUrl" ? advancedMsgStr("backgroundVideoUrl") : null;
 
+    const headerLogoUrl = advancedMsgStr("headerLogoUrl") !== "headerLogoUrl" ? advancedMsgStr("headerLogoUrl") : null;
+
     const { isReadyToRender } = useInitialize({ kcContext, doUseDefaultCss });
 
     if (!isReadyToRender) {
@@ -182,7 +184,11 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
             </div>
 
             <div className={clsx(kcClsx("kcFormCardClass"), "relative z-10 max-w-md w-full rounded-lg")}>
-                <div className={"font-bold text-center text-2xl"}>{msg("loginTitleHtml", realm.displayNameHtml)}</div>
+                {headerLogoUrl || kcContext.properties["TAILCLOAKIFY_HEADER_LOGO_URL"] ? (
+                    <img alt={"Logo"} src={headerLogoUrl || tailcloakifyLogoUrl} className={"mx-auto h-16 w-auto"} />
+                ) : (
+                    <div className={"font-bold text-center text-2xl"}>{msg("loginTitleHtml", realm.displayNameHtml)}</div>
+                )}
                 <header className={clsx(kcClsx("kcFormHeaderClass"))}>
                     {(() => {
                         const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (

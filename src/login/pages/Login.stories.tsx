@@ -43,6 +43,18 @@ export const WithInvalidCredential: Story = {
     )
 };
 
+export const WithHeaderLogo: Story = {
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                properties: {
+                    TAILCLOAKIFY_HEADER_LOGO_URL: "https://www.almig.de/typo3conf/ext/almig_package/Resources/Public/Images/almig-logo.png"
+                }
+            }}
+        />
+    )
+};
+
 export const WithoutRegistration: Story = {
     render: () => (
         <KcPageStory
@@ -443,7 +455,7 @@ export const WithBackgroundLogoAndBackgroundVideoAndFavicon: Story = {
             kcContext={{
                 properties: {
                     TAILCLOAKIFY_BACKGROUND_LOGO_URL:
-                        "https://www.almig.de/typo3conf/ext/almig_package/Resources/Public/Images/almig-logo-inverted.png",
+                        "https://www.almig.de/typo3conf/ext/almig_package/Resources/Public/Images/almig-logo.png",
                     TAILCLOAKIFY_BACKGROUND_VIDEO_URL: "https://www.almig.de/fileadmin/user_upload/Video/Almig_Intro.mp4",
                     TAILCLOAKIFY_FAVICON_URL: "https://almig.de/typo3conf/ext/almig_package/Resources/Public/Icons/favicon.ico"
                 }
@@ -459,7 +471,7 @@ export const WithScriptsStylesAndMeta: Story = {
                 properties: {
                     scripts: "/invalid-script.js /another-invalid-script.js",
                     styles: "/invalid-styles.css /another-invalid-styles.css",
-                    meta: "test==content test2==content2",
+                    meta: "test==content test2==content2"
                 }
             }}
         />
@@ -478,8 +490,8 @@ export const WithDoTryAnotherWayOption: Story = {
             {...args}
             kcContext={{
                 auth: {
-                    showTryAnotherWayLink: true,
-                },
+                    showTryAnotherWayLink: true
+                }
             }}
         />
     )
@@ -498,7 +510,7 @@ export const OnlySocialIdps: Story = {
             kcContext={{
                 realm: { registrationAllowed: false },
                 properties: {
-                    TAILCLOAKIFY_HIDE_LOGIN_FORM: 'TRUE'
+                    TAILCLOAKIFY_HIDE_LOGIN_FORM: "TRUE"
                 },
                 social: {
                     displayInfo: true,
@@ -511,9 +523,8 @@ export const OnlySocialIdps: Story = {
                             displayName: providerId.charAt(0).toUpperCase() + providerId.slice(1),
                             iconClasses: `fa fa-${providerId}`
                         }))
-                },
+                }
             }}
         />
     )
 };
-

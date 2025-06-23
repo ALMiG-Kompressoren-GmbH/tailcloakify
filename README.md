@@ -42,6 +42,7 @@ Tailcloakify provides several ways of customizing your theme without the need to
 | TAILCLOAKIFY_ADDITIONAL_META                | Use it to add other meta tags                                                |
 | TAILCLOAKIFY_HIDE_LOGIN_FORM                | Use it to hide the default login form for using IDPs only                    |
 | TAILCLOAKIFY_BACKGROUND_LOGO_URL            | Use it to add an image of your logo                                          |
+| TAILCLOAKIFY_HEADER_LOGO_URL                | Use it to add an image of your logo to the header                            |
 | TAILCLOAKIFY_BACKGROUND_VIDEO_URL           | Use it to add a MP4 format background video on your register and login pages |
 | TAILCLOAKIFY_FAVICON_URL                    | Use it to add a url to your Favicon                                          |
 | TAILCLOAKIFY_FOOTER_IMPRINT_URL             | Use it to add an Impressum                                                   |
@@ -56,6 +57,7 @@ Some customizations are possible through Keycloak's Localization System, allowin
 | Name                     | Description                                                                        |
 | ------------------------ | ---------------------------------------------------------------------------------- |
 | backgroundLogoUrl        | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_LOGO_URL         |
+| headerLogoUrl            | The localized enabled alternative to env: TAILCLOAKIFY_HEADER_LOGO_URL             |
 | backgroundVideoUrl       | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_VIDEO_URL        |
 | faviconUrl               | The localized enabled alternative to env: TAILCLOAKIFY_FAVICON_URL                 |
 | footerImprintUrl         | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_IMPRINT_URL          |
