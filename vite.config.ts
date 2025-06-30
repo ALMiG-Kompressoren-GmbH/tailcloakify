@@ -19,6 +19,7 @@ export default defineConfig({
                 { name: "TAILCLOAKIFY_HIDE_LOGIN_FORM", default: "" },
                 { name: "TAILCLOAKIFY_BACKGROUND_LOGO_URL", default: "" },
                 { name: "TAILCLOAKIFY_BACKGROUND_VIDEO_URL", default: "" },
+                { name: "TAILCLOAKIFY_HEADER_LOGO_URL", default: "" },
                 { name: "TAILCLOAKIFY_FAVICON_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_IMPRINT_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL", default: "" },
@@ -28,6 +29,7 @@ export default defineConfig({
             kcContextExclusionsFtl: [
                 '<@addToXKeycloakifyMessagesIfMessageKey str="backgroundLogoUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="backgroundVideoUrl" />',
+                '<@addToXKeycloakifyMessagesIfMessageKey str="headerLogoUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="faviconUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="footerImprintUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="footerDataprotectionUrl" />',
