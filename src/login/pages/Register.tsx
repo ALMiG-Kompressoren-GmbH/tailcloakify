@@ -32,10 +32,6 @@ export default function Register(props: RegisterProps) {
 
     const providerLogos = useProviderLogos();
 
-    // Check if social providers should be shown on register
-    const showSocialProvidersOnRegister = 
-        (advancedMsgStr("showSocialProvidersOnRegister") !== "showSocialProvidersOnRegister" ? advancedMsgStr("showSocialProvidersOnRegister") : null) || 
-        kcContext.properties.TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER;
 
     return (
         <Template
@@ -48,50 +44,51 @@ export default function Register(props: RegisterProps) {
             displayRequiredFields={true}
             socialProvidersNode={
                 <>
-                    {showSocialProvidersOnRegister?.toUpperCase() === 'TRUE' && social?.providers?.length && (
-                        <div id="kc-social-providers" className={kcClsx("kcFormSocialAccountSectionClass")}>
-                            <hr />
-                            <h2 className={"pt-4 separate text-secondary-600 text-sm"}>{msg("identity-provider-login-label")}</h2>
-                            <ul
-                                className={clsx(
-                                    kcClsx("kcFormSocialAccountListClass", social.providers.length > 3 && "kcFormSocialAccountListGridClass"),
-                                    "gap-4 grid pt-4",
-                                    social.providers.length === 1 ? 'grid-cols-1' : social.providers.length % 3 === 0 && social.providers.length <= 6 ? 'grid-cols-3' : social.providers.length % 2 === 0 && social.providers.length <= 6 ? 'grid-cols-2' : 'grid-cols-4'
-                                )}
-                            >
-                                {social.providers.map((...[p, , providers]) => (
-                                    <li key={p.alias}>
-                                        <a
-                                            id={`social-${p.alias}`}
-                                            className={clsx(
-                                                kcClsx("kcFormSocialAccountListButtonClass", providers.length > 3 && "kcFormSocialAccountGridItem"),
-                                                `border border-secondary-200 flex justify-center py-2 rounded-lg hover:border-opacity-30 hover:bg-provider-${p.alias}/10`
-                                            )}
-                                            style={{ textDecoration: "none" }}
-                                            type="button"
-                                            href={p.loginUrl}
-                                        >
-                                            {providerLogos[p.alias] ? (
-                                                <div className={"h-6 w-6"}>
-                                                    <img src={providerLogos[p.alias]} alt={`${p.displayName} logo`} className={"h-full w-auto"} />
-                                                </div>
-                                            ) : // Fallback to the original iconClasses if the logo is not defined
-                                            p.iconClasses ? (
-                                                <div className={"h-6 w-6"}>
-                                                    <i
-                                                        className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses, `text-provider-${p.alias}`)}
-                                                        aria-hidden="true"
-                                                    ></i>
-                                                </div>
-                                            ) : (
-                                                <div className="h-6 mx-1 pt-1 font-bold">{p.displayName || p.alias}</div>
-                                            )}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
+                    {((advancedMsgStr("showSocialProvidersOnRegister") !== "showSocialProvidersOnRegister" ? advancedMsgStr("showSocialProvidersOnRegister") : null) ||
+                        kcContext.properties.TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER).toUpperCase() === 'TRUE' && social?.providers?.length && (
+                            <div id="kc-social-providers" className={kcClsx("kcFormSocialAccountSectionClass")}>
+                                <hr />
+                                <h2 className={"pt-4 separate text-secondary-600 text-sm"}>{msg("identity-provider-login-label")}</h2>
+                                <ul
+                                    className={clsx(
+                                        kcClsx("kcFormSocialAccountListClass", social.providers.length > 3 && "kcFormSocialAccountListGridClass"),
+                                        "gap-4 grid pt-4",
+                                        social.providers.length === 1 ? 'grid-cols-1' : social.providers.length % 3 === 0 && social.providers.length <= 6 ? 'grid-cols-3' : social.providers.length % 2 === 0 && social.providers.length <= 6 ? 'grid-cols-2' : 'grid-cols-4'
+                                    )}
+                                >
+                                    {social.providers.map((...[p, , providers]) => (
+                                        <li key={p.alias}>
+                                            <a
+                                                id={`social-${p.alias}`}
+                                                className={clsx(
+                                                    kcClsx("kcFormSocialAccountListButtonClass", providers.length > 3 && "kcFormSocialAccountGridItem"),
+                                                    `border border-secondary-200 flex justify-center py-2 rounded-lg hover:border-opacity-30 hover:bg-provider-${p.alias}/10`
+                                                )}
+                                                style={{ textDecoration: "none" }}
+                                                type="button"
+                                                href={p.loginUrl}
+                                            >
+                                                {providerLogos[p.alias] ? (
+                                                    <div className={"h-6 w-6"}>
+                                                        <img src={providerLogos[p.alias]} alt={`${p.displayName} logo`} className={"h-full w-auto"} />
+                                                    </div>
+                                                ) : // Fallback to the original iconClasses if the logo is not defined
+                                                    p.iconClasses ? (
+                                                        <div className={"h-6 w-6"}>
+                                                            <i
+                                                                className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses, `text-provider-${p.alias}`)}
+                                                                aria-hidden="true"
+                                                            ></i>
+                                                        </div>
+                                                    ) : (
+                                                        <div className="h-6 mx-1 pt-1 font-bold">{p.displayName || p.alias}</div>
+                                                    )}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                 </>
             }
         >
