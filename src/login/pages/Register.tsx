@@ -25,7 +25,7 @@ export default function Register(props: RegisterProps) {
     const { messageHeader, url, messagesPerField, recaptchaRequired, recaptchaVisible, recaptchaSiteKey, recaptchaAction, termsAcceptanceRequired, social } =
         kcContext;
 
-    const { msg, msgStr, advancedMsgStr } = i18n;
+    const { msg, msgStr, advancedMsg, advancedMsgStr } = i18n;
 
     const [isFormSubmittable, setIsFormSubmittable] = useState(false);
     const [areTermsAccepted, setAreTermsAccepted] = useState(false);
@@ -36,8 +36,6 @@ export default function Register(props: RegisterProps) {
     const showSocialProvidersOnRegister = 
         (advancedMsgStr("showSocialProvidersOnRegister") !== "showSocialProvidersOnRegister" ? advancedMsgStr("showSocialProvidersOnRegister") : null) || 
         kcContext.properties.TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER;
-    
-    const shouldShowSocialProviders = showSocialProvidersOnRegister?.toUpperCase() === 'TRUE';
 
     return (
         <Template
@@ -45,12 +43,12 @@ export default function Register(props: RegisterProps) {
             i18n={i18n}
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
-            headerNode={messageHeader !== undefined ? advancedMsgStr(messageHeader) : msg("registerTitle")}
+            headerNode={messageHeader !== undefined ? advancedMsg(messageHeader) : msg("registerTitle")}
             displayMessage={messagesPerField.exists("global")}
             displayRequiredFields={true}
             socialProvidersNode={
                 <>
-                    {shouldShowSocialProviders && social?.providers?.length && (
+                    {showSocialProvidersOnRegister?.toUpperCase() === 'TRUE' && social?.providers?.length && (
                         <div id="kc-social-providers" className={kcClsx("kcFormSocialAccountSectionClass")}>
                             <hr />
                             <h2 className={"pt-4 separate text-secondary-600 text-sm"}>{msg("identity-provider-login-label")}</h2>
