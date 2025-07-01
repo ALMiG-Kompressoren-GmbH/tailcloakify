@@ -49,6 +49,7 @@ Tailcloakify provides several ways of customizing your theme without the need to
 | TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL      | Use it to add url to your data protection document                           |
 | TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT  | Use it to integrate Orestbida cookie consent plugin                          |
 | TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA  | Provide any falsy value to disable the cookie section for the google captcha                          |
+| TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER | Use it to show social identity providers on the registration page (set to "TRUE") |
 
 ## Keycloak localization feature
 
@@ -62,6 +63,7 @@ Some customizations are possible through Keycloak's Localization System, allowin
 | faviconUrl               | The localized enabled alternative to env: TAILCLOAKIFY_FAVICON_URL                 |
 | footerImprintUrl         | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_IMPRINT_URL          |
 | footerDataprotectionUrl  | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL   |
+| showSocialProvidersOnRegister | The localized enabled alternative to env: TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER |
 
 ## Using a child Theme
 

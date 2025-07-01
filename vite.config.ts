@@ -25,6 +25,7 @@ export default defineConfig({
                 { name: "TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA", default: "TRUE" },
+                { name: "TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER", default: "" },
             ],
             kcContextExclusionsFtl: [
                 '<@addToXKeycloakifyMessagesIfMessageKey str="backgroundLogoUrl" />',
@@ -33,6 +34,7 @@ export default defineConfig({
                 '<@addToXKeycloakifyMessagesIfMessageKey str="faviconUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="footerImprintUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="footerDataprotectionUrl" />',
+                '<@addToXKeycloakifyMessagesIfMessageKey str="showSocialProvidersOnRegister" />',
             ].join(".\n"),
             startKeycloakOptions: {
                 extensionJars: [

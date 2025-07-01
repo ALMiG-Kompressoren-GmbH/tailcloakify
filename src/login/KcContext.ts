@@ -46,6 +46,10 @@ export type KcContextExtensionPerPage = {
             }[]
         }
     };
+    // 👉 Social providers on register page
+    "register.ftl": {
+        social: import("keycloakify/login/KcContext").KcContext.Login["social"];
+    };
 };
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>;
