@@ -22,7 +22,7 @@ export default function Register(props: RegisterProps) {
         classes
     });
 
-    const { messageHeader, url, messagesPerField, recaptchaRequired, recaptchaVisible, recaptchaSiteKey, recaptchaAction, termsAcceptanceRequired, realm, social } =
+    const { messageHeader, url, messagesPerField, recaptchaRequired, recaptchaVisible, recaptchaSiteKey, recaptchaAction, termsAcceptanceRequired, social } =
         kcContext;
 
     const { msg, msgStr, advancedMsgStr } = i18n;
