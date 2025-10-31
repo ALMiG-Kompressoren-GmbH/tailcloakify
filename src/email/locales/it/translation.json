@@ -1,0 +1,33 @@
+{
+  "execute-actions": {
+    "messageSubject": "Aggiorna il tuo account",
+    "messagePreview": "Il tuo amministratore ha appena richiesto di aggiornare il tuo account {realmName} eseguendo la/le seguente/i azione/i",
+    "messageBody": "Abbiamo appena creato il tuo account {realmName}. Per favore imposta la tua password iniziale cliccando sul link qui sotto.",
+    "messageLink": "Imposta la tua password",
+    "linkExpiry": "Questo link scadrà tra {linkExpiration}",
+    "resetPassword": "Se il link è già scaduto, prova a reimpostare la tua password con la tua email nella nostra pagina di accesso.",
+    "furtherActions": "Se hai domande o pensi di essere la persona sbagliata che riceve questa email, contatta {contactEmail} per assistenza.",
+    "welcome": "Benvenuto",
+    "configureTOTP": "Configura OTP",
+    "updatePassword": "Aggiorna password",
+    "updateProfile": "Aggiorna profilo",
+    "verifyEmail": "Verifica email",
+    "webAuthnRegister": "Registra WebAuthn",
+    "webAuthnRegisterPasswordless": "Registra WebAuthn senza password",
+    "verifyProfile": "Verifica profilo",
+    "deleteCredential": "Elimina credenziali",
+    "linkingIdentityProvider": "Collega provider di identità",
+    "recoveryAuthenticationCodes": "Codici di autenticazione di recupero",
+    "updateUserLocale": "Aggiorna lingua utente",
+    "adminMessageBody": "Il tuo amministratore ha appena richiesto di aggiornare il tuo account {realmName} eseguendo la/le seguente/i azione/i:",
+    "adminRequiredActions": "{requiredActions}",
+    "adminMessageLink": "Clicca sul link qui sotto per iniziare questo processo.",
+    "adminLinkToAccountUpdate": "Link per aggiornamento account",
+    "adminIgnoreMessage": " Se non sei a conoscenza che il tuo amministratore ha richiesto questo, ignora semplicemente questo messaggio e nulla verrà cambiato."
+  },
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - Email di test SMTP",
+    "messagePreview": "Questa è un'email di test",
+    "messageBody": "Questa è un'email di test da {realmName}"
+  }
+}

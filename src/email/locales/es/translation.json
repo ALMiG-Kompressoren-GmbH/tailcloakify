@@ -1,0 +1,33 @@
+{
+  "execute-actions": {
+    "messageSubject": "Actualice su cuenta",
+    "messagePreview": "Su administrador acaba de solicitar que actualice su cuenta de {realmName} realizando la(s) siguiente(s) acción(es)",
+    "messageBody": "Acabamos de crear su cuenta de {realmName}. Por favor, establezca su contraseña inicial haciendo clic en el enlace de abajo.",
+    "messageLink": "Establecer contraseña",
+    "linkExpiry": "Este enlace expirará en {linkExpiration}",
+    "resetPassword": "Si el enlace ya ha expirado, intente restablecer su contraseña con su correo electrónico en nuestra página de inicio de sesión.",
+    "furtherActions": "Si tiene alguna pregunta o cree que es la persona equivocada que recibe este correo electrónico, póngase en contacto con {contactEmail} para obtener ayuda.",
+    "welcome": "Bienvenido",
+    "configureTOTP": "Configurar OTP",
+    "updatePassword": "Actualizar contraseña",
+    "updateProfile": "Actualizar perfil",
+    "verifyEmail": "Verificar correo electrónico",
+    "webAuthnRegister": "Registrar WebAuthn",
+    "webAuthnRegisterPasswordless": "Registrar WebAuthn sin contraseña",
+    "verifyProfile": "Verificar perfil",
+    "deleteCredential": "Eliminar credencial",
+    "linkingIdentityProvider": "Vincular proveedor de identidad",
+    "recoveryAuthenticationCodes": "Códigos de autenticación de recuperación",
+    "updateUserLocale": "Actualizar idioma del usuario",
+    "adminMessageBody": "Su administrador acaba de solicitar que actualice su cuenta de {realmName} realizando la(s) siguiente(s) acción(es):",
+    "adminRequiredActions": "{requiredActions}",
+    "adminMessageLink": "Haga clic en el enlace de abajo para iniciar este proceso.",
+    "adminLinkToAccountUpdate": "Enlace para actualización de cuenta",
+    "adminIgnoreMessage": " Si no está al tanto de que su administrador ha solicitado esto, simplemente ignore este mensaje y no se cambiará nada."
+  },
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - Correo electrónico de prueba SMTP",
+    "messagePreview": "Este es un correo electrónico de prueba",
+    "messageBody": "Este es un correo electrónico de prueba de {realmName}"
+  }
+}

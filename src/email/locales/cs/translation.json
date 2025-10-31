@@ -1,0 +1,33 @@
+{
+  "execute-actions": {
+    "messageSubject": "Aktualizujte svůj účet",
+    "messagePreview": "Váš administrátor právě požádal o aktualizaci vašeho účtu {realmName} provedením následujících akcí",
+    "messageBody": "Právě jsme vytvořili váš účet {realmName}. Nastavte si prosím počáteční heslo kliknutím na odkaz níže.",
+    "messageLink": "Nastavit heslo",
+    "linkExpiry": "Platnost tohoto odkazu vyprší za {linkExpiration}",
+    "resetPassword": "Pokud již platnost odkazu vypršela, zkuste si resetovat heslo pomocí svého e-mailu na naší přihlašovací stránce.",
+    "furtherActions": "Pokud máte jakékoli otázky nebo si myslíte, že tento e-mail obdržela nesprávná osoba, obraťte se prosím na {contactEmail} o pomoc.",
+    "welcome": "Vítejte",
+    "configureTOTP": "Konfigurovat OTP",
+    "updatePassword": "Aktualizovat heslo",
+    "updateProfile": "Aktualizovat profil",
+    "verifyEmail": "Ověřit e-mail",
+    "webAuthnRegister": "Registrace WebAuthn",
+    "webAuthnRegisterPasswordless": "Registrace WebAuthn bez hesla",
+    "verifyProfile": "Ověřit profil",
+    "deleteCredential": "Smazat přihlašovací údaje",
+    "linkingIdentityProvider": "Propojení poskytovatele identity",
+    "recoveryAuthenticationCodes": "Záložní autentizační kódy",
+    "updateUserLocale": "Aktualizovat jazyk uživatele",
+    "adminMessageBody": "Váš administrátor právě požádal o aktualizaci vašeho účtu {realmName} provedením následujících akcí:",
+    "adminRequiredActions": "{requiredActions}",
+    "adminMessageLink": "Klikněte na odkaz níže pro zahájení tohoto procesu.",
+    "adminLinkToAccountUpdate": "Odkaz na aktualizaci účtu",
+    "adminIgnoreMessage": " Pokud nevíte, že váš administrátor o toto požádal, jednoduše tuto zprávu ignorujte a nic se nezmění."
+  },
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - Testovací email SMTP",
+    "messagePreview": "Toto je testovací email",
+    "messageBody": "Toto je testovací email z {realmName}"
+  }
+}

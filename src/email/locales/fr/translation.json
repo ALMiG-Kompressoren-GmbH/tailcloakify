@@ -1,0 +1,33 @@
+{
+  "execute-actions": {
+    "messageSubject": "Mettez à jour votre compte",
+    "messagePreview": "Votre administrateur vient de demander que vous mettiez à jour votre compte {realmName} en effectuant la ou les action(s) suivante(s)",
+    "messageBody": "Nous venons de créer votre compte {realmName}. Veuillez définir votre mot de passe initial en cliquant sur le lien ci-dessous.",
+    "messageLink": "Définir votre mot de passe",
+    "linkExpiry": "Ce lien expirera dans {linkExpiration}",
+    "resetPassword": "Si le lien a déjà expiré, essayez de réinitialiser votre mot de passe avec votre e-mail sur notre page de connexion.",
+    "furtherActions": "Si vous avez des questions ou pensez être la mauvaise personne à recevoir cet e-mail, veuillez contacter {contactEmail} pour obtenir de l'aide.",
+    "welcome": "Bienvenue",
+    "configureTOTP": "Configurer OTP",
+    "updatePassword": "Mettre à jour le mot de passe",
+    "updateProfile": "Mettre à jour le profil",
+    "verifyEmail": "Vérifier l'e-mail",
+    "webAuthnRegister": "Enregistrer WebAuthn",
+    "webAuthnRegisterPasswordless": "Enregistrer WebAuthn sans mot de passe",
+    "verifyProfile": "Vérifier le profil",
+    "deleteCredential": "Supprimer les identifiants",
+    "linkingIdentityProvider": "Lier le fournisseur d'identité",
+    "recoveryAuthenticationCodes": "Codes d'authentification de récupération",
+    "updateUserLocale": "Mettre à jour la langue de l'utilisateur",
+    "adminMessageBody": "Votre administrateur vient de demander que vous mettiez à jour votre compte {realmName} en effectuant la ou les action(s) suivante(s) :",
+    "adminRequiredActions": "{requiredActions}",
+    "adminMessageLink": "Cliquez sur le lien ci-dessous pour commencer ce processus.",
+    "adminLinkToAccountUpdate": "Lien vers la mise à jour du compte",
+    "adminIgnoreMessage": " Si vous n'êtes pas au courant que votre administrateur a demandé ceci, ignorez simplement ce message et rien ne sera changé."
+  },
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - E-mail de test SMTP",
+    "messagePreview": "Ceci est un e-mail de test",
+    "messageBody": "Ceci est un e-mail de test de {realmName}"
+  }
+}

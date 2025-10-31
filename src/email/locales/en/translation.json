@@ -1,0 +1,127 @@
+{
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - SMTP Test Email",
+    "messagePreview": "This is a test email",
+    "messageBody": "This is a test email from {realmName}",
+    "disclaimer": "This is a test email. Please ignore this message."
+  },
+  "email-update-confirmation": {
+    "messageSubject": "Email Verification Confirmation",
+    "messagePreview": "Email update verification for {realmName} account",
+    "messageBody": "To update your {realmName} account with email address {newEmail}, click the link below",
+    "linkExpiry": "This link will expire within {linkExpiration}.",
+    "disclaimer": "If you don't want to proceed with this modification, you can safely ignore this message."
+  },
+  "email-verification": {
+    "messageSubject": "Email Verification",
+    "messagePreview": "Email verification for {realmName}",
+    "messageBody": "Someone has created a {realmName} account with this email address. If this was you, click the link below to verify your email address.",
+    "messageLink": "Link to email address verification.",
+    "linkExpiry": "This link will expire within {linkExpiration}.",
+    "disclaimer": "If you don't want to create this account, you can safely ignore this message."
+  },
+  "email-verification-with-code": {
+    "messageSubject": "Email Verification",
+    "messagePreview": "Please verify your email address by entering in the following code",
+    "messageBody": "Please verify your email address by entering in the following code: ",
+    "verificationCode": "{code}",
+    "disclaimer": "If you did not initiate this request, you can safely ignore this message."
+  },
+  "event-login-error": {
+    "messageSubject": "Login Error",
+    "messagePreview": "Failed login attempt detected for {realmName}",
+    "messageBody": "A failed login attempt was detected to your account on {date} from {ipAddress)}.",
+    "disclaimer": "If you did not initiate this failed login request, please contact an administrator through {contactEmail}."
+  },
+  "event-remove-totp": {
+    "messageSubject": "Remove OTP",
+    "messagePreview": "OTP was removed from your {realmName} account",
+    "messageBody": "OTP was removed from your account on {date} from {ipAddress}.",
+    "disclaimer": "If you did not initiate a request to remove OTP, please contact an administrator through {contactEmail}"
+  },
+  "event-update-password": {
+    "messageSubject": "Update Password",
+    "messagePreview": "Your {realmName} account password was changed",
+    "messageBody": "Your password was changed on {date} from {ipAddress}.",
+    "disclaimer": "If you did not initiate a request to update your password, please reach out to an administrator through {contactEmail}."
+  },
+  "event-update-totp": {
+    "messageSubject": "Update OTP",
+    "messagePreview": "OTP was updated for your {realmName} account",
+    "messageBody": "OTP was updated for your account on {date} from {ipAddress}.",
+    "disclaimer": "If you did not initiate a request to update OTP, please contact an administrator through {contactEmail}"
+  },
+  "execute-actions": {
+    "messageSubject": "Update Your Account",
+    "messagePreview": "Your administrator has just requested that you update your {realmName} account by performing the following action(s)",
+    "messageBody": "We have just created your {realmName} account. Please set your initial password by clicking on the link below.",
+    "messageLink": "Set your password",
+    "linkExpiry": "This link will expire within {linkExpiration}",
+    "resetPassword": "If the link has already expired, try to reset you password with your email at our login page.",
+    "furtherActions": "If you have any questions or think you are the wrong person receiving this email, please reach out to {contactEmail} for help.",
+    "welcome": "Welcome",
+    "invitation": "Invitation",
+    "configureTOTP": "Configure OTP",
+    "updatePassword": "Update Password",
+    "updateProfile": "Update Profile",
+    "verifyEmail": "Verify Email",
+    "webAuthnRegister": "Webauthn Register",
+    "webAuthnRegisterPasswordless": "Webauthn Register Passwordless",
+    "verifyProfile": "Verify Profile",
+    "deleteCredential": "Delete Credential",
+    "linkingIdentityProvider": "Linking Identity Provider",
+    "recoveryAuthenticationCodes": "Recovery Authentication Codes",
+    "updateUserLocale": "Update User Locale",
+    "adminMessageBody": "Your administrator has just requested that you update your {realmName} account by performing the following action(s):",
+    "adminRequiredActions": "{requiredActions}",
+    "adminMessageLink": "Click on the link below to start this process.",
+    "adminLinkToAccountUpdate": "Link to account update",
+    "adminIgnoreMessage": " If you are unaware that your administrator has requested this, you can safely ignore this message and nothing will be changed."
+  },
+  "footer": {
+    "disclaimer": "Important Notice: We are sending you this email because you have an account at {realmName}. This email is sent as part of our notification service. If you don't want to receive our notification emails in future, please reach out to {contactEmail}.",
+    "year": "© {currentYear} {realmName}"
+  },
+  "header": {
+    "title": "{realmName} Notification"
+  },
+  "identity-provider-link": {
+    "messageSubject": "Identity Provider Link",
+    "messagePreview": "Someone wants to link your {realmName} account",
+    "messageBody": "Someone wants to link your {realmName} account with {identityProviderDisplayName} account of user {username}. If this was you, click the link below to link accounts.",
+    "messageLink": "Link to confirm account linking.",
+    "linkExpiry": "This link will expire within {linkExpiration}.",
+    "disclaimer": "If you don't want to link account, you can safely ignore this message. If you link accounts, you will be able to login to {realmName} through {identityProviderDisplayName}."
+  },
+  "magic-link-email": {
+    "messageSubject": "Login to {realmName} account",
+    "messagePreview": "Someone has requested a login link to {realmName}",
+    "messageBody": "Someone has requested a login link to {realmName}",
+    "magicLink": "Click to log in ",
+    "disclaimer": "If you did not initiate this login link request, you can safely ignore this email."
+  },
+  "organization-invite": {
+    "messageSubject": "Invitation to join the {0} organization",
+    "messagePreview": "You were invited to join {0} organization",
+    "messageBodySalutation": "Hi {firstName} {lastName},",
+    "messageBody": "You were invited to join the {0} organization. Click the link below to join.",
+    "invitationLink": "Link to join the organization.",
+    "linkExpiration": "This link will expire within {linkExpiration}",
+    "disclaimer": "If you don't want to join the {0} organization, you can safely ignore this message."
+  },
+  "otpEmail": {
+    "messageSubject": "Your access code for {realmName}",
+    "messagePreview": "Someone has requested access to your account",
+    "messageBody": "Someone has requested access to your account. Your One-Time Password (OTP) is: ",
+    "verificationCode": "{code}",
+    "disclaimer": "If you did not initiate this request, you can safely ignore this message."
+  },
+  "password-reset": {
+    "messageSubject": "Password Reset Link",
+    "messagePreview": "Someone just requested to change your {realmName} account's credentials",
+    "messageBody": "Someone just requested to change your {realmName} account's credentials. If this was you, click on the link below to reset them.",
+    "passwordResetLink": "Link to reset credentials",
+    "linkExpiration": "This link will expire within {linkExpiration}",
+    "disclaimer": "If you don't want to reset your credentials, you can safely ignore this message and nothing will be changed or reach out to {contactEmail}."
+  }
+}
