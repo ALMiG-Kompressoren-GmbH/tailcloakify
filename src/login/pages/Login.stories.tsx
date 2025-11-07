@@ -448,6 +448,22 @@ export const WithCookieConsentAndExternalScript: Story = {
         />
     )
 };
+export const WithBackgroundLogoAndBackgroundImageAndFavicon: Story = {
+    render: args => (
+        <KcPageStory
+            {...args}
+            kcContext={{
+                properties: {
+                    TAILCLOAKIFY_BACKGROUND_IMAGE_URL:
+                        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Milky_way_over_Glaciar_Juncal_-_Los_Andes%2C_Chile.jpg",
+                    TAILCLOAKIFY_BACKGROUND_LOGO_URL:
+                        "https://www.almig.de/typo3conf/ext/almig_package/Resources/Public/Images/almig-logo-inverted.png",
+                    TAILCLOAKIFY_FAVICON_URL: "https://almig.de/typo3conf/ext/almig_package/Resources/Public/Icons/favicon.ico"
+                }
+            }}
+        />
+    )
+};
 export const WithBackgroundLogoAndBackgroundVideoAndFavicon: Story = {
     render: args => (
         <KcPageStory
@@ -457,6 +473,23 @@ export const WithBackgroundLogoAndBackgroundVideoAndFavicon: Story = {
                     TAILCLOAKIFY_BACKGROUND_LOGO_URL:
                         "https://www.almig.de/typo3conf/ext/almig_package/Resources/Public/Images/almig-logo-inverted.png",
                     TAILCLOAKIFY_BACKGROUND_VIDEO_URL: "https://www.almig.de/fileadmin/user_upload/Video/Almig_Intro.mp4",
+                    TAILCLOAKIFY_FAVICON_URL: "https://almig.de/typo3conf/ext/almig_package/Resources/Public/Icons/favicon.ico"
+                }
+            }}
+        />
+    )
+};
+export const WithBackgroundLogoAndBackgroundVideoAndBackgroundImageAndFavicon: Story = {
+    render: args => (
+        <KcPageStory
+            {...args}
+            kcContext={{
+                properties: {
+                    TAILCLOAKIFY_BACKGROUND_LOGO_URL:
+                        "https://www.almig.de/typo3conf/ext/almig_package/Resources/Public/Images/almig-logo-inverted.png",
+                    TAILCLOAKIFY_BACKGROUND_VIDEO_URL: "https://www.almig.de/fileadmin/user_upload/Video/Almig_Intro.mp4",
+                    TAILCLOAKIFY_BACKGROUND_IMAGE_URL:
+                        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Milky_way_over_Glaciar_Juncal_-_Los_Andes%2C_Chile.jpg",
                     TAILCLOAKIFY_FAVICON_URL: "https://almig.de/typo3conf/ext/almig_package/Resources/Public/Icons/favicon.ico"
                 }
             }}

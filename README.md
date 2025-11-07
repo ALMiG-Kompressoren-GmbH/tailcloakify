@@ -43,6 +43,7 @@ Tailcloakify provides several ways of customizing your theme without the need to
 | TAILCLOAKIFY_HIDE_LOGIN_FORM                | Use it to hide the default login form for using IDPs only                    |
 | TAILCLOAKIFY_BACKGROUND_LOGO_URL            | Use it to add an image of your logo                                          |
 | TAILCLOAKIFY_HEADER_LOGO_URL                | Use it to add an image of your logo to the header                            |
+| TAILCLOAKIFY_BACKGROUND_IMAGE_URL           | Use this variable to set a custom background image                           |
 | TAILCLOAKIFY_BACKGROUND_VIDEO_URL           | Use it to add a MP4 format background video on your register and login pages |
 | TAILCLOAKIFY_FAVICON_URL                    | Use it to add a url to your Favicon                                          |
 | TAILCLOAKIFY_FOOTER_IMPRINT_URL             | Use it to add an Impressum                                                   |
@@ -55,14 +56,14 @@ Tailcloakify provides several ways of customizing your theme without the need to
 
 Some customizations are possible through Keycloak's Localization System, allowing setting up different configurations for each language. You can either add custom localization by adding those into the keycloak server or by manually setting them within the realm settings. You can also use this feature to overwrite default variables for each realm by providing at least the default language as configuration.
 
-| Name                     | Description                                                                        |
-| ------------------------ | ---------------------------------------------------------------------------------- |
-| backgroundLogoUrl        | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_LOGO_URL         |
-| headerLogoUrl            | The localized enabled alternative to env: TAILCLOAKIFY_HEADER_LOGO_URL             |
-| backgroundVideoUrl       | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_VIDEO_URL        |
-| faviconUrl               | The localized enabled alternative to env: TAILCLOAKIFY_FAVICON_URL                 |
-| footerImprintUrl         | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_IMPRINT_URL          |
-| footerDataprotectionUrl  | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL   |
+| Name                          | Description                                                                              |
+| ----------------------------- | ---------------------------------------------------------------------------------------- |
+| backgroundLogoUrl             | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_LOGO_URL               |
+| backgroundImageUrl            | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_IMAGE_URL              |
+| backgroundVideoUrl            | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_VIDEO_URL              |
+| faviconUrl                    | The localized enabled alternative to env: TAILCLOAKIFY_FAVICON_URL                       |
+| footerImprintUrl              | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_IMPRINT_URL                |
+| footerDataprotectionUrl       | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL         |
 | showSocialProvidersOnRegister | The localized enabled alternative to env: TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER |
 
 ## Using a child Theme

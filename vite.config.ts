@@ -18,6 +18,7 @@ export default defineConfig({
                 { name: "TAILCLOAKIFY_ADDITIONAL_META", default: "" },
                 { name: "TAILCLOAKIFY_HIDE_LOGIN_FORM", default: "" },
                 { name: "TAILCLOAKIFY_BACKGROUND_LOGO_URL", default: "" },
+                { name: "TAILCLOAKIFY_BACKGROUND_IMAGE_URL", default: "" },
                 { name: "TAILCLOAKIFY_BACKGROUND_VIDEO_URL", default: "" },
                 { name: "TAILCLOAKIFY_HEADER_LOGO_URL", default: "" },
                 { name: "TAILCLOAKIFY_FAVICON_URL", default: "" },
@@ -29,6 +30,7 @@ export default defineConfig({
             ],
             kcContextExclusionsFtl: [
                 '<@addToXKeycloakifyMessagesIfMessageKey str="backgroundLogoUrl" />',
+                '<@addToXKeycloakifyMessagesIfMessageKey str="backgroundImageUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="backgroundVideoUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="headerLogoUrl" />',
                 '<@addToXKeycloakifyMessagesIfMessageKey str="faviconUrl" />',

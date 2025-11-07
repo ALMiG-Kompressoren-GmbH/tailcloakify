@@ -144,6 +144,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     const footerDataprotectionUrl =
         advancedMsgStr("footerDataprotectionUrl") !== "footerDataprotectionUrl" ? advancedMsgStr("footerDataprotectionUrl") : null;
 
+    const backgroundImageUrl = advancedMsgStr("backgroundImageUrl") !== "backgroundImageUrl" ? advancedMsgStr("backgroundImageUrl") : null;
     const backgroundLogoUrl = advancedMsgStr("backgroundLogoUrl") !== "backgroundLogoUrl" ? advancedMsgStr("backgroundLogoUrl") : null;
     const backgroundVideoUrl = advancedMsgStr("backgroundVideoUrl") !== "backgroundVideoUrl" ? advancedMsgStr("backgroundVideoUrl") : null;
 
@@ -161,6 +162,14 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                 kcClsx("kcLoginClass"),
                 "bg-secondary-100 flex flex-col items-center justify-center min-h-screen sm:py-16 overflow-x-hidden"
             )}
+            style={{
+                backgroundImage: (backgroundImageUrl || kcContext.properties["TAILCLOAKIFY_BACKGROUND_IMAGE_URL"])
+                    ? `url(${backgroundImageUrl || kcContext.properties["TAILCLOAKIFY_BACKGROUND_IMAGE_URL"]})`
+                    : undefined,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+            }}
         >
             <div id="kc-header">
                 {(backgroundLogoUrl || kcContext.properties["TAILCLOAKIFY_BACKGROUND_LOGO_URL"]) && (
