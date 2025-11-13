@@ -21,12 +21,19 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
     const inputRef = useRef<HTMLInputElement[]>(Array(otpLength).fill(null));
 
     const [otpValues, setOtpValues] = useState<string[]>(Array(otpLength).fill(""));
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     useEffect(() => {
-        if (otpValues.every(Boolean)) {
+        if (otpValues.every(Boolean) && !isSubmitting) {
+            setIsSubmitting(true);
             (document.getElementById("kc-otp-login-form") as HTMLFormElement)?.submit();
         }
-    }, [otpValues]);
+    }, [otpValues, isSubmitting]);
+
+    // Prevent Enter key from submitting prematurely
+    const handleFormKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
+        if (e.key === "Enter") e.preventDefault();
+    };
 
     const handleInput = (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
@@ -97,6 +104,15 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
         }
     };
 
+    //  Handle form submit safely
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        if (isSubmitting) {
+            e.preventDefault(); // block double submission
+            return;
+        }
+        setIsSubmitting(true);
+    };
+
     return (
         <Template
             kcContext={kcContext}
@@ -106,7 +122,14 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
             displayMessage={!messagesPerField.existsError("totp")}
             headerNode={msg("doLogIn")}
         >
-            <form id="kc-otp-login-form" className={kcClsx("kcFormClass")} action={url.loginAction} method="post">
+            <form
+                onKeyDown={handleFormKeyDown}
+                onSubmit={handleSubmit}
+                id="kc-otp-login-form"
+                className={kcClsx("kcFormClass")}
+                action={url.loginAction}
+                method="post"
+            >
                 {otpLogin.userOtpCredentials.length > 1 && <div className={kcClsx("kcFormGroupClass")}></div>}
 
                 <div className={kcClsx("kcFormGroupClass")}>
@@ -167,6 +190,7 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
                     </div>
                     <div id="kc-form-buttons" className={kcClsx("kcFormButtonsClass")}>
                         <input
+                            disabled={isSubmitting}
                             className={clsx(
                                 kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass"),
                                 "rounded-md bg-primary-600 text-white focus:ring-primary-600 hover:bg-primary-700 px-4 py-2 text-sm flex justify-center relative w-full focus:outline-none focus:ring-2 focus:ring-offset-2"
