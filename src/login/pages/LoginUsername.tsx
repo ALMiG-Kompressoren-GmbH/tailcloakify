@@ -6,7 +6,6 @@ import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import useProviderLogos from "../useProviderLogos";
-import { useScript } from "keycloakify/login/pages/LoginUsername.useScript";
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -16,18 +15,13 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
         classes
     });
 
-    const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField, enableWebAuthnConditionalUI, authenticators } =
-        kcContext;
+    const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField } = kcContext;
 
     const { msg, msgStr } = i18n;
 
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
 
     const providerLogos = useProviderLogos();
-
-    const webAuthnButtonId = "authenticateWebAuthnButton";
-
-    useScript({ webAuthnButtonId, kcContext, i18n });
 
     return (
         <Template
@@ -64,13 +58,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                 className={clsx(
                                     kcClsx("kcFormSocialAccountListClass", social.providers.length > 3 && "kcFormSocialAccountListGridClass"),
                                     "gap-4 grid pt-4",
-                                    social.providers.length === 1
-                                        ? "grid-cols-1"
-                                        : social.providers.length % 3 === 0 && social.providers.length <= 6
-                                          ? "grid-cols-3"
-                                          : social.providers.length % 2 === 0 && social.providers.length <= 6
-                                            ? "grid-cols-2"
-                                            : "grid-cols-4"
+                                    social.providers.length === 1 ? 'grid-cols-1' : social.providers.length % 3 === 0 && social.providers.length <= 6 ? 'grid-cols-3' : social.providers.length % 2 === 0 && social.providers.length <= 6 ? 'grid-cols-2' : 'grid-cols-4'
                                 )}
                             >
                                 {social.providers.map((...[p, , providers]) => (
@@ -89,17 +77,17 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                                 <div className={"h-6 w-6"}>
                                                     <img src={providerLogos[p.alias]} alt={`${p.displayName} logo`} className={"h-full w-auto"} />
                                                 </div>
-                                            ) : // Fallback to the original iconClasses if the logo is not defined
-                                            p.iconClasses ? (
-                                                <div className={"h-6 w-6"}>
-                                                    <i
-                                                        className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses, `text-provider-${p.alias}`)}
-                                                        aria-hidden="true"
-                                                    ></i>
-                                                </div>
-                                            ) : (
-                                                <div className="h-6 mx-1 pt-1 font-bold">{p.displayName || p.alias}</div>
-                                            )}
+                                            ) :
+                                                // Fallback to the original iconClasses if the logo is not defined
+                                                p.iconClasses ? (
+                                                    <div className={"h-6 w-6"}>
+                                                        <i
+                                                            className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses, `text-provider-${p.alias}`)}
+                                                            aria-hidden="true"
+                                                        ></i>
+                                                    </div>
+                                                ) : (<div className="h-6 mx-1 pt-1 font-bold">{(p.displayName || p.alias)}</div>)
+                                            }
                                         </a>
                                     </li>
                                 ))}
@@ -128,16 +116,16 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                         {!realm.loginWithEmailAllowed
                                             ? msg("username")
                                             : !realm.registrationEmailAsUsername
-                                              ? msg("usernameOrEmail")
-                                              : msg("email")}
+                                                ? msg("usernameOrEmail")
+                                                : msg("email")}
                                     </label>
                                     <input
                                         placeholder={
                                             !realm.loginWithEmailAllowed
                                                 ? msgStr("username")
                                                 : !realm.registrationEmailAsUsername
-                                                  ? msgStr("usernameOrEmail")
-                                                  : msgStr("email")
+                                                    ? msgStr("usernameOrEmail")
+                                                    : msgStr("email")
                                         }
                                         tabIndex={2}
                                         id="username"
@@ -202,35 +190,6 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                     )}
                 </div>
             </div>
-            {enableWebAuthnConditionalUI && (
-                <>
-                    <form id="webauth" action={url.loginAction} method="post">
-                        <input type="hidden" id="clientDataJSON" name="clientDataJSON" />
-                        <input type="hidden" id="authenticatorData" name="authenticatorData" />
-                        <input type="hidden" id="signature" name="signature" />
-                        <input type="hidden" id="credentialId" name="credentialId" />
-                        <input type="hidden" id="userHandle" name="userHandle" />
-                        <input type="hidden" id="error" name="error" />
-                    </form>
-
-                    {authenticators !== undefined && Object.keys(authenticators).length !== 0 && (
-                        <>
-                            <form id="authn_select" className={kcClsx("kcFormClass")}>
-                                {authenticators.authenticators.map((authenticator, i) => (
-                                    <input key={i} type="hidden" name="authn_use_chk" readOnly value={authenticator.credentialId} />
-                                ))}
-                            </form>
-                        </>
-                    )}
-
-                    <input
-                        id={webAuthnButtonId}
-                        type="button"
-                        className={ "rounded-md text-primary-600 border-2 border-primary-600 border-solid px-4 py-2 text-sm flex justify-center relative w-full mt-4 no-underline hover:no-underline hover:border-3 hover:text-primary-300"}
-                        value={msgStr("passkey-doAuthenticate")}
-                    />
-                </>
-            )}
         </Template>
     );
 }

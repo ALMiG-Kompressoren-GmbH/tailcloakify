@@ -274,17 +274,3 @@ export const WithSocialProvidersAndWithoutRememberMe: Story = {
         />
     )
 };
-
-export const WithAuthPasskey: Story = {
-    render: args => (
-        <KcPageStory
-            {...args}
-            kcContext={{
-                url: {
-                    loginAction: "/mock-login-action"
-                },
-                enableWebAuthnConditionalUI: true
-            }}
-            />
-    )
-}
