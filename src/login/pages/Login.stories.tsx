@@ -504,7 +504,7 @@ export const WithScriptsStylesAndMeta: Story = {
                 properties: {
                     scripts: "/invalid-script.js /another-invalid-script.js",
                     styles: "/invalid-styles.css /another-invalid-styles.css",
-                    meta: "test==content test2==content2",
+                    meta: "test==content test2==content2"
                 }
             }}
         />
@@ -523,8 +523,8 @@ export const WithDoTryAnotherWayOption: Story = {
             {...args}
             kcContext={{
                 auth: {
-                    showTryAnotherWayLink: true,
-                },
+                    showTryAnotherWayLink: true
+                }
             }}
         />
     )
@@ -543,7 +543,7 @@ export const OnlySocialIdps: Story = {
             kcContext={{
                 realm: { registrationAllowed: false },
                 properties: {
-                    TAILCLOAKIFY_HIDE_LOGIN_FORM: 'TRUE'
+                    TAILCLOAKIFY_HIDE_LOGIN_FORM: "TRUE"
                 },
                 social: {
                     displayInfo: true,
@@ -556,9 +556,22 @@ export const OnlySocialIdps: Story = {
                             displayName: providerId.charAt(0).toUpperCase() + providerId.slice(1),
                             iconClasses: `fa fa-${providerId}`
                         }))
-                },
+                }
             }}
         />
     )
 };
 
+export const WithAuthPassKey: Story = {
+    render: args => (
+        <KcPageStory
+            {...args}
+            kcContext={{
+                url: {
+                    loginAction: "/mock-login-action"
+                },
+                enableWebAuthnConditionalUI: true
+            }}
+        />
+    )
+};

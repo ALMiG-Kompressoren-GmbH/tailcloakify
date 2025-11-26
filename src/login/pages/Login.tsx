@@ -7,6 +7,7 @@ import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import useProviderLogos from "../useProviderLogos";
+import { useScript } from "keycloakify/login/pages/Login.useScript";
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -16,13 +17,18 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
         classes
     });
 
-    const { social, realm, url, usernameHidden, login, auth, registrationDisabled, messagesPerField } = kcContext;
+    const { social, realm, url, usernameHidden, login, auth, registrationDisabled, messagesPerField, enableWebAuthnConditionalUI, authenticators } =
+        kcContext;
 
     const { msg, msgStr } = i18n;
 
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
 
     const providerLogos = useProviderLogos();
+
+    const webAuthnButtonId = "authenticateWebAuthnButton";
+
+    useScript({ webAuthnButtonId, kcContext, i18n });
 
     return (
         <Template
@@ -53,15 +59,25 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 <>
                     {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
                         <div id="kc-social-providers" className={kcClsx("kcFormSocialAccountSectionClass")}>
-                            {kcContext.properties["TAILCLOAKIFY_HIDE_LOGIN_FORM"]?.toUpperCase() !== 'TRUE' ? (<>
-                                <hr />
-                                <h2 className={"pt-4 separate text-secondary-600 text-sm"}>{msg("identity-provider-login-label")}</h2>
-                            </>) : ('')}
+                            {kcContext.properties["TAILCLOAKIFY_HIDE_LOGIN_FORM"]?.toUpperCase() !== "TRUE" ? (
+                                <>
+                                    <hr />
+                                    <h2 className={"pt-4 separate text-secondary-600 text-sm"}>{msg("identity-provider-login-label")}</h2>
+                                </>
+                            ) : (
+                                ""
+                            )}
                             <ul
                                 className={clsx(
                                     kcClsx("kcFormSocialAccountListClass", social.providers.length > 3 && "kcFormSocialAccountListGridClass"),
                                     "gap-4 grid pt-4",
-                                    social.providers.length === 1 ? 'grid-cols-1' : social.providers.length % 3 === 0 && social.providers.length <= 6 ? 'grid-cols-3' : social.providers.length % 2 === 0 && social.providers.length <= 6 ? 'grid-cols-2' : 'grid-cols-4'
+                                    social.providers.length === 1
+                                        ? "grid-cols-1"
+                                        : social.providers.length % 3 === 0 && social.providers.length <= 6
+                                          ? "grid-cols-3"
+                                          : social.providers.length % 2 === 0 && social.providers.length <= 6
+                                            ? "grid-cols-2"
+                                            : "grid-cols-4"
                                 )}
                             >
                                 {social.providers.map((...[p, , providers]) => (
@@ -100,7 +116,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 </>
             }
         >
-            {kcContext.properties["TAILCLOAKIFY_HIDE_LOGIN_FORM"]?.toUpperCase() !== 'TRUE' ? (
+            {kcContext.properties["TAILCLOAKIFY_HIDE_LOGIN_FORM"]?.toUpperCase() !== "TRUE" ? (
                 <div id="kc-form">
                     <div id="kc-form-wrapper" className={"space-y-4"}>
                         {realm.password && (
@@ -243,6 +259,37 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 </div>
             ) : (
                 ""
+            )}
+            {enableWebAuthnConditionalUI && (
+                <>
+                    <form id="webauth" action={url.loginAction} method="post">
+                        <input type="hidden" id="clientDataJSON" name="clientDataJSON" />
+                        <input type="hidden" id="authenticatorData" name="authenticatorData" />
+                        <input type="hidden" id="signature" name="signature" />
+                        <input type="hidden" id="credentialId" name="credentialId" />
+                        <input type="hidden" id="userHandle" name="userHandle" />
+                        <input type="hidden" id="error" name="error" />
+                    </form>
+
+                    {authenticators !== undefined && authenticators.authenticators.length !== 0 && (
+                        <>
+                            <form id="authn_select" className={kcClsx("kcFormClass")}>
+                                {authenticators.authenticators.map((authenticator, i) => (
+                                    <input key={i} type="hidden" name="authn_use_chk" readOnly value={authenticator.credentialId} />
+                                ))}
+                            </form>
+                        </>
+                    )}
+
+                    <input
+                        id={webAuthnButtonId}
+                        type="button"
+                        className={
+                            "rounded-md text-primary-600 border-2 border-primary-600 border-solid px-4 py-2 text-sm flex justify-center relative w-full mt-4 no-underline hover:no-underline hover:border-3 hover:text-primary-300"
+                        }
+                        value={msgStr("passkey-doAuthenticate")}
+                    />
+                </>
             )}
         </Template>
     );
