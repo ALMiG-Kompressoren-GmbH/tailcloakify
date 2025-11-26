@@ -213,7 +213,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                         <input type="hidden" id="error" name="error" />
                     </form>
 
-                    {authenticators !== undefined && Object.keys(authenticators).length !== 0 && (
+                    {authenticators !== undefined && authenticators.authenticators.length !== 0 && (
                         <>
                             <form id="authn_select" className={kcClsx("kcFormClass")}>
                                 {authenticators.authenticators.map((authenticator, i) => (
@@ -226,7 +226,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                     <input
                         id={webAuthnButtonId}
                         type="button"
-                        className={ "rounded-md text-primary-600 border-2 border-primary-600 border-solid px-4 py-2 text-sm flex justify-center relative w-full mt-4 no-underline hover:no-underline hover:border-3 hover:text-primary-300"}
+                        className={
+                            "rounded-md text-primary-600 border-2 border-primary-600 border-solid px-4 py-2 text-sm flex justify-center relative w-full mt-4 no-underline hover:no-underline hover:border-3 hover:text-primary-300"
+                        }
                         value={msgStr("passkey-doAuthenticate")}
                     />
                 </>
