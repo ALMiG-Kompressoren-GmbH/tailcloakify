@@ -1,0 +1,33 @@
+{
+  "execute-actions": {
+    "messageSubject": "Обновите свой аккаунт",
+    "messagePreview": "Ваш администратор только что запросил обновление вашего аккаунта {realmName} путем выполнения следующего(их) действия(й)",
+    "messageBody": "Мы только что создали ваш аккаунт {realmName}. Пожалуйста, установите начальный пароль, нажав на ссылку ниже.",
+    "messageLink": "Установить пароль",
+    "linkExpiry": "Срок действия этой ссылки истечет через {linkExpiration}",
+    "resetPassword": "Если ссылка уже истекла, попробуйте сбросить пароль с помощью вашего email на нашей странице входа.",
+    "furtherActions": "Если у вас есть вопросы или вы думаете, что являетесь неправильным получателем этого письма, обратитесь к {contactEmail} за помощью.",
+    "welcome": "Добро пожаловать",
+    "configureTOTP": "Настроить OTP",
+    "updatePassword": "Обновить пароль",
+    "updateProfile": "Обновить профиль",
+    "verifyEmail": "Подтвердить email",
+    "webAuthnRegister": "Зарегистрировать WebAuthn",
+    "webAuthnRegisterPasswordless": "Зарегистрировать WebAuthn без пароля",
+    "verifyProfile": "Подтвердить профиль",
+    "deleteCredential": "Удалить учетные данные",
+    "linkingIdentityProvider": "Связать поставщика идентификации",
+    "recoveryAuthenticationCodes": "Коды восстановления аутентификации",
+    "updateUserLocale": "Обновить язык пользователя",
+    "adminMessageBody": "Ваш администратор только что запросил обновление вашего аккаунта {realmName} путем выполнения следующего(их) действия(й):",
+    "adminRequiredActions": "{requiredActions}",
+    "adminMessageLink": "Нажмите на ссылку ниже, чтобы начать этот процесс.",
+    "adminLinkToAccountUpdate": "Ссылка на обновление аккаунта",
+    "adminIgnoreMessage": " Если вы не знаете, что ваш администратор запросил это, просто проигнорируйте это сообщение и ничего не изменится."
+  },
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - Тестовое письмо SMTP",
+    "messagePreview": "Это тестовое письмо",
+    "messageBody": "Это тестовое письмо от {realmName}"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "execute-actions": {
+    "messageSubject": "Aktualisieren Sie Ihr Konto",
+    "messagePreview": "Ihr Administrator hat soeben angefordert, dass Sie Ihr {realmName}-Konto durch Ausführung der folgenden Aktion(en) aktualisieren",
+    "messageBody": "Wir haben soeben Ihr {realmName}-Konto erstellt. Bitte setzen Sie Ihr anfängliches Passwort, indem Sie auf den unten stehenden Link klicken.",
+    "messageLink": "Passwort festlegen",
+    "linkExpiry": "Dieser Link läuft ab in {linkExpiration}",
+    "resetPassword": "Falls der Link bereits abgelaufen ist, versuchen Sie Ihr Passwort mit Ihrer E-Mail auf unserer Anmeldeseite zurückzusetzen.",
+    "furtherActions": "Wenn Sie Fragen haben oder denken, dass Sie die falsche Person sind, die diese E-Mail erhalten hat, wenden Sie sich bitte an {contactEmail} für Hilfe.",
+    "welcome": "Willkommen",
+    "configureTOTP": "OTP konfigurieren",
+    "updatePassword": "Passwort aktualisieren",
+    "updateProfile": "Profil aktualisieren",
+    "verifyEmail": "E-Mail verifizieren",
+    "webAuthnRegister": "WebAuthn registrieren",
+    "webAuthnRegisterPasswordless": "WebAuthn passwortlos registrieren",
+    "verifyProfile": "Profil verifizieren",
+    "deleteCredential": "Anmeldedaten löschen",
+    "linkingIdentityProvider": "Identitätsanbieter verknüpfen",
+    "recoveryAuthenticationCodes": "Wiederherstellungs-Authentifizierungscodes",
+    "updateUserLocale": "Benutzersprache aktualisieren",
+    "adminMessageBody": "Ihr Administrator hat soeben angefordert, dass Sie Ihr {realmName}-Konto durch Ausführung der folgenden Aktion(en) aktualisieren:",
+    "adminRequiredActions": "{requiredActions}",
+    "adminMessageLink": "Klicken Sie auf den unten stehenden Link, um diesen Prozess zu starten.",
+    "adminLinkToAccountUpdate": "Link zur Kontoaktualisierung",
+    "adminIgnoreMessage": " Falls Sie nicht wissen, dass Ihr Administrator dies angefordert hat, ignorieren Sie diese Nachricht einfach und es wird nichts geändert."
+  },
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - SMTP Test-E-Mail",
+    "messagePreview": "Dies ist eine Test-E-Mail",
+    "messageBody": "Dies ist eine Test-E-Mail von {realmName}"
+  }
+}

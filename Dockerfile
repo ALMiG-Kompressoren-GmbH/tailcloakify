@@ -2,8 +2,7 @@
 FROM quay.io/keycloak/keycloak:26.2.5 as builder
 
 # Install custom theme
-ADD --chown=keycloak:keycloak https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/download/v1.1.19/keycloak-theme-for-kc-22-to-25.jar /opt/keycloak/providers/tailcloakify-theme.jar
-
+ADD --chown=keycloak:keycloak https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/download/v1.2.0/keycloak-theme-for-kc-22-to-25.jar /opt/keycloak/providers/tailcloakify-theme.jar
 FROM quay.io/keycloak/keycloak:26.2.5
 
 COPY --from=builder /opt/keycloak /opt/keycloak
@@ -23,6 +22,9 @@ ENV TAILCLOAKIFY_BACKGROUND_VIDEO_URL=""
 ENV TAILCLOAKIFY_FOOTER_IMPRINT_URL="Impressum URL Here"
 ENV TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL="Data Protection URL Here"
 ENV TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT="true"
+ENV TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL: ""
+ENV TAILCLOAKIFY_EMAIL_LOGO: ""
+ENV TAILCLOAKIFY_EMAIL_FONT_FAMILY: ""
+ENV TAILCLOAKIFY_EMAIL_CONTACT: ""
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
-
