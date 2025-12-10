@@ -45,6 +45,7 @@ Tailcloakify provides several ways of customizing your theme without the need to
 | TAILCLOAKIFY_HIDE_LOGIN_FORM                              | Use it to hide the default login form for using IDPs only                                          |
 | TAILCLOAKIFY_BACKGROUND_LOGO_URL                          | Use it to add an image of your logo                                                                |
 | TAILCLOAKIFY_HEADER_LOGO_URL                              | Use it to add an image of your logo to the header                                                  |
+| TAILCLOAKIFY_BACKGROUND_IMAGE_URL                         | Use it to set a custom background image                                                            |
 | TAILCLOAKIFY_BACKGROUND_VIDEO_URL                         | Use it to add a MP4 format background video on your register and login pages                       |
 | TAILCLOAKIFY_FAVICON_URL                                  | Use it to add a url to your Favicon                                                                |
 | TAILCLOAKIFY_FOOTER_IMPRINT_URL                           | Use it to add an Impressum                                                                         |
