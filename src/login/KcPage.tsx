@@ -58,6 +58,7 @@ const ViewEmailContinuation = lazy(
     () => import("./pages/p2-inc/keycloak-magic-link/ViewEmailContinuation")
 );
 const Invitations = lazy(() => import("./pages/p2-inc/keycloak-orgs/Invitations"));
+const Info = lazy(() => import("./pages/Info"));
 
 export default function KcPage(props: { kcContext: KcContext }) {
     const { kcContext } = props;
@@ -344,6 +345,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "invitations.ftl":
                         return (
                             <Invitations
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "info.ftl":
+                        return (
+                            <Info
                                 {...{ kcContext, i18n, classes }}
                                 Template={Template}
                                 doUseDefaultCss={true}
