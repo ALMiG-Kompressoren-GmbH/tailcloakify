@@ -61,6 +61,7 @@ const Invitations = lazy(() => import("./pages/p2-inc/keycloak-orgs/Invitations"
 const Info = lazy(() => import("./pages/Info"));
 const IdpReviewUserProfile = lazy(() => import("./pages/IdpReviewUserProfile"));
 const FrontchannelLogout = lazy(() => import("./pages/FrontchannelLogout"));
+const SelectOrganization = lazy(() => import("./pages/SelectOrganization"));
 
 export default function KcPage(props: { kcContext: KcContext }) {
     const { kcContext } = props;
@@ -373,6 +374,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "frontchannel-logout.ftl":
                         return (
                             <FrontchannelLogout
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "select-organization.ftl":
+                        return (
+                            <SelectOrganization
                                 {...{ kcContext, i18n, classes }}
                                 Template={Template}
                                 doUseDefaultCss={true}
