@@ -34,9 +34,9 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                                 let html = message.summary?.trim();
 
                                 if (requiredActions) {
-                                    html += ' <b>';
+                                    html += " <b>";
 
-                                    html += requiredActions.map(requiredAction => `<li>${advancedMsgStr(`requiredAction.${requiredAction}`)}</li>`).join("");
+                                    html += requiredActions.map(requiredAction => `<li class="ml-4">${advancedMsgStr(`requiredAction.${requiredAction}`)}</li>`).join("");
 
                                     html += "</b>";
                                 }
