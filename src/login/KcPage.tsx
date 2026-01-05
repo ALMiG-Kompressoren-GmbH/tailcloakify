@@ -46,6 +46,9 @@ const WebauthnError = lazy(() => import("./pages/WebauthnError"));
 const SelectAuthenticator = lazy(() => import("./pages/SelectAuthenticator"));
 const Error = lazy(() => import("./pages/Error"));
 const Terms = lazy(() => import("./pages/Terms"));
+const IdpReviewUserProfile = lazy(() => import("./pages/IdpReviewUserProfile"));
+const FrontchannelLogout = lazy(() => import("./pages/FrontchannelLogout"));
+const SelectOrganization = lazy(() => import("./pages/SelectOrganization"));
 const OtpForm = lazy(() => import("./pages/p2-inc/keycloak-magic-link/OtpForm"));
 const EmailConfirmation = lazy(
     () => import("./pages/p2-inc/keycloak-magic-link/EmailConfirmation")
@@ -59,9 +62,6 @@ const ViewEmailContinuation = lazy(
 );
 const Invitations = lazy(() => import("./pages/p2-inc/keycloak-orgs/Invitations"));
 const Info = lazy(() => import("./pages/Info"));
-const IdpReviewUserProfile = lazy(() => import("./pages/IdpReviewUserProfile"));
-const FrontchannelLogout = lazy(() => import("./pages/FrontchannelLogout"));
-const SelectOrganization = lazy(() => import("./pages/SelectOrganization"));
 
 export default function KcPage(props: { kcContext: KcContext }) {
     const { kcContext } = props;
