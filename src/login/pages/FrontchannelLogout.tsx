@@ -49,7 +49,11 @@ export default function FrontchannelLogout(props: PageProps<Extract<KcContext, {
                 ))}
             </ul>
             {logout.logoutRedirectUri !== undefined && (
-                <a id="continue" className="btn btn-primary" href={logout.logoutRedirectUri}>
+                <a
+                    id="continue"
+                    className={"text-primary-600 hover:text-primary-500 inline-flex no-underline hover:no-underline"}
+                    href={logout.logoutRedirectUri}
+                >
                     {msg("doContinue")}
                 </a>
             )}
