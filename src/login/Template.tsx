@@ -192,7 +192,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                 )}
             </div>
 
-            <div className={clsx(kcClsx("kcFormCardClass"), "relative z-10 max-w-md md:w-full rounded-lg")}>
+            <div className={clsx(kcClsx("kcFormCardClass"), "relative z-10 max-w-md w-11/12 md:w-full rounded-lg px-4")}>
                 {headerLogoUrl || kcContext.properties["TAILCLOAKIFY_HEADER_LOGO_URL"] ? (
                     <img alt={"Logo"} src={headerLogoUrl || kcContext.properties["TAILCLOAKIFY_HEADER_LOGO_URL"]} className={"mx-auto h-16 w-auto"} />
                 ) : (
