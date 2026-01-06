@@ -4040,10 +4040,10 @@ keycloakify-emails@^3.3.0:
     esbuild "^0.24.0"
     properties-parser "^0.6.0"
 
-keycloakify@^11.13.0:
-  version "11.13.0"
-  resolved "https://registry.yarnpkg.com/keycloakify/-/keycloakify-11.13.0.tgz#c901dfd9d78a533f0ca845ded373c1ac6be3ecb3"
-  integrity sha512-vMOecTuIaKGDqCTaNIRQPQzmLqf9o+IhlR6QgR+A75Jd645Dgw+wetUg96ngomFJH+sgAF5ujGbYMAeBos/DDQ==
+keycloakify@^11.13.2:
+  version "11.13.2"
+  resolved "https://registry.yarnpkg.com/keycloakify/-/keycloakify-11.13.2.tgz#fa905f9d06d5334c2f7be39e25bc746ba6850944"
+  integrity sha512-NzDeg1zX1nYf2UxFOe1hnIqU8WXAmOA/U56B6D6IWAirVAZaH33vcqnHdpn2mrb4A9oJxnpEYsZ7G3dTWNVp3g==
   dependencies:
     tsafe "^1.8.5"
 

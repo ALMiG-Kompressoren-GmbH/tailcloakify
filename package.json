@@ -21,7 +21,7 @@
     "@jsx-email/plugin-minify": "^1.0.2",
     "@jsx-email/plugin-pretty": "^1.0.0",
     "autoprefixer": "^10.4.19",
-    "keycloakify": "^11.13.0",
+    "keycloakify": "^11.13.2",
     "i18next": "^25.2.1",
     "i18next-icu": "^2.3.0",
     "intl-messageformat": "^10.7.16",
