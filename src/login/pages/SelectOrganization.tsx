@@ -46,7 +46,7 @@ export default function SelectOrganization(props: PageProps<Extract<KcContext, {
         <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={null}>
             <form ref={formRef} action={url.loginAction} className="form-vertical" method="post">
                 <div id="kc-user-organizations" className={kcClsx("kcFormGroupClass")}>
-                    <h2 className={"text-lg"}>{msg("organization.select")}</h2>
+                    <h2 className={"text-lg text-center pb-6"}>{msg("organization.select")}</h2>
                     <ul
                         className={clsx(
                             kcClsx("kcFormSocialAccountListClass", shouldDisplayGrid && "kcFormSocialAccountListGridClass"),
