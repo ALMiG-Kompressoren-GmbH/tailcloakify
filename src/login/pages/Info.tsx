@@ -36,7 +36,9 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                                 if (requiredActions) {
                                     html += " <b>";
 
-                                    html += requiredActions.map(requiredAction => `<li class="ml-4">${advancedMsgStr(`requiredAction.${requiredAction}`)}</li>`).join("");
+                                    html += requiredActions
+                                        .map(requiredAction => `<li class="ml-5">${advancedMsgStr(`requiredAction.${requiredAction}`)}</li>`)
+                                        .join("");
 
                                     html += "</b>";
                                 }
@@ -54,14 +56,23 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                     if (pageRedirectUri) {
                         return (
                             <p className={"text-center"}>
-                                <a href={pageRedirectUri} className={"no-underline hover:no-underline text-secondary-600 text-sm"}>{msg("backToApplication")}</a>
+                                <a href={pageRedirectUri} className={"no-underline hover:no-underline text-secondary-600 text-sm"}>
+                                    {msg("backToApplication")}
+                                </a>
                             </p>
                         );
                     }
                     if (actionUri) {
                         return (
                             <p className={"text-center"}>
-                                <a href={actionUri} className={"no-underline hover:no-underline text-secondary-600 text-sm"}>{msg("proceedWithAction")}</a>
+                                <a
+                                    href={actionUri}
+                                    className={
+                                        "rounded-md bg-primary-600 text-white hover:!text-white hover:no-underline hover:!bg-primary-700 px-4 py-2 text-sm flex justify-center relative w-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 focus:!text-white focus:no-underline mt-4"
+                                    }
+                                >
+                                    {msg("proceedWithAction")}
+                                </a>
                             </p>
                         );
                     }
@@ -69,7 +80,9 @@ export default function Info(props: PageProps<Extract<KcContext, { pageId: "info
                     if (client.baseUrl) {
                         return (
                             <p className={"text-center"}>
-                                <a href={client.baseUrl} className={"no-underline hover:no-underline text-secondary-600 text-sm"}>{msg("backToApplication")}</a>
+                                <a href={client.baseUrl} className={"no-underline hover:no-underline text-secondary-600 text-sm"}>
+                                    {msg("backToApplication")}
+                                </a>
                             </p>
                         );
                     }
