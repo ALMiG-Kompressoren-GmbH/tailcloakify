@@ -46,6 +46,9 @@ const WebauthnError = lazy(() => import("./pages/WebauthnError"));
 const SelectAuthenticator = lazy(() => import("./pages/SelectAuthenticator"));
 const Error = lazy(() => import("./pages/Error"));
 const Terms = lazy(() => import("./pages/Terms"));
+const IdpReviewUserProfile = lazy(() => import("./pages/IdpReviewUserProfile"));
+const FrontchannelLogout = lazy(() => import("./pages/FrontchannelLogout"));
+const SelectOrganization = lazy(() => import("./pages/SelectOrganization"));
 const OtpForm = lazy(() => import("./pages/p2-inc/keycloak-magic-link/OtpForm"));
 const EmailConfirmation = lazy(
     () => import("./pages/p2-inc/keycloak-magic-link/EmailConfirmation")
@@ -58,6 +61,7 @@ const ViewEmailContinuation = lazy(
     () => import("./pages/p2-inc/keycloak-magic-link/ViewEmailContinuation")
 );
 const Invitations = lazy(() => import("./pages/p2-inc/keycloak-orgs/Invitations"));
+const Info = lazy(() => import("./pages/Info"));
 
 export default function KcPage(props: { kcContext: KcContext }) {
     const { kcContext } = props;
@@ -349,7 +353,40 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                 doUseDefaultCss={true}
                             />
                         );
-
+                    case "info.ftl":
+                        return (
+                            <Info
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "idp-review-user-profile.ftl":
+                        return (
+                            <IdpReviewUserProfile
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                                UserProfileFormFields={UserProfileFormFields}
+                                doMakeUserConfirmPassword={doMakeUserConfirmPassword}
+                            />
+                        );
+                    case "frontchannel-logout.ftl":
+                        return (
+                            <FrontchannelLogout
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "select-organization.ftl":
+                        return (
+                            <SelectOrganization
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
                     default:
                         return (
                             <DefaultPage
