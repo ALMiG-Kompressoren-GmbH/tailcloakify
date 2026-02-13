@@ -10,6 +10,9 @@ import useProviderLogos from "../useProviderLogos";
 import { useScript } from "keycloakify/login/pages/Login.useScript";
 import { primaryButtonClass } from "../buttonClasses";
 import { Eye, EyeOff } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+
+type LoginStep = "email" | "password";
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -46,6 +49,35 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
     useScript({ webAuthnButtonId, kcContext, i18n });
 
+    const hasSocialProviders = realm.password && social?.providers !== undefined && social.providers.length > 0;
+    const hasLoginError = messagesPerField.existsError("username", "password");
+    const hasPrefilledUsername = !!login.username;
+
+    const getInitialStep = (): LoginStep => {
+        if (hasLoginError || hasPrefilledUsername) return "password";
+        return "email";
+    };
+
+    const [loginStep, setLoginStep] = useState<LoginStep>(getInitialStep);
+
+    const handleContinue = () => {
+        const usernameInput = document.getElementById("username") as HTMLInputElement | null;
+        if (usernameInput && !usernameInput.value.trim()) {
+            usernameInput.focus();
+            return;
+        }
+        setLoginStep("password");
+    };
+
+    const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        if (loginStep === "email") {
+            e.preventDefault();
+            handleContinue();
+            return;
+        }
+        setIsLoginButtonDisabled(true);
+    };
+
     return (
         <Template
             kcContext={kcContext}
@@ -71,81 +103,50 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     </div>
                 </div>
             }
-            socialProvidersNode={
-                <>
-                    {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
-                        <div id="kc-social-providers" className={kcClsx("kcFormSocialAccountSectionClass")}>
-                            {kcContext.properties["TAILCLOAKIFY_HIDE_LOGIN_FORM"]?.toUpperCase() !== "TRUE" ? (
-                                <>
-                                    <hr />
-                                    <h2 className={"pt-4 separate text-secondary-600 text-sm"}>{msg("identity-provider-login-label")}</h2>
-                                </>
-                            ) : (
-                                ""
-                            )}
-                            <ul
-                                className={clsx(
-                                    kcClsx("kcFormSocialAccountListClass", social.providers.length > 3 && "kcFormSocialAccountListGridClass"),
-                                    "gap-4 grid pt-4",
-                                    social.providers.length === 1
-                                        ? "grid-cols-1"
-                                        : social.providers.length % 3 === 0 && social.providers.length <= 6
-                                          ? "grid-cols-3"
-                                          : social.providers.length % 2 === 0 && social.providers.length <= 6
-                                            ? "grid-cols-2"
-                                            : "grid-cols-4"
-                                )}
-                            >
-                                {social.providers.map((...[p, , providers]) => (
-                                    <li key={p.alias}>
-                                        <a
-                                            id={`social-${p.alias}`}
-                                            className={clsx(
-                                                kcClsx("kcFormSocialAccountListButtonClass", providers.length > 3 && "kcFormSocialAccountGridItem"),
-                                                `border border-secondary-200 flex justify-center py-2 rounded-lg hover:border-opacity-30 hover:bg-provider-${p.alias}/10`
-                                            )}
-                                            style={{ textDecoration: "none" }}
-                                            type="button"
-                                            href={p.loginUrl}
-                                        >
-                                            {providerLogos[p.alias] ? (
-                                                <div className={"h-6 w-6"}>
-                                                    <img src={providerLogos[p.alias]} alt={`${p.displayName} logo`} className={"h-full w-auto"} />
-                                                </div>
-                                            ) : // Fallback to the original iconClasses if the logo is not defined
-                                            p.iconClasses ? (
-                                                <div className={"h-6 w-6"}>
-                                                    <i
-                                                        className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses, `text-provider-${p.alias}`)}
-                                                        aria-hidden="true"
-                                                    ></i>
-                                                </div>
-                                            ) : (
-                                                <div className="h-6 mx-1 pt-1 font-bold">{p.displayName || p.alias}</div>
-                                            )}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-                </>
-            }
+            socialProvidersNode={null}
         >
-            {kcContext.properties["TAILCLOAKIFY_HIDE_LOGIN_FORM"]?.toUpperCase() !== "TRUE" ? (
-                <div id="kc-form">
-                    <div id="kc-form-wrapper" className={"space-y-4"}>
-                        {realm.password && (
+            {/* Social providers - full-width stacked buttons */}
+            {hasSocialProviders && social.providers !== undefined && (
+                <div id="kc-social-providers" className="space-y-3">
+                    {social.providers.map(p => (
+                        <a
+                            key={p.alias}
+                            id={`social-${p.alias}`}
+                            href={p.loginUrl}
+                            className={clsx(
+                                "flex items-center justify-center gap-3 w-full py-3 rounded-lg border border-secondary-200 text-sm font-medium transition-colors duration-200",
+                                `hover:bg-provider-${p.alias}/10 hover:border-provider-${p.alias}/30`
+                            )}
+                            style={{ textDecoration: "none" }}
+                        >
+                            {providerLogos[p.alias] ? (
+                                <img src={providerLogos[p.alias]} alt="" className="h-5 w-5" />
+                            ) : p.iconClasses ? (
+                                <i className={clsx(kcClsx("kcCommonLogoIdP"), p.iconClasses)} aria-hidden="true" />
+                            ) : null}
+                            <span>{msgStr("continueWithProvider", p.displayName || p.alias)}</span>
+                        </a>
+                    ))}
+                </div>
+            )}
+
+            {/* Divider */}
+            {hasSocialProviders && kcContext.properties["TAILCLOAKIFY_HIDE_LOGIN_FORM"]?.toUpperCase() !== "TRUE" && (
+                <div className="w-full pt-4 separate text-secondary-600 text-sm">
+                    {msgStr("orSignInWithEmail")}
+                </div>
+            )}
+
+            {/* Two-step email/password form */}
+            {kcContext.properties["TAILCLOAKIFY_HIDE_LOGIN_FORM"]?.toUpperCase() !== "TRUE" && realm.password && (
                             <form
                                 id="kc-form-login"
-                                onSubmit={() => {
-                                    setIsLoginButtonDisabled(true);
-                                    return true;
-                                }}
+                                onSubmit={handleFormSubmit}
                                 action={url.loginAction}
                                 method="post"
-                                className={"m-0 space-y-4"}
+                                className="m-0 space-y-4 pt-4"
                             >
+                                {/* Email/username input */}
                                 {!usernameHidden && (
                                     <div className={kcClsx("kcFormGroupClass")}>
                                         <label htmlFor="username" className={clsx(kcClsx("kcLabelClass"), "sr-only")}>
@@ -189,107 +190,131 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     </div>
                                 )}
 
-                            <div className={clsx(kcClsx("kcFormGroupClass"), "relative")}>
-                                <label htmlFor="password" className={clsx(kcClsx("kcLabelClass"), "sr-only")}>
-                                    {msg("password")}
-                                </label>
-                                <PasswordWrapper
-                                    kcClsx={kcClsx}
-                                    i18n={i18n}
-                                    passwordInputId="password"
-                                    withError={messagesPerField.existsError("username", "password")}
-                                >
-                                    <input
-                                        placeholder="Password"
-                                        tabIndex={3}
-                                        id="password"
-                                        className={clsx(
-                                            kcClsx("kcInputClass"),
-                                            "block focus:outline-none border-border border-secondary-200 mt-1 rounded-md w-full focus:ring focus:ring-gray-400 focus:border-gray-500 focus:ring-opacity-50 sm:text-sm aria-[invalid=true]:pr-[calc(2rem+26px)] pr-10"
-                                        )}
-                                        name="password"
-                                        type="password"
-                                        autoComplete="current-password"
-                                        aria-invalid={messagesPerField.existsError("username", "password")}
-                                    />
-                                </PasswordWrapper>
-                                {usernameHidden && messagesPerField.existsError("username", "password") && (
-                                    <span
-                                        id="input-error"
-                                        className={kcClsx("kcInputErrorMessageClass")}
-                                        aria-live="polite"
-                                        dangerouslySetInnerHTML={{
-                                            __html: kcSanitize(messagesPerField.getFirstError("username", "password"))
-                                        }}
-                                    />
-                                )}
-                            </div>
-
-                            <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
-                                <div id="kc-form-options">
-                                    {realm.rememberMe && !usernameHidden && (
-                                        <div className="checkbox">
-                                            <label>
-                                                <input
-                                                    tabIndex={5}
-                                                    id="rememberMe"
-                                                    name="rememberMe"
-                                                    type="checkbox"
-                                                    className={"accent-primary-600"}
-                                                    defaultChecked={!!login.rememberMe}
-                                                />{" "}
-                                                {msg("rememberMe")}
-                                            </label>
-                                        </div>
-                                    )}
-                                </div>
-                                <div className={kcClsx("kcFormOptionsWrapperClass")}>
-                                    {realm.resetPasswordAllowed && (
-                                        <span>
-                                            <a
-                                                tabIndex={6}
-                                                href={url.loginResetCredentialsUrl}
-                                                className={"text-primary-600 hover:text-primary-500 inline-flex no-underline hover:no-underline"}
-                                            >
-                                                {msg("doForgotPassword")}
-                                            </a>
-                                        </span>
-                                    )}
-                                </div>
-                            </div>
-                            {captchaRequired && (
-                                <div className="form-group">
-                                    <div className={kcClsx("kcInputWrapperClass")}>
-                                        <div
-                                            className="cf-turnstile"
-                                            data-sitekey={captchaSiteKey}
-                                            data-action={captchaAction}
-                                            data-language={captchaLanguage}
-                                        ></div>
+                                {/* Continue button - only in email step */}
+                                {loginStep === "email" && (
+                                    <div className="flex flex-col pt-2">
+                                        <button
+                                            type="button"
+                                            tabIndex={3}
+                                            className={clsx(primaryButtonClass, "w-full cursor-pointer")}
+                                            onClick={handleContinue}
+                                        >
+                                            {msgStr("doContinue")}
+                                        </button>
                                     </div>
-                                </div>
-                            )}
-                            <div id="kc-form-buttons" className={clsx(kcClsx("kcFormGroupClass"), "flex flex-col pt-4 space-y-2")}>
-                                <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
-                                <input
-                                    tabIndex={7}
-                                    disabled={isLoginButtonDisabled}
-                                    className={clsx(primaryButtonClass, "w-full cursor-pointer")}
-                                    name="login"
-                                    id="kc-login"
-                                    type="submit"
-                                    value={msgStr("doLogIn")}
-                                />
-                            </div>
-                        </form>
-                    )}
-                    {/*<div className={"pt-4 separate text-secondary-600 text-sm"}>Or sign in with</div>*/}
-                    {/*<div className={"gap-4 grid grid-cols-3"}></div>*/}
-                </div>
-            </div>
-            ) : (
-                ""
+                                )}
+
+                                {/* Password section - only in password step */}
+                                <AnimatePresence>
+                                    {loginStep === "password" && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.2 }}
+                                            className="overflow-hidden space-y-4"
+                                        >
+                                            <div className={clsx(kcClsx("kcFormGroupClass"), "relative")}>
+                                                <label htmlFor="password" className={clsx(kcClsx("kcLabelClass"), "sr-only")}>
+                                                    {msg("password")}
+                                                </label>
+                                                <PasswordWrapper
+                                                    kcClsx={kcClsx}
+                                                    i18n={i18n}
+                                                    passwordInputId="password"
+                                                    withError={messagesPerField.existsError("username", "password")}
+                                                >
+                                                    <input
+                                                        placeholder="Password"
+                                                        tabIndex={3}
+                                                        id="password"
+                                                        className={clsx(
+                                                            kcClsx("kcInputClass"),
+                                                            "block focus:outline-none border-border border-secondary-200 mt-1 rounded-md w-full focus:ring focus:ring-gray-400 focus:border-gray-500 focus:ring-opacity-50 sm:text-sm aria-[invalid=true]:pr-[calc(2rem+26px)] pr-10"
+                                                        )}
+                                                        name="password"
+                                                        type="password"
+                                                        autoComplete="current-password"
+                                                        aria-invalid={messagesPerField.existsError("username", "password")}
+                                                    />
+                                                </PasswordWrapper>
+                                                {usernameHidden && messagesPerField.existsError("username", "password") && (
+                                                    <span
+                                                        id="input-error"
+                                                        className={kcClsx("kcInputErrorMessageClass")}
+                                                        aria-live="polite"
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: kcSanitize(messagesPerField.getFirstError("username", "password"))
+                                                        }}
+                                                    />
+                                                )}
+                                            </div>
+
+                                            <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
+                                                <div id="kc-form-options">
+                                                    {realm.rememberMe && !usernameHidden && (
+                                                        <div className="checkbox">
+                                                            <label>
+                                                                <input
+                                                                    tabIndex={5}
+                                                                    id="rememberMe"
+                                                                    name="rememberMe"
+                                                                    type="checkbox"
+                                                                    className={"accent-primary-600"}
+                                                                    defaultChecked={!!login.rememberMe}
+                                                                />{" "}
+                                                                {msg("rememberMe")}
+                                                            </label>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div className={kcClsx("kcFormOptionsWrapperClass")}>
+                                                    {realm.resetPasswordAllowed && (
+                                                        <span>
+                                                            <a
+                                                                tabIndex={6}
+                                                                href={url.loginResetCredentialsUrl}
+                                                                className={"text-primary-600 hover:text-primary-500 inline-flex no-underline hover:no-underline"}
+                                                            >
+                                                                {msg("doForgotPassword")}
+                                                            </a>
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </div>
+
+                                            {captchaRequired && (
+                                                <div className="form-group">
+                                                    <div className={kcClsx("kcInputWrapperClass")}>
+                                                        <div
+                                                            className="cf-turnstile"
+                                                            data-sitekey={captchaSiteKey}
+                                                            data-action={captchaAction}
+                                                            data-language={captchaLanguage}
+                                                        ></div>
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            <div id="kc-form-buttons" className={clsx(kcClsx("kcFormGroupClass"), "flex flex-col pt-4 space-y-2")}>
+                                                <input type="hidden" id="id-hidden-input" name="credentialId" value={auth.selectedCredential} />
+                                                <input
+                                                    tabIndex={7}
+                                                    disabled={isLoginButtonDisabled}
+                                                    className={clsx(primaryButtonClass, "w-full cursor-pointer")}
+                                                    name="login"
+                                                    id="kc-login"
+                                                    type="submit"
+                                                    value={msgStr("doLogIn")}
+                                                />
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </form>
             )}
+
+            {/* WebAuthn section - unchanged */}
             {enableWebAuthnConditionalUI && (
                 <>
                     <form id="webauth" action={url.loginAction} method="post">

@@ -1,11 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { keycloakify } from "keycloakify/vite-plugin";
-import { buildEmailTheme } from "keycloakify-emails"
+import { buildEmailTheme } from "keycloakify-emails";
 import path, { dirname } from "node:path";
 import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
-
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,7 +12,7 @@ export default defineConfig({
         react(),
         keycloakify({
             accountThemeImplementation: "none",
-            themeName: "Tailcloakify",
+            themeName: "CoreSpeed-Login",
             environmentVariables: [
                 { name: "styles", default: "" },
                 { name: "scripts", default: "" },
@@ -29,10 +28,23 @@ export default defineConfig({
                 { name: "TAILCLOAKIFY_FAVICON_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_IMPRINT_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL", default: "" },
-                { name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT", default: "" },
-                { name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA", default: "TRUE" },
-                { name: "TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER", default: "" },
-                { name: "TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL", default: "" },
+                {
+                    name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT",
+                    default: "",
+                },
+                {
+                    name:
+                        "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA",
+                    default: "TRUE",
+                },
+                {
+                    name: "TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER",
+                    default: "",
+                },
+                {
+                    name: "TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL",
+                    default: "",
+                },
                 { name: "TAILCLOAKIFY_EMAIL_LOGO", default: "" },
                 { name: "TAILCLOAKIFY_EMAIL_FONT_FAMILY", default: "" },
                 { name: "TAILCLOAKIFY_EMAIL_CONTACT", default: "" },
@@ -52,10 +64,10 @@ export default defineConfig({
                 keycloakExtraArgs: [
                     "--spi-email-template-provider=freemarker-plus-mustache",
                     "--spi-email-template-freemarker-plus-mustache-enabled=true",
-                    "--spi-theme-cache-themes=false"
+                    "--spi-theme-cache-themes=false",
                 ],
                 extensionJars: [
-                    "https://repo1.maven.org/maven2/io/phasetwo/keycloak/keycloak-magic-link/0.34/keycloak-magic-link-0.34.jar"
+                    "https://repo1.maven.org/maven2/io/phasetwo/keycloak/keycloak-magic-link/0.34/keycloak-magic-link-0.34.jar",
                 ],
             },
             postBuild: async (buildContext) => {
@@ -71,18 +83,19 @@ export default defineConfig({
                         "i18n.ts",
                     ),
                     themeNames: buildContext.themeNames,
-                    keycloakifyBuildDirPath: buildContext.keycloakifyBuildDirPath,
-                    locales: ["en", "cs", "de", "es", "fr", "it","ru"],
+                    keycloakifyBuildDirPath:
+                        buildContext.keycloakifyBuildDirPath,
+                    locales: ["en", "cs", "de", "es", "fr", "it", "ru"],
                     cwd: __dirname,
                     environmentVariables: buildContext.environmentVariables,
                     esbuild: {},
                 });
             },
-        })
+        }),
     ],
     resolve: {
         alias: {
-            "@": path.resolve(__dirname, "./src")
-        }
-    }
+            "@": path.resolve(__dirname, "./src"),
+        },
+    },
 });

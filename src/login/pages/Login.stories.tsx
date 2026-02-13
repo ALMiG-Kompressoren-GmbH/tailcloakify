@@ -25,11 +25,16 @@ export const WithInvalidCredential: Story = {
                     username: "johndoe"
                 },
                 messagesPerField: {
-                    // NOTE: The other functions of messagesPerField are derived from get() and
-                    // existsError() so they are the only ones that need to mock.
                     existsError: (fieldName: string, ...otherFieldNames: string[]) => {
                         const fieldNames = [fieldName, ...otherFieldNames];
                         return fieldNames.includes("username") || fieldNames.includes("password");
+                    },
+                    getFirstError: (fieldName: string, ...otherFieldNames: string[]) => {
+                        const fieldNames = [fieldName, ...otherFieldNames];
+                        if (fieldNames.includes("username") || fieldNames.includes("password")) {
+                            return "Invalid username or password.";
+                        }
+                        return "";
                     },
                     get: (fieldName: string) => {
                         if (fieldName === "username" || fieldName === "password") {
@@ -183,7 +188,7 @@ export const WithSocialProviders: Story = {
                             loginUrl: "github",
                             alias: "github",
                             providerId: "github",
-                            displayName: "Github",
+                            displayName: "GitHub",
                             iconClasses: "fa fa-github"
                         },
                         {
@@ -577,6 +582,106 @@ export const WithAuthPassKey: Story = {
                     loginAction: "/mock-login-action"
                 },
                 enableWebAuthnConditionalUI: true
+            }}
+        />
+    )
+};
+
+/**
+ * WithSocialProvidersAndError:
+ * - Purpose: Test OAuth-first layout with login error
+ * - Scenario: Social providers present + invalid credentials → auto-expands to password step
+ * - Key Aspect: OAuth buttons at top, email + password form expanded, error message visible
+ */
+export const WithSocialProvidersAndError: Story = {
+    render: args => (
+        <KcPageStory
+            {...args}
+            kcContext={{
+                social: {
+                    displayInfo: true,
+                    providers: [
+                        {
+                            loginUrl: "google",
+                            alias: "google",
+                            providerId: "google",
+                            displayName: "Google",
+                            iconClasses: "fa fa-google"
+                        },
+                        {
+                            loginUrl: "microsoft",
+                            alias: "microsoft",
+                            providerId: "microsoft",
+                            displayName: "Microsoft",
+                            iconClasses: "fa fa-windows"
+                        },
+                        {
+                            loginUrl: "github",
+                            alias: "github",
+                            providerId: "github",
+                            displayName: "GitHub",
+                            iconClasses: "fa fa-github"
+                        }
+                    ]
+                },
+                login: {
+                    username: "johndoe"
+                },
+                messagesPerField: {
+                    existsError: (fieldName: string, ...otherFieldNames: string[]) => {
+                        const fieldNames = [fieldName, ...otherFieldNames];
+                        return fieldNames.includes("username") || fieldNames.includes("password");
+                    },
+                    getFirstError: (fieldName: string, ...otherFieldNames: string[]) => {
+                        const fieldNames = [fieldName, ...otherFieldNames];
+                        if (fieldNames.includes("username") || fieldNames.includes("password")) {
+                            return "Invalid username or password.";
+                        }
+                        return "";
+                    },
+                    get: (fieldName: string) => {
+                        if (fieldName === "username" || fieldName === "password") {
+                            return "Invalid username or password.";
+                        }
+                        return "";
+                    }
+                }
+            }}
+        />
+    )
+};
+
+/**
+ * WithSocialProvidersAndPresetUsername:
+ * - Purpose: Test OAuth-first layout with prefilled username
+ * - Scenario: Social providers present + prefilled username → auto-expands to password step
+ * - Key Aspect: OAuth buttons at top, email prefilled and editable, password field visible
+ */
+export const WithSocialProvidersAndPresetUsername: Story = {
+    render: args => (
+        <KcPageStory
+            {...args}
+            kcContext={{
+                social: {
+                    displayInfo: true,
+                    providers: [
+                        {
+                            loginUrl: "google",
+                            alias: "google",
+                            providerId: "google",
+                            displayName: "Google",
+                            iconClasses: "fa fa-google"
+                        },
+                        {
+                            loginUrl: "microsoft",
+                            alias: "microsoft",
+                            providerId: "microsoft",
+                            displayName: "Microsoft",
+                            iconClasses: "fa fa-windows"
+                        }
+                    ]
+                },
+                login: { username: "max.mustermann@mail.com" }
             }}
         />
     )
