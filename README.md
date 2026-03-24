@@ -45,6 +45,7 @@ Tailcloakify provides several ways of customizing your theme without the need to
 | TAILCLOAKIFY_HIDE_LOGIN_FORM                              | Use it to hide the default login form for using IDPs only                                          |
 | TAILCLOAKIFY_BACKGROUND_LOGO_URL                          | Use it to add an image of your logo                                                                |
 | TAILCLOAKIFY_HEADER_LOGO_URL                              | Use it to add an image of your logo to the header                                                  |
+| TAILCLOAKIFY_BACKGROUND_IMAGE_URL                         | Use it to set a custom background image                                                            |
 | TAILCLOAKIFY_BACKGROUND_VIDEO_URL                         | Use it to add a MP4 format background video on your register and login pages                       |
 | TAILCLOAKIFY_FAVICON_URL                                  | Use it to add a url to your Favicon                                                                |
 | TAILCLOAKIFY_FOOTER_IMPRINT_URL                           | Use it to add an Impressum                                                                         |
@@ -147,7 +148,7 @@ You can customize this behavior, see documentation [here](https://docs.keycloaki
 ## GitHub Actions
 
 Tailcloakify comes with a generic GitHub Actions workflow that builds the theme and publishes
-the jars [as GitHub releases artifacts](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.2.0).
+the jars [as GitHub releases artifacts](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.2.2).
 To release a new version **just update the `package.json` version and push**.
 
 To enable the workflow go to your fork of this repository on GitHub then navigate to:
