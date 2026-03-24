@@ -47,11 +47,15 @@ type OrganizationInvite = {
 
 /*
 * Phase Two
-* */
+ * */
+type MagicLinkVars = {
+  magicLink: string;
+};
+
 type MagicLinkEmail = {
     emailId: "magic-link-email.ftl";
     vars: Path<
-        BaseVars & LinkVars
+        BaseVars & LinkVars & MagicLinkVars
     >;
 };
 
