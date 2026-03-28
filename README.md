@@ -104,6 +104,8 @@ Here do you find a Quick Start, how to setup your development environment:
   yarn install  # Or use an other package manager, just be sure to delete the yarn.lock if you use another package manager.
 ```
 
+[Documentation](https://docs.keycloakify.dev/css-customization)
+
 ## Testing the Theme Locally
 
 ```bash
