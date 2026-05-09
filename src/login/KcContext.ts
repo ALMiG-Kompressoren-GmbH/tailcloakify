@@ -69,6 +69,15 @@ export type KcContextExtensionPerPage = {
     "login-oauth-grant.ftl": {
         mcpServers?: Record<string, McpServerInfo>;
     };
+    // 👉 CoreSpeed => Account Chooser Extension
+    "account-chooser.ftl": {
+        chosenUser: {
+            username: string;
+            firstName?: string;
+            lastName?: string;
+            email?: string;
+        };
+    };
 };
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>;
