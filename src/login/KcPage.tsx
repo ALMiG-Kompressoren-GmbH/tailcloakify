@@ -61,6 +61,9 @@ const ViewEmailContinuation = lazy(
     () => import("./pages/p2-inc/keycloak-magic-link/ViewEmailContinuation")
 );
 const Invitations = lazy(() => import("./pages/p2-inc/keycloak-orgs/Invitations"));
+const AccountChooser = lazy(
+    () => import("./pages/corespeed-io/keycloak-account-chooser/AccountChooser")
+);
 const PaymentRequired = lazy(() => import("./pages/PaymentRequired"));
 const Info = lazy(() => import("./pages/Info"));
 
@@ -349,6 +352,16 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "invitations.ftl":
                         return (
                             <Invitations
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+
+                    // 👉 CoreSpeed => Account Chooser Extension
+                    case "account-chooser.ftl":
+                        return (
+                            <AccountChooser
                                 {...{ kcContext, i18n, classes }}
                                 Template={Template}
                                 doUseDefaultCss={true}
