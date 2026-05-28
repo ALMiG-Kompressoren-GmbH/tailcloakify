@@ -22,6 +22,9 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
 
     const [otpValues, setOtpValues] = useState<string[]>(Array(otpLength).fill(""));
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+    const [selectedCredentialId, setSelectedCredentialId] = useState<string>(
+        otpLogin.selectedCredentialId ?? otpLogin.userOtpCredentials[0]?.id ?? ""
+    );
 
     useEffect(() => {
         if (otpValues.every(Boolean) && !isSubmitting) {
@@ -130,7 +133,46 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
                 action={url.loginAction}
                 method="post"
             >
-                {otpLogin.userOtpCredentials.length > 1 && <div className={kcClsx("kcFormGroupClass")}></div>}
+                {otpLogin.userOtpCredentials.length > 1 && (
+                    <div className={kcClsx("kcFormGroupClass")}>
+                        <div className={clsx(kcClsx("kcLabelWrapperClass"), "text-center font-bold text-lg p-4")}>
+                            <label className={kcClsx("kcLabelClass")}>
+                                {msg("loginChooseAuthenticator")}
+                            </label>
+                        </div>
+                        <div className="flex flex-col gap-2 px-4 pb-2">
+                            {otpLogin.userOtpCredentials.map(credential => (
+                                <label
+                                    key={credential.id}
+                                    className={clsx(
+                                        "flex items-center gap-3 cursor-pointer rounded-lg border px-4 py-3 transition-colors",
+                                        selectedCredentialId === credential.id
+                                            ? "border-primary-500 bg-primary-50 text-primary-700"
+                                            : "border-secondary-200 bg-white text-secondary-700 hover:border-primary-300 hover:bg-primary-50/50"
+                                    )}
+                                >
+                                    <input
+                                        type="radio"
+                                        name="selectedCredentialId"
+                                        value={credential.id}
+                                        checked={selectedCredentialId === credential.id}
+                                        onChange={() => setSelectedCredentialId(credential.id)}
+                                        className="accent-primary-600 h-4 w-4 shrink-0"
+                                    />
+                                    <span className="text-sm font-medium">{credential.userLabel}</span>
+                                </label>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {otpLogin.userOtpCredentials.length <= 1 && (
+                    <input
+                        type="hidden"
+                        name="selectedCredentialId"
+                        value={selectedCredentialId}
+                    />
+                )}
 
                 <div className={kcClsx("kcFormGroupClass")}>
                     <div className={clsx(kcClsx("kcLabelWrapperClass"), "text-center font-bold text-lg p-4")}>
