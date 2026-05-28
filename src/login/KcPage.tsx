@@ -43,12 +43,20 @@ const LoginIdpLinkConfirmOverride = lazy(
 const DeleteAccountConfirm = lazy(() => import("./pages/DeleteAccountConfirm"));
 const DeleteCredential = lazy(() => import("./pages/DeleteCredential"));
 const WebauthnError = lazy(() => import("./pages/WebauthnError"));
+const Code = lazy(() => import("./pages/Code"));
 const SelectAuthenticator = lazy(() => import("./pages/SelectAuthenticator"));
 const Error = lazy(() => import("./pages/Error"));
 const Terms = lazy(() => import("./pages/Terms"));
 const IdpReviewUserProfile = lazy(() => import("./pages/IdpReviewUserProfile"));
 const FrontchannelLogout = lazy(() => import("./pages/FrontchannelLogout"));
+const LinkIdpAction = lazy(() => import("./pages/LinkIdpAction"));
+const LoginPasskeysConditionalAuthenticate = lazy(
+    () => import("./pages/LoginPasskeysConditionalAuthenticate")
+);
+const LoginResetOtp = lazy(() => import("./pages/LoginResetOtp"));
 const SelectOrganization = lazy(() => import("./pages/SelectOrganization"));
+const SamlPostForm = lazy(() => import("./pages/SamlPostForm"));
+const UpdateEmail = lazy(() => import("./pages/UpdateEmail"));
 const OtpForm = lazy(() => import("./pages/p2-inc/keycloak-magic-link/OtpForm"));
 const EmailConfirmation = lazy(
     () => import("./pages/p2-inc/keycloak-magic-link/EmailConfirmation")
@@ -154,6 +162,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                 doUseDefaultCss={true}
                             />
                         );
+                    case "link-idp-action.ftl":
+                        return (
+                            <LinkIdpAction
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
                     case "login-idp-link-email.ftl":
                         return (
                             <LoginIdpLinkEmail
@@ -181,6 +197,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "login-recovery-authn-code-input.ftl":
                         return (
                             <LoginRecoveryAuthnCodeInput
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "login-reset-otp.ftl":
+                        return (
+                            <LoginResetOtp
                                 {...{ kcContext, i18n, classes }}
                                 Template={Template}
                                 doUseDefaultCss={true}
@@ -229,6 +253,32 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "delete-credential.ftl":
                         return (
                             <DeleteCredential
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "code.ftl":
+                        return (
+                            <Code
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "update-email.ftl":
+                        return (
+                            <UpdateEmail
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                                UserProfileFormFields={UserProfileFormFields}
+                                doMakeUserConfirmPassword={doMakeUserConfirmPassword}
+                            />
+                        );
+                    case "saml-post-form.ftl":
+                        return (
+                            <SamlPostForm
                                 {...{ kcContext, i18n, classes }}
                                 Template={Template}
                                 doUseDefaultCss={true}
@@ -288,6 +338,14 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "select-authenticator.ftl":
                         return (
                             <SelectAuthenticator
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "login-passkeys-conditional-authenticate.ftl":
+                        return (
+                            <LoginPasskeysConditionalAuthenticate
                                 {...{ kcContext, i18n, classes }}
                                 Template={Template}
                                 doUseDefaultCss={true}
