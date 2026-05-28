@@ -34,10 +34,14 @@ export default function LoginPasskeysConditionalAuthenticate(
             infoNode={
                 realm.registrationAllowed &&
                 !registrationDisabled && (
-                    <div id="kc-registration">
+                    <div id="kc-registration" className="text-center">
                         <span>
                             {msg("noAccount")}{" "}
-                            <a tabIndex={6} href={url.registrationUrl}>
+                            <a
+                                tabIndex={6}
+                                href={url.registrationUrl}
+                                className="inline-flex text-sm text-primary-600 no-underline hover:text-primary-500 hover:no-underline"
+                            >
                                 {msg("doRegister")}
                             </a>
                         </span>
@@ -54,7 +58,7 @@ export default function LoginPasskeysConditionalAuthenticate(
                 <input type="hidden" id="error" name="error" />
             </form>
 
-            <div className={kcClsx("kcFormGroupClass")} no-bottom-margin="true" style={{ marginBottom: 0 }}>
+            <div className={clsx(kcClsx("kcFormGroupClass"), "space-y-4")} no-bottom-margin="true" style={{ marginBottom: 0 }}>
                 {authenticators !== undefined && Object.keys(authenticators).length !== 0 && (
                     <>
                         <form id="authn_select" className={kcClsx("kcFormClass")}>
@@ -65,11 +69,20 @@ export default function LoginPasskeysConditionalAuthenticate(
                         {shouldDisplayAuthenticators && (
                             <>
                                 {authenticators.authenticators.length > 1 && (
-                                    <p className={kcClsx("kcSelectAuthListItemTitle")}>{msg("passkey-available-authenticators")}</p>
+                                    <p className={clsx(kcClsx("kcSelectAuthListItemTitle"), "text-sm font-semibold text-secondary-700")}>
+                                        {msg("passkey-available-authenticators")}
+                                    </p>
                                 )}
-                                <div className={kcClsx("kcFormClass")}>
+                                <div className={clsx(kcClsx("kcFormClass"), "space-y-3")}>
                                     {authenticators.authenticators.map((authenticator, i) => (
-                                        <div key={i} id={`kc-webauthn-authenticator-item-${i}`} className={kcClsx("kcSelectAuthListItemClass")}>
+                                        <div
+                                            key={i}
+                                            id={`kc-webauthn-authenticator-item-${i}`}
+                                            className={clsx(
+                                                kcClsx("kcSelectAuthListItemClass"),
+                                                "rounded-lg border border-secondary-200 bg-white px-4 py-3"
+                                            )}
+                                        >
                                             <i
                                                 className={clsx(
                                                     (() => {
@@ -106,7 +119,9 @@ export default function LoginPasskeysConditionalAuthenticate(
                                                     )}
                                                 <div className={kcClsx("kcSelectAuthListItemDescriptionClass")}>
                                                     <span id={`kc-webauthn-authenticator-createdlabel-${i}`}>{msg("passkey-createdAt-label")}</span>
-                                                    <span id={`kc-webauthn-authenticator-created-${i}`}>{authenticator.createdAt}</span>
+                                                    <span id={`kc-webauthn-authenticator-created-${i}`} className="ml-1">
+                                                        {authenticator.createdAt}
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div className={kcClsx("kcSelectAuthListItemFillClass")} />
@@ -125,6 +140,7 @@ export default function LoginPasskeysConditionalAuthenticate(
                                 action={url.loginAction}
                                 method="post"
                                 style={{ display: "none" }}
+                                className="relative"
                                 onSubmit={event => {
                                     try {
                                         // @ts-expect-error
@@ -135,26 +151,21 @@ export default function LoginPasskeysConditionalAuthenticate(
                                 }}
                             >
                                 {!usernameHidden && (
-                                    <div className={kcClsx("kcFormGroupClass")}>
-                                        <label htmlFor="username" className={kcClsx("kcLabelClass")}>
+                                    <div className="absolute h-px w-px overflow-hidden opacity-0 pointer-events-none">
+                                        <label htmlFor="username" className="sr-only">
                                             {msg("passkey-autofill-select")}
                                         </label>
                                         <input
                                             tabIndex={1}
                                             id="username"
                                             aria-invalid={messagesPerField.existsError("username")}
-                                            className={kcClsx("kcInputClass")}
+                                            className="h-px w-px border-0 p-0"
                                             name="username"
                                             defaultValue={login.username ?? ""}
                                             autoComplete="username webauthn"
                                             type="text"
                                             autoFocus
                                         />
-                                        {messagesPerField.existsError("username") && (
-                                            <span id="input-error-username" className={kcClsx("kcInputErrorMessageClass")} aria-live="polite">
-                                                {messagesPerField.get("username")}
-                                            </span>
-                                        )}
                                     </div>
                                 )}
                             </form>
@@ -165,7 +176,10 @@ export default function LoginPasskeysConditionalAuthenticate(
                                 type="button"
                                 autoFocus
                                 value={msgStr("passkey-doAuthenticate")}
-                                className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
+                                className={clsx(
+                                    kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass"),
+                                    "rounded-md bg-primary-600 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2 hover:bg-primary-700"
+                                )}
                             />
                         </div>
                     </div>

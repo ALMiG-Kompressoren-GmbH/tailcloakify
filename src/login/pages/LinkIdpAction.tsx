@@ -1,5 +1,6 @@
 import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
+import { clsx } from "keycloakify/tools/clsx";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 
@@ -24,21 +25,27 @@ export default function LinkIdpAction(props: PageProps<Extract<KcContext, { page
             headerNode={msg("linkIdpActionTitle", idpDisplayName)}
             displayMessage={false}
         >
-            <div id="kc-link-text" className={kcClsx("kcContentWrapperClass")}>
+            <div id="kc-link-text" className={clsx(kcClsx("kcContentWrapperClass"), "mb-6 text-sm text-secondary-600 text-center")}>
                 {msg("linkIdpActionMessage", idpDisplayName)}
             </div>
             <form className={kcClsx("kcFormClass")} action={url.loginAction} method="post">
                 <div className={kcClsx("kcFormGroupClass")}>
-                    <div id="kc-form-buttons" className={kcClsx("kcFormButtonsClass")}>
+                    <div id="kc-form-buttons" className="flex flex-col gap-3 px-4 sm:px-0">
                         <input
-                            className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonLargeClass")}
+                            className={clsx(
+                                kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonLargeClass"),
+                                "rounded-md bg-primary-600 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2 hover:bg-primary-700"
+                            )}
                             name="continue"
                             id="kc-continue"
                             type="submit"
                             value={msgStr("doContinue")}
                         />
                         <input
-                            className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonLargeClass")}
+                            className={clsx(
+                                kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonLargeClass"),
+                                "rounded-md bg-secondary-100 px-4 py-2 text-sm text-secondary-700 focus:outline-none focus:ring-2 focus:ring-secondary-600 focus:ring-offset-2 hover:bg-secondary-200 hover:text-secondary-900"
+                            )}
                             name="cancel-aia"
                             id="kc-cancel"
                             type="submit"
@@ -47,7 +54,6 @@ export default function LinkIdpAction(props: PageProps<Extract<KcContext, { page
                     </div>
                 </div>
             </form>
-            <div className="clearfix" />
         </Template>
     );
 }

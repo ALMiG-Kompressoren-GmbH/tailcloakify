@@ -1,4 +1,5 @@
-import { useState } from "react";
+import type { JSX } from "keycloakify/tools/JSX";
+import { useLayoutEffect, useState } from "react";
 import type { LazyOrNot } from "keycloakify/tools/LazyOrNot";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
@@ -38,6 +39,16 @@ export default function Register(props: RegisterProps) {
 
     const [isFormSubmittable, setIsFormSubmittable] = useState(false);
     const [areTermsAccepted, setAreTermsAccepted] = useState(false);
+
+    useLayoutEffect(() => {
+        (window as Window & { onSubmitRecaptcha?: () => void }).onSubmitRecaptcha = () => {
+            (document.getElementById("kc-register-form") as HTMLFormElement | null)?.requestSubmit();
+        };
+
+        return () => {
+            delete (window as Window & { onSubmitRecaptcha?: () => void }).onSubmitRecaptcha;
+        };
+    }, []);
 
     const providerLogos = useProviderLogos();
 
@@ -146,9 +157,7 @@ export default function Register(props: RegisterProps) {
                                     "rounded-md bg-primary-600 text-white focus:ring-primary-600 hover:bg-primary-700 px-4 py-2 text-sm flex justify-center relative w-full focus:outline-none focus:ring-2 focus:ring-offset-2"
                                 )}
                                 data-sitekey={recaptchaSiteKey}
-                                data-callback={() => {
-                                    (document.getElementById("kc-register-form") as HTMLFormElement).submit();
-                                }}
+                                data-callback="onSubmitRecaptcha"
                                 data-action={recaptchaAction}
                                 type="submit"
                             >

@@ -13,5 +13,25 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: () => <KcPageStory />
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                profile: {
+                    attributesByName: {
+                        email: {
+                            validators: {
+                                length: {
+                                    max: "255",
+                                    "ignore.empty.value": true
+                                },
+                                email: {
+                                    "ignore.empty.value": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }}
+        />
+    )
 };
