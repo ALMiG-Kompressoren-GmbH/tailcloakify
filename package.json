@@ -12,7 +12,9 @@
         "build": "tsc && vite build",
         "build-keycloak-theme": "npm run build && keycloakify build",
         "storybook": "storybook dev -p 6006",
-        "format": "prettier . --write"
+        "format": "prettier . --write",
+        "clean-upstream-tags": "git tag -l \"v*\" | node -e \"const rl=require('readline').createInterface({input:process.stdin});const lines=[];rl.on('line',l=>lines.push(l));rl.on('close',()=>{const tags=lines.filter(t=>{const m=t.match(/^v(\\d+)\\.(\\d+)\\.(\\d+)/);return m&&+m[1]>=2});if(tags.length){console.log('Deleting local tags:',tags.join(', '));require('child_process').execSync('git tag -d '+tags.join(' '),{stdio:'inherit'});console.log('Deleting remote tags from origin...');require('child_process').execSync('git push origin '+tags.map(t=>':refs/tags/'+t).join(' '),{stdio:'inherit'})}else{console.log('No upstream tags to delete')}})\"",
+        "pull-upstream": "git pull --no-tags upstream main && yarn clean-upstream-tags"
     },
     "license": "MIT",
     "keywords": [],
