@@ -8,6 +8,13 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
         kcContext.properties[
         "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA"
         ] === "TRUE";
+    const localizedFooterDataprotectionUrl = i18n.advancedMsgStr("footerDataprotectionUrl");
+    const footerDataprotectionUrl =
+        localizedFooterDataprotectionUrl !== "footerDataprotectionUrl"
+            ? localizedFooterDataprotectionUrl
+            : kcContext.properties["TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL"] || null;
+    const privacyPolicyLink = (label: string) =>
+        footerDataprotectionUrl ? `<a href="${footerDataprotectionUrl}" class="cc-link">${label}</a>` : label;
 
     window.CookieConsent = CookieConsent;
     CookieConsent.run({
@@ -69,7 +76,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                 de: {
                     consentModal: {
                         title: "DIESE WEBSEITE VERWENDET COOKIES",
-                        description: `Diese Website verwendet unbedingt erforderliche Cookies, um ihre ordnungsgemäße Funktion sicherzustellen. Weitere Informationen finden Sie in unserer <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Datenschutzerklärung</a>.`,
+                        description: `Diese Website verwendet unbedingt erforderliche Cookies, um ihre ordnungsgemäße Funktion sicherzustellen. Weitere Informationen finden Sie in unserer ${privacyPolicyLink("Datenschutzerklärung")}.`,
                         acceptAllBtn: "Alle Akzeptieren",
                         showPreferencesBtn: "Einstellungen anpassen"
                     },
@@ -81,7 +88,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                         sections: [
                             {
                                 title: "Wozu verwenden wir Cookies?",
-                                description: `Diese Website verwendet unbedingt erforderliche Cookies, um ihre ordnungsgemäße Funktion sicherzustellen. Weitere Informationen finden Sie in unserer <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Datenschutzerklärung</a>.`
+                                description: `Diese Website verwendet unbedingt erforderliche Cookies, um ihre ordnungsgemäße Funktion sicherzustellen. Weitere Informationen finden Sie in unserer ${privacyPolicyLink("Datenschutzerklärung")}.`
                             },
                             {
                                 title: "Notwendige Cookies",
@@ -105,7 +112,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                 en: {
                     consentModal: {
                         title: "We use some cookies",
-                        description: `This website uses essential cookies to ensure its proper functioning and audience tracking cookies. These cookies comply with the GDPR legislation. More information is available in our <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Privacy Policy</a>.`,
+                        description: `This website uses essential cookies to ensure its proper functioning and audience tracking cookies. These cookies comply with the GDPR legislation. More information is available in our ${privacyPolicyLink("Privacy Policy")}.`,
                         acceptAllBtn: "Accept All",
                         showPreferencesBtn: "Settings"
                     },
@@ -117,7 +124,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                         sections: [
                             {
                                 title: "What are Cookies used for?",
-                                description: `This website uses essential cookies to ensure its proper functioning and audience tracking cookies. These cookies comply with the GDPR legislation. More information is available in our <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Privacy Policy</a>.`
+                                description: `This website uses essential cookies to ensure its proper functioning and audience tracking cookies. These cookies comply with the GDPR legislation. More information is available in our ${privacyPolicyLink("Privacy Policy")}.`
                             },
                             {
                                 title: "Functional Cookies",
@@ -141,7 +148,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                 fr: {
                     consentModal: {
                         title: "Informations sur les cookies",
-                        description: `Ce site web utilise des cookies essentiels pour assurer son bon fonctionnement et des cookies de suivi dâ€™audience. Ces cookies sont conformes Ã  la lÃ©gislation GDPR. Plus dinformations dans notre <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Politique de ConfidentialitÃ©</a>.`,
+                        description: `Ce site web utilise des cookies essentiels pour assurer son bon fonctionnement et des cookies de suivi dâ€™audience. Ces cookies sont conformes Ã  la lÃ©gislation GDPR. Plus dinformations dans notre ${privacyPolicyLink("Politique de ConfidentialitÃ©")}.`,
                         acceptAllBtn: "Acceptez tout",
                         showPreferencesBtn: "Ajuster les paramÃ¨tres"
                     },
@@ -153,7 +160,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                         sections: [
                             {
                                 title: "Pourquoi utilisons-nous les cookies?",
-                                description: `Ce site web utilise des cookies essentiels pour assurer son bon fonctionnement et des cookies de suivi dâ€™audience. Ces cookies sont conformes Ã  la lÃ©gislation GDPR. Plus dinformations dans notre <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Politique de ConfidentialitÃ©</a>`
+                                description: `Ce site web utilise des cookies essentiels pour assurer son bon fonctionnement et des cookies de suivi dâ€™audience. Ces cookies sont conformes Ã  la lÃ©gislation GDPR. Plus dinformations dans notre ${privacyPolicyLink("Politique de ConfidentialitÃ©")}`
                             },
                             {
                                 title: "Cookies Fonctionnels",
@@ -177,7 +184,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                 it: {
                     consentModal: {
                         title: "Utilizziamo alcuni cookie",
-                        description: `Questo sito Web utilizza cookie essenziali per garantire il corretto funzionamento e cookie di tracciamento del pubblico. Questi cookie sono conformi alla normativa GDPR. Ulteriori informazioni sono disponibili nella nostra <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Informativa sulla privacy</a>.`,
+                        description: `Questo sito Web utilizza cookie essenziali per garantire il corretto funzionamento e cookie di tracciamento del pubblico. Questi cookie sono conformi alla normativa GDPR. Ulteriori informazioni sono disponibili nella nostra ${privacyPolicyLink("Informativa sulla privacy")}.`,
                         acceptAllBtn: "Accettare Tutti",
                         showPreferencesBtn: "Maggiori informazioni"
                     },
@@ -189,7 +196,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                         sections: [
                             {
                                 title: "Per cosa utilizziamo i cookie?",
-                                description: `Questo sito Web utilizza cookie essenziali per garantire il corretto funzionamento e cookie di tracciamento del pubblico. Questi cookie sono conformi alla normativa GDPR. Ulteriori informazioni sono disponibili nella nostra <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Informativa sulla privacy</a>.`
+                                description: `Questo sito Web utilizza cookie essenziali per garantire il corretto funzionamento e cookie di tracciamento del pubblico. Questi cookie sono conformi alla normativa GDPR. Ulteriori informazioni sono disponibili nella nostra ${privacyPolicyLink("Informativa sulla privacy")}.`
                             },
                             {
                                 title: "Cookie funzionali",
@@ -213,7 +220,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                 es: {
                     consentModal: {
                         title: "ESTE SITIO WEB UTILIZA COOKIES",
-                        description: `Este sitio web utiliza cookies estrictamente necesarias para garantizar su correcto funcionamiento. Para más información, consulte nuestra <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Política de Privacidad</a>.`,
+                        description: `Este sitio web utiliza cookies estrictamente necesarias para garantizar su correcto funcionamiento. Para más información, consulte nuestra ${privacyPolicyLink("Política de Privacidad")}.`,
                         acceptAllBtn: "Aceptar Todo",
                         showPreferencesBtn: "Ajustar Preferencias"
                     },
@@ -225,7 +232,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                         sections: [
                             {
                                 title: "¿Para qué usamos las cookies?",
-                                description: `Este sitio web utiliza cookies estrictamente necesarias para garantizar su correcto funcionamiento. Para más información, consulte nuestra <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Política de Privacidad</a>.`
+                                description: `Este sitio web utiliza cookies estrictamente necesarias para garantizar su correcto funcionamiento. Para más información, consulte nuestra ${privacyPolicyLink("Política de Privacidad")}.`
                             },
                             {
                                 title: "Cookies Necesarias",
@@ -249,7 +256,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                 cs: {
                     consentModal: {
                         title: "TATO WEBOVÁ STRÁNKA POUŽÍVÁ COOKIES",
-                        description: `Tato webová stránka používá nezbytně nutné cookies, aby zajistila svou správnou funkci. Více informací naleznete v naší <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Zásadách ochrany osobních údajů</a>.`,
+                        description: `Tato webová stránka používá nezbytně nutné cookies, aby zajistila svou správnou funkci. Více informací naleznete v naší ${privacyPolicyLink("Zásadách ochrany osobních údajů")}.`,
                         acceptAllBtn: "Přijmout Vše",
                         showPreferencesBtn: "Upravit Nastavení"
                     },
@@ -261,7 +268,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                         sections: [
                             {
                                 title: "K čemu používáme cookies?",
-                                description: `Tato webová stránka používá nezbytně nutné cookies, aby zajistila svou správnou funkci. Více informací naleznete v naší <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Zásadách ochrany osobních údajů</a>.`
+                                description: `Tato webová stránka používá nezbytně nutné cookies, aby zajistila svou správnou funkci. Více informací naleznete v naší ${privacyPolicyLink("Zásadách ochrany osobních údajů")}.`
                             },
                             {
                                 title: "Nezbytné Cookies",
@@ -285,7 +292,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                 nl: {
                     consentModal: {
                         title: "DEZE WEBSITE GEBRUIKT COOKIES",
-                        description: `Deze website gebruikt strikt noodzakelijke cookies om de goede werking te garanderen. Voor meer informatie, zie onze <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Privacyverklaring</a>.`,
+                        description: `Deze website gebruikt strikt noodzakelijke cookies om de goede werking te garanderen. Voor meer informatie, zie onze ${privacyPolicyLink("Privacyverklaring")}.`,
                         acceptAllBtn: "Alles Accepteren",
                         showPreferencesBtn: "Voorkeuren Aanpassen"
                     },
@@ -297,7 +304,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                         sections: [
                             {
                                 title: "Waarom gebruiken we cookies?",
-                                description: `Deze website gebruikt strikt noodzakelijke cookies om de goede werking te garanderen. Voor meer informatie, zie onze <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Privacyverklaring</a>.`
+                                description: `Deze website gebruikt strikt noodzakelijke cookies om de goede werking te garanderen. Voor meer informatie, zie onze ${privacyPolicyLink("Privacyverklaring")}.`
                             },
                             {
                                 title: "Noodzakelijke Cookies",
@@ -321,7 +328,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                 pl: {
                     consentModal: {
                         title: "TA STRONA INTERNETOWA UŻYWA CIASTECZEK",
-                        description: `Ta strona internetowa używa niezbędnych plików cookie, aby zapewnić prawidłowe działanie. Więcej informacji można znaleźć w naszej <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Polityce Prywatności</a>.`,
+                        description: `Ta strona internetowa używa niezbędnych plików cookie, aby zapewnić prawidłowe działanie. Więcej informacji można znaleźć w naszej ${privacyPolicyLink("Polityce Prywatności")}.`,
                         acceptAllBtn: "Zaakceptuj Wszystko",
                         showPreferencesBtn: "Dostosuj Ustawienia"
                     },
@@ -333,7 +340,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                         sections: [
                             {
                                 title: "Do czego używamy plików cookie?",
-                                description: `Ta strona internetowa używa niezbędnych plików cookie, aby zapewnić prawidłowe działanie. Więcej informacji można znaleźć w naszej <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Polityce Prywatności</a>.`
+                                description: `Ta strona internetowa używa niezbędnych plików cookie, aby zapewnić prawidłowe działanie. Więcej informacji można znaleźć w naszej ${privacyPolicyLink("Polityce Prywatności")}.`
                             },
                             {
                                 title: "Niezbędne Pliki Cookie",
@@ -357,7 +364,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                 ru: {
                     consentModal: {
                         title: "ЭТОТ САЙТ ИСПОЛЬЗУЕТ COOKIES",
-                        description: `Этот сайт использует строго необходимые файлы cookie для обеспечения своей корректной работы. Подробнее см. в нашей <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Политике Конфиденциальности</a>.`,
+                        description: `Этот сайт использует строго необходимые файлы cookie для обеспечения своей корректной работы. Подробнее см. в нашей ${privacyPolicyLink("Политике Конфиденциальности")}.`,
                         acceptAllBtn: "Принять Все",
                         showPreferencesBtn: "Настроить Параметры"
                     },
@@ -369,7 +376,7 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
                         sections: [
                             {
                                 title: "Для чего мы используем cookies?",
-                                description: `Этот сайт использует строго необходимые файлы cookie для обеспечения своей корректной работы. Подробнее см. в нашей <a href="${i18n.advancedMsgStr("footerDataprotectionUrl")}" class="cc-link">Политике Конфиденциальности</a>.`
+                                description: `Этот сайт использует строго необходимые файлы cookie для обеспечения своей корректной работы. Подробнее см. в нашей ${privacyPolicyLink("Политике Конфиденциальности")}.`
                             },
                             {
                                 title: "Необходимые Cookies",

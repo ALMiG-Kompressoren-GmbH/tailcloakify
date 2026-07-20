@@ -396,8 +396,13 @@ export const WithCookieConsent: Story = {
         <KcPageStory
             {...args}
             kcContext={{
+                "x-keycloakify": {
+                    messages: {
+                        footerDataprotectionUrl: "https://google.de"
+                    }
+                },
                 properties: {
-                    TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT: "true"
+                    TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT: "true",
                 }
             }}
         />
