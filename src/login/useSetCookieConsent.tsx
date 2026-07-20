@@ -8,9 +8,10 @@ const useSetCookieConsent = (kcContext: KcContext, i18n: I18n) => {
         kcContext.properties[
         "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA"
         ] === "TRUE";
+    const localizedFooterDataprotectionUrl = i18n.advancedMsgStr("footerDataprotectionUrl");
     const footerDataprotectionUrl =
-        i18n.advancedMsgStr("footerDataprotectionUrl") !== "footerDataprotectionUrl"
-            ? i18n.advancedMsgStr("footerDataprotectionUrl")
+        localizedFooterDataprotectionUrl !== "footerDataprotectionUrl"
+            ? localizedFooterDataprotectionUrl
             : kcContext.properties["TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL"] || null;
     const privacyPolicyLink = (label: string) =>
         footerDataprotectionUrl ? `<a href="${footerDataprotectionUrl}" class="cc-link">${label}</a>` : label;
