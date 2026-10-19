@@ -179,7 +179,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     </label>
                                     <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password">
                                         <input
-                                            placeholder="Password"
+                                            placeholder={msgStr("password")}
                                             tabIndex={3}
                                             id="password"
                                             className={clsx(

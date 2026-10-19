@@ -25,6 +25,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsTitle: "Invitations",
             p2incOrgsText: "You have been invited to join the following organizations. Uncheck those you wish to decline.",
             loginOtpOneTimeLabel: "Please Input your One-time code",
+            loginTotpStep3DeviceName: "Provide a Device Name to help you manage your OTP devices.",
+            "webauthn-registration-title": "Passkey Registration"
         },
         de: {
             footerImprintTitle: "Impressum",
@@ -40,7 +42,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incMagicLinkOtpFormTitle: "Email OTP",
             p2incOrgsTitle: "Einladungen",
             p2incOrgsText: "Sie wurden eingeladen, den folgenden Organisationen beizutreten. Deaktivieren Sie diejenigen, die Sie ablehnen möchten.",
-            loginOtpOneTimeLabel: "Bitte geben Sie Ihren Einmalcode"
+            loginOtpOneTimeLabel: "Bitte geben Sie Ihren Einmalcode",
+            loginTotpStep3DeviceName: "Geben Sie einen Gerätenamen an, um die Verwaltung Ihrer OTP-Geräte zu erleichtern.",
+            "webauthn-registration-title": "Passkey registrieren"
         },
         fr: {
             footerImprintTitle: "Mentions Légales",
@@ -56,7 +60,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incMagicLinkOtpFormTitle: "Email OTP",
             p2incOrgsTitle: "Invitations",
             p2incOrgsText: "Vous avez été invité à rejoindre les organisations suivantes. Décochez celles que vous souhaitez refuser.",
-            loginOtpOneTimeLabel: "Veuillez saisir votre Code à usage unique"
+            loginOtpOneTimeLabel: "Veuillez saisir votre Code à usage unique",
+            loginTotpStep3DeviceName: "Renseignez un nom d'appareil pour vous aider à gérer vos a appareils OTP.",
+            "webauthn-registration-title": "Enregistrement d'une Clé de Sécurité"
         },
         it: {
             footerImprintTitle: "Impronta",
@@ -72,7 +78,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incMagicLinkOtpFormTitle: "Email OTP",
             p2incOrgsTitle: "Inviti",
             p2incOrgsText: "Sei stato invitato a unirti alle seguenti organizzazioni. Deseleziona quelle che desideri rifiutare.",
-            loginOtpOneTimeLabel: "Si prega di inserire il tuo one-time password"
+            loginOtpOneTimeLabel: "Si prega di inserire il tuo one-time password",
+            loginTotpStep3DeviceName: "Fornisci il nome del dispositivo per aiutarti a gestire i dispositivi di autenticazione.",
+            "webauthn-registration-title": "Registrazione chiave di sicurezza"
         },
         es: {
             footerImprintTitle: "Aviso Legal",
@@ -88,7 +96,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incMagicLinkOtpFormTitle: "Email OTP",
             p2incOrgsTitle: "Invitaciones",
             p2incOrgsText: "Has sido invitado a unirte a las siguientes organizaciones. Desmarca aquellas que deseas rechazar.",
-            loginOtpOneTimeLabel: "Por favor ingrese su Código de un solo uso"
+            loginOtpOneTimeLabel: "Por favor ingrese su Código de un solo uso",
+            loginTotpStep3DeviceName: "Introduce un nombre de dispositivo para que te ayude a gestionar tus dispositivos OTP.",
+            "webauthn-registration-title": "Registro de clave de seguridad"
         },
         cs: {
             footerImprintTitle: "Tiráž",
@@ -104,7 +114,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incMagicLinkOtpFormTitle: "Email OTP",
             p2incOrgsTitle: "Pozvánky",
             p2incOrgsText: "Byli jste pozváni k připojení k následujícím organizacím. Zrušte výběr těch, které chcete odmítnout.",
-            loginOtpOneTimeLabel: "Zadejte prosím svůj jednorázový kód"
+            loginOtpOneTimeLabel: "Zadejte prosím svůj jednorázový kód",
+            loginTotpStep3DeviceName: "Zadejte název zařízení pro jednodušší správu jednorázových kódů (OTP) zařízení.",
+            "webauthn-registration-title": "Registrace přístupového klíče"
         },
         nl: {
             footerImprintTitle: "Colofon",
@@ -120,7 +132,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incMagicLinkOtpFormTitle: "Email OTP",
             p2incOrgsTitle: "Uitnodigingen",
             p2incOrgsText: "U bent uitgenodigd om lid te worden van de volgende organisaties. Vink degenen die u wilt weigeren uit.",
-            loginOtpOneTimeLabel: "Voer uw eenmalige code in"
+            loginOtpOneTimeLabel: "Voer uw eenmalige code in",
+            loginTotpStep3DeviceName: "Geef een apparaatnaam op om uw OTP-apparaten te beheren.",
+            "webauthn-registration-title": "Passkey-registratie"
         },
         pl: {
             footerImprintTitle: "Nota Prawna",
@@ -136,7 +150,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incMagicLinkOtpFormTitle: "Email OTP",
             p2incOrgsTitle: "Zaproszenia",
             p2incOrgsText: "Otrzymałeś zaproszenie do dołączenia do następujących organizacji. Odznacz te, które chcesz odrzucić.",
-            loginOtpOneTimeLabel: "Proszę wpisać kod jednorazowy"
+            loginOtpOneTimeLabel: "Proszę wpisać kod jednorazowy",
+            loginTotpStep3DeviceName: "Podaj nazwę urządzenia, aby łatwiej zarządzać urządzeniami OTP.",
+            "webauthn-registration-title": "Rejestracja klucza dostępu"
         },
         ru: {
             footerImprintTitle: "Выходные Данные",
@@ -152,7 +168,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incMagicLinkOtpFormTitle: "Email OTP",
             p2incOrgsTitle: "Приглашения",
             p2incOrgsText: "Вы были приглашены присоединиться к следующим организациям. Снимите отметку с тех, от которых вы хотите отказаться.",
-            loginOtpOneTimeLabel: "Пожалуйста, введите свой одноразовый код"
+            loginOtpOneTimeLabel: "Пожалуйста, введите свой одноразовый код",
+            loginTotpStep3DeviceName: "Укажите имя устройства, которое поможет вам найти его в списке ваших устройств.",
+            "webauthn-registration-title": "Регистрация ключа доступа"
         },
         sv: {
             footerImprintTitle: "Impressum",
@@ -168,7 +186,9 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incMagicLinkOtpFormTitle: "E-post OTP",
             p2incOrgsTitle: "Inbjudningar",
             p2incOrgsText: "Du har blivit inbjuden att gå med i följande organisationer. Avmarkera de du vill avböja.",
-            loginOtpOneTimeLabel: "Vänligen ange din engångskod"
+            loginOtpOneTimeLabel: "Vänligen ange din engångskod",
+            loginTotpStep3DeviceName: "Ange ett enhetsnamn för att underlätta hanteringen av dina OTP-enheter.",
+            "webauthn-registration-title": "Passkey-registrering"
         }
     })
     .build();

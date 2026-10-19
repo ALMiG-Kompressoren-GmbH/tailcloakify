@@ -38,7 +38,7 @@ export default function LoginConfigTotp(
         >
             <>
                 <div className="bg-orange-100 text-orange-600 p-4 rounded-lg text-sm mb-4" role="alert">
-                    You need to set up Mobile Authenticator to activate your account.
+                    {msg("configureTotpMessage")}
                 </div>
                 <ol id="kc-totp-settings" className={"list-decimal pl-4 space-y-2 text-sm"}>
                     <li className={"space-y-2"}>
