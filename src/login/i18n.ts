@@ -61,7 +61,7 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsTitle: "Invitations",
             p2incOrgsText: "Vous avez été invité à rejoindre les organisations suivantes. Décochez celles que vous souhaitez refuser.",
             loginOtpOneTimeLabel: "Veuillez saisir votre Code à usage unique",
-            loginTotpStep3DeviceName: "Renseignez un nom d'appareil pour vous aider à gérer vos a appareils OTP.",
+            loginTotpStep3DeviceName: "Renseignez un nom d'appareil pour vous aider à gérer vos appareils OTP.",
             "webauthn-registration-title": "Enregistrement d'une Clé de Sécurité"
         },
         it: {
