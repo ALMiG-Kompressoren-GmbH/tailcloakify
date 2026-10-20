@@ -4156,10 +4156,10 @@ keycloakify-emails@^3.3.0:
     esbuild "^0.24.0"
     properties-parser "^0.6.0"
 
-keycloakify@^11.15.13:
-  version "11.15.13"
-  resolved "https://registry.yarnpkg.com/keycloakify/-/keycloakify-11.15.13.tgz#789d816df58b7d243c5df4a8a018bc85d58354ec"
-  integrity sha512-66SZ5wHBexTfV0S2eJDlHqyLdRWcDvppkIKgmFJ3+U+nyq93wEVzOuABy8RMgweTyo+WW6JKGDCMo/c6Gsl66g==
+keycloakify@^11.16.0:
+  version "11.16.0"
+  resolved "https://registry.yarnpkg.com/keycloakify/-/keycloakify-11.16.0.tgz#46091630f345d07e072434c2891ab92d94fd7da8"
+  integrity sha512-j+iueRmXm/GpdXmyet/YEhQTdsxlptW9JJa6fOF0r/VXwR3+dxsg2NKqh9zNlwXl3LXdJdCkWpS40elEGWiCqQ==
   dependencies:
     tsafe "^1.8.5"
 
