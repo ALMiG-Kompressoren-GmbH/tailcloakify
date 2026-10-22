@@ -26,7 +26,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsText: "You have been invited to join the following organizations. Uncheck those you wish to decline.",
             loginOtpOneTimeLabel: "Please Input your One-time code",
             loginTotpStep3DeviceName: "Provide a Device Name to help you manage your OTP devices.",
-            "webauthn-registration-title": "Passkey Registration"
+            "webauthn-registration-title": "Passkey Registration",
+            logoutOtherSessions: "Sign out from other devices",
+            updateEmailTitle: "Update email",
+            logoutConfirmTitle: "Logging out",
+            logoutConfirmHeader: "Do you want to log out?",
+            doLogout: "Logout"
         },
         de: {
             footerImprintTitle: "Impressum",
@@ -44,7 +49,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsText: "Sie wurden eingeladen, den folgenden Organisationen beizutreten. Deaktivieren Sie diejenigen, die Sie ablehnen möchten.",
             loginOtpOneTimeLabel: "Bitte geben Sie Ihren Einmalcode",
             loginTotpStep3DeviceName: "Geben Sie einen Gerätenamen an, um die Verwaltung Ihrer OTP-Geräte zu erleichtern.",
-            "webauthn-registration-title": "Passkey registrieren"
+            "webauthn-registration-title": "Passkey registrieren",
+            logoutOtherSessions: "Von anderen Geräten abmelden",
+            updateEmailTitle: "E-Mail aktualisieren",
+            logoutConfirmTitle: "Abmelden",
+            logoutConfirmHeader: "Wollen Sie sich abmelden?",
+            doLogout: "Abmelden"
         },
         fr: {
             footerImprintTitle: "Mentions Légales",
@@ -62,7 +72,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsText: "Vous avez été invité à rejoindre les organisations suivantes. Décochez celles que vous souhaitez refuser.",
             loginOtpOneTimeLabel: "Veuillez saisir votre Code à usage unique",
             loginTotpStep3DeviceName: "Renseignez un nom d'appareil pour vous aider à gérer vos appareils OTP.",
-            "webauthn-registration-title": "Enregistrement d'une Clé de Sécurité"
+            "webauthn-registration-title": "Enregistrement d'une Clé de Sécurité",
+            logoutOtherSessions: "Se déconnecter des autres appareils",
+            updateEmailTitle: "Mise à jour du courriel",
+            logoutConfirmTitle: "Déconnexion",
+            logoutConfirmHeader: "Êtes-vous sûr de vouloir vous déconnecter ?",
+            doLogout: "Déconnexion"
         },
         it: {
             footerImprintTitle: "Impronta",
@@ -80,7 +95,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsText: "Sei stato invitato a unirti alle seguenti organizzazioni. Deseleziona quelle che desideri rifiutare.",
             loginOtpOneTimeLabel: "Si prega di inserire il tuo one-time password",
             loginTotpStep3DeviceName: "Fornisci il nome del dispositivo per aiutarti a gestire i dispositivi di autenticazione.",
-            "webauthn-registration-title": "Registrazione chiave di sicurezza"
+            "webauthn-registration-title": "Registrazione chiave di sicurezza",
+            logoutOtherSessions: "Scollegati da tutti gli altri dispositivi",
+            updateEmailTitle: "Aggiorna email",
+            logoutConfirmTitle: "Disconnessione",
+            logoutConfirmHeader: "Vuoi disconnetterti?",
+            doLogout: "Disconnessione"
         },
         es: {
             footerImprintTitle: "Aviso Legal",
@@ -98,7 +118,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsText: "Has sido invitado a unirte a las siguientes organizaciones. Desmarca aquellas que deseas rechazar.",
             loginOtpOneTimeLabel: "Por favor ingrese su Código de un solo uso",
             loginTotpStep3DeviceName: "Introduce un nombre de dispositivo para que te ayude a gestionar tus dispositivos OTP.",
-            "webauthn-registration-title": "Registro de clave de seguridad"
+            "webauthn-registration-title": "Registro de clave de seguridad",
+            logoutOtherSessions: "Cerrar sesión en otros dispositivos",
+            updateEmailTitle: "Actualizar correo electrónico",
+            logoutConfirmTitle: "Cerrando sesión",
+            logoutConfirmHeader: "¿Quiere cerrar sesión?",
+            doLogout: "Cerrar sesión"
         },
         cs: {
             footerImprintTitle: "Tiráž",
@@ -116,7 +141,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsText: "Byli jste pozváni k připojení k následujícím organizacím. Zrušte výběr těch, které chcete odmítnout.",
             loginOtpOneTimeLabel: "Zadejte prosím svůj jednorázový kód",
             loginTotpStep3DeviceName: "Zadejte název zařízení pro jednodušší správu jednorázových kódů (OTP) zařízení.",
-            "webauthn-registration-title": "Registrace přístupového klíče"
+            "webauthn-registration-title": "Registrace přístupového klíče",
+            logoutOtherSessions: "Odhlásit se z ostatních zařízení",
+            updateEmailTitle: "Aktualizace e-mailu",
+            logoutConfirmTitle: "Odhlašování",
+            logoutConfirmHeader: "Chcete se odhlásit?",
+            doLogout: "Odhlásit"
         },
         nl: {
             footerImprintTitle: "Colofon",
@@ -134,7 +164,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsText: "U bent uitgenodigd om lid te worden van de volgende organisaties. Vink degenen die u wilt weigeren uit.",
             loginOtpOneTimeLabel: "Voer uw eenmalige code in",
             loginTotpStep3DeviceName: "Geef een apparaatnaam op om uw OTP-apparaten te beheren.",
-            "webauthn-registration-title": "Passkey-registratie"
+            "webauthn-registration-title": "Passkey-registratie",
+            logoutOtherSessions: "Uitloggen op andere apparaten",
+            updateEmailTitle: "E-mail bijwerken",
+            logoutConfirmTitle: "Uitloggen",
+            logoutConfirmHeader: "Wilt u uitloggen?",
+            doLogout: "Uitloggen"
         },
         pl: {
             footerImprintTitle: "Nota Prawna",
@@ -152,7 +187,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsText: "Otrzymałeś zaproszenie do dołączenia do następujących organizacji. Odznacz te, które chcesz odrzucić.",
             loginOtpOneTimeLabel: "Proszę wpisać kod jednorazowy",
             loginTotpStep3DeviceName: "Podaj nazwę urządzenia, aby łatwiej zarządzać urządzeniami OTP.",
-            "webauthn-registration-title": "Rejestracja klucza dostępu"
+            "webauthn-registration-title": "Rejestracja klucza dostępu",
+            logoutOtherSessions: "Wyloguj z innych urządzeń",
+            updateEmailTitle: "Zaktualizuj adres e-mail",
+            logoutConfirmTitle: "Wylogowywanie",
+            logoutConfirmHeader: "Czy chcesz się wylogować?",
+            doLogout: "Wyloguj"
         },
         ru: {
             footerImprintTitle: "Выходные Данные",
@@ -170,7 +210,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsText: "Вы были приглашены присоединиться к следующим организациям. Снимите отметку с тех, от которых вы хотите отказаться.",
             loginOtpOneTimeLabel: "Пожалуйста, введите свой одноразовый код",
             loginTotpStep3DeviceName: "Укажите имя устройства, которое поможет вам найти его в списке ваших устройств.",
-            "webauthn-registration-title": "Регистрация ключа доступа"
+            "webauthn-registration-title": "Регистрация ключа доступа",
+            logoutOtherSessions: "Выполнить выход на других устройствах",
+            updateEmailTitle: "Обновить электронную почту",
+            logoutConfirmTitle: "Выход из системы",
+            logoutConfirmHeader: "Хотите выйти?",
+            doLogout: "Выйти"
         },
         sv: {
             footerImprintTitle: "Impressum",
@@ -188,7 +233,12 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             p2incOrgsText: "Du har blivit inbjuden att gå med i följande organisationer. Avmarkera de du vill avböja.",
             loginOtpOneTimeLabel: "Vänligen ange din engångskod",
             loginTotpStep3DeviceName: "Ange ett enhetsnamn för att underlätta hanteringen av dina OTP-enheter.",
-            "webauthn-registration-title": "Passkey-registrering"
+            "webauthn-registration-title": "Passkey-registrering",
+            logoutOtherSessions: "Logga ut från andra enheter",
+            updateEmailTitle: "Uppdatera e-postadress",
+            logoutConfirmTitle: "Logga ut",
+            logoutConfirmHeader: "Vill du logga ut?",
+            doLogout: "Logga ut"
         }
     })
     .build();
