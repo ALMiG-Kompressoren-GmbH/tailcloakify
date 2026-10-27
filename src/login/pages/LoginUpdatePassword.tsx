@@ -48,7 +48,7 @@ export default function LoginUpdatePassword(
                     <div className={kcClsx("kcInputWrapperClass")}>
                         <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password-new">
                             <input
-                                placeholder={"New Password"}
+                                placeholder={msgStr("passwordNew")}
                                 type="password"
                                 id="password-new"
                                 name="password-new"
@@ -84,7 +84,7 @@ export default function LoginUpdatePassword(
                     <div className={kcClsx("kcInputWrapperClass")}>
                         <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password-confirm">
                             <input
-                                placeholder={"Confirm Password"}
+                                placeholder={msgStr("passwordConfirm")}
                                 type="password"
                                 id="password-confirm"
                                 name="password-confirm"
