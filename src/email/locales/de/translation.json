@@ -1,4 +1,57 @@
 {
+  "contactHelp": "Wenn Sie Hilfe benötigen, wenden Sie sich bitte an",
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - SMTP Test-E-Mail",
+    "messagePreview": "Dies ist eine Test-E-Mail",
+    "messageBody": "Dies ist eine Test-E-Mail von {realmName}",
+    "disclaimer": "Dies ist eine Test-E-Mail. Bitte ignorieren Sie diese Nachricht."
+  },
+  "email-update-confirmation": {
+    "messageSubject": "Bestätigung der E-Mail-Änderung",
+    "messagePreview": "Bestätigung der E-Mail-Änderung für das Konto {realmName}",
+    "messageBody": "Um die E-Mail-Adresse Ihres {realmName}-Kontos auf {newEmail} zu ändern, klicken Sie auf den folgenden Link.",
+    "linkExpiry": "Dieser Link läuft innerhalb von {linkExpiration} ab.",
+    "disclaimer": "Wenn Sie diese Änderung nicht vornehmen möchten, können Sie diese Nachricht einfach ignorieren."
+  },
+  "email-verification": {
+    "messageSubject": "E-Mail-Adresse bestätigen",
+    "messagePreview": "Bestätigung der E-Mail-Adresse für {realmName}",
+    "messageBody": "Jemand hat mit dieser E-Mail-Adresse ein {realmName}-Konto erstellt. Wenn Sie das waren, klicken Sie auf den folgenden Link, um Ihre E-Mail-Adresse zu bestätigen.",
+    "messageLink": "Link zur Bestätigung der E-Mail-Adresse.",
+    "linkExpiry": "Dieser Link läuft innerhalb von {linkExpiration} ab.",
+    "disclaimer": "Wenn Sie dieses Konto nicht erstellen möchten, können Sie diese Nachricht einfach ignorieren."
+  },
+  "email-verification-with-code": {
+    "messageSubject": "E-Mail-Adresse bestätigen",
+    "messagePreview": "Bitte bestätigen Sie Ihre E-Mail-Adresse mit dem folgenden Code",
+    "messageBody": "Bitte bestätigen Sie Ihre E-Mail-Adresse mit dem folgenden Code: ",
+    "verificationCode": "{code}",
+    "disclaimer": "Wenn Sie diese Anfrage nicht gestellt haben, können Sie diese Nachricht einfach ignorieren."
+  },
+  "event-login-error": {
+    "messageSubject": "Anmeldefehler",
+    "messagePreview": "Fehlgeschlagener Anmeldeversuch für {realmName} erkannt",
+    "messageBody": "Am {date} wurde von der IP-Adresse {ipAddress} ein fehlgeschlagener Anmeldeversuch bei Ihrem Konto erkannt.",
+    "disclaimer": "Wenn Sie diesen fehlgeschlagenen Anmeldeversuch nicht ausgelöst haben, können Sie diese Nachricht einfach ignorieren."
+  },
+  "event-remove-totp": {
+    "messageSubject": "OTP entfernt",
+    "messagePreview": "OTP wurde aus Ihrem {realmName}-Konto entfernt",
+    "messageBody": "OTP wurde am {date} von der IP-Adresse {ipAddress} aus Ihrem Konto entfernt.",
+    "disclaimer": "Wenn Sie die Entfernung von OTP nicht angefordert haben, können Sie diese Nachricht einfach ignorieren."
+  },
+  "event-update-password": {
+    "messageSubject": "Passwort geändert",
+    "messagePreview": "Das Passwort Ihres {realmName}-Kontos wurde geändert",
+    "messageBody": "Ihr Passwort wurde am {date} von der IP-Adresse {ipAddress} geändert.",
+    "disclaimer": "Wenn Sie die Passwortänderung nicht angefordert haben, können Sie diese Nachricht einfach ignorieren."
+  },
+  "event-update-totp": {
+    "messageSubject": "OTP aktualisiert",
+    "messagePreview": "OTP für Ihr {realmName}-Konto wurde aktualisiert",
+    "messageBody": "OTP für Ihr Konto wurde am {date} von der IP-Adresse {ipAddress} aktualisiert.",
+    "disclaimer": "Wenn Sie die Aktualisierung von OTP nicht angefordert haben, können Sie diese Nachricht einfach ignorieren."
+  },
   "execute-actions": {
     "messageSubject": "Aktualisieren Sie Ihr Konto",
     "messagePreview": "Ihr Administrator hat soeben angefordert, dass Sie Ihr {realmName}-Konto durch Ausführung der folgenden Aktion(en) aktualisieren",
@@ -8,6 +61,7 @@
     "resetPassword": "Falls der Link bereits abgelaufen ist, versuchen Sie Ihr Passwort mit Ihrer E-Mail auf unserer Anmeldeseite zurückzusetzen.",
     "furtherActions": "Wenn Sie Fragen haben oder denken, dass Sie die falsche Person sind, die diese E-Mail erhalten hat.",
     "welcome": "Willkommen",
+    "invitation": "Einladung",
     "configureTOTP": "OTP konfigurieren",
     "updatePassword": "Passwort aktualisieren",
     "updateProfile": "Profil aktualisieren",
@@ -23,12 +77,52 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Klicken Sie auf den unten stehenden Link, um diesen Prozess zu starten.",
     "adminLinkToAccountUpdate": "Link zur Kontoaktualisierung",
-    "adminIgnoreMessage": " Falls Sie nicht wissen, dass Ihr Administrator dies angefordert hat, ignorieren Sie diese Nachricht einfach und es wird nichts geändert.",
-    "furtherActionsContact": "Wenden Sie sich bitte an {contactEmail} für Hilfe."
+    "adminIgnoreMessage": " Falls Sie nicht wissen, dass Ihr Administrator dies angefordert hat, ignorieren Sie diese Nachricht einfach und es wird nichts geändert."
   },
-  "email-test": {
-    "messageSubject": "[KEYCLOAK] - SMTP Test-E-Mail",
-    "messagePreview": "Dies ist eine Test-E-Mail",
-    "messageBody": "Dies ist eine Test-E-Mail von {realmName}"
+  "footer": {
+    "disclaimer": "Wichtiger Hinweis: Wir senden Ihnen diese E-Mail, weil Sie ein Konto bei {realmName} haben. Diese E-Mail ist Teil unseres Benachrichtigungsdienstes.",
+    "year": "© {currentYear} {realmName}"
+  },
+  "header": {
+    "title": "Benachrichtigung von {realmName}"
+  },
+  "identity-provider-link": {
+    "messageSubject": "Identitätsanbieter verknüpfen",
+    "messagePreview": "Jemand möchte Ihr {realmName}-Konto verknüpfen",
+    "messageBody": "Jemand möchte Ihr {realmName}-Konto mit dem Konto von {username} beim Identitätsanbieter {identityProviderDisplayName} verknüpfen. Wenn Sie das waren, klicken Sie auf den folgenden Link, um die Konten zu verknüpfen.",
+    "messageLink": "Link zum Bestätigen der Kontoverknüpfung.",
+    "linkExpiry": "Dieser Link läuft innerhalb von {linkExpiration} ab.",
+    "disclaimer": "Wenn Sie die Konten nicht verknüpfen möchten, können Sie diese Nachricht einfach ignorieren. Nach der Verknüpfung können Sie sich über {identityProviderDisplayName} bei {realmName} anmelden."
+  },
+  "magic-link-email": {
+    "messageSubject": "Bei {realmName} anmelden",
+    "messagePreview": "Jemand hat einen Anmeldelink für {realmName} angefordert",
+    "messageBody": "Jemand hat einen Anmeldelink für {realmName} angefordert",
+    "magicLink": "Zum Anmelden hier klicken ",
+    "disclaimer": "Wenn Sie diesen Anmeldelink nicht angefordert haben, können Sie diese E-Mail einfach ignorieren."
+  },
+  "organization-invite": {
+    "messageSubject": "Einladung zur Organisation {0}",
+    "messagePreview": "Sie wurden eingeladen, der Organisation {0} beizutreten",
+    "messageBodySalutation": "Hallo {firstName} {lastName},",
+    "messageBody": "Sie wurden eingeladen, der Organisation {0} beizutreten. Klicken Sie auf den folgenden Link, um beizutreten.",
+    "invitationLink": "Link zum Beitritt zur Organisation.",
+    "linkExpiration": "Dieser Link läuft innerhalb von {linkExpiration} ab.",
+    "disclaimer": "Wenn Sie der Organisation {0} nicht beitreten möchten, können Sie diese Nachricht einfach ignorieren."
+  },
+  "otpEmail": {
+    "messageSubject": "Ihr Zugangscode für {realmName}",
+    "messagePreview": "Jemand hat Zugriff auf Ihr Konto angefordert",
+    "messageBody": "Jemand hat Zugriff auf Ihr Konto angefordert. Ihr Einmalpasswort (OTP) lautet: ",
+    "verificationCode": "{code}",
+    "disclaimer": "Wenn Sie diese Anfrage nicht gestellt haben, können Sie diese Nachricht einfach ignorieren."
+  },
+  "password-reset": {
+    "messageSubject": "Link zum Zurücksetzen des Passworts",
+    "messagePreview": "Jemand hat gerade angefordert, die Zugangsdaten Ihres {realmName}-Kontos zu ändern",
+    "messageBody": "Jemand hat gerade angefordert, die Zugangsdaten Ihres {realmName}-Kontos zu ändern. Wenn Sie das waren, klicken Sie auf den folgenden Link, um sie zurückzusetzen.",
+    "passwordResetLink": "Link zum Zurücksetzen der Zugangsdaten",
+    "linkExpiration": "Dieser Link läuft innerhalb von {linkExpiration} ab.",
+    "disclaimer": "Wenn Sie Ihre Zugangsdaten nicht zurücksetzen möchten, können Sie diese Nachricht einfach ignorieren. Es wird nichts geändert."
   }
 }

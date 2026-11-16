@@ -1,4 +1,57 @@
 {
+  "contactHelp": "Si vous avez besoin d’aide, veuillez contacter",
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - E-mail de test SMTP",
+    "messagePreview": "Ceci est un e-mail de test",
+    "messageBody": "Ceci est un e-mail de test de {realmName}",
+    "disclaimer": "Ceci est un e-mail de test. Veuillez ignorer ce message."
+  },
+  "email-update-confirmation": {
+    "messageSubject": "Confirmation de modification de l’adresse e-mail",
+    "messagePreview": "Vérification de la modification de l’adresse e-mail du compte {realmName}",
+    "messageBody": "Pour mettre à jour l’adresse e-mail de votre compte {realmName} avec {newEmail}, cliquez sur le lien ci-dessous.",
+    "linkExpiry": "Ce lien expirera dans {linkExpiration}.",
+    "disclaimer": "Si vous ne souhaitez pas effectuer cette modification, vous pouvez ignorer ce message sans risque."
+  },
+  "email-verification": {
+    "messageSubject": "Vérification de l’adresse e-mail",
+    "messagePreview": "Vérification de l’adresse e-mail pour {realmName}",
+    "messageBody": "Quelqu’un a créé un compte {realmName} avec cette adresse e-mail. Si c’était vous, cliquez sur le lien ci-dessous pour vérifier votre adresse e-mail.",
+    "messageLink": "Lien de vérification de l’adresse e-mail.",
+    "linkExpiry": "Ce lien expirera dans {linkExpiration}.",
+    "disclaimer": "Si vous ne souhaitez pas créer ce compte, vous pouvez ignorer ce message sans risque."
+  },
+  "email-verification-with-code": {
+    "messageSubject": "Vérification de l’adresse e-mail",
+    "messagePreview": "Veuillez vérifier votre adresse e-mail en saisissant le code suivant",
+    "messageBody": "Veuillez vérifier votre adresse e-mail en saisissant le code suivant : ",
+    "verificationCode": "{code}",
+    "disclaimer": "Si vous n’êtes pas à l’origine de cette demande, vous pouvez ignorer ce message sans risque."
+  },
+  "event-login-error": {
+    "messageSubject": "Erreur de connexion",
+    "messagePreview": "Une tentative de connexion échouée a été détectée pour {realmName}",
+    "messageBody": "Une tentative de connexion échouée à votre compte a été détectée le {date} depuis l’adresse IP {ipAddress}.",
+    "disclaimer": "Si vous n’êtes pas à l’origine de cette tentative de connexion échouée, vous pouvez ignorer ce message sans risque."
+  },
+  "event-remove-totp": {
+    "messageSubject": "Suppression de l’OTP",
+    "messagePreview": "L’OTP a été supprimé de votre compte {realmName}",
+    "messageBody": "L’OTP a été supprimé de votre compte le {date} depuis l’adresse IP {ipAddress}.",
+    "disclaimer": "Si vous n’avez pas demandé la suppression de l’OTP, vous pouvez ignorer ce message sans risque."
+  },
+  "event-update-password": {
+    "messageSubject": "Modification du mot de passe",
+    "messagePreview": "Le mot de passe de votre compte {realmName} a été modifié",
+    "messageBody": "Votre mot de passe a été modifié le {date} depuis l’adresse IP {ipAddress}.",
+    "disclaimer": "Si vous n’avez pas demandé la modification de votre mot de passe, vous pouvez ignorer ce message sans risque."
+  },
+  "event-update-totp": {
+    "messageSubject": "Mise à jour de l’OTP",
+    "messagePreview": "L’OTP de votre compte {realmName} a été mis à jour",
+    "messageBody": "L’OTP de votre compte a été mis à jour le {date} depuis l’adresse IP {ipAddress}.",
+    "disclaimer": "Si vous n’avez pas demandé la mise à jour de l’OTP, vous pouvez ignorer ce message sans risque."
+  },
   "execute-actions": {
     "messageSubject": "Mettez à jour votre compte",
     "messagePreview": "Votre administrateur vient de demander que vous mettiez à jour votre compte {realmName} en effectuant la ou les action(s) suivante(s)",
@@ -8,6 +61,7 @@
     "resetPassword": "Si le lien a déjà expiré, essayez de réinitialiser votre mot de passe avec votre e-mail sur notre page de connexion.",
     "furtherActions": "Si vous avez des questions ou pensez être la mauvaise personne à recevoir cet e-mail.",
     "welcome": "Bienvenue",
+    "invitation": "Invitation",
     "configureTOTP": "Configurer OTP",
     "updatePassword": "Mettre à jour le mot de passe",
     "updateProfile": "Mettre à jour le profil",
@@ -23,12 +77,52 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Cliquez sur le lien ci-dessous pour commencer ce processus.",
     "adminLinkToAccountUpdate": "Lien vers la mise à jour du compte",
-    "adminIgnoreMessage": " Si vous n'êtes pas au courant que votre administrateur a demandé ceci, ignorez simplement ce message et rien ne sera changé.",
-    "furtherActionsContact": "Veuillez contacter {contactEmail} pour obtenir de l'aide."
+    "adminIgnoreMessage": " Si vous n'êtes pas au courant que votre administrateur a demandé ceci, ignorez simplement ce message et rien ne sera changé."
   },
-  "email-test": {
-    "messageSubject": "[KEYCLOAK] - E-mail de test SMTP",
-    "messagePreview": "Ceci est un e-mail de test",
-    "messageBody": "Ceci est un e-mail de test de {realmName}"
+  "footer": {
+    "disclaimer": "Avis important : nous vous envoyons cet e-mail parce que vous possédez un compte chez {realmName}. Cet e-mail fait partie de notre service de notification.",
+    "year": "© {currentYear} {realmName}"
+  },
+  "header": {
+    "title": "Notification de {realmName}"
+  },
+  "identity-provider-link": {
+    "messageSubject": "Association avec un fournisseur d’identité",
+    "messagePreview": "Quelqu’un souhaite associer votre compte {realmName}",
+    "messageBody": "Quelqu’un souhaite associer votre compte {realmName} au compte de {username} chez le fournisseur d’identité {identityProviderDisplayName}. Si c’était vous, cliquez sur le lien ci-dessous pour associer les comptes.",
+    "messageLink": "Lien de confirmation de l’association des comptes.",
+    "linkExpiry": "Ce lien expirera dans {linkExpiration}.",
+    "disclaimer": "Si vous ne souhaitez pas associer les comptes, vous pouvez ignorer ce message sans risque. Une fois les comptes associés, vous pourrez vous connecter à {realmName} via {identityProviderDisplayName}."
+  },
+  "magic-link-email": {
+    "messageSubject": "Connexion au compte {realmName}",
+    "messagePreview": "Quelqu’un a demandé un lien de connexion à {realmName}",
+    "messageBody": "Quelqu’un a demandé un lien de connexion à {realmName}",
+    "magicLink": "Cliquez pour vous connecter ",
+    "disclaimer": "Si vous n’êtes pas à l’origine de cette demande de lien de connexion, vous pouvez ignorer cet e-mail sans risque."
+  },
+  "organization-invite": {
+    "messageSubject": "Invitation à rejoindre l’organisation {0}",
+    "messagePreview": "Vous avez été invité à rejoindre l’organisation {0}",
+    "messageBodySalutation": "Bonjour {firstName} {lastName},",
+    "messageBody": "Vous avez été invité à rejoindre l’organisation {0}. Cliquez sur le lien ci-dessous pour la rejoindre.",
+    "invitationLink": "Lien pour rejoindre l’organisation.",
+    "linkExpiration": "Ce lien expirera dans {linkExpiration}.",
+    "disclaimer": "Si vous ne souhaitez pas rejoindre l’organisation {0}, vous pouvez ignorer ce message sans risque."
+  },
+  "otpEmail": {
+    "messageSubject": "Votre code d’accès pour {realmName}",
+    "messagePreview": "Quelqu’un a demandé l’accès à votre compte",
+    "messageBody": "Quelqu’un a demandé l’accès à votre compte. Votre mot de passe à usage unique (OTP) est : ",
+    "verificationCode": "{code}",
+    "disclaimer": "Si vous n’êtes pas à l’origine de cette demande, vous pouvez ignorer ce message sans risque."
+  },
+  "password-reset": {
+    "messageSubject": "Lien de réinitialisation du mot de passe",
+    "messagePreview": "Quelqu’un vient de demander la modification des identifiants de votre compte {realmName}",
+    "messageBody": "Quelqu’un vient de demander la modification des identifiants de votre compte {realmName}. Si c’était vous, cliquez sur le lien ci-dessous pour les réinitialiser.",
+    "passwordResetLink": "Lien de réinitialisation des identifiants",
+    "linkExpiration": "Ce lien expirera dans {linkExpiration}.",
+    "disclaimer": "Si vous ne souhaitez pas réinitialiser vos identifiants, vous pouvez ignorer ce message sans risque. Aucune modification ne sera effectuée."
   }
 }

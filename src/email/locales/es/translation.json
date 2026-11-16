@@ -1,4 +1,57 @@
 {
+  "contactHelp": "Si necesita ayuda, póngase en contacto con",
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - Correo electrónico de prueba SMTP",
+    "messagePreview": "Este es un correo electrónico de prueba",
+    "messageBody": "Este es un correo electrónico de prueba de {realmName}",
+    "disclaimer": "Este es un correo electrónico de prueba. Ignore este mensaje."
+  },
+  "email-update-confirmation": {
+    "messageSubject": "Confirmación de cambio de correo electrónico",
+    "messagePreview": "Verificación del cambio de correo electrónico de la cuenta {realmName}",
+    "messageBody": "Para actualizar la cuenta {realmName} con la dirección de correo {newEmail}, haga clic en el enlace siguiente.",
+    "linkExpiry": "Este enlace caducará en {linkExpiration}.",
+    "disclaimer": "Si no desea realizar este cambio, puede ignorar este mensaje sin problema."
+  },
+  "email-verification": {
+    "messageSubject": "Verificación del correo electrónico",
+    "messagePreview": "Verificación del correo electrónico para {realmName}",
+    "messageBody": "Alguien ha creado una cuenta de {realmName} con esta dirección de correo electrónico. Si ha sido usted, haga clic en el enlace siguiente para verificar su dirección.",
+    "messageLink": "Enlace para verificar la dirección de correo electrónico.",
+    "linkExpiry": "Este enlace caducará en {linkExpiration}.",
+    "disclaimer": "Si no desea crear esta cuenta, puede ignorar este mensaje sin problema."
+  },
+  "email-verification-with-code": {
+    "messageSubject": "Verificación del correo electrónico",
+    "messagePreview": "Verifique su dirección de correo electrónico introduciendo el siguiente código",
+    "messageBody": "Verifique su dirección de correo electrónico introduciendo el siguiente código: ",
+    "verificationCode": "{code}",
+    "disclaimer": "Si no ha iniciado esta solicitud, puede ignorar este mensaje sin problema."
+  },
+  "event-login-error": {
+    "messageSubject": "Error de inicio de sesión",
+    "messagePreview": "Se ha detectado un intento de inicio de sesión fallido en {realmName}",
+    "messageBody": "El {date} se detectó un intento fallido de inicio de sesión en su cuenta desde la dirección IP {ipAddress}.",
+    "disclaimer": "Si no ha iniciado este intento fallido de inicio de sesión, puede ignorar este mensaje sin problema."
+  },
+  "event-remove-totp": {
+    "messageSubject": "Eliminación de OTP",
+    "messagePreview": "Se ha eliminado el OTP de su cuenta de {realmName}",
+    "messageBody": "El {date} se eliminó el OTP de su cuenta desde la dirección IP {ipAddress}.",
+    "disclaimer": "Si no ha solicitado eliminar el OTP, puede ignorar este mensaje sin problema."
+  },
+  "event-update-password": {
+    "messageSubject": "Cambio de contraseña",
+    "messagePreview": "Se ha cambiado la contraseña de su cuenta de {realmName}",
+    "messageBody": "Su contraseña se cambió el {date} desde la dirección IP {ipAddress}.",
+    "disclaimer": "Si no ha solicitado cambiar la contraseña, puede ignorar este mensaje sin problema."
+  },
+  "event-update-totp": {
+    "messageSubject": "Actualización de OTP",
+    "messagePreview": "Se ha actualizado el OTP de su cuenta de {realmName}",
+    "messageBody": "El OTP de su cuenta se actualizó el {date} desde la dirección IP {ipAddress}.",
+    "disclaimer": "Si no ha solicitado actualizar el OTP, puede ignorar este mensaje sin problema."
+  },
   "execute-actions": {
     "messageSubject": "Actualice su cuenta",
     "messagePreview": "Su administrador acaba de solicitar que actualice su cuenta de {realmName} realizando la(s) siguiente(s) acción(es)",
@@ -8,6 +61,7 @@
     "resetPassword": "Si el enlace ya ha expirado, intente restablecer su contraseña con su correo electrónico en nuestra página de inicio de sesión.",
     "furtherActions": "Si tiene alguna pregunta o cree que es la persona equivocada que recibe este correo electrónico.",
     "welcome": "Bienvenido",
+    "invitation": "Invitación",
     "configureTOTP": "Configurar OTP",
     "updatePassword": "Actualizar contraseña",
     "updateProfile": "Actualizar perfil",
@@ -23,12 +77,52 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Haga clic en el enlace de abajo para iniciar este proceso.",
     "adminLinkToAccountUpdate": "Enlace para actualización de cuenta",
-    "adminIgnoreMessage": " Si no está al tanto de que su administrador ha solicitado esto, simplemente ignore este mensaje y no se cambiará nada.",
-    "furtherActionsContact": "Póngase en contacto con {contactEmail} para obtener ayuda."
+    "adminIgnoreMessage": " Si no está al tanto de que su administrador ha solicitado esto, simplemente ignore este mensaje y no se cambiará nada."
   },
-  "email-test": {
-    "messageSubject": "[KEYCLOAK] - Correo electrónico de prueba SMTP",
-    "messagePreview": "Este es un correo electrónico de prueba",
-    "messageBody": "Este es un correo electrónico de prueba de {realmName}"
+  "footer": {
+    "disclaimer": "Aviso importante: Le enviamos este correo porque tiene una cuenta en {realmName}. Este mensaje forma parte de nuestro servicio de notificaciones.",
+    "year": "© {currentYear} {realmName}"
+  },
+  "header": {
+    "title": "Notificación de {realmName}"
+  },
+  "identity-provider-link": {
+    "messageSubject": "Vinculación con proveedor de identidad",
+    "messagePreview": "Alguien quiere vincular su cuenta de {realmName}",
+    "messageBody": "Alguien quiere vincular su cuenta de {realmName} con la cuenta de {username} del proveedor de identidad {identityProviderDisplayName}. Si ha sido usted, haga clic en el enlace siguiente para vincular las cuentas.",
+    "messageLink": "Enlace para confirmar la vinculación de las cuentas.",
+    "linkExpiry": "Este enlace caducará en {linkExpiration}.",
+    "disclaimer": "Si no desea vincular las cuentas, puede ignorar este mensaje sin problema. Al vincularlas, podrá iniciar sesión en {realmName} a través de {identityProviderDisplayName}."
+  },
+  "magic-link-email": {
+    "messageSubject": "Inicio de sesión en la cuenta de {realmName}",
+    "messagePreview": "Alguien ha solicitado un enlace de inicio de sesión para {realmName}",
+    "messageBody": "Alguien ha solicitado un enlace de inicio de sesión para {realmName}",
+    "magicLink": "Haga clic para iniciar sesión ",
+    "disclaimer": "Si no ha solicitado este enlace de inicio de sesión, puede ignorar este correo sin problema."
+  },
+  "organization-invite": {
+    "messageSubject": "Invitación para unirse a la organización {0}",
+    "messagePreview": "Le han invitado a unirse a la organización {0}",
+    "messageBodySalutation": "Hola, {firstName} {lastName}:",
+    "messageBody": "Le han invitado a unirse a la organización {0}. Haga clic en el enlace siguiente para unirse.",
+    "invitationLink": "Enlace para unirse a la organización.",
+    "linkExpiration": "Este enlace caducará en {linkExpiration}.",
+    "disclaimer": "Si no desea unirse a la organización {0}, puede ignorar este mensaje sin problema."
+  },
+  "otpEmail": {
+    "messageSubject": "Su código de acceso para {realmName}",
+    "messagePreview": "Alguien ha solicitado acceso a su cuenta",
+    "messageBody": "Alguien ha solicitado acceso a su cuenta. Su contraseña de un solo uso (OTP) es: ",
+    "verificationCode": "{code}",
+    "disclaimer": "Si no ha iniciado esta solicitud, puede ignorar este mensaje sin problema."
+  },
+  "password-reset": {
+    "messageSubject": "Enlace para restablecer la contraseña",
+    "messagePreview": "Alguien acaba de solicitar un cambio de las credenciales de su cuenta de {realmName}",
+    "messageBody": "Alguien acaba de solicitar un cambio de las credenciales de su cuenta de {realmName}. Si ha sido usted, haga clic en el enlace siguiente para restablecerlas.",
+    "passwordResetLink": "Enlace para restablecer las credenciales",
+    "linkExpiration": "Este enlace caducará en {linkExpiration}.",
+    "disclaimer": "Si no desea restablecer sus credenciales, puede ignorar este mensaje sin problema. No se realizará ningún cambio."
   }
 }

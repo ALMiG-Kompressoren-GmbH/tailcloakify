@@ -1,5 +1,6 @@
 import { render, Text } from "jsx-email";
 import { IfContactEmail } from "../IfContactEmail";
+import { ContactHelp } from "../ContactHelp";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
@@ -35,7 +36,7 @@ export const Template = ({ locale, t }: TemplateProps) => (
                 {t("event-remove-totp.disclaimer")}
                 <IfContactEmail>
                     {" "}
-                    {t("event-remove-totp.disclaimerContact", { contactEmail })}
+                    <ContactHelp email={contactEmail}>{t("contactHelp")}</ContactHelp>
                 </IfContactEmail>
             </>
         }

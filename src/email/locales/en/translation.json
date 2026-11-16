@@ -1,4 +1,5 @@
 {
+  "contactHelp": "If you need help, please contact",
   "email-test": {
     "messageSubject": "[KEYCLOAK] - SMTP Test Email",
     "messagePreview": "This is a test email",
@@ -31,29 +32,25 @@
     "messageSubject": "Login Error",
     "messagePreview": "Failed login attempt detected for {realmName}",
     "messageBody": "A failed login attempt was detected to your account on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate this failed login request, you can safely ignore this message.",
-    "disclaimerContact": "Or contact an administrator through {contactEmail}."
+    "disclaimer": "If you did not initiate this failed login request, you can safely ignore this message."
   },
   "event-remove-totp": {
     "messageSubject": "Remove OTP",
     "messagePreview": "OTP was removed from your {realmName} account",
     "messageBody": "OTP was removed from your account on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate a request to remove OTP, you can safely ignore this message.",
-    "disclaimerContact": "Or contact an administrator through {contactEmail}."
+    "disclaimer": "If you did not initiate a request to remove OTP, you can safely ignore this message."
   },
   "event-update-password": {
     "messageSubject": "Update Password",
     "messagePreview": "Your {realmName} account password was changed",
     "messageBody": "Your password was changed on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate a request to update your password, you can safely ignore this message.",
-    "disclaimerContact": "Or contact an administrator through {contactEmail}."
+    "disclaimer": "If you did not initiate a request to update your password, you can safely ignore this message."
   },
   "event-update-totp": {
     "messageSubject": "Update OTP",
     "messagePreview": "OTP was updated for your {realmName} account",
     "messageBody": "OTP was updated for your account on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate a request to update OTP, you can safely ignore this message.",
-    "disclaimerContact": "Or contact an administrator through {contactEmail}."
+    "disclaimer": "If you did not initiate a request to update OTP, you can safely ignore this message."
   },
   "execute-actions": {
     "messageSubject": "Update Your Account",
@@ -80,13 +77,11 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Click on the link below to start this process.",
     "adminLinkToAccountUpdate": "Link to account update",
-    "adminIgnoreMessage": " If you are unaware that your administrator has requested this, you can safely ignore this message and nothing will be changed.",
-    "furtherActionsContact": "Please reach out to {contactEmail} for help."
+    "adminIgnoreMessage": " If you are unaware that your administrator has requested this, you can safely ignore this message and nothing will be changed."
   },
   "footer": {
     "disclaimer": "Important Notice: We are sending you this email because you have an account at {realmName}. This email is sent as part of our notification service.",
-    "year": "© {currentYear} {realmName}",
-    "disclaimerContact": "If you don't want to receive our notification emails in future, please reach out to {contactEmail}."
+    "year": "© {currentYear} {realmName}"
   },
   "header": {
     "title": "{realmName} Notification"
@@ -128,7 +123,6 @@
     "messageBody": "Someone just requested to change your {realmName} account's credentials. If this was you, click on the link below to reset them.",
     "passwordResetLink": "Link to reset credentials",
     "linkExpiration": "This link will expire within {linkExpiration}",
-    "disclaimer": "If you don't want to reset your credentials, you can safely ignore this message and nothing will be changed.",
-    "disclaimerContact": "Or contact an administrator through {contactEmail}."
+    "disclaimer": "If you don't want to reset your credentials, you can safely ignore this message and nothing will be changed."
   }
 }

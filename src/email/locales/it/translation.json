@@ -1,4 +1,57 @@
 {
+  "contactHelp": "Se ha bisogno di aiuto, scriva a",
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - Email di test SMTP",
+    "messagePreview": "Questa è un'email di test",
+    "messageBody": "Questa è un'email di test da {realmName}",
+    "disclaimer": "Questa è un'e-mail di prova. Ignora questo messaggio."
+  },
+  "email-update-confirmation": {
+    "messageSubject": "Conferma della modifica dell'e-mail",
+    "messagePreview": "Verifica della modifica dell'e-mail per l'account {realmName}",
+    "messageBody": "Per aggiornare l'account {realmName} con l'indirizzo e-mail {newEmail}, fai clic sul link qui sotto.",
+    "linkExpiry": "Questo link scadrà entro {linkExpiration}.",
+    "disclaimer": "Se non desideri procedere con questa modifica, puoi ignorare tranquillamente questo messaggio."
+  },
+  "email-verification": {
+    "messageSubject": "Verifica dell'indirizzo e-mail",
+    "messagePreview": "Verifica dell'indirizzo e-mail per {realmName}",
+    "messageBody": "Qualcuno ha creato un account {realmName} con questo indirizzo e-mail. Se sei stato tu, fai clic sul link qui sotto per verificare il tuo indirizzo e-mail.",
+    "messageLink": "Link per verificare l'indirizzo e-mail.",
+    "linkExpiry": "Questo link scadrà entro {linkExpiration}.",
+    "disclaimer": "Se non desideri creare questo account, puoi ignorare tranquillamente questo messaggio."
+  },
+  "email-verification-with-code": {
+    "messageSubject": "Verifica dell'indirizzo e-mail",
+    "messagePreview": "Verifica il tuo indirizzo e-mail inserendo il codice seguente",
+    "messageBody": "Verifica il tuo indirizzo e-mail inserendo il codice seguente: ",
+    "verificationCode": "{code}",
+    "disclaimer": "Se non hai avviato questa richiesta, puoi ignorare tranquillamente questo messaggio."
+  },
+  "event-login-error": {
+    "messageSubject": "Errore di accesso",
+    "messagePreview": "Rilevato tentativo di accesso non riuscito per {realmName}",
+    "messageBody": "Il {date} è stato rilevato un tentativo di accesso non riuscito al tuo account dall'indirizzo IP {ipAddress}.",
+    "disclaimer": "Se non hai avviato questo tentativo di accesso non riuscito, puoi ignorare tranquillamente questo messaggio."
+  },
+  "event-remove-totp": {
+    "messageSubject": "Rimozione OTP",
+    "messagePreview": "L'OTP è stato rimosso dal tuo account {realmName}",
+    "messageBody": "L'OTP è stato rimosso dal tuo account il {date} dall'indirizzo IP {ipAddress}.",
+    "disclaimer": "Se non hai richiesto la rimozione dell'OTP, puoi ignorare tranquillamente questo messaggio."
+  },
+  "event-update-password": {
+    "messageSubject": "Modifica della password",
+    "messagePreview": "La password del tuo account {realmName} è stata modificata",
+    "messageBody": "La password è stata modificata il {date} dall'indirizzo IP {ipAddress}.",
+    "disclaimer": "Se non hai richiesto la modifica della password, puoi ignorare tranquillamente questo messaggio."
+  },
+  "event-update-totp": {
+    "messageSubject": "Aggiornamento OTP",
+    "messagePreview": "L'OTP è stato aggiornato per il tuo account {realmName}",
+    "messageBody": "L'OTP del tuo account è stato aggiornato il {date} dall'indirizzo IP {ipAddress}.",
+    "disclaimer": "Se non hai richiesto l'aggiornamento dell'OTP, puoi ignorare tranquillamente questo messaggio."
+  },
   "execute-actions": {
     "messageSubject": "Aggiorna il tuo account",
     "messagePreview": "Il tuo amministratore ha appena richiesto di aggiornare il tuo account {realmName} eseguendo la/le seguente/i azione/i",
@@ -8,6 +61,7 @@
     "resetPassword": "Se il link è già scaduto, prova a reimpostare la tua password con la tua email nella nostra pagina di accesso.",
     "furtherActions": "Se hai domande o pensi di essere la persona sbagliata che riceve questa email.",
     "welcome": "Benvenuto",
+    "invitation": "Invito",
     "configureTOTP": "Configura OTP",
     "updatePassword": "Aggiorna password",
     "updateProfile": "Aggiorna profilo",
@@ -23,12 +77,52 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Clicca sul link qui sotto per iniziare questo processo.",
     "adminLinkToAccountUpdate": "Link per aggiornamento account",
-    "adminIgnoreMessage": " Se non sei a conoscenza che il tuo amministratore ha richiesto questo, ignora semplicemente questo messaggio e nulla verrà cambiato.",
-    "furtherActionsContact": "Contatta {contactEmail} per assistenza."
+    "adminIgnoreMessage": " Se non sei a conoscenza che il tuo amministratore ha richiesto questo, ignora semplicemente questo messaggio e nulla verrà cambiato."
   },
-  "email-test": {
-    "messageSubject": "[KEYCLOAK] - Email di test SMTP",
-    "messagePreview": "Questa è un'email di test",
-    "messageBody": "Questa è un'email di test da {realmName}"
+  "footer": {
+    "disclaimer": "Avviso importante: ti inviamo questa e-mail perché hai un account presso {realmName}. Questa e-mail fa parte del nostro servizio di notifiche.",
+    "year": "© {currentYear} {realmName}"
+  },
+  "header": {
+    "title": "Notifica di {realmName}"
+  },
+  "identity-provider-link": {
+    "messageSubject": "Collegamento del provider di identità",
+    "messagePreview": "Qualcuno vuole collegare il tuo account {realmName}",
+    "messageBody": "Qualcuno vuole collegare il tuo account {realmName} all'account di {username} presso il provider di identità {identityProviderDisplayName}. Se sei stato tu, fai clic sul link qui sotto per collegare gli account.",
+    "messageLink": "Link per confermare il collegamento degli account.",
+    "linkExpiry": "Questo link scadrà entro {linkExpiration}.",
+    "disclaimer": "Se non desideri collegare gli account, puoi ignorare tranquillamente questo messaggio. Dopo il collegamento potrai accedere a {realmName} tramite {identityProviderDisplayName}."
+  },
+  "magic-link-email": {
+    "messageSubject": "Accesso all'account {realmName}",
+    "messagePreview": "Qualcuno ha richiesto un link di accesso a {realmName}",
+    "messageBody": "Qualcuno ha richiesto un link di accesso a {realmName}",
+    "magicLink": "Fai clic per accedere ",
+    "disclaimer": "Se non hai richiesto questo link di accesso, puoi ignorare tranquillamente questa e-mail."
+  },
+  "organization-invite": {
+    "messageSubject": "Invito a entrare nell'organizzazione {0}",
+    "messagePreview": "Hai ricevuto un invito a entrare nell'organizzazione {0}",
+    "messageBodySalutation": "Ciao {firstName} {lastName},",
+    "messageBody": "Hai ricevuto un invito a entrare nell'organizzazione {0}. Fai clic sul link qui sotto per unirti.",
+    "invitationLink": "Link per entrare nell'organizzazione.",
+    "linkExpiration": "Questo link scadrà entro {linkExpiration}.",
+    "disclaimer": "Se non desideri entrare nell'organizzazione {0}, puoi ignorare tranquillamente questo messaggio."
+  },
+  "otpEmail": {
+    "messageSubject": "Il tuo codice di accesso per {realmName}",
+    "messagePreview": "Qualcuno ha richiesto l'accesso al tuo account",
+    "messageBody": "Qualcuno ha richiesto l'accesso al tuo account. La tua password monouso (OTP) è: ",
+    "verificationCode": "{code}",
+    "disclaimer": "Se non hai avviato questa richiesta, puoi ignorare tranquillamente questo messaggio."
+  },
+  "password-reset": {
+    "messageSubject": "Link per reimpostare la password",
+    "messagePreview": "Qualcuno ha appena richiesto di modificare le credenziali del tuo account {realmName}",
+    "messageBody": "Qualcuno ha appena richiesto di modificare le credenziali del tuo account {realmName}. Se sei stato tu, fai clic sul link qui sotto per reimpostarle.",
+    "passwordResetLink": "Link per reimpostare le credenziali",
+    "linkExpiration": "Questo link scadrà entro {linkExpiration}.",
+    "disclaimer": "Se non desideri reimpostare le credenziali, puoi ignorare tranquillamente questo messaggio. Non verrà apportata alcuna modifica."
   }
 }
