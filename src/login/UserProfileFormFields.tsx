@@ -1,3 +1,4 @@
+import type { JSX } from "keycloakify/tools/JSX";
 import { Fragment, useEffect, useMemo, useReducer } from "react";
 import { assert } from "keycloakify/tools/assert";
 import type { KcClsx } from "keycloakify/login/lib/kcClsx";

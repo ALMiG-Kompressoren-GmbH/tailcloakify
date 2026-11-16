@@ -1,8 +1,7 @@
 /* Referenced from >>>>> https://tailwindcss.com/docs/guides/vite*/
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.js";
 
 body.kcBodyClass {
     background: #ffffff;
