@@ -52,5 +52,5 @@ export const getTemplate: GetTemplate = async props => {
 
 export const getSubject: GetSubject = async _props => {
     const t = i18n.getFixedT(_props.locale);
-    return t("otpEmail.messageSubject");
+    return t("otpEmail.messageSubject", { realmName: exp("realmName") });
 };

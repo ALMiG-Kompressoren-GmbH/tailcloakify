@@ -1,4 +1,5 @@
 {
+  "contactHelp": "If you need help, please contact",
   "email-test": {
     "messageSubject": "[KEYCLOAK] - SMTP Test Email",
     "messagePreview": "This is a test email",
@@ -30,26 +31,26 @@
   "event-login-error": {
     "messageSubject": "Login Error",
     "messagePreview": "Failed login attempt detected for {realmName}",
-    "messageBody": "A failed login attempt was detected to your account on {date} from {ipAddress)}.",
-    "disclaimer": "If you did not initiate this failed login request, please contact an administrator through {contactEmail}."
+    "messageBody": "A failed login attempt was detected to your account on {date} from {ipAddress}.",
+    "disclaimer": "If you did not initiate this failed login request, you can safely ignore this message."
   },
   "event-remove-totp": {
     "messageSubject": "Remove OTP",
     "messagePreview": "OTP was removed from your {realmName} account",
     "messageBody": "OTP was removed from your account on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate a request to remove OTP, please contact an administrator through {contactEmail}"
+    "disclaimer": "If you did not initiate a request to remove OTP, you can safely ignore this message."
   },
   "event-update-password": {
     "messageSubject": "Update Password",
     "messagePreview": "Your {realmName} account password was changed",
     "messageBody": "Your password was changed on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate a request to update your password, please reach out to an administrator through {contactEmail}."
+    "disclaimer": "If you did not initiate a request to update your password, you can safely ignore this message."
   },
   "event-update-totp": {
     "messageSubject": "Update OTP",
     "messagePreview": "OTP was updated for your {realmName} account",
     "messageBody": "OTP was updated for your account on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate a request to update OTP, please contact an administrator through {contactEmail}"
+    "disclaimer": "If you did not initiate a request to update OTP, you can safely ignore this message."
   },
   "execute-actions": {
     "messageSubject": "Update Your Account",
@@ -58,7 +59,7 @@
     "messageLink": "Set your password",
     "linkExpiry": "This link will expire within {linkExpiration}",
     "resetPassword": "If the link has already expired, try to reset you password with your email at our login page.",
-    "furtherActions": "If you have any questions or think you are the wrong person receiving this email, please reach out to {contactEmail} for help.",
+    "furtherActions": "If you have any questions or think you are the wrong person receiving this email.",
     "welcome": "Welcome",
     "invitation": "Invitation",
     "configureTOTP": "Configure OTP",
@@ -79,7 +80,7 @@
     "adminIgnoreMessage": " If you are unaware that your administrator has requested this, you can safely ignore this message and nothing will be changed."
   },
   "footer": {
-    "disclaimer": "Important Notice: We are sending you this email because you have an account at {realmName}. This email is sent as part of our notification service. If you don't want to receive our notification emails in future, please reach out to {contactEmail}.",
+    "disclaimer": "Important Notice: We are sending you this email because you have an account at {realmName}. This email is sent as part of our notification service.",
     "year": "© {currentYear} {realmName}"
   },
   "header": {
@@ -122,6 +123,6 @@
     "messageBody": "Someone just requested to change your {realmName} account's credentials. If this was you, click on the link below to reset them.",
     "passwordResetLink": "Link to reset credentials",
     "linkExpiration": "This link will expire within {linkExpiration}",
-    "disclaimer": "If you don't want to reset your credentials, you can safely ignore this message and nothing will be changed or reach out to {contactEmail}."
+    "disclaimer": "If you don't want to reset your credentials, you can safely ignore this message and nothing will be changed."
   }
 }

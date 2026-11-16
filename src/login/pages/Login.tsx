@@ -1,3 +1,4 @@
+import type { JSX } from "keycloakify/tools/JSX";
 import { useEffect, useReducer, useState } from "react";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import { assert } from "keycloakify/tools/assert";
@@ -157,7 +158,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             defaultValue={login.username ?? ""}
                                             type="text"
                                             autoFocus
-                                            autoComplete="username"
+                                            autoComplete={enableWebAuthnConditionalUI ? "username webauthn" : "username"}
                                             aria-invalid={messagesPerField.existsError("username", "password")}
                                         />
                                         {messagesPerField.existsError("username", "password") && (

@@ -135,7 +135,9 @@ export default function P2MagicLinkOtpForm(
                                     inputMode="numeric"
                                     value={otpValues[index]}
                                     onChange={handleInput(index)}
-                                    ref={el => (inputRef.current[index] = el as HTMLInputElement)}
+                                    ref={el => {
+                                        inputRef.current[index] = el as HTMLInputElement;
+                                    }}
                                     onKeyDown={handleKeyUp(index)}
                                     onPaste={handlePaste}
                                 />

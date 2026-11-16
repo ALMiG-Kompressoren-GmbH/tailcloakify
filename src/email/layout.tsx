@@ -2,6 +2,8 @@ import { Body, Container, Head, Html, Preview, Tailwind } from "jsx-email";
 import { PropsWithChildren, ReactNode } from "react";
 import { createVariablesHelper } from "keycloakify-emails/variables";
 import i18n from "./i18n";
+import { IfContactEmail } from "./IfContactEmail";
+import { ContactHelp } from "./ContactHelp";
 
 const { exp } = createVariablesHelper("email-test.ftl");
 const currentYear = new Date().getFullYear();
@@ -131,10 +133,11 @@ export const EmailLayout = ({
                                             fontSize: "0.5rem"
                                         }}
                                     >
-                                        {t("footer.disclaimer", {
-                                            realmName: exp("realmName"),
-                                            contactEmail: contactEmail
-                                        })}
+                                        {t("footer.disclaimer", { realmName: exp("realmName") })}
+                                        <IfContactEmail>
+                                            {" "}
+                                            <ContactHelp email={contactEmail}>{t("contactHelp")}</ContactHelp>
+                                        </IfContactEmail>
                                     </td>
                                 </tr>
                                 <tr>

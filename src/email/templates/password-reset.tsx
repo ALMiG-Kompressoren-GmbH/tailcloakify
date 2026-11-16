@@ -1,4 +1,6 @@
 import { render, Text } from "jsx-email";
+import { IfContactEmail } from "../IfContactEmail";
+import { ContactHelp } from "../ContactHelp";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
@@ -17,6 +19,7 @@ export const previewProps: TemplateProps = {
 export const templateName = "Password Reset";
 
 const { exp } = createVariablesHelper("password-reset.ftl");
+const contactEmail = exp("properties.TAILCLOAKIFY_EMAIL_CONTACT");
 
 const paragraph = {
     color: "#777",
@@ -29,7 +32,15 @@ export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
         preview={t("password-reset.messagePreview", { realmName: exp("realmName") })}
         locale={locale}
-        disclaimer={t("password-reset.disclaimer")}
+        disclaimer={
+            <>
+                {t("password-reset.disclaimer")}
+                <IfContactEmail>
+                    {" "}
+                    <ContactHelp email={contactEmail}>{t("contactHelp")}</ContactHelp>
+                </IfContactEmail>
+            </>
+        }
     >
         <Text style={paragraph}>
             <p>{t("password-reset.messageBody", { realmName: exp("realmName") })}</p>

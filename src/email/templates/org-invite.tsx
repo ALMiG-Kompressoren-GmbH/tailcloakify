@@ -83,5 +83,5 @@ export const getTemplate: GetTemplate = async props => {
 
 export const getSubject: GetSubject = async _props => {
     const t = i18n.getFixedT(_props.locale);
-    return t("organization-invite.messageSubject");
+    return t("organization-invite.messageSubject", { "0": exp("organization.name") });
 };

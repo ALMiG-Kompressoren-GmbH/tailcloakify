@@ -1,4 +1,6 @@
 import { Raw, render, Text } from "jsx-email";
+import { IfContactEmail } from "../IfContactEmail";
+import { ContactHelp } from "../ContactHelp";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
@@ -52,9 +54,11 @@ export const Template = ({ locale, t }: TemplateProps) => {
                 <p>
                     {t("execute-actions.resetPassword")}
                     <br />
-                    {t("execute-actions.furtherActions", {
-                        contactEmail: contactEmail
-                    })}
+                    {t("execute-actions.furtherActions")}
+                    <IfContactEmail>
+                        {" "}
+                        <ContactHelp email={contactEmail}>{t("contactHelp")}</ContactHelp>
+                    </IfContactEmail>
                 </p>
 
                 <Raw content="<#else>" />
