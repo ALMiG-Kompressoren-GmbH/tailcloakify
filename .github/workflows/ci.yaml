@@ -48,7 +48,7 @@ jobs:
                   tag_name: v${{ needs.check_if_version_upgraded.outputs.to_version }}
                   target_commitish: ${{ github.head_ref || github.ref }}
                   generate_release_notes: true
-                  draft: false
+                  draft: true
                   prerelease: ${{ needs.check_if_version_upgraded.outputs.is_pre_release == 'true' }}
                   files: dist_keycloak/keycloak-theme-*.jar
               env:

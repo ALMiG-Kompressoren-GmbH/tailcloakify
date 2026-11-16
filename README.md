@@ -173,9 +173,13 @@ You can customize this behavior, see documentation [here](https://docs.keycloaki
 
 ## GitHub Actions
 
-Tailcloakify comes with a generic GitHub Actions workflow that builds the theme and publishes
-the jars [as GitHub releases artifacts](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.2.10).
-To release a new version **just update the `package.json` version and push**.
+Tailcloakify comes with a generic GitHub Actions workflow that builds the theme and attaches the jars
+to [GitHub releases](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.2.10).
+To prepare a release, update the `package.json` version and push the change to `main`. After the build succeeds, the workflow creates a GitHub release as a **draft** with the built JAR files and generated release notes. Review the draft, add or adjust any release information, and publish it manually from the GitHub Releases page.
+
+For a regular release, use a version such as `1.2.11`. For a pre-release, use the `-rc.N` suffix, for example `1.2.11-rc.1` or `1.2.11-rc.2`. The workflow marks these releases as pre-releases. The current version check supports release candidates in this format; other suffixes such as `-beta.1` are not supported.
+
+Each version creates its own tag and draft release. When the pre-release is ready to be superseded by a stable release, update `package.json` to the stable version (for example, `1.2.11`) and push again; this creates a separate stable release draft.
 
 To enable the workflow go to your fork of this repository on GitHub then navigate to:
 `Settings` > `Actions` > `Workflow permissions`, select `Read and write permissions`.
