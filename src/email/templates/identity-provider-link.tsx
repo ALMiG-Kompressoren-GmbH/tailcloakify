@@ -27,7 +27,7 @@ const paragraph = {
 
 export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
-        preview={t("identity-provider-link.messagePreview")}
+        preview={t("identity-provider-link.messagePreview", { realmName: exp("realmName") })}
         locale={locale}
         disclaimer={t("identity-provider-link.disclaimer", {
             realmName: exp("realmName"),

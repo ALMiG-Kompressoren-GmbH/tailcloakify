@@ -6,7 +6,7 @@
     "messageLink": "Passwort festlegen",
     "linkExpiry": "Dieser Link läuft ab in {linkExpiration}",
     "resetPassword": "Falls der Link bereits abgelaufen ist, versuchen Sie Ihr Passwort mit Ihrer E-Mail auf unserer Anmeldeseite zurückzusetzen.",
-    "furtherActions": "Wenn Sie Fragen haben oder denken, dass Sie die falsche Person sind, die diese E-Mail erhalten hat, wenden Sie sich bitte an {contactEmail} für Hilfe.",
+    "furtherActions": "Wenn Sie Fragen haben oder denken, dass Sie die falsche Person sind, die diese E-Mail erhalten hat.",
     "welcome": "Willkommen",
     "configureTOTP": "OTP konfigurieren",
     "updatePassword": "Passwort aktualisieren",
@@ -23,7 +23,8 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Klicken Sie auf den unten stehenden Link, um diesen Prozess zu starten.",
     "adminLinkToAccountUpdate": "Link zur Kontoaktualisierung",
-    "adminIgnoreMessage": " Falls Sie nicht wissen, dass Ihr Administrator dies angefordert hat, ignorieren Sie diese Nachricht einfach und es wird nichts geändert."
+    "adminIgnoreMessage": " Falls Sie nicht wissen, dass Ihr Administrator dies angefordert hat, ignorieren Sie diese Nachricht einfach und es wird nichts geändert.",
+    "furtherActionsContact": "Wenden Sie sich bitte an {contactEmail} für Hilfe."
   },
   "email-test": {
     "messageSubject": "[KEYCLOAK] - SMTP Test-E-Mail",

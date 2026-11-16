@@ -1,4 +1,5 @@
 import { render, Text } from "jsx-email";
+import { IfContactEmail } from "../IfContactEmail";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
@@ -29,7 +30,15 @@ export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
         preview={t("event-login-error.messagePreview", { realmName: exp("realmName") })}
         locale={locale}
-        disclaimer={t("event-login-error.disclaimer", { contactEmail: contactEmail })}
+        disclaimer={
+            <>
+                {t("event-login-error.disclaimer")}
+                <IfContactEmail>
+                    {" "}
+                    {t("event-login-error.disclaimerContact", { contactEmail })}
+                </IfContactEmail>
+            </>
+        }
     >
         <Text style={paragraph}>
             <p>

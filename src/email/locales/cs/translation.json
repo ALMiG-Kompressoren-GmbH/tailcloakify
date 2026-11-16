@@ -6,7 +6,7 @@
     "messageLink": "Nastavit heslo",
     "linkExpiry": "Platnost tohoto odkazu vyprší za {linkExpiration}",
     "resetPassword": "Pokud již platnost odkazu vypršela, zkuste si resetovat heslo pomocí svého e-mailu na naší přihlašovací stránce.",
-    "furtherActions": "Pokud máte jakékoli otázky nebo si myslíte, že tento e-mail obdržela nesprávná osoba, obraťte se prosím na {contactEmail} o pomoc.",
+    "furtherActions": "Pokud máte jakékoli otázky nebo si myslíte, že tento e-mail obdržela nesprávná osoba.",
     "welcome": "Vítejte",
     "configureTOTP": "Konfigurovat OTP",
     "updatePassword": "Aktualizovat heslo",
@@ -23,7 +23,8 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Klikněte na odkaz níže pro zahájení tohoto procesu.",
     "adminLinkToAccountUpdate": "Odkaz na aktualizaci účtu",
-    "adminIgnoreMessage": " Pokud nevíte, že váš administrátor o toto požádal, jednoduše tuto zprávu ignorujte a nic se nezmění."
+    "adminIgnoreMessage": " Pokud nevíte, že váš administrátor o toto požádal, jednoduše tuto zprávu ignorujte a nic se nezmění.",
+    "furtherActionsContact": "Obraťte se prosím na {contactEmail} o pomoc."
   },
   "email-test": {
     "messageSubject": "[KEYCLOAK] - Testovací email SMTP",

@@ -6,7 +6,7 @@
     "messageLink": "Establecer contraseña",
     "linkExpiry": "Este enlace expirará en {linkExpiration}",
     "resetPassword": "Si el enlace ya ha expirado, intente restablecer su contraseña con su correo electrónico en nuestra página de inicio de sesión.",
-    "furtherActions": "Si tiene alguna pregunta o cree que es la persona equivocada que recibe este correo electrónico, póngase en contacto con {contactEmail} para obtener ayuda.",
+    "furtherActions": "Si tiene alguna pregunta o cree que es la persona equivocada que recibe este correo electrónico.",
     "welcome": "Bienvenido",
     "configureTOTP": "Configurar OTP",
     "updatePassword": "Actualizar contraseña",
@@ -23,7 +23,8 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Haga clic en el enlace de abajo para iniciar este proceso.",
     "adminLinkToAccountUpdate": "Enlace para actualización de cuenta",
-    "adminIgnoreMessage": " Si no está al tanto de que su administrador ha solicitado esto, simplemente ignore este mensaje y no se cambiará nada."
+    "adminIgnoreMessage": " Si no está al tanto de que su administrador ha solicitado esto, simplemente ignore este mensaje y no se cambiará nada.",
+    "furtherActionsContact": "Póngase en contacto con {contactEmail} para obtener ayuda."
   },
   "email-test": {
     "messageSubject": "[KEYCLOAK] - Correo electrónico de prueba SMTP",

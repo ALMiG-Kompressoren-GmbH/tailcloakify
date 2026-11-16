@@ -6,7 +6,7 @@
     "messageLink": "Imposta la tua password",
     "linkExpiry": "Questo link scadrà tra {linkExpiration}",
     "resetPassword": "Se il link è già scaduto, prova a reimpostare la tua password con la tua email nella nostra pagina di accesso.",
-    "furtherActions": "Se hai domande o pensi di essere la persona sbagliata che riceve questa email, contatta {contactEmail} per assistenza.",
+    "furtherActions": "Se hai domande o pensi di essere la persona sbagliata che riceve questa email.",
     "welcome": "Benvenuto",
     "configureTOTP": "Configura OTP",
     "updatePassword": "Aggiorna password",
@@ -23,7 +23,8 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Clicca sul link qui sotto per iniziare questo processo.",
     "adminLinkToAccountUpdate": "Link per aggiornamento account",
-    "adminIgnoreMessage": " Se non sei a conoscenza che il tuo amministratore ha richiesto questo, ignora semplicemente questo messaggio e nulla verrà cambiato."
+    "adminIgnoreMessage": " Se non sei a conoscenza che il tuo amministratore ha richiesto questo, ignora semplicemente questo messaggio e nulla verrà cambiato.",
+    "furtherActionsContact": "Contatta {contactEmail} per assistenza."
   },
   "email-test": {
     "messageSubject": "[KEYCLOAK] - Email di test SMTP",

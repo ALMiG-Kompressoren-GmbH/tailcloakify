@@ -6,7 +6,7 @@
     "messageLink": "Définir votre mot de passe",
     "linkExpiry": "Ce lien expirera dans {linkExpiration}",
     "resetPassword": "Si le lien a déjà expiré, essayez de réinitialiser votre mot de passe avec votre e-mail sur notre page de connexion.",
-    "furtherActions": "Si vous avez des questions ou pensez être la mauvaise personne à recevoir cet e-mail, veuillez contacter {contactEmail} pour obtenir de l'aide.",
+    "furtherActions": "Si vous avez des questions ou pensez être la mauvaise personne à recevoir cet e-mail.",
     "welcome": "Bienvenue",
     "configureTOTP": "Configurer OTP",
     "updatePassword": "Mettre à jour le mot de passe",
@@ -23,7 +23,8 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Cliquez sur le lien ci-dessous pour commencer ce processus.",
     "adminLinkToAccountUpdate": "Lien vers la mise à jour du compte",
-    "adminIgnoreMessage": " Si vous n'êtes pas au courant que votre administrateur a demandé ceci, ignorez simplement ce message et rien ne sera changé."
+    "adminIgnoreMessage": " Si vous n'êtes pas au courant que votre administrateur a demandé ceci, ignorez simplement ce message et rien ne sera changé.",
+    "furtherActionsContact": "Veuillez contacter {contactEmail} pour obtenir de l'aide."
   },
   "email-test": {
     "messageSubject": "[KEYCLOAK] - E-mail de test SMTP",

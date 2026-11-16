@@ -158,7 +158,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             defaultValue={login.username ?? ""}
                                             type="text"
                                             autoFocus
-                                            autoComplete="username"
+                                            autoComplete={enableWebAuthnConditionalUI ? "username webauthn" : "username"}
                                             aria-invalid={messagesPerField.existsError("username", "password")}
                                         />
                                         {messagesPerField.existsError("username", "password") && (
