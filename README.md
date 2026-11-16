@@ -27,9 +27,9 @@ Tailcloakify aims to provide support for all default login pages and email templ
 
 We also support using the following plugins:
 
--   [x] [apple-identity-provider](https://github.com/klausbetz/apple-identity-provider-keycloak)
--   [x] [keycloak-magic-link](https://github.com/p2-inc/keycloak-magic-link)
--   [x] [keycloak-orgs](https://github.com/p2-inc/keycloak-orgs)
+- [x] [apple-identity-provider](https://github.com/klausbetz/apple-identity-provider-keycloak)
+- [x] [keycloak-magic-link](https://github.com/p2-inc/keycloak-magic-link)
+- [x] [keycloak-orgs](https://github.com/p2-inc/keycloak-orgs)
 
 ## Customizing the Theme
 
@@ -77,11 +77,11 @@ https://id.example.com/realms/my-realm/protocol/openid-connect/registrations?log
 
 Notes:
 
--   Existing values from Keycloak are not overwritten.
--   Password fields are never prefilled from URL parameters.
--   Plain `login_hint` is accepted as alias for `username` and `email`.
--   Structured `login_hint` JSON can prefill any supported registration field.
--   For custom fields, use the snake_case version of the field name in the URL.
+- Existing values from Keycloak are not overwritten.
+- Password fields are never prefilled from URL parameters.
+- Plain `login_hint` is accepted as alias for `username` and `email`.
+- Structured `login_hint` JSON can prefill any supported registration field.
+- For custom fields, use the snake_case version of the field name in the URL.
 
 ## Keycloak localization feature
 
@@ -160,9 +160,9 @@ Note: _We have used [JSX Email](https://jsx.email/docs/core/cli) to develop the 
 You need to have [Maven](https://maven.apache.org/) installed to build the theme (Maven >= 3.1.1, Java >= 7).  
 The `mvn` command must be in the $PATH.
 
--   On macOS: `brew install maven`
--   On Debian/Ubuntu: `sudo apt-get install maven`
--   On Windows: `choco install openjdk` and `choco install maven` (Or download from [here](https://maven.apache.org/download.cgi))
+- On macOS: `brew install maven`
+- On Debian/Ubuntu: `sudo apt-get install maven`
+- On Windows: `choco install openjdk` and `choco install maven` (Or download from [here](https://maven.apache.org/download.cgi))
 
 ```bash
   npm run build-keycloak-theme
@@ -174,7 +174,7 @@ You can customize this behavior, see documentation [here](https://docs.keycloaki
 ## GitHub Actions
 
 Tailcloakify comes with a generic GitHub Actions workflow that builds the theme and attaches the jars
-to [GitHub releases](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.2.10).
+to [GitHub releases](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.2.11-rc.1).
 To prepare a release, update the `package.json` version and push the change to `main`. After the build succeeds, the workflow creates a GitHub release as a **draft** with the built JAR files and generated release notes. Review the draft, add or adjust any release information, and publish it manually from the GitHub Releases page.
 
 For a regular release, use a version such as `1.2.11`. For a pre-release, use the `-rc.N` suffix, for example `1.2.11-rc.1` or `1.2.11-rc.2`. The workflow marks these releases as pre-releases. The current version check supports release candidates in this format; other suffixes such as `-beta.1` are not supported.
