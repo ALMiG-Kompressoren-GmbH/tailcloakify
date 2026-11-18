@@ -147,7 +147,20 @@ Or you can preview the pages using the storybook:
   npm run storybook
 ```
 
-To preview the email templates locally:
+Storybook also includes all email templates under **Emails**, with controls for
+the seven supported languages, desktop/mobile width, and preview scenarios.
+The HTML is rendered with JSX Email on Node and displayed in an isolated iframe.
+Changes to email templates, translations, and the shared layout refresh the preview.
+The same previews are included in a static build (`npm run build-storybook`).
+
+Preview data is fictional. Known FreeMarker expressions and branches are mapped
+to explicit fixtures; this is not a full FreeMarker interpreter or an email-client
+compatibility test. When adding an expression or condition, extend the fixtures in
+[.storybook/email-fixtures.mjs](.storybook/email-fixtures.mjs).
+
+To run the preview checks: `npm run test:email-preview`.
+
+Alternatively, to preview the email templates separately:
 
 ```bash
   email preview ./src/email/templates

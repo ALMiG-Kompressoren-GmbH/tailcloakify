@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import { emailPreviewPlugin } from "./email-preview-plugin.mjs";
 
 const config: StorybookConfig = {
     stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -10,6 +11,11 @@ const config: StorybookConfig = {
     },
 
     staticDirs: ["../public"],
+
+    async viteFinal(config) {
+        config.plugins = [...(config.plugins ?? []), emailPreviewPlugin()];
+        return config;
+    },
 
     docs: {},
 
