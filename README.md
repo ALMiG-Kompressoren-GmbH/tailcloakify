@@ -2,6 +2,7 @@
     <i>🚀 <a href="https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify">Tailcloakify</a> V1  🚀</i>
     <br/>
     <br/>
+    <strong><a href="https://almig-kompressoren-gmbh.github.io/tailcloakify/">Live Preview: Login Pages &amp; Email Templates</a></strong>
 </p>
 <img src="./public/Tailcloakify-login-page.png" alt="keycloak theme config" width="1905">
 <img src="./public/Tailcloakify-email-template.png" alt="keycloak theme config" width="1905">
@@ -185,6 +186,38 @@ Note that by default Keycloakify generates multiple .jar files for different ver
 You can customize this behavior, see documentation [here](https://docs.keycloakify.dev/features/compiler-options/keycloakversiontargets).
 
 ## GitHub Actions
+
+### Storybook on GitHub Pages
+
+The [Storybook Pages workflow](.github/workflows/storybook-pages.yaml) publishes
+the login and email previews after every successful build on `main`, independently
+of theme releases. It can also be started manually from the Actions tab with
+`Run workflow`; select `main`, as other branches are not deployed.
+
+To enable publishing, open `Settings` > `Pages` and select **GitHub Actions** as
+the build and deployment source. If the `github-pages` environment has deployment
+protection rules, allow deployments from `main`. GitHub Pages must be available
+for the repository's visibility and plan. No personal access token or additional
+deployment secret is required.
+
+The workflow uses Node 24 and Yarn 1.22.22, installs from `yarn.lock`, checks
+TypeScript and the email previews, and builds Storybook. Only the resulting
+`storybook-static` directory is uploaded and deployed; the Keycloak theme JARs
+and application `dist` are not published by this workflow. A failed check or
+build leaves the previously published preview unchanged.
+
+For this repository, the default URL is
+<https://almig-kompressoren-gmbh.github.io/tailcloakify/> unless a custom domain
+is configured. The actual deployment URL is shown in the workflow's
+`github-pages` environment. Forks use their own owner's Pages URL.
+
+The preview shows mock login data and fictional email fixtures, not a live
+Keycloak instance. "Current" means the latest successfully deployed commit on
+`main`; local changes and pull requests are not published automatically.
+Storybook stories and their fixtures are included in the published files, so do
+not put credentials or confidential data in them.
+
+### Theme Releases
 
 Tailcloakify comes with a generic GitHub Actions workflow that builds the theme and attaches the jars
 to [GitHub releases](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.2.12).

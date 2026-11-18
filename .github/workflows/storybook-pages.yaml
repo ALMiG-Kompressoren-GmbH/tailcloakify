@@ -1,0 +1,69 @@
+name: Deploy Storybook to GitHub Pages
+
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: pages
+    cancel-in-progress: false
+
+env:
+    STORYBOOK_DISABLE_TELEMETRY: "1"
+
+jobs:
+    build:
+        if: github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+              with:
+                  persist-credentials: false
+
+            - name: Setup Node
+              uses: actions/setup-node@v6
+              with:
+                  node-version: "24"
+
+            - name: Setup Yarn
+              run: npm install --global yarn@1.22.22
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Check types
+              run: yarn tsc --noEmit
+
+            - name: Test email previews
+              run: yarn test:email-preview
+
+            - name: Build Storybook
+              run: yarn build-storybook
+
+            - name: Upload Pages artifact
+              uses: actions/upload-pages-artifact@v4
+              with:
+                  path: storybook-static
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        permissions:
+            pages: write
+            id-token: write
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Configure GitHub Pages
+              uses: actions/configure-pages@v5
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
