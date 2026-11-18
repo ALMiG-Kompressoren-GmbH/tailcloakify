@@ -1,6 +1,6 @@
 {
     "name": "tailcloakify",
-    "version": "1.2.11",
+    "version": "1.2.12-rc.1",
     "description": "Tailcloakify, the Keycloak Theme based on Keycloakify, and layered with TailwindCSS",
     "repository": {
         "type": "git",
@@ -57,7 +57,7 @@
         "globals": "^17.14.0",
         "prettier": "3.10.1",
         "storybook": "^10.6.7",
-        "typescript": "7.0.2",
+        "typescript": "6.0.3",
         "typescript-eslint": "^8.72.2",
         "vite": "8.3.8"
     },
