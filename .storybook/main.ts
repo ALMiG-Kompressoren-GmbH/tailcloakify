@@ -13,6 +13,7 @@ const config: StorybookConfig = {
     staticDirs: ["../public"],
 
     async viteFinal(config) {
+        config.build = { ...config.build, copyPublicDir: false };
         config.plugins = [...(config.plugins ?? []), emailPreviewPlugin()];
         return config;
     },
