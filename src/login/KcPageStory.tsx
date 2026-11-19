@@ -1,3 +1,8 @@
+import { createContext, useContext } from "react";
+import type { Decorator } from "@storybook/react";
+import { useArgs, useChannel, useRef } from "storybook/preview-api";
+import { STORY_ARGS_UPDATED } from "storybook/internal/core-events";
+import { buildArgsParam } from "storybook/internal/router";
 import type { DeepPartial } from "keycloakify/tools/DeepPartial";
 import type { KcContext } from "./KcContext";
 import KcPage from "./KcPage";
@@ -66,6 +71,47 @@ export const { getKcContextMock } = createGetKcContextMock({
     overridesPerPage: {}
 });
 
+const loginStoryLanguageTags = ["en", "de", "fr", "it", "es", "cs", "nl", "pl", "ru", "sv"];
+
+export const loginStoryLanguages = getKcContextMock({ pageId: "login.ftl" }).locale!.supported
+    .filter(language => loginStoryLanguageTags.includes(language.languageTag))
+    .sort((first, second) => loginStoryLanguageTags.indexOf(first.languageTag) - loginStoryLanguageTags.indexOf(second.languageTag));
+
+const StoryLocaleContext = createContext<{
+    locale: string;
+    setLocale: (locale: string) => void;
+} | undefined>(undefined);
+
+export const LoginLocaleDecorator: Decorator = (Story, context) => {
+    const [args, updateArgs] = useArgs();
+    const initialLocale = useRef(args.locale);
+    useChannel({
+        [STORY_ARGS_UPDATED]: ({ storyId, args: updatedArgs }) => {
+            if (storyId !== context.id || !context.title.startsWith("login/") || updatedArgs.locale === initialLocale.current) {
+                return;
+            }
+            const url = new URL(window.location.href);
+            url.searchParams.set("args", buildArgsParam(context.initialArgs, updatedArgs));
+            window.history.replaceState(window.history.state, "", url);
+            window.location.reload();
+        }
+    });
+
+    if (!context.title.startsWith("login/")) {
+        return <Story />;
+    }
+
+    const locale = loginStoryLanguages.some(language => language.languageTag === args.locale)
+        ? String(args.locale)
+        : "en";
+
+    return (
+        <StoryLocaleContext.Provider value={{ locale, setLocale: locale => updateArgs({ locale }) }}>
+            <Story />
+        </StoryLocaleContext.Provider>
+    );
+};
+
 export function createKcPageStory<PageId extends KcContext["pageId"]>(params: {
     pageId: PageId;
 }) {
@@ -75,13 +121,39 @@ export function createKcPageStory<PageId extends KcContext["pageId"]>(params: {
         kcContext?: DeepPartial<Extract<KcContext, { pageId: PageId }>>;
     }) {
         const { kcContext: overrides } = props;
+        const storyLocale = useContext(StoryLocaleContext);
 
         const kcContextMock = getKcContextMock({
             pageId,
             overrides
         });
 
-        return <KcPage kcContext={kcContextMock} />;
+        if (storyLocale !== undefined && kcContextMock.locale !== undefined) {
+            kcContextMock.locale.currentLanguageTag = storyLocale.locale;
+            kcContextMock.locale.supported = loginStoryLanguages.filter(language =>
+                kcContextMock.locale?.supported.some(supported => supported.languageTag === language.languageTag)
+            ).map(language => ({
+                ...language,
+                url: `#storybook-locale-${language.languageTag}`
+            }));
+        }
+
+        return (
+            <div onClick={event => {
+                if (storyLocale === undefined || !(event.target instanceof Element)) {
+                    return;
+                }
+                const link = event.target.closest("#kc-locale a[href]");
+                const language = kcContextMock.locale?.supported.find(language => language.url === link?.getAttribute("href"));
+                if (language === undefined) {
+                    return;
+                }
+                event.preventDefault();
+                storyLocale.setLocale(language.languageTag);
+            }}>
+                <KcPage kcContext={kcContextMock} />
+            </div>
+        );
     }
 
     return { KcPageStory };

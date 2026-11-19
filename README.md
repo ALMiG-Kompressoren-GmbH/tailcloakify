@@ -148,8 +148,15 @@ Or you can preview the pages using the storybook:
   npm run storybook
 ```
 
+Login stories include a **Language** select in **Controls** for the ten locales with
+custom translations: `en`, `de`, `fr`, `it`, `es`, `cs`, `nl`, `pl`, `ru`, and `sv`.
+The language dropdown in the theme updates the same selection. Switching languages
+reloads the preview iframe and keeps the selected story and its arguments.
+
 Storybook also includes all email templates under **Emails**, with controls for
-the seven supported languages, desktop/mobile width, and preview scenarios.
+the seven supported languages. Preview scenarios are configured internally by
+each email story. Use Storybook's native viewport toolbar to preview different
+screen sizes.
 The HTML is rendered with JSX Email on Node and displayed in an isolated iframe.
 Changes to email templates, translations, and the shared layout refresh the preview.
 The same previews are included in a static build (`npm run build-storybook`).

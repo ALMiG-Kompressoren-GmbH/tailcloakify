@@ -5,11 +5,10 @@ import previews from "virtual:email-previews";
 type PreviewProps = {
     template: string;
     locale: string;
-    screen: "desktop" | "mobile";
     scenario: string;
 };
 
-function EmailPreview({ template, locale, screen, scenario }: PreviewProps) {
+function EmailPreview({ template, locale, scenario }: PreviewProps) {
     const [preview, setPreview] = useState<{ html: string; subject: string }>();
     const [error, setError] = useState<Error>();
     useEffect(() => {
@@ -38,8 +37,7 @@ function EmailPreview({ template, locale, screen, scenario }: PreviewProps) {
     return (
         <main
             style={{
-                width: screen === "mobile" ? 375 : 720,
-                maxWidth: "100%",
+                width: "100%",
                 margin: "0 auto"
             }}
         >
@@ -73,15 +71,18 @@ export function createEmailStoryMeta(
     return {
         component: EmailPreview,
         parameters: { layout: "padded" },
-        args: { template, locale: "de", screen: "desktop", scenario: "default" },
+        args: { template, locale: "de", scenario: "default" },
         argTypes: {
             template: { control: false, table: { disable: true } },
             locale: {
                 control: "select",
                 options: ["en", "cs", "de", "es", "fr", "it", "ru"]
             },
-            screen: { control: "inline-radio", options: ["desktop", "mobile"] },
-            scenario: { control: "select", options: scenarios }
+            scenario: {
+                control: false,
+                table: { disable: true },
+                options: scenarios
+            }
         }
     } satisfies Meta<typeof EmailPreview>;
 }
