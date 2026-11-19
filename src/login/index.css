@@ -28,6 +28,116 @@ html {
     border-color: #e5e7eb;
 }
 
+.kcLoginClass input[type="checkbox"] {
+    @apply appearance-none border border-secondary-500 bg-white text-primary-600;
+    box-sizing: border-box;
+    inline-size: 1.125rem;
+    block-size: 1.125rem;
+    min-inline-size: 1.125rem;
+    position: static;
+    float: none;
+    flex-shrink: 0;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0 0.5rem 0 0;
+    vertical-align: -0.2em;
+    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0.875rem;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+    cursor: pointer;
+    transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.kcLoginClass input[type="checkbox"]:not(:disabled):hover {
+    @apply border-primary-500;
+}
+
+.kcLoginClass input[type="checkbox"]:checked,
+.kcLoginClass input[type="checkbox"]:indeterminate {
+    @apply border-primary-600 bg-primary-600;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='m3 8 3 3 7-7' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.kcLoginClass input[type="checkbox"]:indeterminate {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 8h8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.kcLoginClass input[type="checkbox"]:not(:disabled):is(:checked, :indeterminate):hover {
+    @apply border-primary-700 bg-primary-700;
+}
+
+.kcLoginClass input[type="checkbox"]:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.kcLoginClass input[type="checkbox"]:focus-visible {
+    @apply outline-primary-600;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 3px;
+}
+
+.kcLoginClass input[type="checkbox"][aria-invalid="true"],
+.kcLoginClass input[type="checkbox"]:user-invalid {
+    @apply border-red-600;
+}
+
+.kcLoginClass input[type="checkbox"][aria-invalid="true"]:focus-visible,
+.kcLoginClass input[type="checkbox"]:user-invalid:focus-visible {
+    @apply outline-red-600;
+}
+
+.kcLoginClass input[type="checkbox"]:disabled {
+    @apply border-secondary-200 bg-secondary-100;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.kcLoginClass input[type="checkbox"]:disabled:is(:checked, :indeterminate) {
+    @apply border-secondary-400 bg-secondary-400;
+}
+
+.kcLoginClass input[type="checkbox"] + label,
+.kcLoginClass label:has(> input[type="checkbox"]) {
+    cursor: pointer;
+}
+
+.kcLoginClass label:has(> input[type="checkbox"]) {
+    display: inline-flex;
+    align-items: flex-start;
+    max-inline-size: 100%;
+    padding-inline-start: 0;
+}
+
+.kcLoginClass input[type="checkbox"]:disabled + label,
+.kcLoginClass label:has(> input[type="checkbox"]:disabled) {
+    @apply text-secondary-500;
+    cursor: not-allowed;
+}
+
+@media (forced-colors: active) {
+    .kcLoginClass input[type="checkbox"],
+    .kcLoginClass input[type="checkbox"]:is(:checked, :indeterminate) {
+        appearance: auto;
+        background-image: none;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .kcLoginClass input[type="checkbox"]:focus-visible,
+    .kcLoginClass input[type="checkbox"]:is([aria-invalid="true"], :user-invalid):focus-visible {
+        outline-color: Highlight;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kcLoginClass input[type="checkbox"] {
+        transition: none;
+    }
+}
+
 .separate {
     display: flex;
     align-items: center;

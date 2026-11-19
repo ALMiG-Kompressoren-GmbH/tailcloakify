@@ -35,7 +35,7 @@ export default function Invitations(props: PageProps<Extract<KcContext, { pageId
                     {invitations.orgs.map((org, index) => (
                         <div key={index} className="checkbox">
                             <label>
-                                <input id={`org-${org.id}`} name="orgs" type="checkbox" value={org.id} checked className={"accent-primary-600"} /> {org.displayName}
+                                <input id={`org-${org.id}`} name="orgs" type="checkbox" value={org.id} defaultChecked /> {org.displayName}
                             </label>
                         </div>))}
                     <input
