@@ -1,4 +1,4 @@
-name: Deploy Storybook to GitHub Pages
+name: Build Storybook for GitHub Pages
 
 on:
     push:
@@ -10,8 +10,8 @@ permissions:
     contents: read
 
 concurrency:
-    group: pages
-    cancel-in-progress: false
+    group: storybook-main-build
+    cancel-in-progress: true
 
 env:
     STORYBOOK_DISABLE_TELEMETRY: "1"
@@ -40,30 +40,16 @@ jobs:
             - name: Check types
               run: yarn tsc --noEmit
 
-            - name: Test email previews
-              run: yarn test:email-preview
+            - name: Test preview publisher
+              run: python -B -m unittest discover -s .github/scripts -p test_storybook_previews.py -v
 
             - name: Build Storybook
               run: yarn build-storybook
 
-            - name: Upload Pages artifact
-              uses: actions/upload-pages-artifact@v4
+            - name: Upload main preview
+              uses: actions/upload-artifact@v4
               with:
+                  name: storybook
                   path: storybook-static
-
-    deploy:
-        needs: build
-        runs-on: ubuntu-latest
-        permissions:
-            pages: write
-            id-token: write
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-        steps:
-            - name: Configure GitHub Pages
-              uses: actions/configure-pages@v5
-
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+                  retention-days: 90
+                  if-no-files-found: error

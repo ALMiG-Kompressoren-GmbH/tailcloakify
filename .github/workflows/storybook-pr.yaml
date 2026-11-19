@@ -1,0 +1,53 @@
+name: Build Storybook for Pull Requests
+
+on:
+    pull_request:
+        branches:
+            - main
+
+permissions:
+    contents: read
+
+concurrency:
+    group: storybook-pr-${{ github.event.pull_request.number }}
+    cancel-in-progress: true
+
+env:
+    STORYBOOK_DISABLE_TELEMETRY: "1"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout pull request
+              uses: actions/checkout@v6
+              with:
+                  persist-credentials: false
+
+            - name: Setup Node
+              uses: actions/setup-node@v6
+              with:
+                  node-version: "24"
+
+            - name: Setup Yarn
+              run: npm install --global yarn@1.22.22
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Check types
+              run: yarn tsc --noEmit
+
+            - name: Test preview publisher
+              run: python -B -m unittest discover -s .github/scripts -p test_storybook_previews.py -v
+
+            - name: Build Storybook
+              run: yarn build-storybook
+
+            - name: Upload preview
+              uses: actions/upload-artifact@v4
+              with:
+                  name: storybook
+                  path: storybook-static
+                  retention-days: 90
+                  if-no-files-found: error

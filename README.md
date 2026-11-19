@@ -159,8 +159,6 @@ to explicit fixtures; this is not a full FreeMarker interpreter or an email-clie
 compatibility test. When adding an expression or condition, extend the fixtures in
 [.storybook/email-fixtures.mjs](.storybook/email-fixtures.mjs).
 
-To run the preview checks: `npm run test:email-preview`.
-
 Alternatively, to preview the email templates separately:
 
 ```bash
@@ -189,10 +187,12 @@ You can customize this behavior, see documentation [here](https://docs.keycloaki
 
 ### Storybook on GitHub Pages
 
-The [Storybook Pages workflow](.github/workflows/storybook-pages.yaml) publishes
-the login and email previews after every successful build on `main`, independently
-of theme releases. It can also be started manually from the Actions tab with
-`Run workflow`; select `main`, as other branches are not deployed.
+The [main Storybook build](.github/workflows/storybook-pages.yaml) builds the login
+and email previews on every push to `main`, independently of theme releases.
+The [publisher](.github/workflows/storybook-publish.yaml) then deploys the latest
+successful main build together with available previews of open pull requests.
+Both workflows can also be started manually from Actions with `Run workflow`;
+select `main`.
 
 To enable publishing, open `Settings` > `Pages` and select **GitHub Actions** as
 the build and deployment source. If the `github-pages` environment has deployment
@@ -200,11 +200,11 @@ protection rules, allow deployments from `main`. GitHub Pages must be available
 for the repository's visibility and plan. No personal access token or additional
 deployment secret is required.
 
-The workflow uses Node 24 and Yarn 1.22.22, installs from `yarn.lock`, checks
-TypeScript and the email previews, and builds Storybook. Only the resulting
-`storybook-static` directory is uploaded and deployed; the Keycloak theme JARs
-and application `dist` are not published by this workflow. A failed check or
-build leaves the previously published preview unchanged.
+The builds use Node 24 and Yarn 1.22.22, install from `yarn.lock`, check TypeScript,
+test the publisher, and build Storybook. Only static Storybook
+files are published; the Keycloak theme JARs and application `dist` are not.
+A failed main build keeps the last successful main preview. If publishing fails,
+the previously deployed site remains available.
 
 For this repository, the default URL is
 <https://almig-kompressoren-gmbh.github.io/tailcloakify/> unless a custom domain
@@ -213,9 +213,42 @@ is configured. The actual deployment URL is shown in the workflow's
 
 The preview shows mock login data and fictional email fixtures, not a live
 Keycloak instance. "Current" means the latest successfully deployed commit on
-`main`; local changes and pull requests are not published automatically.
+main`; local changes are not published automatically.
 Storybook stories and their fixtures are included in the published files, so do
 not put credentials or confidential data in them.
+
+### Pull Request Previews
+
+The [PR workflow](.github/workflows/storybook-pr.yaml) builds Storybook for pull
+requests targeting `main`. After a successful build, the publisher adds a comment
+with the preview link and the exact PR commit. For example, PR #123 is available
+at `https://almig-kompressoren-gmbh.github.io/tailcloakify/pr/123/`. The stable
+main preview at the site root is preserved, as are other available open PR previews.
+
+The bot updates its existing comment rather than creating a new one on each
+build. Closing or merging a PR triggers removal of its preview and updates the
+comment. A new PR commit needs a successful build before its preview is published.
+The publisher never substitutes an older commit's artifact for the current one.
+
+PR code runs only in the read-only `pull_request` build without deployment
+secrets. The privileged publisher always checks out `main`, never installs PR
+dependencies, and only extracts static artifacts after validating their paths,
+size, workflow run, PR association, and current head commit. Fork builds may need
+maintainer approval in Actions. If GitHub does not provide a matching PR
+association for a run, it is not automatically published; the build artifact is
+still downloadable from Actions. Public previews execute PR JavaScript in the
+visitor's browser, so only open previews from contributors you trust.
+
+All three workflow files and the publisher scripts must first be merged into
+`main`. A successful main Storybook build must exist before publishing any PR
+preview. Build artifacts are retained for 90 days (subject to repository policy);
+rerun the main build if it expires, and rebuild an open PR if its artifact expires.
+Existing PRs need a new build after the workflows are enabled. Allow the publisher
+to write PR comments in the repository's Actions policy if the organization
+restricts token permissions. No external preview service or extra secret is needed.
+
+The publisher is tested offline with
+`python -B -m unittest discover -s .github/scripts -p test_storybook_previews.py -v`.
 
 ### Theme Releases
 

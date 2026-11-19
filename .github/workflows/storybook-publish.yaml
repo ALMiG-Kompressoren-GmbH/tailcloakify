@@ -1,0 +1,72 @@
+name: Publish Storybook previews
+
+on:
+    workflow_run:
+        workflows:
+            - Build Storybook for GitHub Pages
+            - Build Storybook for Pull Requests
+        types:
+            - completed
+    pull_request_target:
+        branches:
+            - main
+        types:
+            - closed
+    workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+    group: pages
+    cancel-in-progress: false
+
+jobs:
+    publish:
+        if: github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            actions: read
+            pages: write
+            id-token: write
+            pull-requests: write
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Checkout trusted publisher
+              uses: actions/checkout@v6
+              with:
+                  ref: main
+                  persist-credentials: false
+
+            - name: Test trusted publisher
+              run: python -B -m unittest discover -s .github/scripts -p test_storybook_previews.py -v
+
+            - name: Assemble main and open PR previews
+              run: >-
+                  python -B .github/scripts/storybook_previews.py assemble
+                  --output "$RUNNER_TEMP/storybook-site"
+                  --manifest "$RUNNER_TEMP/storybook-previews.json"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Configure GitHub Pages
+              uses: actions/configure-pages@v5
+
+            - name: Upload Pages artifact
+              uses: actions/upload-pages-artifact@v4
+              with:
+                  path: ${{ runner.temp }}/storybook-site
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
+
+            - name: Update preview comments
+              run: >-
+                  python -B .github/scripts/storybook_previews.py comment
+                  --manifest "$RUNNER_TEMP/storybook-previews.json"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  PAGES_BASE_URL: ${{ steps.deployment.outputs.page_url }}
