@@ -1,6 +1,5 @@
-import { render, Text } from "jsx-email";
-import { IfContactEmail } from "../IfContactEmail";
-import { ContactHelp } from "../ContactHelp";
+import { renderEmail } from "../util/renderEmail";
+import { EmailButton, EmailText } from "../components";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
@@ -19,47 +18,32 @@ export const previewProps: TemplateProps = {
 export const templateName = "Password Reset";
 
 const { exp } = createVariablesHelper("password-reset.ftl");
-const contactEmail = exp("properties.TAILCLOAKIFY_EMAIL_CONTACT");
-
-const paragraph = {
-    color: "#777",
-    fontSize: "16px",
-    lineHeight: "24px",
-    textAlign: "left" as const
-};
 
 export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
+        title={t("password-reset.messageSubject")}
         preview={t("password-reset.messagePreview", { realmName: exp("realmName") })}
         locale={locale}
-        disclaimer={
-            <>
-                {t("password-reset.disclaimer")}
-                <IfContactEmail>
-                    {" "}
-                    <ContactHelp email={contactEmail}>{t("contactHelp")}</ContactHelp>
-                </IfContactEmail>
-            </>
-        }
+        disclaimer={t("password-reset.disclaimer")}
     >
-        <Text style={paragraph}>
-            <p>{t("password-reset.messageBody", { realmName: exp("realmName") })}</p>
-            <p>
-                <a href={exp("link")}>{t("password-reset.passwordResetLink")}</a>
-            </p>
-            <p>
-                {t("password-reset.linkExpiration", {
-                    linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
-                    interpolation: { escapeValue: false }
-                })}
-            </p>
-        </Text>
+        <EmailText>
+            {t("password-reset.messageBody", { realmName: exp("realmName") })}
+        </EmailText>
+        <EmailButton href={exp("link")}>
+            {t("password-reset.passwordResetLink")}
+        </EmailButton>
+        <EmailText>
+            {t("password-reset.linkExpiration", {
+                linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
+                interpolation: { escapeValue: false }
+            })}
+        </EmailText>
     </EmailLayout>
 );
 
 export const getTemplate: GetTemplate = async props => {
     const t = i18n.getFixedT(props.locale);
-    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
+    return await renderEmail(<Template {...props} t={t} />, props.plainText);
 };
 
 export const getSubject: GetSubject = async _props => {

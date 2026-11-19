@@ -1,290 +1,256 @@
-<p align="center">
-    <i>🚀 <a href="https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify">Tailcloakify</a> V1  🚀</i>
-    <br/>
-    <br/>
-    <strong><a href="https://almig-kompressoren-gmbh.github.io/tailcloakify/">Live Preview: Login Pages &amp; Email Templates</a></strong>
-</p>
-<img src="./public/Tailcloakify-login-page.png" alt="keycloak theme config" width="1905">
-<img src="./public/Tailcloakify-email-template.png" alt="keycloak theme config" width="1905">
+# Tailcloakify
 
-Tailcloakify is a [Keycloak](https://github.com/keycloak/keycloak) Theme that is based on
-[Keycloakify](https://github.com/keycloakify/keycloakify), layered with [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) and inspired by [Keywind](https://github.com/lukin/keywind)
-UI design approach.
+Matching **login pages and transactional emails for Keycloak**, with configurable
+branding and multilingual templates. Built with
+[Keycloakify](https://github.com/keycloakify/keycloakify),
+[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss), and
+[JSX Email](https://jsx.email/), inspired by [Keywind](https://github.com/lukin/keywind).
 
-# How to Use
+**[Live Preview](https://almig-kompressoren-gmbh.github.io/tailcloakify/)**
+| **[Download](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases)**
+| [Email Theme](#email-theme) | [Login Theme](#login-theme) | [Configuration](#configuration)
 
-1. Place the provided JAR file in the <keycloak-home>/providers/ directory or use the example Dockerfile from this repository to add the provided JAR file into your Docker Image.
-2. Set environment variables or localization messages to customize the theme with the out of the box configuration functionalities.
-3. Restart your Keycloak server or deploy your built docker image to your server.
-4. Log in to the Keycloak Admin Console.
-   Go to Realm Settings > Themes.
-   Select the `Tailcloakify` Login theme from the dropdown.
-   Select the `Tailcloakify` Email theme from the dropdown.
-   Save your settings.
+## Quick Start
 
-# Supported Login Pages & Email Templates
+1. Download the theme JAR matching your Keycloak version from the
+   [releases](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases).
+2. Copy it into `<keycloak-home>/providers/`, or include it in your container image
+   using the repository's [Dockerfile](Dockerfile). Restart or redeploy Keycloak.
+3. In the Admin Console, open **Realm settings > Themes**, select `Tailcloakify`
+   for **Login theme** and **Email theme**, and save. You can enable either theme
+   independently. An account-console theme is not included.
+4. Configure your SMTP server under **Realm settings > Email** and send a test email.
 
-Tailcloakify aims to provide support for all default login pages and email templates, which are currently available. If you think, there is something missing let us know.
+Customize branding through environment variables before starting Keycloak;
+no theme rebuild is needed for the options below.
 
-We also support using the following plugins:
+## Supported Integrations
 
-- [x] [apple-identity-provider](https://github.com/klausbetz/apple-identity-provider-keycloak)
-- [x] [keycloak-magic-link](https://github.com/p2-inc/keycloak-magic-link)
-- [x] [keycloak-orgs](https://github.com/p2-inc/keycloak-orgs)
+- [Apple identity provider](https://github.com/klausbetz/apple-identity-provider-keycloak)
+- [Keycloak Magic Link](https://github.com/p2-inc/keycloak-magic-link)
+- [Keycloak Organizations](https://github.com/p2-inc/keycloak-orgs)
 
-## Customizing the Theme
+Provider availability and required actions depend on your Keycloak version and
+enabled features. Report missing pages or templates through
+[GitHub Issues](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/issues).
 
-Tailcloakify provides several ways of customizing your theme without the need to rebuild the theme while using the prebundled JAR file. You can either use environment variables, the keycloak localization system or deploy your custom theme extending Tailcloakify.
+## Login Theme
 
-## Environment variables
+Customizable sign-in, registration, recovery, and account-action pages with
+identity-provider support and optional backgrounds, logos, and legal links.
 
-| Name                                                      | Description                                                                                        |
-| --------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| TAILCLOAKIFY_ADDITIONAL_SCRIPTS                           | Use it to add other external scripts                                                               |
-| TAILCLOAKIFY_ADDITIONAL_STYLES                            | Use it to add other external styles                                                                |
-| TAILCLOAKIFY_ADDITIONAL_META                              | Use it to add other meta tags                                                                      |
-| TAILCLOAKIFY_HIDE_LOGIN_FORM                              | Use it to hide the default login form for using IDPs only                                          |
-| TAILCLOAKIFY_BACKGROUND_LOGO_URL                          | Use it to add an image of your logo                                                                |
-| TAILCLOAKIFY_HEADER_LOGO_URL                              | Use it to add an image of your logo to the header                                                  |
-| TAILCLOAKIFY_BACKGROUND_IMAGE_URL                         | Use it to set a custom background image                                                            |
-| TAILCLOAKIFY_BACKGROUND_VIDEO_URL                         | Use it to add a MP4 format background video on your register and login pages                       |
-| TAILCLOAKIFY_FAVICON_URL                                  | Use it to add a url to your Favicon                                                                |
-| TAILCLOAKIFY_FOOTER_IMPRINT_URL                           | Use it to add an Impressum                                                                         |
-| TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL                    | Use it to add url to your data protection document                                                 |
-| TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT                | Use it to integrate Orestbida cookie consent plugin                                                |
-| TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA | Provide any falsy value to disable the cookie section for the google captcha                       |
-| TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER            | Use it to show social identity providers on the registration page (set to "TRUE")                  |
-| TAILCLOAKIFY_ENABLE_REGISTRATION_URL_PREFILL              | Enable prefilling registration fields from URL query params (set to "TRUE", default: disabled)     |
-| TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL                   | Use it to add a default background image for your email templates                                  |
-| TAILCLOAKIFY_EMAIL_LOGO                                   | Use it to add an image of your logo to your email templates                                        |
-| TAILCLOAKIFY_EMAIL_FONT_FAMILY                            | Use it to add your preferred font with good cross-platform compatibility                           |
-| TAILCLOAKIFY_EMAIL_CONTACT                                | Use it to add your contact email address. Preferably the email address used to contact your users. |
+![Tailcloakify Keycloak login page](public/Tailcloakify-login-page.png)
 
-## Registration URL Prefill (snake_case)
+Custom login translations are available in English, German, French, Italian,
+Spanish, Czech, Dutch, Polish, Russian, and Swedish. Storybook's **Language**
+control and the language selector in the page let you preview them.
 
-This feature is disabled by default and can be enabled with:
+## Configuration
 
-`TAILCLOAKIFY_ENABLE_REGISTRATION_URL_PREFILL=TRUE`
+Environment variables configure server-wide defaults. Login settings can also be
+customized through realm localization messages or a child theme. Email settings
+use the server environment, not login localization overrides. Restart Keycloak
+after changing its environment.
 
-When enabled, the registration form reads values in `snake_case` and prefills matching form fields.
+### Shared Footer Links
 
-Important: In real Keycloak flows, arbitrary query parameters are often removed during redirects. For reliable prefilling, pass data through `login_hint` as JSON.
+These settings apply to both login pages and emails. Links are omitted when unset.
 
-Example:
+| Variable | Purpose |
+| --- | --- |
+| `TAILCLOAKIFY_FOOTER_IMPRINT_URL` | Legal notice / imprint URL |
+| `TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL` | Privacy notice URL |
 
-```
-https://id.example.com/realms/my-realm/protocol/openid-connect/registrations?login_hint=%7B%22first_name%22%3A%22Max%22%2C%22last_name%22%3A%22Mustermann%22%2C%22email%22%3A%22max%40example.com%22%7D
-```
+### Login Configuration
 
-Notes:
+| Variable | Purpose |
+| --- | --- |
+| `TAILCLOAKIFY_BACKGROUND_LOGO_URL` | Background logo image |
+| `TAILCLOAKIFY_HEADER_LOGO_URL` | Header logo image |
+| `TAILCLOAKIFY_BACKGROUND_IMAGE_URL` | Background image |
+| `TAILCLOAKIFY_BACKGROUND_VIDEO_URL` | MP4 background video |
+| `TAILCLOAKIFY_FAVICON_URL` | Favicon URL |
+| `TAILCLOAKIFY_HIDE_LOGIN_FORM` | Hide the form for identity-provider-only sign-in |
+| `TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER` | Show identity providers on registration; `TRUE` to enable |
+| `TAILCLOAKIFY_ENABLE_REGISTRATION_URL_PREFILL` | Enable URL-based registration prefill; `TRUE`, disabled by default |
+| `TAILCLOAKIFY_ADDITIONAL_SCRIPTS` | Additional external scripts |
+| `TAILCLOAKIFY_ADDITIONAL_STYLES` | Additional external styles |
+| `TAILCLOAKIFY_ADDITIONAL_META` | Additional meta tags |
+| `TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT` | Enable Orestbida cookie-consent integration |
+| `TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA` | Disable the CAPTCHA cookie section with a falsy value |
 
-- Existing values from Keycloak are not overwritten.
-- Password fields are never prefilled from URL parameters.
-- Plain `login_hint` is accepted as alias for `username` and `email`.
-- Structured `login_hint` JSON can prefill any supported registration field.
-- For custom fields, use the snake_case version of the field name in the URL.
+### Per-Realm Login Overrides
 
-## Keycloak localization feature
+Use Keycloak localization overrides for language-specific or per-realm login
+configuration. Each message key corresponds to the environment setting below.
 
-Some customizations are possible through Keycloak's Localization System, allowing setting up different configurations for each language. You can either add custom localization by adding those into the keycloak server or by manually setting them within the realm settings. You can also use this feature to overwrite default variables for each realm by providing at least the default language as configuration.
+| Message key | Environment suffix after `TAILCLOAKIFY_` |
+| --- | --- |
+| `backgroundLogoUrl` | `BACKGROUND_LOGO_URL` |
+| `headerLogoUrl` | `HEADER_LOGO_URL` |
+| `backgroundImageUrl` | `BACKGROUND_IMAGE_URL` |
+| `backgroundVideoUrl` | `BACKGROUND_VIDEO_URL` |
+| `faviconUrl` | `FAVICON_URL` |
+| `footerImprintUrl` | `FOOTER_IMPRINT_URL` |
+| `footerDataprotectionUrl` | `FOOTER_DATAPROTECTION_URL` |
+| `showSocialProvidersOnRegister` | `SHOW_SOCIAL_PROVIDERS_ON_REGISTER` |
 
-| Name                          | Description                                                                              |
-| ----------------------------- | ---------------------------------------------------------------------------------------- |
-| backgroundLogoUrl             | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_LOGO_URL               |
-| backgroundImageUrl            | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_IMAGE_URL              |
-| backgroundVideoUrl            | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_VIDEO_URL              |
-| faviconUrl                    | The localized enabled alternative to env: TAILCLOAKIFY_FAVICON_URL                       |
-| footerImprintUrl              | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_IMPRINT_URL                |
-| footerDataprotectionUrl       | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL         |
-| showSocialProvidersOnRegister | The localized enabled alternative to env: TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER |
+### Registration Prefill
 
-**_Note_**: Unlike the Login theme, the Email theme does not include a feature for adding localized variables directly from the Keycloak admin console. Therefore, the email environment variables in the above section
-denoted with the prefix `TAILCLOAKIFY_EMAIL_` can only be configured as arguments in a Dockerfile, or Docker Compose yml configuration.
+With `TAILCLOAKIFY_ENABLE_REGISTRATION_URL_PREFILL=TRUE`, registration fields can
+be prefilled using `snake_case` names. Prefer JSON in `login_hint`, because
+Keycloak redirects may strip other query parameters:
 
-## Using a child Theme
-
-If you want to customize this theme, by extending it with your own files to be loaded as scripts or styles you can follow the following steps.
-
-1. [Deploy Keywind Login Theme](https://www.keycloak.org/docs/latest/server_development/#deploying-themes)
-2. [Create your own Login Theme](https://www.keycloak.org/docs/latest/server_development/#creating-a-theme)
-3. Specify parent theme in [theme properties](https://www.keycloak.org/docs/latest/server_development/#theme-properties) and add additional files to be loaded in the header
-
-```
-parent=tailcloakify
-scripts=first-script.js second-script.js
-styles=custom-styles.css
-meta=name==content name2=content2
+```text
+https://id.example.com/realms/my-realm/protocol/openid-connect/registrations?login_hint=%7B%22first_name%22%3A%22Max%22%2C%22email%22%3A%22max%40example.com%22%7D
 ```
 
-# Developer Quick Start
+Existing values are not overwritten and password fields are never prefilled.
+A plain `login_hint` can populate username and email; JSON can target supported
+custom fields using their snake_case names. URLs may appear in browser history
+and server logs, so do not include secrets or sensitive data.
 
-If you want to customize the theme beyond the outlined capabilities, you can do so by forking this repository and performing manual changes yourself.
+## Email Theme
 
-Here do you find a Quick Start, how to setup your development environment:
+Branded account messages, not just a styled login page. The email theme includes
+**23 templates** with localized subjects and **HTML and plain-text alternatives**.
+
+![Tailcloakify email verification with branded header, action button, and privacy footer](public/Tailcloakify-email-template.png)
+
+- **Seven languages:** English, German, French, Italian, Spanish, Czech, and Russian.
+- **Account flows:** verification links and codes, password resets, email changes,
+  identity-provider linking, and administrator-required actions.
+- **Security and administration:** sign-in and credential events, account lockouts,
+  workflow notifications, organization invitations, and SMTP test mail.
+- **Optional plugin templates:** Magic Link, Email OTP, activation, continuation,
+  and Phase Two organization invitations. The corresponding provider must be installed.
+- **Your branding:** logo, colors, background, font, support address, and legal links.
+
+### Preview and Download Emails
+
+Open **Emails** in the [live preview](https://almig-kompressoren-gmbh.github.io/tailcloakify/?path=/story/emails-email-verification-ftl--default).
+Select a language in **Controls** and switch **format** between **HTML** and
+**Plain Text**. The download icon next to the subject exports the selected message
+as an `.eml` file with both alternatives. Nothing is sent; all preview data is fictional.
+
+The **executeActions.ftl** story also lets you select **requiredActions**.
+Plugin templates are grouped under **Emails / plugins**. The **No Branding**,
+**Long Content**, and **email-test.ftl** appearance variants help you compare configurations.
+Only **email-test.ftl** exposes the **showButtonLink** preview toggle.
+
+The preview is not a live Keycloak instance. Before production, test actual SMTP
+delivery and rendering in your target mail clients, including Outlook, Gmail, and
+Apple Mail. Browser previews and EML export do not certify client compatibility;
+native-client acceptance remains pending. Background images, gradients, and
+automatic OTP detection depend on the receiving client.
+
+### Email Configuration
+
+Set these variables in the Keycloak server environment, for example in Docker Compose:
+
+```dotenv
+TAILCLOAKIFY_EMAIL_LOGO="https://example.com/brand/logo.png"
+TAILCLOAKIFY_EMAIL_CONTACT="support@example.com"
+TAILCLOAKIFY_FOOTER_IMPRINT_URL="https://example.com/imprint"
+TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL="https://example.com/privacy"
+```
+
+| Variable | Purpose / default |
+| --- | --- |
+| `TAILCLOAKIFY_EMAIL_LOGO` | Logo image URL; omitted when unset |
+| `TAILCLOAKIFY_EMAIL_LOGO_WIDTH` | Logo width in pixels; positive integer, `160` |
+| `TAILCLOAKIFY_EMAIL_LOGO_HEIGHT` | Logo height in pixels; positive integer, `40` |
+| `TAILCLOAKIFY_EMAIL_CONTACT` | Support email address; omitted when unset |
+| `TAILCLOAKIFY_EMAIL_FONT_FAMILY` | Custom font stack; choose broadly available email fonts |
+| `TAILCLOAKIFY_EMAIL_BACKGROUND_COLOR` | Background and fallback color; `#f3f4f6` |
+| `TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE` | CSS background image or gradient; `none` |
+| `TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL` | Background image URL; overrides the CSS image setting |
+| `TAILCLOAKIFY_EMAIL_DIVIDER_COLOR` | Divider beneath the heading; `#d1d5db` |
+| `TAILCLOAKIFY_EMAIL_SHOW_BUTTON_LINK` | Additional copyable URL beneath HTML buttons; `false` |
+
+Use `TAILCLOAKIFY_EMAIL_BACKGROUND_COLOR="#ffffff"` for a white background.
+Clients without background-image support retain the fallback color. Use valid
+CSS values from trusted configuration and publicly accessible HTTPS image URLs.
+With `TAILCLOAKIFY_EMAIL_SHOW_BUTTON_LINK=true`, the extra URL appears only in HTML;
+plain text already includes the button destination once.
+
+### Data Protection
+
+The templates are intended for non-advertising system messages and do not include
+a marketing unsubscribe link. Statutory data subject rights remain unaffected.
+The theme alone does not make a deployment GDPR-compliant:
+
+- Establish a legal basis and necessity for each message. Assess optional invitations
+  separately, particularly when another person supplies the recipient's address.
+- Set the privacy URL and contact address. Provide the actual controller and required
+  Article 13/14 information at the applicable time, potentially at first contact for
+  indirectly collected addresses. A realm name and generic footer are not sufficient.
+- Minimize personal data in subjects and messages; review SMTP providers, retention,
+  access, and international transfers. Remote images can disclose IP/request metadata
+  to their hosts. Account deletion does not imply erasure of every log or backup copy.
+
+See the [EDPB guidance on transparency and data subject rights](https://www.edpb.europa.eu/sme/be-compliant/respect-individuals-rights_en).
+
+## Child Themes
+
+For additional customizations, we suggest to look into our configuration capabilities and if your need exceeds those, we suggest to fork the repository and apply your changes as needed.
+You can also [create a child theme](https://www.keycloak.org/docs/latest/server_development/#creating-a-theme)
+and set its `theme.properties`:
+
+```properties
+parent=Tailcloakify
+scripts=custom-script.js
+styles=custom-style.css
+```
+
+## Development
+
+For source changes, use Node.js 24 and Yarn Classic 1.22.22:
 
 ```bash
-  git clone https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify
-  cd tailcloakify
-  yarn install  # Or use an other package manager, just be sure to delete the yarn.lock if you use another package manager.
+git clone https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify.git
+cd tailcloakify
+yarn install --frozen-lockfile
+yarn storybook
 ```
 
-[Documentation](https://docs.keycloakify.dev/css-customization)
+| Command | Purpose |
+| --- | --- |
+| `yarn dev` | Vite development preview |
+| `yarn storybook` | Login and email previews with live updates |
+| `npx keycloakify start-keycloak` | Run against a local Keycloak instance; requires Docker |
+| `yarn tsc --noEmit` | Check TypeScript |
+| `yarn build-storybook` | Build static previews |
+| `yarn build-keycloak-theme` | Build distributable theme JARs; requires Java and Maven on `PATH` |
 
-## Testing the Theme Locally
+JARs are generated in `dist_keycloak/` for the configured Keycloak version targets.
+See [Keycloakify documentation](https://docs.keycloakify.dev/) for source customization
+and build options. Keep preview data fictional; published Storybook files are public.
 
-```bash
-  npm run dev
-```
+## Contributing and License
 
-Alternatively, to run the theme locally via Keycloak:
-
-```bash
-  npx keycloakify start-keycloak
-```
-
-Or you can preview the pages using the storybook:
-
-```bash
-  npm run storybook
-```
-
-Login stories include a **Language** select in **Controls** for the ten locales with
-custom translations: `en`, `de`, `fr`, `it`, `es`, `cs`, `nl`, `pl`, `ru`, and `sv`.
-The language dropdown in the theme updates the same selection. Switching languages
-reloads the preview iframe and keeps the selected story and its arguments.
-
-Storybook also includes all email templates under **Emails**, with controls for
-the seven supported languages. Preview scenarios are configured internally by
-each email story. Use Storybook's native viewport toolbar to preview different
-screen sizes.
-The HTML is rendered with JSX Email on Node and displayed in an isolated iframe.
-Changes to email templates, translations, and the shared layout refresh the preview.
-The same previews are included in a static build (`npm run build-storybook`).
-
-Preview data is fictional. Known FreeMarker expressions and branches are mapped
-to explicit fixtures; this is not a full FreeMarker interpreter or an email-client
-compatibility test. When adding an expression or condition, extend the fixtures in
-[.storybook/email-fixtures.mjs](.storybook/email-fixtures.mjs).
-
-Alternatively, to preview the email templates separately:
-
-```bash
-  email preview ./src/email/templates
-```
-
-Note: _We have used [JSX Email](https://jsx.email/docs/core/cli) to develop the email template._
-
-## Building the theme
-
-You need to have [Maven](https://maven.apache.org/) installed to build the theme (Maven >= 3.1.1, Java >= 7).  
-The `mvn` command must be in the $PATH.
-
-- On macOS: `brew install maven`
-- On Debian/Ubuntu: `sudo apt-get install maven`
-- On Windows: `choco install openjdk` and `choco install maven` (Or download from [here](https://maven.apache.org/download.cgi))
-
-```bash
-  npm run build-keycloak-theme
-```
-
-Note that by default Keycloakify generates multiple .jar files for different versions of Keycloak.
-You can customize this behavior, see documentation [here](https://docs.keycloakify.dev/features/compiler-options/keycloakversiontargets).
-
-## GitHub Actions
-
-### Storybook on GitHub Pages
-
-The [main Storybook build](.github/workflows/storybook-pages.yaml) builds the login
-and email previews on every push to `main`, independently of theme releases.
-The [publisher](.github/workflows/storybook-publish.yaml) then deploys the latest
-successful main build together with available previews of open pull requests.
-Both workflows can also be started manually from Actions with `Run workflow`;
-select `main`.
-
-To enable publishing, open `Settings` > `Pages` and select **GitHub Actions** as
-the build and deployment source. If the `github-pages` environment has deployment
-protection rules, allow deployments from `main`. GitHub Pages must be available
-for the repository's visibility and plan. No personal access token or additional
-deployment secret is required.
-
-The builds use Node 24 and Yarn 1.22.22, install from `yarn.lock`, check TypeScript,
-test the publisher, and build Storybook. Only static Storybook
-files are published; the Keycloak theme JARs and application `dist` are not.
-A failed main build keeps the last successful main preview. If publishing fails,
-the previously deployed site remains available.
-
-For this repository, the default URL is
-<https://almig-kompressoren-gmbh.github.io/tailcloakify/> unless a custom domain
-is configured. The actual deployment URL is shown in the workflow's
-`github-pages` environment. Forks use their own owner's Pages URL.
-
-The preview shows mock login data and fictional email fixtures, not a live
-Keycloak instance. "Current" means the latest successfully deployed commit on
-main`; local changes are not published automatically.
-Storybook stories and their fixtures are included in the published files, so do
-not put credentials or confidential data in them.
-
-### Pull Request Previews
-
-The [PR workflow](.github/workflows/storybook-pr.yaml) builds Storybook for pull
-requests targeting `main`. After a successful build, the publisher adds a comment
-with the preview link and the exact PR commit. For example, PR #123 is available
-at `https://almig-kompressoren-gmbh.github.io/tailcloakify/pr/123/`. The stable
-main preview at the site root is preserved, as are other available open PR previews.
-
-The bot updates its existing comment rather than creating a new one on each
-build. Closing or merging a PR triggers removal of its preview and updates the
-comment. A new PR commit needs a successful build before its preview is published.
-The publisher never substitutes an older commit's artifact for the current one.
-
-PR code runs only in the read-only `pull_request` build without deployment
-secrets. The privileged publisher always checks out `main`, never installs PR
-dependencies, and only extracts static artifacts after validating their paths,
-size, workflow run, PR association, and current head commit. Fork builds may need
-maintainer approval in Actions. If GitHub does not provide a matching PR
-association for a run, it is not automatically published; the build artifact is
-still downloadable from Actions. Public previews execute PR JavaScript in the
-visitor's browser, so only open previews from contributors you trust.
-
-All three workflow files and the publisher scripts must first be merged into
-`main`. A successful main Storybook build must exist before publishing any PR
-preview. Build artifacts are retained for 90 days (subject to repository policy);
-rerun the main build if it expires, and rebuild an open PR if its artifact expires.
-Existing PRs need a new build after the workflows are enabled. Allow the publisher
-to write PR comments in the repository's Actions policy if the organization
-restricts token permissions. No external preview service or extra secret is needed.
-
-The publisher is tested offline with
-`python -B -m unittest discover -s .github/scripts -p test_storybook_previews.py -v`.
-
-### Theme Releases
-
-Tailcloakify comes with a generic GitHub Actions workflow that builds the theme and attaches the jars
-to [GitHub releases](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.2.12).
-To prepare a release, update the `package.json` version and push the change to `main`. After the build succeeds, the workflow creates a GitHub release as a **draft** with the built JAR files and generated release notes. Review the draft, add or adjust any release information, and publish it manually from the GitHub Releases page.
-
-For a regular release, use a version such as `1.2.12`. For a pre-release, use the `-rc.N` suffix, for example `1.2.12` or `1.2.12-rc.2`. The workflow marks these releases as pre-releases. The current version check supports release candidates in this format; other suffixes such as `-beta.1` are not supported.
-
-Each version creates its own tag and draft release. When the pre-release is ready to be superseded by a stable release, update `package.json` to the stable version (for example, `1.2.12`) and push again; this creates a separate stable release draft.
-
-To enable the workflow go to your fork of this repository on GitHub then navigate to:
-`Settings` > `Actions` > `Workflow permissions`, select `Read and write permissions`.
-
-# Contributing
-
-If you would like to introduce additional changes, please read the [Contributing Guidelines](CONTRIBUTING.md).
-
-# Code of Conduct
-
-Anyone who interacts with Tailcloakify in any space, including but not limited to this GitHub repository, must follow
-our [Code of Conduct](CODE_OF_CONDUCT.md).
-
-# License
-
+Read the [contribution guidelines](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md).
 Licensed under the [MIT License](LICENSE).
 
-# Authors
+## Author
 
-[Paul Werner](https://github.com/paulwer)
+Created by [Paul Werner](https://github.com/paulwer).
 
-[Wayne Kirimi](https://github.com/waynemorphic)
+## Contributors
+
+- [Wayne Kirimi](https://github.com/waynemorphic)
+- [Joseph Garrone](https://github.com/garronej)
+- [Nathanaël M.](https://github.com/Nathanael-Mtd)
+- [Andrew Ratajski](https://github.com/and-ratajski)
+- [Eitan1112](https://github.com/Eitan1112)
+- Aliaksei Yaletski
+- Nicolò
+- [Noé Busson](https://github.com/nOw-Ay)
+- [danielarbo](https://github.com/danielarbo)
+
+### Upstream Acknowledgements
+
+Tailcloakify is a fork of [Keycloakify Starter](https://github.com/keycloakify/keycloakify-starter)
+and builds on [Keycloakify](https://github.com/keycloakify/keycloakify).
+Thanks to their maintainers and contributors for the foundation. Contributions
+inherited solely from upstream are not included in the Tailcloakify list above.

@@ -1,6 +1,5 @@
-import { render, Text } from "jsx-email";
-import { IfContactEmail } from "../IfContactEmail";
-import { ContactHelp } from "../ContactHelp";
+import { renderEmail } from "../util/renderEmail";
+import { EmailNotice, EmailText } from "../components";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
@@ -19,42 +18,29 @@ export const previewProps: TemplateProps = {
 export const templateName = "Event Update Password";
 
 const { exp } = createVariablesHelper("event-update_password.ftl");
-const contactEmail = exp("properties.TAILCLOAKIFY_EMAIL_CONTACT");
-const paragraph = {
-    color: "#777",
-    fontSize: "16px",
-    lineHeight: "24px",
-    textAlign: "left" as const
-};
-
 export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
-        preview={t("event-update-password.messagePreview", { realmName: exp("realmName") })}
+        title={t("event-update-password.messageSubject")}
+        preview={t("event-update-password.messagePreview", {
+            realmName: exp("realmName")
+        })}
         locale={locale}
-        disclaimer={
-            <>
-                {t("event-update-password.disclaimer")}
-                <IfContactEmail>
-                    {" "}
-                    <ContactHelp email={contactEmail}>{t("contactHelp")}</ContactHelp>
-                </IfContactEmail>
-            </>
-        }
+        disclaimer={t("event-update-password.disclaimer")}
     >
-        <Text style={paragraph}>
-            <p>
+        <EmailNotice>
+            <EmailText>
                 {t("event-update-password.messageBody", {
                     date: exp("event.date"),
                     ipAddress: exp("event.ipAddress")
                 })}
-            </p>
-        </Text>
+            </EmailText>
+        </EmailNotice>
     </EmailLayout>
 );
 
 export const getTemplate: GetTemplate = async props => {
     const t = i18n.getFixedT(props.locale);
-    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
+    return await renderEmail(<Template {...props} t={t} />, props.plainText);
 };
 
 export const getSubject: GetSubject = async _props => {

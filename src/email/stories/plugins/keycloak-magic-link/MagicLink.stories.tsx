@@ -1,8 +1,8 @@
 import type { StoryObj } from "@storybook/react-vite";
-import { createEmailStoryMeta } from "../EmailPreview";
+import { createEmailStoryMeta } from "../../../EmailPreview";
 
 const meta = {
-    title: "emails/magic-link-email.ftl",
+    title: "emails/plugins/keycloak-magic-link/magic-link-email.ftl",
     ...createEmailStoryMeta("magic-link-email")
 };
 

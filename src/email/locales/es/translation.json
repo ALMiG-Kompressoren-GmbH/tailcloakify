@@ -1,9 +1,76 @@
 {
+  "securityEvents": {
+    "credentialType": "Tipo de credencial",
+    "removeCredential": {
+      "subject": "Credencial eliminada",
+      "body": "Se eliminó una credencial de autenticación de su cuenta el {date} desde {ipAddress}.",
+      "disclaimer": "Si no realizó este cambio, contacte inmediatamente con su administrador."
+    },
+    "updateCredential": {
+      "subject": "Credencial actualizada",
+      "body": "Se modificó una credencial de autenticación de su cuenta el {date} desde {ipAddress}.",
+      "disclaimer": "Si no realizó este cambio, contacte inmediatamente con su administrador."
+    },
+    "permanentLockout": {
+      "subject": "Cuenta bloqueada permanentemente",
+      "body": "Su cuenta se bloqueó permanentemente tras varios intentos fallidos de inicio de sesión el {date}.",
+      "disclaimer": "Contacte con su administrador para recuperar el acceso a su cuenta."
+    },
+    "temporaryLockout": {
+      "subject": "Cuenta bloqueada temporalmente",
+      "body": "Su cuenta se bloqueó temporalmente tras varios intentos fallidos de inicio de sesión el {date}.",
+      "disclaimer": "Espere antes de volver a intentarlo o contacte con su administrador si necesita ayuda."
+    }
+  },
+  "verifiableCredentialOffer": {
+    "subject": "Oferta de credencial verificable",
+    "body": "Su administrador ha puesto la credencial {credentialName} a disposición de su cuenta de {realmName}. Use el siguiente enlace para recibirla en su cartera digital.",
+    "button": "Obtener credencial",
+    "expiry": "Este enlace caducará en {linkExpiration}.",
+    "disclaimer": "Si el enlace ha caducado, es posible que aún pueda obtener la credencial desde la consola de su cuenta. Contacte con su administrador si lo necesita."
+  },
+  "activationEmail": {
+    "subject": "Active su cuenta de {realmName}",
+    "body": "Active su cuenta de {realmName} antes de iniciar sesión. Use el siguiente enlace para completar la configuración necesaria.",
+    "button": "Activar cuenta",
+    "expiry": "Este enlace caducará en {minutes} minutos.",
+    "disclaimer": "Si no reconoce esta activación de cuenta, no abra ni comparta el enlace de activación. Contacte con el soporte si las solicitudes se repiten o no están claras."
+  },
+  "magicLinkContinuation": {
+    "subject": "Iniciar sesión en {realmName}",
+    "body": "Se ha solicitado un enlace de inicio de sesión para su cuenta de {realmName}.",
+    "button": "Confirmar inicio de sesión",
+    "instruction": "Después de confirmar, vuelva a la pestaña del navegador donde inició el proceso. Manténgala abierta hasta que termine el inicio de sesión.",
+    "disclaimer": "No comparta este enlace de inicio de sesión. Si no lo ha solicitado, no lo abra. Contacte con el soporte si las solicitudes se repiten o resultan sospechosas."
+  },
+  "organizationInvitation": {
+    "subject": "Invitación para unirse a {orgName}",
+    "body": "Se le ha invitado a unirse a {orgName} en {realmName}.",
+    "inviter": "Invitado por {inviterName}",
+    "recipient": "Esta invitación está destinada a {email}.",
+    "button": "Unirse a la organización",
+    "noLink": "Inicie sesión para revisar sus invitaciones pendientes o contacte con la persona que le invitó.",
+    "disclaimer": "Si no desea unirse a esta organización, puede ignorar este correo."
+  },
+  "workflowNotification": {
+    "subject": "Notificación de la cuenta",
+    "preview": "Revise esta notificación sobre su cuenta.",
+    "disableSubject": "Aviso de desactivación de la cuenta",
+    "deleteSubject": "Aviso de eliminación de la cuenta",
+    "body": "Su cuenta requiere atención.",
+    "disableBody": "Su cuenta se desactivará en {days} días debido a {reason}. Inicie sesión para evitarlo.",
+    "deleteBody": "Su cuenta se eliminará en {days} días debido a {reason}. Ya no podrá iniciar sesión con esta cuenta. Contacte inmediatamente con su administrador si no esperaba esta acción.",
+    "greeting": "Hola {name}:",
+    "timeRemaining": "Tiempo restante: {days} día(s)",
+    "questions": "Si tiene preguntas, contacte con su administrador de {realmName}.",
+    "signature": "Administración de {realmName}"
+  },
   "contactHelp": "Si necesita ayuda, póngase en contacto con",
   "email-test": {
     "messageSubject": "[KEYCLOAK] - Correo electrónico de prueba SMTP",
     "messagePreview": "Este es un correo electrónico de prueba",
     "messageBody": "Este es un correo electrónico de prueba de {realmName}",
+    "messageLink": "Ir a su cuenta",
     "disclaimer": "Este es un correo electrónico de prueba. Ignore este mensaje."
   },
   "email-update-confirmation": {
@@ -11,7 +78,7 @@
     "messagePreview": "Verificación del cambio de correo electrónico de la cuenta {realmName}",
     "messageBody": "Para actualizar la cuenta {realmName} con la dirección de correo {newEmail}, haga clic en el enlace siguiente.",
     "linkExpiry": "Este enlace caducará en {linkExpiration}.",
-    "disclaimer": "Si no desea realizar este cambio, puede ignorar este mensaje sin problema."
+    "disclaimer": "Si no ha solicitado este cambio, no lo confirme. Revise su cuenta desde su página de inicio de sesión habitual y contacte con el soporte si es necesario."
   },
   "email-verification": {
     "messageSubject": "Verificación del correo electrónico",
@@ -19,38 +86,38 @@
     "messageBody": "Alguien ha creado una cuenta de {realmName} con esta dirección de correo electrónico. Si ha sido usted, haga clic en el enlace siguiente para verificar su dirección.",
     "messageLink": "Enlace para verificar la dirección de correo electrónico.",
     "linkExpiry": "Este enlace caducará en {linkExpiration}.",
-    "disclaimer": "Si no desea crear esta cuenta, puede ignorar este mensaje sin problema."
+    "disclaimer": "Si no reconoce esta creación de cuenta o solicitud de verificación, no verifique la dirección de correo ni comparta el enlace. Contacte con el soporte si es necesario."
   },
   "email-verification-with-code": {
     "messageSubject": "Verificación del correo electrónico",
     "messagePreview": "Verifique su dirección de correo electrónico introduciendo el siguiente código",
     "messageBody": "Verifique su dirección de correo electrónico introduciendo el siguiente código: ",
     "verificationCode": "{code}",
-    "disclaimer": "Si no ha iniciado esta solicitud, puede ignorar este mensaje sin problema."
+    "disclaimer": "No comparta el código. Si no ha solicitado esta verificación, no lo utilice. Contacte con el soporte si las solicitudes se repiten o no están claras."
   },
   "event-login-error": {
     "messageSubject": "Error de inicio de sesión",
     "messagePreview": "Se ha detectado un intento de inicio de sesión fallido en {realmName}",
     "messageBody": "El {date} se detectó un intento fallido de inicio de sesión en su cuenta desde la dirección IP {ipAddress}.",
-    "disclaimer": "Si no ha iniciado este intento fallido de inicio de sesión, puede ignorar este mensaje sin problema."
+    "disclaimer": "Si no ha realizado este intento de inicio de sesión, revise la seguridad de su cuenta desde su página de inicio de sesión habitual y cambie su contraseña por precaución. Contacte con el soporte si los intentos se repiten o resultan sospechosos."
   },
   "event-remove-totp": {
     "messageSubject": "Eliminación de OTP",
     "messagePreview": "Se ha eliminado el OTP de su cuenta de {realmName}",
     "messageBody": "El {date} se eliminó el OTP de su cuenta desde la dirección IP {ipAddress}.",
-    "disclaimer": "Si no ha solicitado eliminar el OTP, puede ignorar este mensaje sin problema."
+    "disclaimer": "Si no ha eliminado el OTP, cambie inmediatamente su contraseña desde su página de inicio de sesión habitual, revise sus métodos de acceso y contacte con el soporte."
   },
   "event-update-password": {
     "messageSubject": "Cambio de contraseña",
     "messagePreview": "Se ha cambiado la contraseña de su cuenta de {realmName}",
     "messageBody": "Su contraseña se cambió el {date} desde la dirección IP {ipAddress}.",
-    "disclaimer": "Si no ha solicitado cambiar la contraseña, puede ignorar este mensaje sin problema."
+    "disclaimer": "Si no ha cambiado su contraseña, restablézcala inmediatamente desde su página de inicio de sesión habitual y contacte con el soporte."
   },
   "event-update-totp": {
     "messageSubject": "Actualización de OTP",
     "messagePreview": "Se ha actualizado el OTP de su cuenta de {realmName}",
     "messageBody": "El OTP de su cuenta se actualizó el {date} desde la dirección IP {ipAddress}.",
-    "disclaimer": "Si no ha solicitado actualizar el OTP, puede ignorar este mensaje sin problema."
+    "disclaimer": "Si no ha actualizado el OTP, cambie inmediatamente su contraseña desde su página de inicio de sesión habitual, revise sus métodos de acceso y contacte con el soporte."
   },
   "execute-actions": {
     "messageSubject": "Actualice su cuenta",
@@ -69,6 +136,10 @@
     "webAuthnRegister": "Registrar WebAuthn",
     "webAuthnRegisterPasswordless": "Registrar WebAuthn sin contraseña",
     "verifyProfile": "Verificar perfil",
+    "updateEmail": "Actualizar correo electrónico",
+    "termsAndConditions": "Aceptar los términos y condiciones",
+    "deleteAccount": "Eliminar cuenta",
+    "verifiableCredentialOffer": "Registrar oferta de credencial verificable",
     "deleteCredential": "Eliminar credencial",
     "linkingIdentityProvider": "Vincular proveedor de identidad",
     "recoveryAuthenticationCodes": "Códigos de autenticación de recuperación",
@@ -77,10 +148,12 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Haga clic en el enlace de abajo para iniciar este proceso.",
     "adminLinkToAccountUpdate": "Enlace para actualización de cuenta",
-    "adminIgnoreMessage": " Si no está al tanto de que su administrador ha solicitado esto, simplemente ignore este mensaje y no se cambiará nada."
+    "adminIgnoreMessage": "Si no reconoce esta solicitud, no abra el enlace. Verifique la solicitud con su administrador a través de un medio de contacto que ya conozca."
   },
   "footer": {
-    "disclaimer": "Aviso importante: Le enviamos este correo porque tiene una cuenta en {realmName}. Este mensaje forma parte de nuestro servicio de notificaciones.",
+    "imprint": "Aviso legal",
+    "dataProtection": "Protección de datos",
+    "disclaimer": "Este es un mensaje del sistema {realmName} relacionado con una función de cuenta, inicio de sesión, seguridad o invitación.",
     "year": "© {currentYear} {realmName}"
   },
   "header": {
@@ -92,14 +165,14 @@
     "messageBody": "Alguien quiere vincular su cuenta de {realmName} con la cuenta de {username} del proveedor de identidad {identityProviderDisplayName}. Si ha sido usted, haga clic en el enlace siguiente para vincular las cuentas.",
     "messageLink": "Enlace para confirmar la vinculación de las cuentas.",
     "linkExpiry": "Este enlace caducará en {linkExpiration}.",
-    "disclaimer": "Si no desea vincular las cuentas, puede ignorar este mensaje sin problema. Al vincularlas, podrá iniciar sesión en {realmName} a través de {identityProviderDisplayName}."
+    "disclaimer": "Vincule las cuentas solo si ha iniciado el proceso. De lo contrario, no confirme la vinculación y revise su cuenta desde su página de inicio de sesión habitual. Contacte con el soporte si es necesario. Tras la vinculación, podrá iniciar sesión en {realmName} a través de {identityProviderDisplayName}."
   },
   "magic-link-email": {
     "messageSubject": "Inicio de sesión en la cuenta de {realmName}",
     "messagePreview": "Alguien ha solicitado un enlace de inicio de sesión para {realmName}",
     "messageBody": "Alguien ha solicitado un enlace de inicio de sesión para {realmName}",
     "magicLink": "Haga clic para iniciar sesión ",
-    "disclaimer": "Si no ha solicitado este enlace de inicio de sesión, puede ignorar este correo sin problema."
+    "disclaimer": "No comparta este enlace de inicio de sesión. Si no lo ha solicitado, no lo abra. Contacte con el soporte si las solicitudes se repiten o resultan sospechosas."
   },
   "organization-invite": {
     "messageSubject": "Invitación para unirse a la organización {0}",
@@ -115,7 +188,7 @@
     "messagePreview": "Alguien ha solicitado acceso a su cuenta",
     "messageBody": "Alguien ha solicitado acceso a su cuenta. Su contraseña de un solo uso (OTP) es: ",
     "verificationCode": "{code}",
-    "disclaimer": "Si no ha iniciado esta solicitud, puede ignorar este mensaje sin problema."
+    "disclaimer": "Si no ha solicitado este inicio de sesión, no comparta el código. Por precaución, cambie su contraseña desde su página de inicio de sesión habitual y contacte con el soporte si es necesario."
   },
   "password-reset": {
     "messageSubject": "Enlace para restablecer la contraseña",
@@ -123,6 +196,6 @@
     "messageBody": "Alguien acaba de solicitar un cambio de las credenciales de su cuenta de {realmName}. Si ha sido usted, haga clic en el enlace siguiente para restablecerlas.",
     "passwordResetLink": "Enlace para restablecer las credenciales",
     "linkExpiration": "Este enlace caducará en {linkExpiration}.",
-    "disclaimer": "Si no desea restablecer sus credenciales, puede ignorar este mensaje sin problema. No se realizará ningún cambio."
+    "disclaimer": "Si no ha solicitado este restablecimiento, no abra ni comparta el enlace. Este correo por sí solo no cambia su contraseña. Contacte con el soporte si las solicitudes se repiten o resultan sospechosas."
   }
 }

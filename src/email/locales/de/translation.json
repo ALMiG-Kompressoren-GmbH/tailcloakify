@@ -1,9 +1,76 @@
 {
+  "securityEvents": {
+    "credentialType": "Typ der Anmeldedaten",
+    "removeCredential": {
+      "subject": "Anmeldedaten entfernt",
+      "body": "Am {date} wurden über die IP-Adresse {ipAddress} Anmeldedaten aus Ihrem Konto entfernt.",
+      "disclaimer": "Wenn Sie diese Änderung nicht vorgenommen haben, wenden Sie sich umgehend an Ihren Administrator."
+    },
+    "updateCredential": {
+      "subject": "Anmeldedaten geändert",
+      "body": "Am {date} wurden über die IP-Adresse {ipAddress} Anmeldedaten Ihres Kontos geändert.",
+      "disclaimer": "Wenn Sie diese Änderung nicht vorgenommen haben, wenden Sie sich umgehend an Ihren Administrator."
+    },
+    "permanentLockout": {
+      "subject": "Konto dauerhaft gesperrt",
+      "body": "Ihr Konto wurde am {date} nach wiederholten fehlgeschlagenen Anmeldeversuchen dauerhaft gesperrt.",
+      "disclaimer": "Wenden Sie sich an Ihren Administrator, um den Zugriff auf Ihr Konto wiederherzustellen."
+    },
+    "temporaryLockout": {
+      "subject": "Konto vorübergehend gesperrt",
+      "body": "Ihr Konto wurde am {date} nach wiederholten fehlgeschlagenen Anmeldeversuchen vorübergehend gesperrt.",
+      "disclaimer": "Warten Sie, bevor Sie es erneut versuchen, oder wenden Sie sich bei Bedarf an Ihren Administrator."
+    }
+  },
+  "verifiableCredentialOffer": {
+    "subject": "Angebot eines digitalen Nachweises",
+    "body": "Ihr Administrator hat den Nachweis {credentialName} für Ihr Konto bei {realmName} bereitgestellt. Über den folgenden Link können Sie ihn in Ihre digitale Wallet übernehmen.",
+    "button": "Nachweis übernehmen",
+    "expiry": "Dieser Link läuft innerhalb von {linkExpiration} ab.",
+    "disclaimer": "Wenn der Link abgelaufen ist, können Sie den Nachweis möglicherweise weiterhin über Ihre Kontoverwaltung abrufen. Wenden Sie sich bei Bedarf an Ihren Administrator."
+  },
+  "activationEmail": {
+    "subject": "Aktivieren Sie Ihr Konto bei {realmName}",
+    "body": "Aktivieren Sie Ihr Konto bei {realmName}, bevor Sie sich anmelden. Schließen Sie die erforderliche Kontoeinrichtung über den folgenden Link ab.",
+    "button": "Konto aktivieren",
+    "expiry": "Dieser Link läuft in {minutes} Minuten ab.",
+    "disclaimer": "Wenn Sie diese Kontoaktivierung nicht zuordnen können, öffnen Sie den Aktivierungslink nicht und geben Sie ihn nicht weiter. Wenden Sie sich bei wiederholten oder unklaren Anfragen an den Support."
+  },
+  "magicLinkContinuation": {
+    "subject": "Bei {realmName} anmelden",
+    "body": "Es wurde ein Anmeldelink für Ihr Konto bei {realmName} angefordert.",
+    "button": "Anmeldung bestätigen",
+    "instruction": "Kehren Sie nach der Bestätigung zu dem Browser-Tab zurück, in dem Sie die Anmeldung begonnen haben. Lassen Sie diesen Tab geöffnet, bis die Anmeldung abgeschlossen ist.",
+    "disclaimer": "Geben Sie diesen Anmeldelink nicht weiter. Wenn Sie ihn nicht angefordert haben, öffnen Sie ihn nicht. Wenden Sie sich bei wiederholten oder verdächtigen Anfragen an den Support."
+  },
+  "organizationInvitation": {
+    "subject": "Einladung zu {orgName}",
+    "body": "Sie wurden eingeladen, der Organisation {orgName} bei {realmName} beizutreten.",
+    "inviter": "Eingeladen von {inviterName}",
+    "recipient": "Diese Einladung ist für {email} bestimmt.",
+    "button": "Organisation beitreten",
+    "noLink": "Melden Sie sich an, um offene Organisationseinladungen zu prüfen, oder wenden Sie sich an die einladende Person.",
+    "disclaimer": "Wenn Sie dieser Organisation nicht beitreten möchten, können Sie diese E-Mail ignorieren."
+  },
+  "workflowNotification": {
+    "subject": "Benachrichtigung zu Ihrem Konto",
+    "preview": "Bitte beachten Sie diese Benachrichtigung zu Ihrem Konto.",
+    "disableSubject": "Bevorstehende Kontodeaktivierung",
+    "deleteSubject": "Bevorstehende Kontolöschung",
+    "body": "Ihr Konto erfordert Ihre Aufmerksamkeit.",
+    "disableBody": "Ihr Konto wird in {days} Tagen aufgrund von {reason} deaktiviert. Melden Sie sich an, um dies zu verhindern.",
+    "deleteBody": "Ihr Konto wird in {days} Tagen aufgrund von {reason} gelöscht. Danach können Sie sich mit diesem Konto nicht mehr anmelden. Wenden Sie sich umgehend an Ihren Administrator, wenn Sie dies nicht erwarten.",
+    "greeting": "Guten Tag {name},",
+    "timeRemaining": "Verbleibende Zeit: {days} Tag(e)",
+    "questions": "Bei Fragen wenden Sie sich an Ihren Administrator bei {realmName}.",
+    "signature": "Administration von {realmName}"
+  },
   "contactHelp": "Wenn Sie Hilfe benötigen, wenden Sie sich bitte an",
   "email-test": {
     "messageSubject": "[KEYCLOAK] - SMTP Test-E-Mail",
     "messagePreview": "Dies ist eine Test-E-Mail",
     "messageBody": "Dies ist eine Test-E-Mail von {realmName}",
+    "messageLink": "Zum Benutzerkonto",
     "disclaimer": "Dies ist eine Test-E-Mail. Bitte ignorieren Sie diese Nachricht."
   },
   "email-update-confirmation": {
@@ -11,7 +78,7 @@
     "messagePreview": "Bestätigung der E-Mail-Änderung für das Konto {realmName}",
     "messageBody": "Um die E-Mail-Adresse Ihres {realmName}-Kontos auf {newEmail} zu ändern, klicken Sie auf den folgenden Link.",
     "linkExpiry": "Dieser Link läuft innerhalb von {linkExpiration} ab.",
-    "disclaimer": "Wenn Sie diese Änderung nicht vornehmen möchten, können Sie diese Nachricht einfach ignorieren."
+    "disclaimer": "Wenn Sie diese Änderung nicht angefordert haben, bestätigen Sie sie nicht. Prüfen Sie Ihr Konto über die Ihnen bekannte Anmeldeseite und kontaktieren Sie bei Bedarf den Support."
   },
   "email-verification": {
     "messageSubject": "E-Mail-Adresse bestätigen",
@@ -19,38 +86,38 @@
     "messageBody": "Jemand hat mit dieser E-Mail-Adresse ein {realmName}-Konto erstellt. Wenn Sie das waren, klicken Sie auf den folgenden Link, um Ihre E-Mail-Adresse zu bestätigen.",
     "messageLink": "Link zur Bestätigung der E-Mail-Adresse.",
     "linkExpiry": "Dieser Link läuft innerhalb von {linkExpiration} ab.",
-    "disclaimer": "Wenn Sie dieses Konto nicht erstellen möchten, können Sie diese Nachricht einfach ignorieren."
+    "disclaimer": "Wenn Sie diese Kontoerstellung oder Bestätigungsanfrage nicht zuordnen können, bestätigen Sie die E-Mail-Adresse nicht und geben Sie den Link nicht weiter. Wenden Sie sich bei Bedarf an den Support."
   },
   "email-verification-with-code": {
     "messageSubject": "E-Mail-Adresse bestätigen",
     "messagePreview": "Bitte bestätigen Sie Ihre E-Mail-Adresse mit dem folgenden Code",
     "messageBody": "Bitte bestätigen Sie Ihre E-Mail-Adresse mit dem folgenden Code: ",
     "verificationCode": "{code}",
-    "disclaimer": "Wenn Sie diese Anfrage nicht gestellt haben, können Sie diese Nachricht einfach ignorieren."
+    "disclaimer": "Geben Sie den Code nicht weiter. Wenn Sie diese Bestätigung nicht angefordert haben, verwenden Sie ihn nicht. Wenden Sie sich bei wiederholten oder unklaren Anfragen an den Support."
   },
   "event-login-error": {
     "messageSubject": "Anmeldefehler",
     "messagePreview": "Fehlgeschlagener Anmeldeversuch für {realmName} erkannt",
     "messageBody": "Am {date} wurde von der IP-Adresse {ipAddress} ein fehlgeschlagener Anmeldeversuch bei Ihrem Konto erkannt.",
-    "disclaimer": "Wenn Sie diesen fehlgeschlagenen Anmeldeversuch nicht ausgelöst haben, können Sie diese Nachricht einfach ignorieren."
+    "disclaimer": "Wenn Sie diesen Anmeldeversuch nicht selbst unternommen haben, prüfen Sie die Sicherheit Ihres Kontos über die Ihnen bekannte Anmeldeseite und ändern Sie vorsorglich Ihr Passwort. Kontaktieren Sie bei wiederholten oder verdächtigen Versuchen den Support."
   },
   "event-remove-totp": {
     "messageSubject": "OTP entfernt",
     "messagePreview": "OTP wurde aus Ihrem {realmName}-Konto entfernt",
     "messageBody": "OTP wurde am {date} von der IP-Adresse {ipAddress} aus Ihrem Konto entfernt.",
-    "disclaimer": "Wenn Sie die Entfernung von OTP nicht angefordert haben, können Sie diese Nachricht einfach ignorieren."
+    "disclaimer": "Wenn Sie OTP nicht selbst entfernt haben, ändern Sie umgehend Ihr Passwort über die Ihnen bekannte Anmeldeseite, prüfen Sie Ihre Anmeldeverfahren und kontaktieren Sie den Support."
   },
   "event-update-password": {
     "messageSubject": "Passwort geändert",
     "messagePreview": "Das Passwort Ihres {realmName}-Kontos wurde geändert",
     "messageBody": "Ihr Passwort wurde am {date} von der IP-Adresse {ipAddress} geändert.",
-    "disclaimer": "Wenn Sie die Passwortänderung nicht angefordert haben, können Sie diese Nachricht einfach ignorieren."
+    "disclaimer": "Wenn Sie Ihr Passwort nicht selbst geändert haben, setzen Sie es umgehend über die Ihnen bekannte Anmeldeseite zurück und kontaktieren Sie den Support."
   },
   "event-update-totp": {
     "messageSubject": "OTP aktualisiert",
     "messagePreview": "OTP für Ihr {realmName}-Konto wurde aktualisiert",
     "messageBody": "OTP für Ihr Konto wurde am {date} von der IP-Adresse {ipAddress} aktualisiert.",
-    "disclaimer": "Wenn Sie die Aktualisierung von OTP nicht angefordert haben, können Sie diese Nachricht einfach ignorieren."
+    "disclaimer": "Wenn Sie OTP nicht selbst aktualisiert haben, ändern Sie umgehend Ihr Passwort über die Ihnen bekannte Anmeldeseite, prüfen Sie Ihre Anmeldeverfahren und kontaktieren Sie den Support."
   },
   "execute-actions": {
     "messageSubject": "Aktualisieren Sie Ihr Konto",
@@ -69,6 +136,10 @@
     "webAuthnRegister": "WebAuthn registrieren",
     "webAuthnRegisterPasswordless": "WebAuthn passwortlos registrieren",
     "verifyProfile": "Profil verifizieren",
+    "updateEmail": "E-Mail-Adresse aktualisieren",
+    "termsAndConditions": "Nutzungsbedingungen akzeptieren",
+    "deleteAccount": "Konto löschen",
+    "verifiableCredentialOffer": "Verifizierbaren Nachweis registrieren",
     "deleteCredential": "Anmeldedaten löschen",
     "linkingIdentityProvider": "Identitätsanbieter verknüpfen",
     "recoveryAuthenticationCodes": "Wiederherstellungs-Authentifizierungscodes",
@@ -77,10 +148,12 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Klicken Sie auf den unten stehenden Link, um diesen Prozess zu starten.",
     "adminLinkToAccountUpdate": "Link zur Kontoaktualisierung",
-    "adminIgnoreMessage": " Falls Sie nicht wissen, dass Ihr Administrator dies angefordert hat, ignorieren Sie diese Nachricht einfach und es wird nichts geändert."
+    "adminIgnoreMessage": "Wenn Sie diese Aufforderung nicht zuordnen können, öffnen Sie den Link nicht. Klären Sie die Anfrage über einen Ihnen bekannten Kontaktweg mit Ihrem Administrator."
   },
   "footer": {
-    "disclaimer": "Wichtiger Hinweis: Wir senden Ihnen diese E-Mail, weil Sie ein Konto bei {realmName} haben. Diese E-Mail ist Teil unseres Benachrichtigungsdienstes.",
+    "imprint": "Impressum",
+    "dataProtection": "Datenschutz",
+    "disclaimer": "Dies ist eine Systemnachricht von {realmName} im Zusammenhang mit einer Konto-, Anmelde-, Sicherheits- oder Einladungsfunktion.",
     "year": "© {currentYear} {realmName}"
   },
   "header": {
@@ -92,14 +165,14 @@
     "messageBody": "Jemand möchte Ihr {realmName}-Konto mit dem Konto von {username} beim Identitätsanbieter {identityProviderDisplayName} verknüpfen. Wenn Sie das waren, klicken Sie auf den folgenden Link, um die Konten zu verknüpfen.",
     "messageLink": "Link zum Bestätigen der Kontoverknüpfung.",
     "linkExpiry": "Dieser Link läuft innerhalb von {linkExpiration} ab.",
-    "disclaimer": "Wenn Sie die Konten nicht verknüpfen möchten, können Sie diese Nachricht einfach ignorieren. Nach der Verknüpfung können Sie sich über {identityProviderDisplayName} bei {realmName} anmelden."
+    "disclaimer": "Verknüpfen Sie Konten nur, wenn Sie den Vorgang selbst gestartet haben. Andernfalls bestätigen Sie die Verknüpfung nicht und prüfen Sie Ihr Konto über die Ihnen bekannte Anmeldeseite. Wenden Sie sich bei Bedarf an den Support. Nach der Verknüpfung können Sie sich über {identityProviderDisplayName} bei {realmName} anmelden."
   },
   "magic-link-email": {
     "messageSubject": "Bei {realmName} anmelden",
     "messagePreview": "Jemand hat einen Anmeldelink für {realmName} angefordert",
     "messageBody": "Jemand hat einen Anmeldelink für {realmName} angefordert",
     "magicLink": "Zum Anmelden hier klicken ",
-    "disclaimer": "Wenn Sie diesen Anmeldelink nicht angefordert haben, können Sie diese E-Mail einfach ignorieren."
+    "disclaimer": "Geben Sie diesen Anmeldelink nicht weiter. Wenn Sie ihn nicht angefordert haben, öffnen Sie ihn nicht. Wenden Sie sich bei wiederholten oder verdächtigen Anfragen an den Support."
   },
   "organization-invite": {
     "messageSubject": "Einladung zur Organisation {0}",
@@ -115,7 +188,7 @@
     "messagePreview": "Jemand hat Zugriff auf Ihr Konto angefordert",
     "messageBody": "Jemand hat Zugriff auf Ihr Konto angefordert. Ihr Einmalpasswort (OTP) lautet: ",
     "verificationCode": "{code}",
-    "disclaimer": "Wenn Sie diese Anfrage nicht gestellt haben, können Sie diese Nachricht einfach ignorieren."
+    "disclaimer": "Wenn Sie diese Anmeldung nicht angefordert haben, geben Sie den Code nicht weiter. Ändern Sie vorsorglich Ihr Passwort über die Ihnen bekannte Anmeldeseite und kontaktieren Sie bei Bedarf den Support."
   },
   "password-reset": {
     "messageSubject": "Link zum Zurücksetzen des Passworts",
@@ -123,6 +196,6 @@
     "messageBody": "Jemand hat gerade angefordert, die Zugangsdaten Ihres {realmName}-Kontos zu ändern. Wenn Sie das waren, klicken Sie auf den folgenden Link, um sie zurückzusetzen.",
     "passwordResetLink": "Link zum Zurücksetzen der Zugangsdaten",
     "linkExpiration": "Dieser Link läuft innerhalb von {linkExpiration} ab.",
-    "disclaimer": "Wenn Sie Ihre Zugangsdaten nicht zurücksetzen möchten, können Sie diese Nachricht einfach ignorieren. Es wird nichts geändert."
+    "disclaimer": "Wenn Sie diese Anfrage nicht selbst gestellt haben, öffnen Sie den Link nicht und geben Sie ihn nicht weiter. Ihr Passwort wird durch diese E-Mail allein nicht geändert. Wenden Sie sich bei wiederholten oder verdächtigen Anfragen an den Support."
   }
 }

@@ -1,6 +1,5 @@
-import { render, Text } from "jsx-email";
-import { IfContactEmail } from "../IfContactEmail";
-import { ContactHelp } from "../ContactHelp";
+import { renderEmail } from "../util/renderEmail";
+import { EmailNotice, EmailText } from "../components";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
@@ -19,42 +18,27 @@ export const previewProps: TemplateProps = {
 export const templateName = "Event Remove Totp";
 
 const { exp } = createVariablesHelper("event-remove_totp.ftl");
-const contactEmail = exp("properties.TAILCLOAKIFY_EMAIL_CONTACT");
-const paragraph = {
-    color: "#777",
-    fontSize: "16px",
-    lineHeight: "24px",
-    textAlign: "left" as const
-};
-
 export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
+        title={t("event-remove-totp.messageSubject")}
         preview={t("event-remove-totp.messagePreview", { realmName: exp("realmName") })}
         locale={locale}
-        disclaimer={
-            <>
-                {t("event-remove-totp.disclaimer")}
-                <IfContactEmail>
-                    {" "}
-                    <ContactHelp email={contactEmail}>{t("contactHelp")}</ContactHelp>
-                </IfContactEmail>
-            </>
-        }
+        disclaimer={t("event-remove-totp.disclaimer")}
     >
-        <Text style={paragraph}>
-            <p>
+        <EmailNotice>
+            <EmailText>
                 {t("event-remove-totp.messageBody", {
                     date: exp("event.date"),
                     ipAddress: exp("event.ipAddress")
                 })}
-            </p>
-        </Text>
+            </EmailText>
+        </EmailNotice>
     </EmailLayout>
 );
 
 export const getTemplate: GetTemplate = async props => {
     const t = i18n.getFixedT(props.locale);
-    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
+    return await renderEmail(<Template {...props} t={t} />, props.plainText);
 };
 
 export const getSubject: GetSubject = async _props => {

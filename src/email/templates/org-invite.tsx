@@ -1,4 +1,6 @@
-import { Raw, render, Text } from "jsx-email";
+import { renderEmail } from "../util/renderEmail";
+import { If } from "keycloakify-emails/jsx-email";
+import { EmailButton, EmailText } from "../components";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { variablesHelper } from "../util/VariablesHelper";
@@ -17,15 +19,9 @@ export const templateName = "Invitation Email";
 
 const { exp } = variablesHelper("org-invite.ftl");
 
-const paragraph = {
-    color: "#777",
-    fontSize: "16px",
-    lineHeight: "24px",
-    textAlign: "left" as const
-};
-
 export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
+        title={t("organization-invite.messageSubject", { "0": exp("organization.name") })}
         preview={t("organization-invite.messagePreview", {
             "0": exp("organization.name")
         })}
@@ -34,51 +30,32 @@ export const Template = ({ locale, t }: TemplateProps) => (
             "0": exp("organization.name")
         })}
     >
-        <Text style={paragraph}>
-            <Raw content="<#if firstName?? && lastName??>" />
-            <p>
+        <If condition="firstName?? && lastName??">
+            <EmailText>
                 {t("organization-invite.messageBodySalutation", {
                     firstName: exp("firstName"),
                     lastName: exp("lastName")
                 })}
-            </p>
-            <p>
-                {t("organization-invite.messageBody", {
-                    "0": exp("organization.name")
-                })}
-            </p>
-            <p>
-                <a href={exp("link")}>{t("organization-invite.invitationLink")}</a>
-            </p>
-            <p>
-                {t("organization-invite.linkExpiration", {
-                    linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
-                    interpolation: { escapeValue: false }
-                })}
-            </p>
-            <Raw content="<#else>" />
-            <p>
-                {t("organization-invite.messageBody", {
-                    "0": exp("organization.name")
-                })}
-            </p>
-            <p>
-                <a href={exp("link")}>{t("organization-invite.invitationLink")}</a>
-            </p>
-            <p>
-                {t("organization-invite.linkExpiration", {
-                    linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
-                    interpolation: { escapeValue: false }
-                })}
-            </p>
-            <Raw content="</#if>" />
-        </Text>
+            </EmailText>
+        </If>
+        <EmailText>
+            {t("organization-invite.messageBody", { "0": exp("organization.name") })}
+        </EmailText>
+        <EmailButton href={exp("link")}>
+            {t("organization-invite.invitationLink")}
+        </EmailButton>
+        <EmailText>
+            {t("organization-invite.linkExpiration", {
+                linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
+                interpolation: { escapeValue: false }
+            })}
+        </EmailText>
     </EmailLayout>
 );
 
 export const getTemplate: GetTemplate = async props => {
     const t = i18n.getFixedT(props.locale);
-    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
+    return await renderEmail(<Template {...props} t={t} />, props.plainText);
 };
 
 export const getSubject: GetSubject = async _props => {

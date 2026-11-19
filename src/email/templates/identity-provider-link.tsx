@@ -1,4 +1,5 @@
-import { render, Text } from "jsx-email";
+import { renderEmail } from "../util/renderEmail";
+import { EmailButton, EmailText } from "../components";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
@@ -18,48 +19,40 @@ export const templateName = "Identity Provider Link";
 
 const { exp } = createVariablesHelper("identity-provider-link.ftl");
 
-const paragraph = {
-    color: "#777",
-    fontSize: "16px",
-    lineHeight: "24px",
-    textAlign: "left" as const
-};
-
 export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
-        preview={t("identity-provider-link.messagePreview", { realmName: exp("realmName") })}
+        title={t("identity-provider-link.messageSubject")}
+        preview={t("identity-provider-link.messagePreview", {
+            realmName: exp("realmName")
+        })}
         locale={locale}
         disclaimer={t("identity-provider-link.disclaimer", {
             realmName: exp("realmName"),
             identityProviderDisplayName: exp("identityProviderDisplayName")
         })}
     >
-        <Text style={paragraph}>
-            <p>
-                <p>
-                    {t("identity-provider-link.messageBody", {
-                        realmName: exp("realmName"),
-                        identityProviderDisplayName: exp("identityProviderDisplayName"),
-                        username: exp("identityProviderContext.username")
-                    })}
-                </p>
-                <p>
-                    <a href={exp("link")}>{t("identity-provider-link.messageLink")}</a>
-                </p>
-                <p>
-                    {t("identity-provider-link.linkExpiry", {
-                        linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
-                        interpolation: { escapeValue: false }
-                    })}
-                </p>
-            </p>
-        </Text>
+        <EmailText>
+            {t("identity-provider-link.messageBody", {
+                realmName: exp("realmName"),
+                identityProviderDisplayName: exp("identityProviderDisplayName"),
+                username: exp("identityProviderContext.username")
+            })}
+        </EmailText>
+        <EmailButton href={exp("link")}>
+            {t("identity-provider-link.messageLink")}
+        </EmailButton>
+        <EmailText>
+            {t("identity-provider-link.linkExpiry", {
+                linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
+                interpolation: { escapeValue: false }
+            })}
+        </EmailText>
     </EmailLayout>
 );
 
 export const getTemplate: GetTemplate = async props => {
     const t = i18n.getFixedT(props.locale);
-    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
+    return await renderEmail(<Template {...props} t={t} />, props.plainText);
 };
 
 export const getSubject: GetSubject = async _props => {

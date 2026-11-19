@@ -2,8 +2,8 @@ import type { StoryObj } from "@storybook/react-vite";
 import { createEmailStoryMeta } from "../EmailPreview";
 
 const meta = {
-    title: "emails/otp-email.ftl",
-    ...createEmailStoryMeta("otp-email")
+    title: "emails/event-user_disabled_by_permanent_lockout.ftl",
+    ...createEmailStoryMeta("event-user_disabled_by_permanent_lockout")
 };
 
 export default meta;

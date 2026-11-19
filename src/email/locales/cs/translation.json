@@ -1,9 +1,76 @@
 {
+  "securityEvents": {
+    "credentialType": "Typ přihlašovacího údaje",
+    "removeCredential": {
+      "subject": "Přihlašovací údaj byl odebrán",
+      "body": "Dne {date} byl z vašeho účtu odebrán přihlašovací údaj z adresy {ipAddress}.",
+      "disclaimer": "Pokud jste tuto změnu neprovedli, neprodleně kontaktujte správce."
+    },
+    "updateCredential": {
+      "subject": "Přihlašovací údaj byl změněn",
+      "body": "Dne {date} byl změněn přihlašovací údaj vašeho účtu z adresy {ipAddress}.",
+      "disclaimer": "Pokud jste tuto změnu neprovedli, neprodleně kontaktujte správce."
+    },
+    "permanentLockout": {
+      "subject": "Účet byl trvale zablokován",
+      "body": "Váš účet byl dne {date} trvale zablokován po opakovaných neúspěšných pokusech o přihlášení.",
+      "disclaimer": "Pro obnovení přístupu ke svému účtu kontaktujte správce."
+    },
+    "temporaryLockout": {
+      "subject": "Účet byl dočasně zablokován",
+      "body": "Váš účet byl dne {date} dočasně zablokován po opakovaných neúspěšných pokusech o přihlášení.",
+      "disclaimer": "Před dalším pokusem chvíli počkejte nebo v případě potřeby kontaktujte správce."
+    }
+  },
+  "verifiableCredentialOffer": {
+    "subject": "Nabídka ověřitelného pověření",
+    "body": "Správce zpřístupnil pověření {credentialName} pro váš účet {realmName}. Pomocí níže uvedeného odkazu jej můžete přijmout do své digitální peněženky.",
+    "button": "Přijmout pověření",
+    "expiry": "Platnost tohoto odkazu vyprší za {linkExpiration}.",
+    "disclaimer": "Pokud platnost odkazu vypršela, můžete pověření případně získat prostřednictvím správy svého účtu. V případě potřeby kontaktujte správce."
+  },
+  "activationEmail": {
+    "subject": "Aktivujte svůj účet {realmName}",
+    "body": "Před přihlášením aktivujte svůj účet {realmName}. Pomocí níže uvedeného odkazu dokončete požadované nastavení účtu.",
+    "button": "Aktivovat účet",
+    "expiry": "Platnost tohoto odkazu vyprší za {minutes} minut.",
+    "disclaimer": "Pokud tuto aktivaci účtu nepoznáváte, aktivační odkaz neotevírejte ani nesdílejte. Při opakovaných nebo nejasných žádostech kontaktujte podporu."
+  },
+  "magicLinkContinuation": {
+    "subject": "Přihlášení do {realmName}",
+    "body": "Někdo požádal o přihlašovací odkaz pro váš účet {realmName}.",
+    "button": "Potvrdit přihlášení",
+    "instruction": "Po potvrzení se vraťte na kartu prohlížeče, na které jste zahájili přihlášení. Nechte ji otevřenou, dokud nebude přihlášení dokončeno.",
+    "disclaimer": "Tento přihlašovací odkaz nikomu nesdělujte. Pokud jste o něj nepožádali, neotevírejte jej. Při opakovaných nebo podezřelých žádostech kontaktujte podporu."
+  },
+  "organizationInvitation": {
+    "subject": "Pozvánka do organizace {orgName}",
+    "body": "Byli jste pozváni do organizace {orgName} v {realmName}.",
+    "inviter": "Pozvánku odeslal(a) {inviterName}",
+    "recipient": "Tato pozvánka je určena pro {email}.",
+    "button": "Připojit se k organizaci",
+    "noLink": "Přihlaste se a zkontrolujte čekající pozvánky nebo kontaktujte osobu, která vás pozvala.",
+    "disclaimer": "Pokud se k této organizaci nechcete připojit, můžete tento e-mail ignorovat."
+  },
+  "workflowNotification": {
+    "subject": "Oznámení o účtu",
+    "preview": "Přečtěte si toto oznámení týkající se vašeho účtu.",
+    "disableSubject": "Upozornění na deaktivaci účtu",
+    "deleteSubject": "Oznámení o odstranění účtu",
+    "body": "Váš účet vyžaduje pozornost.",
+    "disableBody": "Váš účet bude za {days} dní deaktivován z důvodu {reason}. Přihlaste se, abyste tomu zabránili.",
+    "deleteBody": "Váš účet bude za {days} dní odstraněn z důvodu {reason}. S tímto účtem se již nebudete moci přihlásit. Pokud tuto akci neočekáváte, neprodleně kontaktujte správce.",
+    "greeting": "Dobrý den, {name},",
+    "timeRemaining": "Zbývající čas: {days} dní",
+    "questions": "V případě dotazů kontaktujte správce {realmName}.",
+    "signature": "Správa {realmName}"
+  },
   "contactHelp": "Potřebujete-li pomoc, obraťte se prosím na",
   "email-test": {
     "messageSubject": "[KEYCLOAK] - Testovací email SMTP",
     "messagePreview": "Toto je testovací email",
     "messageBody": "Toto je testovací email z {realmName}",
+    "messageLink": "Přejít do účtu",
     "disclaimer": "Toto je testovací e-mail. Tuto zprávu prosím ignorujte."
   },
   "email-update-confirmation": {
@@ -11,7 +78,7 @@
     "messagePreview": "Ověření změny e-mailové adresy účtu {realmName}",
     "messageBody": "Chcete-li aktualizovat svůj účet {realmName} na e-mailovou adresu {newEmail}, klikněte na odkaz níže.",
     "linkExpiry": "Platnost tohoto odkazu vyprší během {linkExpiration}.",
-    "disclaimer": "Pokud tuto změnu nechcete provést, můžete tuto zprávu bezpečně ignorovat."
+    "disclaimer": "Pokud jste o tuto změnu nepožádali, nepotvrzujte ji. Zkontrolujte svůj účet prostřednictvím své obvyklé přihlašovací stránky a v případě potřeby kontaktujte podporu."
   },
   "email-verification": {
     "messageSubject": "Ověření e-mailové adresy",
@@ -19,38 +86,38 @@
     "messageBody": "Někdo vytvořil účet {realmName} s touto e-mailovou adresou. Pokud jste to byli vy, kliknutím na odkaz níže ověřte svou e-mailovou adresu.",
     "messageLink": "Odkaz k ověření e-mailové adresy.",
     "linkExpiry": "Platnost tohoto odkazu vyprší během {linkExpiration}.",
-    "disclaimer": "Pokud tento účet nechcete vytvořit, můžete tuto zprávu bezpečně ignorovat."
+    "disclaimer": "Pokud toto vytvoření účtu nebo žádost o ověření nepoznáváte, e-mailovou adresu neověřujte a odkaz nesdílejte. V případě potřeby kontaktujte podporu."
   },
   "email-verification-with-code": {
     "messageSubject": "Ověření e-mailové adresy",
     "messagePreview": "Ověřte svou e-mailovou adresu zadáním následujícího kódu",
     "messageBody": "Ověřte svou e-mailovou adresu zadáním následujícího kódu: ",
     "verificationCode": "{code}",
-    "disclaimer": "Pokud jste tuto žádost neodeslali, můžete tuto zprávu bezpečně ignorovat."
+    "disclaimer": "Kód nikomu nesdělujte. Pokud jste o toto ověření nepožádali, nepoužívejte jej. Při opakovaných nebo nejasných žádostech kontaktujte podporu."
   },
   "event-login-error": {
     "messageSubject": "Chyba přihlášení",
     "messagePreview": "U účtu {realmName} byl zjištěn neúspěšný pokus o přihlášení",
     "messageBody": "Dne {date} byl z IP adresy {ipAddress} zaznamenán neúspěšný pokus o přihlášení k vašemu účtu.",
-    "disclaimer": "Pokud jste tento neúspěšný pokus o přihlášení nevyvolali, můžete tuto zprávu bezpečně ignorovat."
+    "disclaimer": "Pokud jste se nepokoušeli přihlásit, zkontrolujte zabezpečení svého účtu prostřednictvím své obvyklé přihlašovací stránky a preventivně si změňte heslo. Při opakovaných nebo podezřelých pokusech kontaktujte podporu."
   },
   "event-remove-totp": {
     "messageSubject": "Odebrání OTP",
     "messagePreview": "Z vašeho účtu {realmName} bylo odebráno OTP",
     "messageBody": "Dne {date} bylo z vašeho účtu odebráno OTP z IP adresy {ipAddress}.",
-    "disclaimer": "Pokud jste žádost o odebrání OTP neodeslali, můžete tuto zprávu bezpečně ignorovat."
+    "disclaimer": "Pokud jste OTP sami neodebrali, okamžitě si změňte heslo prostřednictvím své obvyklé přihlašovací stránky, zkontrolujte své přihlašovací metody a kontaktujte podporu."
   },
   "event-update-password": {
     "messageSubject": "Změna hesla",
     "messagePreview": "Heslo k vašemu účtu {realmName} bylo změněno",
     "messageBody": "Vaše heslo bylo změněno dne {date} z IP adresy {ipAddress}.",
-    "disclaimer": "Pokud jste žádost o změnu hesla neodeslali, můžete tuto zprávu bezpečně ignorovat."
+    "disclaimer": "Pokud jste si heslo sami nezměnili, okamžitě jej obnovte prostřednictvím své obvyklé přihlašovací stránky a kontaktujte podporu."
   },
   "event-update-totp": {
     "messageSubject": "Aktualizace OTP",
     "messagePreview": "U vašeho účtu {realmName} bylo aktualizováno OTP",
     "messageBody": "OTP vašeho účtu bylo aktualizováno dne {date} z IP adresy {ipAddress}.",
-    "disclaimer": "Pokud jste žádost o aktualizaci OTP neodeslali, můžete tuto zprávu bezpečně ignorovat."
+    "disclaimer": "Pokud jste OTP sami neaktualizovali, okamžitě si změňte heslo prostřednictvím své obvyklé přihlašovací stránky, zkontrolujte své přihlašovací metody a kontaktujte podporu."
   },
   "execute-actions": {
     "messageSubject": "Aktualizujte svůj účet",
@@ -69,6 +136,10 @@
     "webAuthnRegister": "Registrace WebAuthn",
     "webAuthnRegisterPasswordless": "Registrace WebAuthn bez hesla",
     "verifyProfile": "Ověřit profil",
+    "updateEmail": "Aktualizovat e-mail",
+    "termsAndConditions": "Přijmout smluvní podmínky",
+    "deleteAccount": "Smazat účet",
+    "verifiableCredentialOffer": "Zaregistrovat nabídku ověřitelného pověření",
     "deleteCredential": "Smazat přihlašovací údaje",
     "linkingIdentityProvider": "Propojení poskytovatele identity",
     "recoveryAuthenticationCodes": "Záložní autentizační kódy",
@@ -77,10 +148,12 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Klikněte na odkaz níže pro zahájení tohoto procesu.",
     "adminLinkToAccountUpdate": "Odkaz na aktualizaci účtu",
-    "adminIgnoreMessage": " Pokud nevíte, že váš administrátor o toto požádal, jednoduše tuto zprávu ignorujte a nic se nezmění."
+    "adminIgnoreMessage": "Pokud tuto žádost nepoznáváte, odkaz neotevírejte. Ověřte žádost u svého administrátora prostřednictvím kontaktu, který již znáte."
   },
   "footer": {
-    "disclaimer": "Důležité upozornění: Tento e-mail vám posíláme, protože máte účet v systému {realmName}. E-mail je součástí naší služby oznámení.",
+    "imprint": "Právní informace",
+    "dataProtection": "Ochrana osobních údajů",
+    "disclaimer": "Toto je systémová zpráva ze systému {realmName} týkající se účtu, přihlášení, zabezpečení nebo pozvánky.",
     "year": "© {currentYear} {realmName}"
   },
   "header": {
@@ -92,14 +165,14 @@
     "messageBody": "Někdo chce propojit váš účet {realmName} s účtem uživatele {username} u poskytovatele {identityProviderDisplayName}. Pokud jste to byli vy, propojte účty kliknutím na odkaz níže.",
     "messageLink": "Odkaz k potvrzení propojení účtů.",
     "linkExpiry": "Platnost tohoto odkazu vyprší během {linkExpiration}.",
-    "disclaimer": "Pokud účty propojit nechcete, můžete tuto zprávu bezpečně ignorovat. Po propojení se budete moci přihlásit do {realmName} prostřednictvím služby {identityProviderDisplayName}."
+    "disclaimer": "Účty propojujte pouze tehdy, pokud jste proces sami zahájili. V opačném případě propojení nepotvrzujte a zkontrolujte svůj účet prostřednictvím své obvyklé přihlašovací stránky. V případě potřeby kontaktujte podporu. Po propojení se můžete přihlásit do {realmName} prostřednictvím služby {identityProviderDisplayName}."
   },
   "magic-link-email": {
     "messageSubject": "Přihlášení k účtu {realmName}",
     "messagePreview": "Někdo požádal o přihlašovací odkaz k účtu {realmName}",
     "messageBody": "Někdo požádal o přihlašovací odkaz k účtu {realmName}",
     "magicLink": "Kliknutím se přihlásíte ",
-    "disclaimer": "Pokud jste o tento přihlašovací odkaz nepožádali, můžete tento e-mail bezpečně ignorovat."
+    "disclaimer": "Tento přihlašovací odkaz nikomu nesdělujte. Pokud jste o něj nepožádali, neotevírejte jej. Při opakovaných nebo podezřelých žádostech kontaktujte podporu."
   },
   "organization-invite": {
     "messageSubject": "Pozvánka do organizace {0}",
@@ -115,7 +188,7 @@
     "messagePreview": "Někdo požádal o přístup k vašemu účtu",
     "messageBody": "Někdo požádal o přístup k vašemu účtu. Vaše jednorázové heslo (OTP) je: ",
     "verificationCode": "{code}",
-    "disclaimer": "Pokud jste tuto žádost neodeslali, můžete tuto zprávu bezpečně ignorovat."
+    "disclaimer": "Pokud jste o toto přihlášení nepožádali, kód nikomu nesdělujte. Z bezpečnostních důvodů si změňte heslo prostřednictvím své obvyklé přihlašovací stránky a v případě potřeby kontaktujte podporu."
   },
   "password-reset": {
     "messageSubject": "Odkaz pro obnovení hesla",
@@ -123,6 +196,6 @@
     "messageBody": "Někdo právě požádal o změnu přihlašovacích údajů k vašemu účtu {realmName}. Pokud jste to byli vy, obnovte je kliknutím na odkaz níže.",
     "passwordResetLink": "Odkaz pro obnovení přihlašovacích údajů",
     "linkExpiration": "Platnost tohoto odkazu vyprší během {linkExpiration}.",
-    "disclaimer": "Pokud přihlašovací údaje obnovit nechcete, můžete tuto zprávu bezpečně ignorovat; nic se nezmění."
+    "disclaimer": "Pokud jste o toto obnovení nepožádali, odkaz neotevírejte ani nesdílejte. Samotný tento e-mail vaše heslo nemění. Při opakovaných nebo podezřelých žádostech kontaktujte podporu."
   }
 }

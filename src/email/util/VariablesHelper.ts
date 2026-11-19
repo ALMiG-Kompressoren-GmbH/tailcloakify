@@ -16,6 +16,22 @@ interface CodeVars {
     code: string;
 }
 
+type EmailValueName =
+    | "realmName"
+    | "link"
+    | "credentialScopeDisplayName"
+    | "linkExpirationFormatter(linkExpiration)"
+    | "activationLink"
+    | "linkExpirationMinutes"
+    | "magicLink"
+    | "orgName"
+    | "inviterName"
+    | "email";
+
+export function emailValue(name: EmailValueName, plainText: boolean) {
+    return "${" + name + (plainText ? "" : "?esc") + "}";
+}
+
 /*
 * Phase Two
 * */

@@ -1,9 +1,76 @@
 {
+  "securityEvents": {
+    "credentialType": "Credential type",
+    "removeCredential": {
+      "subject": "Credential removed",
+      "body": "An authentication credential was removed from your account on {date} from {ipAddress}.",
+      "disclaimer": "If you did not make this change, contact your administrator immediately."
+    },
+    "updateCredential": {
+      "subject": "Credential updated",
+      "body": "An authentication credential was changed on your account on {date} from {ipAddress}.",
+      "disclaimer": "If you did not make this change, contact your administrator immediately."
+    },
+    "permanentLockout": {
+      "subject": "Account permanently locked",
+      "body": "Your account was permanently locked following repeated failed sign-in attempts on {date}.",
+      "disclaimer": "Contact your administrator to restore access to your account."
+    },
+    "temporaryLockout": {
+      "subject": "Account temporarily locked",
+      "body": "Your account was temporarily locked following repeated failed sign-in attempts on {date}.",
+      "disclaimer": "Wait before trying again, or contact your administrator if you need help."
+    }
+  },
+  "verifiableCredentialOffer": {
+    "subject": "Verifiable credential offer",
+    "body": "Your administrator has made the credential {credentialName} available for your {realmName} account. Use the link below to claim it in your digital wallet.",
+    "button": "Claim credential",
+    "expiry": "This link will expire within {linkExpiration}.",
+    "disclaimer": "If the link has expired, you may still be able to claim the credential through your account console. Contact your administrator if needed."
+  },
+  "activationEmail": {
+    "subject": "Activate your {realmName} account",
+    "body": "Activate your {realmName} account before signing in. Use the link below to complete the required account setup.",
+    "button": "Activate account",
+    "expiry": "This link will expire in {minutes} minutes.",
+    "disclaimer": "If you do not recognize this account activation, do not open or share the activation link. Contact support if requests are repeated or unclear."
+  },
+  "magicLinkContinuation": {
+    "subject": "Log in to {realmName}",
+    "body": "Someone requested a sign-in link for your {realmName} account.",
+    "button": "Confirm sign-in",
+    "instruction": "After confirming, return to the browser tab where you started signing in. Keep that tab open until sign-in is complete.",
+    "disclaimer": "Do not share this sign-in link. If you did not request it, do not open it. Contact support if requests are repeated or suspicious."
+  },
+  "organizationInvitation": {
+    "subject": "Invitation to join {orgName}",
+    "body": "You have been invited to join {orgName} on {realmName}.",
+    "inviter": "Invited by {inviterName}",
+    "recipient": "This invitation is intended for {email}.",
+    "button": "Join organization",
+    "noLink": "Sign in to review your pending organization invitations, or contact the person who invited you.",
+    "disclaimer": "If you do not want to join this organization, you can ignore this email."
+  },
+  "workflowNotification": {
+    "subject": "Account notification",
+    "preview": "Please review this notification about your account.",
+    "disableSubject": "Account disable warning",
+    "deleteSubject": "Account deletion notice",
+    "body": "Your account requires attention.",
+    "disableBody": "Your account will be disabled in {days} days because of {reason}. Sign in to prevent this action.",
+    "deleteBody": "Your account will be deleted in {days} days because of {reason}. You will no longer be able to sign in with this account. Contact your administrator immediately if this is unexpected.",
+    "greeting": "Hello {name},",
+    "timeRemaining": "Time remaining: {days} day(s)",
+    "questions": "If you have questions, contact your {realmName} administrator.",
+    "signature": "{realmName} administration"
+  },
   "contactHelp": "If you need help, please contact",
   "email-test": {
     "messageSubject": "[KEYCLOAK] - SMTP Test Email",
     "messagePreview": "This is a test email",
     "messageBody": "This is a test email from {realmName}",
+    "messageLink": "Go to your account",
     "disclaimer": "This is a test email. Please ignore this message."
   },
   "email-update-confirmation": {
@@ -11,7 +78,7 @@
     "messagePreview": "Email update verification for {realmName} account",
     "messageBody": "To update your {realmName} account with email address {newEmail}, click the link below",
     "linkExpiry": "This link will expire within {linkExpiration}.",
-    "disclaimer": "If you don't want to proceed with this modification, you can safely ignore this message."
+    "disclaimer": "If you did not request this change, do not confirm it. Review your account through your usual sign-in page and contact support if needed."
   },
   "email-verification": {
     "messageSubject": "Email Verification",
@@ -19,38 +86,38 @@
     "messageBody": "Someone has created a {realmName} account with this email address. If this was you, click the link below to verify your email address.",
     "messageLink": "Link to email address verification.",
     "linkExpiry": "This link will expire within {linkExpiration}.",
-    "disclaimer": "If you don't want to create this account, you can safely ignore this message."
+    "disclaimer": "If you do not recognize this account creation or verification request, do not verify the email address or share the link. Contact support if needed."
   },
   "email-verification-with-code": {
     "messageSubject": "Email Verification",
     "messagePreview": "Please verify your email address by entering in the following code",
     "messageBody": "Please verify your email address by entering in the following code: ",
     "verificationCode": "{code}",
-    "disclaimer": "If you did not initiate this request, you can safely ignore this message."
+    "disclaimer": "Do not share this code. If you did not request this verification, do not use it. Contact support if requests are repeated or unclear."
   },
   "event-login-error": {
     "messageSubject": "Login Error",
     "messagePreview": "Failed login attempt detected for {realmName}",
     "messageBody": "A failed login attempt was detected to your account on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate this failed login request, you can safely ignore this message."
+    "disclaimer": "If you did not make this sign-in attempt, review your account security through your usual sign-in page and change your password as a precaution. Contact support if attempts are repeated or suspicious."
   },
   "event-remove-totp": {
     "messageSubject": "Remove OTP",
     "messagePreview": "OTP was removed from your {realmName} account",
     "messageBody": "OTP was removed from your account on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate a request to remove OTP, you can safely ignore this message."
+    "disclaimer": "If you did not remove OTP yourself, immediately change your password through your usual sign-in page, review your sign-in methods, and contact support."
   },
   "event-update-password": {
     "messageSubject": "Update Password",
     "messagePreview": "Your {realmName} account password was changed",
     "messageBody": "Your password was changed on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate a request to update your password, you can safely ignore this message."
+    "disclaimer": "If you did not change your password yourself, immediately reset it through your usual sign-in page and contact support."
   },
   "event-update-totp": {
     "messageSubject": "Update OTP",
     "messagePreview": "OTP was updated for your {realmName} account",
     "messageBody": "OTP was updated for your account on {date} from {ipAddress}.",
-    "disclaimer": "If you did not initiate a request to update OTP, you can safely ignore this message."
+    "disclaimer": "If you did not update OTP yourself, immediately change your password through your usual sign-in page, review your sign-in methods, and contact support."
   },
   "execute-actions": {
     "messageSubject": "Update Your Account",
@@ -69,6 +136,10 @@
     "webAuthnRegister": "Webauthn Register",
     "webAuthnRegisterPasswordless": "Webauthn Register Passwordless",
     "verifyProfile": "Verify Profile",
+    "updateEmail": "Update Email",
+    "termsAndConditions": "Accept Terms and Conditions",
+    "deleteAccount": "Delete Account",
+    "verifiableCredentialOffer": "Register Verifiable Credential Offer",
     "deleteCredential": "Delete Credential",
     "linkingIdentityProvider": "Linking Identity Provider",
     "recoveryAuthenticationCodes": "Recovery Authentication Codes",
@@ -77,10 +148,12 @@
     "adminRequiredActions": "{requiredActions}",
     "adminMessageLink": "Click on the link below to start this process.",
     "adminLinkToAccountUpdate": "Link to account update",
-    "adminIgnoreMessage": " If you are unaware that your administrator has requested this, you can safely ignore this message and nothing will be changed."
+    "adminIgnoreMessage": "If you do not recognize this request, do not open the link. Verify the request with your administrator through a contact method you already know."
   },
   "footer": {
-    "disclaimer": "Important Notice: We are sending you this email because you have an account at {realmName}. This email is sent as part of our notification service.",
+    "imprint": "Imprint",
+    "dataProtection": "Data Protection",
+    "disclaimer": "This is a system message from {realmName} concerning an account, sign-in, security, or invitation function.",
     "year": "© {currentYear} {realmName}"
   },
   "header": {
@@ -92,14 +165,14 @@
     "messageBody": "Someone wants to link your {realmName} account with {identityProviderDisplayName} account of user {username}. If this was you, click the link below to link accounts.",
     "messageLink": "Link to confirm account linking.",
     "linkExpiry": "This link will expire within {linkExpiration}.",
-    "disclaimer": "If you don't want to link account, you can safely ignore this message. If you link accounts, you will be able to login to {realmName} through {identityProviderDisplayName}."
+    "disclaimer": "Only link accounts if you started the process yourself. Otherwise, do not confirm the link and review your account through your usual sign-in page. Contact support if needed. After linking, you can sign in to {realmName} through {identityProviderDisplayName}."
   },
   "magic-link-email": {
     "messageSubject": "Login to {realmName} account",
     "messagePreview": "Someone has requested a login link to {realmName}",
     "messageBody": "Someone has requested a login link to {realmName}",
     "magicLink": "Click to log in ",
-    "disclaimer": "If you did not initiate this login link request, you can safely ignore this email."
+    "disclaimer": "Do not share this sign-in link. If you did not request it, do not open it. Contact support if requests are repeated or suspicious."
   },
   "organization-invite": {
     "messageSubject": "Invitation to join the {0} organization",
@@ -115,7 +188,7 @@
     "messagePreview": "Someone has requested access to your account",
     "messageBody": "Someone has requested access to your account. Your One-Time Password (OTP) is: ",
     "verificationCode": "{code}",
-    "disclaimer": "If you did not initiate this request, you can safely ignore this message."
+    "disclaimer": "If you did not request this sign-in, do not share this code. As a precaution, change your password through your usual sign-in page and contact support if needed."
   },
   "password-reset": {
     "messageSubject": "Password Reset Link",
@@ -123,6 +196,6 @@
     "messageBody": "Someone just requested to change your {realmName} account's credentials. If this was you, click on the link below to reset them.",
     "passwordResetLink": "Link to reset credentials",
     "linkExpiration": "This link will expire within {linkExpiration}",
-    "disclaimer": "If you don't want to reset your credentials, you can safely ignore this message and nothing will be changed."
+    "disclaimer": "If you did not request this reset, do not open or share the link. This email alone does not change your password. Contact support if requests are repeated or suspicious."
   }
 }

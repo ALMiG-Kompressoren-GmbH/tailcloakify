@@ -9,3 +9,5 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
+export const NoBranding: Story = { args: { scenario: "no-branding" } };
+export const LongContent: Story = { args: { scenario: "long-content" } };

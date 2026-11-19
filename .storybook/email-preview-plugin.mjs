@@ -3,7 +3,7 @@ import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { build } from "esbuild";
-import { locales, resolveEmailPreview } from "./email-fixtures.mjs";
+import { locales, createEmailPreview } from "./email-fixtures.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const emailDirectory = path.join(root, "src/email");
@@ -80,22 +80,38 @@ export async function renderEmailPreviews(
         for (const locale of selectedLocales) {
             const props = { locale, themeName: "Tailcloakify", plainText: false };
             const html = await template.getTemplate(props);
-            const subject = await template.getSubject(props);
+            const plainText = await template.getTemplate({ ...props, plainText: true });
+            const subject =
+                id === "workflow-notification"
+                    ? "${kcSanitize(msg(subjectKey, daysRemaining, reason))?no_esc}"
+                    : await template.getSubject(props);
             const messages = await compiled.getMessages(props);
-            const scenarios = ["default", "no-contact"];
+            const scenarios = ["default", "no-contact", "no-branding", "long-content"];
+            if (id === "email-test")
+                scenarios.push("white-background", "gradient-orange");
             if (id === "executeActions") scenarios.push("admin", "no-actions");
             if (id === "org-invite") scenarios.push("anonymous");
+            if (["event-remove_credential", "event-update_credential"].includes(id))
+                scenarios.push("unknown-credential");
+            if (id === "invitation-email") scenarios.push("no-inviter", "no-link");
+            if (id === "workflow-notification")
+                scenarios.push("disable", "delete", "custom-message", "no-deadline");
             previews[id][locale] = Object.fromEntries(
                 scenarios.map(scenario => {
-                    const options = { locale, scenario, messages, logo };
+                    const options = { template: id, locale, scenario, messages, logo };
+                    const source = {
+                        html,
+                        plainText,
+                        subject,
+                        subjectParameters: template.subjectParameters ?? []
+                    };
                     return [
                         scenario,
                         {
-                            html: resolveEmailPreview(html, options),
-                            subject: resolveEmailPreview(subject, {
-                                ...options,
-                                plainText: true
-                            })
+                            ...createEmailPreview(source, options),
+                            ...(html.includes("TAILCLOAKIFY_EMAIL_SHOW_BUTTON_LINK")
+                                ? { actionSource: { source, options } }
+                                : {})
                         }
                     ];
                 })
@@ -123,7 +139,7 @@ export function emailPreviewPlugin() {
         },
         async load(id) {
             if (id === resolvedId) {
-                return `export default {${locales.map(locale => `${JSON.stringify(locale)}: () => import(${JSON.stringify(`${virtualId}/${locale}`)}).then(module => module.default)`).join(",")}};`;
+                return `export { renderRequiredActions } from ${JSON.stringify(path.join(root, ".storybook/email-fixtures.mjs").replaceAll("\\", "/"))}; export default {${locales.map(locale => `${JSON.stringify(locale)}: () => import(${JSON.stringify(`${virtualId}/${locale}`)}).then(module => module.default)`).join(",")}};`;
             }
             const locale = locales.find(locale => id === `${resolvedId}/${locale}`);
             if (!locale) return;
