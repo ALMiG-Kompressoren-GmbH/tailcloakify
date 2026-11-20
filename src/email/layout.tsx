@@ -31,7 +31,7 @@ const templateFont = exp("properties.TAILCLOAKIFY_EMAIL_FONT_FAMILY");
 const contactEmail = exp("properties.TAILCLOAKIFY_EMAIL_CONTACT");
 const backgroundColor =
     "${(properties.TAILCLOAKIFY_EMAIL_BACKGROUND_COLOR!'#f3f4f6')?esc}";
-const backgroundStyle = "${(properties.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE!'none')?esc}";
+const backgroundStyle = "${(properties.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL!'none')?esc}";
 const dividerColor = "${(properties.TAILCLOAKIFY_EMAIL_DIVIDER_COLOR!'#d1d5db')?esc}";
 
 export const EmailLayout = ({

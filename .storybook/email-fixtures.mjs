@@ -228,7 +228,7 @@ export function resolveEmailPreview(
         "properties.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL": "background",
         "(properties.TAILCLOAKIFY_EMAIL_BACKGROUND_COLOR!'#f3f4f6')?esc":
             "backgroundColor",
-        "(properties.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE!'none')?esc": "backgroundImage",
+        "(properties.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL!'none')?esc": "backgroundImage",
         "(properties.TAILCLOAKIFY_EMAIL_DIVIDER_COLOR!'#d1d5db')?esc": "dividerColor",
         "properties.TAILCLOAKIFY_EMAIL_FONT_FAMILY": "font",
         "properties.TAILCLOAKIFY_EMAIL_CONTACT": "contact",

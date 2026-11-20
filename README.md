@@ -165,7 +165,7 @@ TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL="https://example.com/privacy"
 | `TAILCLOAKIFY_EMAIL_CONTACT` | Support email address; omitted when unset |
 | `TAILCLOAKIFY_EMAIL_FONT_FAMILY` | Custom font stack; choose broadly available email fonts |
 | `TAILCLOAKIFY_EMAIL_BACKGROUND_COLOR` | Background and fallback color; `#f3f4f6` |
-| `TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE` | CSS background image or gradient; `none` |
+| `TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL` | CSS background image or gradient; `none` |
 | `TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL` | Background image URL; overrides the CSS image setting |
 | `TAILCLOAKIFY_EMAIL_DIVIDER_COLOR` | Divider beneath the heading; `#d1d5db` |
 | `TAILCLOAKIFY_EMAIL_SHOW_BUTTON_LINK` | Additional copyable URL beneath HTML buttons; `false` |

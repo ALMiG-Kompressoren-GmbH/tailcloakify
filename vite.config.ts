@@ -37,7 +37,7 @@ export default defineConfig({
                 { name: "TAILCLOAKIFY_ENABLE_REGISTRATION_URL_PREFILL", default: "" },
                 { name: "TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL", default: "" },
                 { name: "TAILCLOAKIFY_EMAIL_BACKGROUND_COLOR", default: "#f3f4f6" },
-                { name: "TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE", default: "none" },
+                { name: "TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL", default: "none" },
                 { name: "TAILCLOAKIFY_EMAIL_DIVIDER_COLOR", default: "#d1d5db" },
                 { name: "TAILCLOAKIFY_EMAIL_LOGO", default: "" },
                 { name: "TAILCLOAKIFY_EMAIL_LOGO_WIDTH", default: "160" },
