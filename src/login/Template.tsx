@@ -100,7 +100,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         document.head.appendChild(script);
 
         return () => script.remove();
-    }, [kcContext.properties["TAILCLOAKIFY_INLINE_SCRIPTS"]];
+    }, [kcContext.properties["TAILCLOAKIFY_INLINE_SCRIPTS"]]);
 
     // Load CSS
     useEffect(() => {

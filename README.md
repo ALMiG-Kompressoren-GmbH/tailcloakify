@@ -74,7 +74,9 @@ These settings apply to both login pages and emails. Links are omitted when unse
 | `TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER` | Show identity providers on registration; `TRUE` to enable |
 | `TAILCLOAKIFY_ENABLE_REGISTRATION_URL_PREFILL` | Enable URL-based registration prefill; `TRUE`, disabled by default |
 | `TAILCLOAKIFY_ADDITIONAL_SCRIPTS` | Additional external scripts |
+| `TAILCLOAKIFY_INLINE_SCRIPTS` | Inline JavaScript for login pages; empty by default |
 | `TAILCLOAKIFY_ADDITIONAL_STYLES` | Additional external styles |
+| `TAILCLOAKIFY_INLINE_STYLES` | Inline CSS for login pages; empty by default |
 | `TAILCLOAKIFY_ADDITIONAL_META` | Additional meta tags |
 | `TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT` | Enable Orestbida cookie-consent integration |
 | `TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA` | Disable the CAPTCHA cookie section with a falsy value |
@@ -190,6 +192,140 @@ The theme alone does not make a deployment GDPR-compliant:
   to their hosts. Account deletion does not imply erasure of every log or backup copy.
 
 See the [EDPB guidance on transparency and data subject rights](https://www.edpb.europa.eu/sme/be-compliant/respect-individuals-rights_en).
+
+## CSS and Tailwind Customization
+
+These options style the **login pages**. Email templates have their own layout
+and inline styles; login CSS and Tailwind palette changes do not restyle emails.
+Use [Email Configuration](#email-configuration) for email branding.
+
+### Add CSS Without Rebuilding
+
+Host a compiled CSS file and load it through the Keycloak server environment:
+
+```dotenv
+TAILCLOAKIFY_ADDITIONAL_STYLES="https://example.com/brand/login.css"
+```
+
+Separate multiple stylesheet URLs with semicolons. Alternatively, package the CSS
+in a [child theme](#child-themes). External stylesheets must contain ordinary CSS:
+the browser does not compile Tailwind directives such as `@apply` or `@config`.
+Ensure your Keycloak Content Security Policy permits the stylesheet origin.
+
+For inline CSS without hosting a stylesheet, set:
+
+```dotenv
+TAILCLOAKIFY_INLINE_STYLES="body .kcFormCardClass { border-radius: 12px; border: 1px solid #bbf7d0; }"
+```
+
+Provide plain CSS without `<style>` tags; semicolons are preserved as CSS, not
+treated as URL separators. Both options can be combined. Inline CSS is inserted
+after the additional and child-theme stylesheet links; normal CSS cascade and
+specificity rules still apply. Only use trusted CSS. Your Keycloak Content Security
+Policy must allow this inline style block; it does not bypass CSP. Restart Keycloak
+after changing the environment. This option applies only to login pages and requires
+a theme release that includes it, but subsequent CSS changes need no rebuild.
+
+For example, `login.css` can contain:
+
+```css
+body .kcLoginClass {
+      background-color: #f0fdf4;
+}
+
+body .kcFormCardClass {
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+}
+
+body .kcInputClass:focus-visible {
+      outline: 2px solid #15803d;
+      outline-offset: 2px;
+}
+```
+
+### Classes and Selectors to Target
+
+Use the semantic classes emitted by `kcClsx` rather than overriding every element
+with a Tailwind utility such as `.rounded-lg`. The current login markup includes:
+
+| Selector | Target |
+| --- | --- |
+| `.kcLoginClass` | Full-page login wrapper and background |
+| `.kcFormCardClass` | Main content panel |
+| `.kcFormHeaderClass` | Form heading wrapper |
+| `#kc-page-title` | Page title, where displayed |
+| `.kcFormGroupClass` | Form field groups |
+| `.kcInputClass` | Inputs using the shared input class |
+| `.kcLabelClass` | Field labels; some intentionally use `sr-only` |
+| `.kcInputErrorMessageClass` | Inline field validation messages |
+| `.kcAlertClass` | Page-level feedback messages |
+| `.kcLocaleListClass` | Language dropdown list |
+
+Selectors are present only where the corresponding page or feature renders them.
+Some controls and links use Tailwind utilities directly, so there is no single
+shared class that styles every button or link. Inspect the target page in browser
+DevTools before adding a page-specific override. Preserve visible focus indicators,
+error states, and accessible labels.
+
+### Customize Tailwind in Source
+
+The login theme uses **Tailwind CSS 4**. Its CSS entry point is
+[src/login/index.css](src/login/index.css), which loads the configuration from
+[tailwind.config.js](tailwind.config.js). Shared class additions live in the
+`classes` map in [src/login/KcPage.tsx](src/login/KcPage.tsx); page-specific
+utilities live in [src/login/Template.tsx](src/login/Template.tsx) and
+[src/login/pages](src/login/pages).
+
+- Change `theme.extend.colors.primary` for the brand palette. Existing utilities
+   include `text-primary-600`, `focus:border-primary-300`, `focus:ring-primary-200`,
+   and `accent-primary-600`.
+- Change `theme.extend.colors.secondary` for neutral surfaces, borders, and text,
+   such as `bg-secondary-100`, `border-secondary-200`, and `text-secondary-600`.
+- For example, replace `primary: colors.blue` with `primary: colors.emerald` and
+   `secondary: colors.gray` with `secondary: colors.zinc`. Keep the other settings,
+   including the separate `provider` color palette.
+
+For a targeted change, append an override after the existing imports in
+[src/login/index.css](src/login/index.css):
+
+```css
+body .kcFormCardClass {
+      @apply rounded-xl border border-secondary-200;
+}
+```
+
+Keep these overrides outside additional cascade layers: this project deliberately
+imports Tailwind preflight and utilities without a layer to override Keycloak's
+default CSS. Keep utility names as complete, literal strings in scanned source
+files; dynamically assembled names may not generate CSS. Adding a utility class
+at runtime does not make it available in a prebuilt JAR.
+
+Preview changes with `yarn storybook`, then run `yarn build-keycloak-theme` and
+deploy the new JAR. Source palette, utility, and `@apply` changes require a rebuild;
+the external plain-CSS approach above does not require rebuilding Tailcloakify.
+
+### Inline JavaScript
+
+To run JavaScript on login pages without hosting a script file, set:
+
+```dotenv
+TAILCLOAKIFY_INLINE_SCRIPTS="document.documentElement.dataset.brand = 'custom';"
+```
+
+Provide plain JavaScript without `<script>` tags; semicolons and line breaks are
+preserved. Only use trusted code: it runs with the login page's privileges and can
+access sensitive form data. Your Keycloak Content Security Policy must allow this
+inline script block; this option does not bypass CSP or change the policy.
+
+External scripts configured through `TAILCLOAKIFY_ADDITIONAL_SCRIPTS` still load
+asynchronously; inline code does not wait for them. Do not assume the login form
+is already rendered when the script runs. Make scripts safe to execute again on
+remount or configuration changes. Removing the script element does not undo its
+side effects, such as event listeners or timers.
+
+Restart Keycloak after changing the environment. This option requires a theme
+release that includes it; subsequent script changes need no theme rebuild.
 
 ## Child Themes
 
