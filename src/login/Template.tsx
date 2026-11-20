@@ -88,6 +88,20 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         });
     }, []);
 
+    useEffect(() => {
+        const code = kcContext.properties["TAILCLOAKIFY_INLINE_SCRIPTS"];
+
+        if (!code) {
+            return;
+        }
+
+        const script = document.createElement("script");
+        script.textContent = code;
+        document.head.appendChild(script);
+
+        return () => script.remove();
+    }, [kcContext.properties["TAILCLOAKIFY_INLINE_SCRIPTS"]];
+
     // Load CSS
     useEffect(() => {
         function loadStyle(href: string) {
@@ -107,6 +121,20 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
             styleUrls.forEach(loadStyle);
         }
     }, []);
+
+    useEffect(() => {
+        const css = kcContext.properties["TAILCLOAKIFY_INLINE_STYLES"];
+
+        if (!css) {
+            return;
+        }
+
+        const style = document.createElement("style");
+        style.textContent = css;
+        document.head.appendChild(style);
+
+        return () => style.remove();
+    }, [kcContext.properties["TAILCLOAKIFY_INLINE_STYLES"]]);
 
     // Load Meta
     useEffect(() => {
