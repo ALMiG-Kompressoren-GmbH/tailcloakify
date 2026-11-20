@@ -24,7 +24,7 @@ import { emailFontFamily, EmailSection } from "./components";
 const { exp } = createVariablesHelper("email-test.ftl");
 const currentYear = new Date().getFullYear();
 const backgroundImage = exp("properties.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL");
-const emailLogo = exp("properties.TAILCLOAKIFY_EMAIL_LOGO");
+const emailLogo = exp("properties.TAILCLOAKIFY_EMAIL_LOGO_URL");
 const emailLogoWidth = exp("properties.TAILCLOAKIFY_EMAIL_LOGO_WIDTH");
 const emailLogoHeight = exp("properties.TAILCLOAKIFY_EMAIL_LOGO_HEIGHT");
 const templateFont = exp("properties.TAILCLOAKIFY_EMAIL_FONT_FAMILY");
@@ -87,7 +87,7 @@ export const EmailLayout = ({
                                 overflowWrap: "anywhere"
                             }}
                         >
-                            <If condition="properties.TAILCLOAKIFY_EMAIL_LOGO?? && properties.TAILCLOAKIFY_EMAIL_LOGO?has_content">
+                            <If condition="properties.TAILCLOAKIFY_EMAIL_LOGO_URL?? && properties.TAILCLOAKIFY_EMAIL_LOGO_URL?has_content">
                                 <EmailSection align="center" style={{ padding: "8px 0" }}>
                                     <Img
                                         src={emailLogo}

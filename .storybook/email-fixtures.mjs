@@ -222,7 +222,7 @@ export function resolveEmailPreview(
             "workflowSignature",
         "kcSanitize(customMessage)?no_esc": "customWorkflowMessage",
         "linkExpirationFormatter(linkExpiration)": "expiry",
-        "properties.TAILCLOAKIFY_EMAIL_LOGO": "logo",
+        "properties.TAILCLOAKIFY_EMAIL_LOGO_URL": "logo",
         "properties.TAILCLOAKIFY_EMAIL_LOGO_WIDTH": "logoWidth",
         "properties.TAILCLOAKIFY_EMAIL_LOGO_HEIGHT": "logoHeight",
         "properties.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL": "background",
@@ -250,7 +250,7 @@ export function resolveEmailPreview(
         "firstName?? && lastName??": "named",
         "properties.TAILCLOAKIFY_EMAIL_CONTACT?? && properties.TAILCLOAKIFY_EMAIL_CONTACT?has_content":
             "hasContact",
-        "properties.TAILCLOAKIFY_EMAIL_LOGO?? && properties.TAILCLOAKIFY_EMAIL_LOGO?has_content":
+        "properties.TAILCLOAKIFY_EMAIL_LOGO_URL?? && properties.TAILCLOAKIFY_EMAIL_LOGO_URL?has_content":
             "hasLogo",
         "properties.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL?? && properties.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL?has_content":
             "hasBackground",

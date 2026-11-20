@@ -151,7 +151,7 @@ automatic OTP detection depend on the receiving client.
 Set these variables in the Keycloak server environment, for example in Docker Compose:
 
 ```dotenv
-TAILCLOAKIFY_EMAIL_LOGO="https://example.com/brand/logo.png"
+TAILCLOAKIFY_EMAIL_LOGO_URL="https://example.com/brand/logo.png"
 TAILCLOAKIFY_EMAIL_CONTACT="support@example.com"
 TAILCLOAKIFY_FOOTER_IMPRINT_URL="https://example.com/imprint"
 TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL="https://example.com/privacy"
@@ -159,7 +159,7 @@ TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL="https://example.com/privacy"
 
 | Variable | Purpose / default |
 | --- | --- |
-| `TAILCLOAKIFY_EMAIL_LOGO` | Logo image URL; omitted when unset |
+| `TAILCLOAKIFY_EMAIL_LOGO_URL` | Logo image URL; omitted when unset |
 | `TAILCLOAKIFY_EMAIL_LOGO_WIDTH` | Logo width in pixels; positive integer, `160` |
 | `TAILCLOAKIFY_EMAIL_LOGO_HEIGHT` | Logo height in pixels; positive integer, `40` |
 | `TAILCLOAKIFY_EMAIL_CONTACT` | Support email address; omitted when unset |
